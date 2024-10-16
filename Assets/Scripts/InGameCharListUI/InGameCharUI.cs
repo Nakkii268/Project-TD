@@ -10,11 +10,12 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     public event EventHandler OnCharSelect;
     public event EventHandler<CharacterData> OnCharDrop;
 
-    public AllianceUnit unit;
-    public GameObject Prefab;
-    public GameObject toPrefab;
-    public int num;
-    public Canvas Canvas;
+    [SerializeField]private AllianceUnit unit;
+    [SerializeField] private GameObject Prefab;
+    [SerializeField] private GameObject toPrefab;
+    [SerializeField] private int num;
+   [SerializeField]private Canvas Canvas;
+    
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -31,7 +32,7 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
         OnCharSelect?.Invoke(this,EventArgs.Empty);
         foreach(var block in LevelManager.instance.ValidBlock(unit.GetAllianceType()))
         {
-            block.GetComponent<Block>().HighLightBlock();
+            block.GetComponent<Block>().HighLightBlock(7);
         }
 
     }
@@ -40,8 +41,11 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     {
         Prefab.gameObject.SetActive(false);
         gameObject.GetComponent<RectTransform>().localScale = Vector3.one;
-        OnCharDrop?.Invoke(this, new CharacterData(toPrefab,num,unit));
-       
+        OnCharDrop?.Invoke(this, new CharacterData(toPrefab,unit));
+        foreach (var block in LevelManager.instance.ValidBlock(unit.GetAllianceType()))
+        {
+            block.GetComponent<Block>().UnHighLightBlock();
+        }
 
     }
 
@@ -53,8 +57,8 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
 public class CharacterData
 {
     public GameObject character;
-    public int num;
+    
     public AllianceUnit unit;
 
-    public CharacterData(GameObject c,int n, AllianceUnit u) { character = c; num = n;unit = u; }   
+    public CharacterData(GameObject c, AllianceUnit u) { character = c;unit = u; }   
 }

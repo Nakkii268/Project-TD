@@ -62,7 +62,7 @@ public class LevelManager : MonoBehaviour
         {
             
                 list[i] = transform.GetChild(i).gameObject;
-            Debug.Log(i);
+            
         }
         return list;
     }
@@ -124,6 +124,27 @@ public class LevelManager : MonoBehaviour
         }
         
         return list;
+    }
+    public void HighLightBlockList(Vector2[] list,int layer)
+    {
+        if (list == null) return;
+        foreach (var tile in list)
+        {
+            if (IsTileInRange(Vector2Int.RoundToInt(tile)))
+            {
+                tiles[Vector2Int.RoundToInt(tile).x, Vector2Int.RoundToInt(tile).y].GetComponent<Block>().HighLightBlock(layer);
+                
+            }
+            
+        }
+    }
+    private bool IsTileInRange(Vector2Int tile)
+    {
+        if (tile.x >=0 && tile.x < MapSize_X && tile.y >= 0 && tile.y < MapSize_Y)
+        {
+            return true;
+        }
+        return false;
     }
 }
 

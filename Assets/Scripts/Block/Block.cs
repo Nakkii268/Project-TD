@@ -32,8 +32,9 @@ public class Block : MonoBehaviour
     {
         if (unit == null) return;
         unit = null;
-        Destroy(gameObject.transform.GetChild(0).gameObject);
+        Destroy(gameObject.GetComponentInChildren<Alliance>().gameObject);
         Deloyable = true;
+       
     }
     public void SpawnUnit(AllianceUnit u,GameObject g)
     {
@@ -45,9 +46,9 @@ public class Block : MonoBehaviour
        
         return type.ToString();    
     }
-    public void HighLightBlock()
+    public void HighLightBlock(int layer)
     {
-        transform.GetChild(0).gameObject.layer = 7;
+        transform.GetChild(0).gameObject.layer = layer;
     }
     public void UnHighLightBlock()
     {

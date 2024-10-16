@@ -14,6 +14,7 @@ public class AllianceDirection : MonoBehaviour, IPointerClickHandler, IBeginDrag
     [SerializeField] private Camera cam;
 
     public event EventHandler OnCancleDeloy;
+    public event EventHandler<Vector2> OnDeloyed;
 
     private void Start()
     {
@@ -29,6 +30,7 @@ public class AllianceDirection : MonoBehaviour, IPointerClickHandler, IBeginDrag
     {
         moveUI.GetComponent<RectTransform>().anchoredPosition = ValueClamp(MousePosInWorld());
       direction=  CalculateDirection(new Vector2(moveUI.GetComponent<RectTransform>().localPosition.x, moveUI.GetComponent<RectTransform>().localPosition.y));
+        HighLightAttackRange();
     }
 
     private Vector3 MousePosInWorld()
@@ -51,6 +53,7 @@ public class AllianceDirection : MonoBehaviour, IPointerClickHandler, IBeginDrag
         else
         {
             gameObject.SetActive(false);
+            OnDeloyed?.Invoke(this,direction);
         }
         Debug.Log("dono");
     }
@@ -129,5 +132,10 @@ public class AllianceDirection : MonoBehaviour, IPointerClickHandler, IBeginDrag
             direction = new Vector2(0, -1);
         }
         return direction;
+    }
+    private void HighLightAttackRange()
+    {
+       Vector2[] range = alliance.GetAttackRange(direction);
+        LevelManager.instance.HighLightBlockList(range, 8);
     }
 }
