@@ -138,6 +138,19 @@ public class LevelManager : MonoBehaviour
             
         }
     }
+    public void UnHighLightBlockList(Vector2[] list)
+    {
+        if (list == null) return;
+        foreach (var tile in list)
+        {
+            if (IsTileInRange(Vector2Int.RoundToInt(tile)))
+            {
+                tiles[Vector2Int.RoundToInt(tile).x, Vector2Int.RoundToInt(tile).y].GetComponent<Block>().UnHighLightBlock();
+
+            }
+
+        }
+    }
     private bool IsTileInRange(Vector2Int tile)
     {
         if (tile.x >=0 && tile.x < MapSize_X && tile.y >= 0 && tile.y < MapSize_Y)

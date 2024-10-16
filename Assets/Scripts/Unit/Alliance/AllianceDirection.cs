@@ -29,7 +29,11 @@ public class AllianceDirection : MonoBehaviour, IPointerClickHandler, IBeginDrag
     public void OnDrag(PointerEventData eventData)
     {
         moveUI.GetComponent<RectTransform>().anchoredPosition = ValueClamp(MousePosInWorld());
-      direction=  CalculateDirection(new Vector2(moveUI.GetComponent<RectTransform>().localPosition.x, moveUI.GetComponent<RectTransform>().localPosition.y));
+
+        UnHighLightAttackRange();
+
+        direction=CalculateDirection(new Vector2(moveUI.GetComponent<RectTransform>().localPosition.x, moveUI.GetComponent<RectTransform>().localPosition.y));
+       
         HighLightAttackRange();
     }
 
@@ -105,11 +109,11 @@ public class AllianceDirection : MonoBehaviour, IPointerClickHandler, IBeginDrag
         return new Vector3(x, y, 0);
     }
     
-    private Vector2 CalculateDirection(Vector3 v)
+    private Vector2 CalculateDirection(Vector2 v)
     {
-        float angle = Vector3.Angle(new Vector3(1, 0, 0), v);
+        float angle = Vector2.SignedAngle(new Vector2(1, 0), v);
         Vector2 direction;
-        if (angle <= 15)
+        if (angle <= 15 && angle >= -15)
         {
             direction = new Vector2(1, 0);
         }
@@ -118,24 +122,30 @@ public class AllianceDirection : MonoBehaviour, IPointerClickHandler, IBeginDrag
             direction = new Vector2(0, 1);
 
         }
-        else if (angle >= 165)
+        else if (angle >= 165 || angle <= -165)
         {
             direction = new Vector2(-1, 0);
 
         }
-        else if ((15 < angle && angle < 75) || (105 < angle && angle < 165))
-        {
-            direction = Vector2.zero;
-        }
-        else
+        else if(-75 >= angle && angle >= -105)
         {
             direction = new Vector2(0, -1);
         }
+        else
+        {
+            direction = Vector2.zero;
+        }
+        
         return direction;
     }
     private void HighLightAttackRange()
     {
        Vector2[] range = alliance.GetAttackRange(direction);
         LevelManager.instance.HighLightBlockList(range, 8);
+    }
+    private void UnHighLightAttackRange()
+    {
+       Vector2[] range = alliance.GetAttackRange(direction);
+        LevelManager.instance.UnHighLightBlockList(range);
     }
 }

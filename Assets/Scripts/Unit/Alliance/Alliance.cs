@@ -41,8 +41,8 @@ public class Alliance : MonoBehaviour
         for (int i = 0; i < unit.AttackRange.Length; i++)
         {
 
-            range[i].x = unitPos.x + (unit.AttackRange[i].x- unitPos.x) * Mathf.Cos(angle) - (unit.AttackRange[i].y- unitPos.y) * Mathf.Sin(angle);
-            range[i].y = unitPos.y + (unit.AttackRange[i].y + unitPos.y) * Mathf.Cos(angle) + (unit.AttackRange[i].x- unitPos.x) * Mathf.Sin(angle);
+            range[i].x = unitPos.x + (unit.AttackRange[i].x) * Mathf.Cos(angle) - (unit.AttackRange[i].y) * Mathf.Sin(angle);
+            range[i].y = unitPos.y + (unit.AttackRange[i].y ) * Mathf.Cos(angle) + (unit.AttackRange[i].x) * Mathf.Sin(angle);
             Debug.Log("original" + range[i] + "===dirct"+ dir +"----angle" + angle);
         }
         return range;
