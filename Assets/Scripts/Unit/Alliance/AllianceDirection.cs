@@ -57,9 +57,10 @@ public class AllianceDirection : MonoBehaviour, IPointerClickHandler, IBeginDrag
         else
         {
             gameObject.SetActive(false);
+            UnHighLightAttackRange();
             OnDeloyed?.Invoke(this,direction);
         }
-        Debug.Log("dono");
+        
     }
 
     public void OnPointerClick(PointerEventData eventData)

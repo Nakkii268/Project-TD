@@ -39,7 +39,7 @@ public class Block : MonoBehaviour
     public void SpawnUnit(AllianceUnit u,GameObject g)
     {
         GameObject unit = Instantiate(g,transform);
-        unit.transform.position = new Vector3(transform.position.x, transform.position.y, -1);
+        unit.transform.position = GetStandPos();
         unit.GetComponent<Alliance>().SetUnit(u,new Vector2(transform.position.x, transform.position.y));
     }
     public string GetBlockType() { 
@@ -54,6 +54,10 @@ public class Block : MonoBehaviour
     {
         transform.GetChild(0).gameObject.layer = 6;
 
+    }
+    private Vector3 GetStandPos()
+    {
+        return new Vector3(transform.position.x, transform.position.y - .25f, -.5f);
     }
 }
 [Serializable]
