@@ -15,7 +15,7 @@ public class AllianceDirection : MonoBehaviour, IPointerClickHandler, IBeginDrag
 
     public event EventHandler OnCancleDeloy;
     public event EventHandler<Vector2> OnDeloyed;
-
+    [SerializeField]private Vector3 offset = new Vector3(0,-.7f,0);
     private void Start()
     {
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
@@ -40,7 +40,7 @@ public class AllianceDirection : MonoBehaviour, IPointerClickHandler, IBeginDrag
     private Vector3 MousePosInWorld()
     {
         Vector3 mousepos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -cam.transform.position.z));
-        mousepos -= alliance.transform.position;
+        mousepos -= alliance.transform.position - offset;
         mousepos.z = 0f;
         return mousepos;
 

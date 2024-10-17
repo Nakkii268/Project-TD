@@ -2811,7 +2811,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1546222234}
-  - {fileID: 1019352000}
   m_Father: {fileID: 1956044682}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &896370549
@@ -3049,68 +3048,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!1001 &1019351999
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 896370548}
-    m_Modifications:
-    - target: {fileID: 6865232695306935221, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
-      propertyPath: m_Name
-      value: testUnit
-      objectReference: {fileID: 0}
-    - target: {fileID: 7674573493055352995, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.082
-      objectReference: {fileID: 0}
-    - target: {fileID: 7674573493055352995, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7674573493055352995, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7674573493055352995, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9659259
-      objectReference: {fileID: 0}
-    - target: {fileID: 7674573493055352995, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.258819
-      objectReference: {fileID: 0}
-    - target: {fileID: 7674573493055352995, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7674573493055352995, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7674573493055352995, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -30
-      objectReference: {fileID: 0}
-    - target: {fileID: 7674573493055352995, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7674573493055352995, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
---- !u!4 &1019352000 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7674573493055352995, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
-  m_PrefabInstance: {fileID: 1019351999}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1053010324
 GameObject:
   m_ObjectHideFlags: 0
@@ -4925,7 +4862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: {fileID: 11400000, guid: da057055926ef7948a2d506cc20c418e, type: 2}
   Prefab: {fileID: 608261475}
-  toPrefab: {fileID: 8738931093006656526, guid: ed963056ebf65d2428d61c96e7ca18cd, type: 3}
+  toPrefab: {fileID: 6865232695306935221, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
   num: 1
   Canvas: {fileID: 1766695087}
 --- !u!1 &1546222233
@@ -6583,7 +6520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: {fileID: 11400000, guid: 03a01fa2b2271754fb5fdf5ca2cc5e01, type: 2}
   Prefab: {fileID: 608261475}
-  toPrefab: {fileID: 0}
+  toPrefab: {fileID: 6865232695306935221, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
   num: 0
   Canvas: {fileID: 1766695087}
 --- !u!1 &387189751862352164
@@ -6757,7 +6694,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &1361686839477817471
 CanvasRenderer:
   m_ObjectHideFlags: 0
