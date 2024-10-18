@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class LevelManager : MonoBehaviour
 {
@@ -9,29 +12,41 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private int MapSize_Y=10;
     [SerializeField] private GameObject[,] tiles;
     [SerializeField] private Vector2Int currentSelect;
-    [SerializeField] private Camera Camera;
-   
+    [SerializeField] private CameraManager Camera;
+    [SerializeField]private Quaternion cameraOriginRotate;
     [SerializeField] private InGameCharListUI charListUI;
-
+    public event EventHandler OnBlockClick;
     private void Awake()
     {
-        instance = this;    
+        instance = this;
+        Camera = CameraManager.instance;
     }
     private void Start()
     {
         
         TilesSetup(MapSize_X, MapSize_Y);
+        cameraOriginRotate = Camera.transform.rotation;
     }
 
     private void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            HandleRaycast();
+            if (currentSelect == -Vector2.one) return;
+            if (!tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().IsHaveUnit()) {
+                Camera.SetCameraOriginRotation();
+                
+                return;
+            }
+            Camera.CamLookat(tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().transform);
+        }
         
     }
     public void HandleRaycast()
     {
         RaycastHit info;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.GetCamera().ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out info, 100, LayerMask.GetMask("Block")))
         {
             
@@ -158,6 +173,12 @@ public class LevelManager : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+       
+        Debug.Log("work");
     }
 }
 

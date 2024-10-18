@@ -11,14 +11,14 @@ public class AllianceDirection : MonoBehaviour, IPointerClickHandler, IBeginDrag
     [SerializeField] private GameObject moveUI;
     [SerializeField] private Alliance alliance;
     [SerializeField] private Vector2 direction;
-    [SerializeField] private Camera cam;
+    [SerializeField] private CameraManager cam;
 
     public event EventHandler OnCancleDeloy;
     public event EventHandler<Vector2> OnDeloyed;
     [SerializeField]private Vector3 offset = new Vector3(0,-.7f,0);
     private void Start()
     {
-        cam = GameObject.Find("Main Camera").GetComponent<Camera>();
+        cam = CameraManager.instance;
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -39,7 +39,7 @@ public class AllianceDirection : MonoBehaviour, IPointerClickHandler, IBeginDrag
 
     private Vector3 MousePosInWorld()
     {
-        Vector3 mousepos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -cam.transform.position.z));
+        Vector3 mousepos = cam.GetCamera().ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -cam.transform.position.z));
         mousepos -= alliance.transform.position - offset;
         mousepos.z = 0f;
         return mousepos;
@@ -56,6 +56,7 @@ public class AllianceDirection : MonoBehaviour, IPointerClickHandler, IBeginDrag
         }
         else
         {
+            cam.SetCameraOriginRotation();
             gameObject.SetActive(false);
             UnHighLightAttackRange();
             OnDeloyed?.Invoke(this,direction);

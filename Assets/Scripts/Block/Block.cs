@@ -9,7 +9,12 @@ public class Block : MonoBehaviour
     [SerializeField] private AllianceUnit unit;
     [SerializeField] private BlockTag type;
     
-
+    public bool IsHaveUnit()
+    {
+        if (unit == null) return false;
+        return true;
+    }
+    public AllianceUnit GetUnit() { return unit; }
     public Unit GetUnitAtBlock()
     {
         if (unit == null) return null;
