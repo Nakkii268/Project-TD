@@ -7,6 +7,7 @@ public class Block : MonoBehaviour
 {
     [SerializeField] private bool Deloyable;
     [SerializeField] private AllianceUnit unit;
+    [SerializeField] private Alliance unitDeloyed;
     [SerializeField] private BlockTag type;
     
     public bool IsHaveUnit()
@@ -15,6 +16,7 @@ public class Block : MonoBehaviour
         return true;
     }
     public AllianceUnit GetUnit() { return unit; }
+    public Alliance GetUnitDeloyed() { return unitDeloyed; }
     public Unit GetUnitAtBlock()
     {
         if (unit == null) return null;
@@ -29,8 +31,10 @@ public class Block : MonoBehaviour
         if (unit != null) return;
         unit = u;
         Deloyable = false;
+
         SpawnUnit(u,g);
         UnHighLightBlock();
+        unitDeloyed = GetComponentInChildren<Alliance>();
         
     }
     public void UnitReTreat()

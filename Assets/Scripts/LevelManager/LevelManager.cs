@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField]private Quaternion cameraOriginRotate;
     [SerializeField] private InGameCharListUI charListUI;
     public event EventHandler OnBlockClick;
+    public event EventHandler OnClickOutSide;
     private void Awake()
     {
         instance = this;
@@ -36,10 +37,11 @@ public class LevelManager : MonoBehaviour
             if (currentSelect == -Vector2.one) return;
             if (!tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().IsHaveUnit()) {
                 Camera.SetCameraOriginRotation();
-                
+                OnClickOutSide?.Invoke(this, EventArgs.Empty);
                 return;
             }
             Camera.CamLookat(tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().transform);
+            tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().GetUnitDeloyed().UIShowOnForcus();
         }
         
     }

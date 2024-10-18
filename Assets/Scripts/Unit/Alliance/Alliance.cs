@@ -11,10 +11,17 @@ public class Alliance : MonoBehaviour
     [SerializeField] private Vector2 direction;
     [SerializeField] private bool isDeloyed;
     [SerializeField] private AllianceDirection allianceDirection;
+    [SerializeField] private AlliianceInfomation allianceInfo;
     private void Start()
     {
         allianceDirection.OnCancleDeloy += AllianceDirection_OnCancleDeloy;
         allianceDirection.OnDeloyed += AllianceDirection_OnDeloyed;
+        LevelManager.instance.OnClickOutSide += LevelManager_OnClickOutSide;
+    }
+
+    private void LevelManager_OnClickOutSide(object sender, System.EventArgs e)
+    {
+        UIHide();
     }
 
     private void AllianceDirection_OnDeloyed(object sender, Vector2 e)
@@ -31,6 +38,7 @@ public class Alliance : MonoBehaviour
     private void SetAttackRange()
     {
         attackRange = GetAttackRange(direction);
+       
     }
     public Vector2[] GetAttackRange(Vector2 dir)
     {
@@ -61,13 +69,26 @@ public class Alliance : MonoBehaviour
         allianceDirection.gameObject.SetActive(false);
         direction = dir;
         SetAttackRange();
-        isDeloyed = true;
+       
+        
     }
     public void Retreat()
     {
         isDeloyed = false;
         Block block = GetComponentInParent<Block>();
         block.UnitReTreat();
+    }
+    public void UIShowOnForcus()
+    {
+        if (isDeloyed)
+        {
+            allianceInfo.gameObject.SetActive(true);
+        }
+    }
+    public void UIHide()
+    {
+        allianceInfo.gameObject.SetActive(false);
+        allianceDirection.gameObject.SetActive(false);
     }
     
 }

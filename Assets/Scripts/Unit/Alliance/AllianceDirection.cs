@@ -60,6 +60,7 @@ public class AllianceDirection : MonoBehaviour, IPointerClickHandler, IBeginDrag
             gameObject.SetActive(false);
             UnHighLightAttackRange();
             OnDeloyed?.Invoke(this,direction);
+            alliance.UnitDeloy(direction);
         }
         
     }

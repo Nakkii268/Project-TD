@@ -73,7 +73,7 @@ MonoBehaviour:
   m_Active: 1
   settings:
     passTag: Hover
-    Event: 500
+    Event: 450
     filterSettings:
       RenderQueueType: 1
       LayerMask:
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Active: 1
   settings:
     passTag: Attack
-    Event: 500
+    Event: 450
     filterSettings:
       RenderQueueType: 1
       LayerMask:
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Active: 1
   settings:
     passTag: RenderObjects
-    Event: 500
+    Event: 450
     filterSettings:
       RenderQueueType: 1
       LayerMask:
