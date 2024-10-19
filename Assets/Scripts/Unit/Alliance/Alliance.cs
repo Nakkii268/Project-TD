@@ -21,6 +21,11 @@ public class Alliance : MonoBehaviour
 
     private void LevelManager_OnClickOutSide(object sender, System.EventArgs e)
     {
+        if (allianceInfo.IsPointerIn())
+        {
+            return;
+        }
+        CameraManager.instance.SetCameraOriginRotation();
         UIHide();
     }
 

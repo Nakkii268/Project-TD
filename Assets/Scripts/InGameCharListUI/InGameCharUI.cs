@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public event EventHandler OnCharSelect;
     public event EventHandler<CharacterData> OnCharDrop;
@@ -15,11 +15,17 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     [SerializeField] private GameObject toPrefab;
     [SerializeField] private int num;
    [SerializeField]private Canvas Canvas;
-    
+    [SerializeField] private bool isPointerHover;
+    [SerializeField] private RectTransform rectTransform;
 
+    private void Start()
+    {
+        
+        rectTransform = GetComponent<RectTransform>();
+    }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        gameObject.GetComponent<RectTransform>().localScale = new Vector3(2, 2, 2);
+        rectTransform.localScale = new Vector3(2, 2, 2);
         Prefab.GetComponent<Image>().sprite = unit.unitSprite;
         Prefab.GetComponent<RectTransform>().position = Input.mousePosition;
         Prefab.gameObject.SetActive(true);
@@ -40,7 +46,7 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     public void OnEndDrag(PointerEventData eventData)
     {
         Prefab.gameObject.SetActive(false);
-        gameObject.GetComponent<RectTransform>().localScale = Vector3.one;
+        rectTransform.localScale = Vector3.one;
         OnCharDrop?.Invoke(this, new CharacterData(toPrefab,unit));
         foreach (var block in LevelManager.instance.ValidBlock(unit.GetAllianceType()))
         {
@@ -51,7 +57,27 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        gameObject.GetComponent<RectTransform>().localScale = new Vector3(2, 2, 2);
+        if (isPointerHover) { 
+        
+            rectTransform.localScale = new Vector3(2, 2, 2);
+        }
+        else
+        {
+            rectTransform.localScale = Vector3.one;
+
+        }
+        //set time scale
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+       isPointerHover = true;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        isPointerHover = false;
+
     }
 }
 public class CharacterData
