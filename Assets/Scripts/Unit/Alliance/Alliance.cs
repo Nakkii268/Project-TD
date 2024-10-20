@@ -80,20 +80,26 @@ public class Alliance : MonoBehaviour
     public void Retreat()
     {
         isDeloyed = false;
+        LevelManager.instance.UnHighLightBlockList(attackRange);
         Block block = GetComponentInParent<Block>();
+
         block.UnitReTreat();
     }
     public void UIShowOnForcus()
     {
         if (isDeloyed)
         {
+
             allianceInfo.gameObject.SetActive(true);
+            LevelManager.instance.HighLightBlockList(attackRange, 8);
         }
     }
     public void UIHide()
     {
         allianceInfo.gameObject.SetActive(false);
         allianceDirection.gameObject.SetActive(false);
+        LevelManager.instance.UnHighLightBlockList(attackRange);
+
     }
-    
+
 }

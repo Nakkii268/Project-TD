@@ -35,13 +35,16 @@ public class LevelManager : MonoBehaviour
         {
             HandleRaycast();
             if (currentSelect == -Vector2.one) return;
-            if (!tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().IsHaveUnit()) {
-               
+            if (!tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().IsHaveUnit())
+            {
+
                 OnClickOutSide?.Invoke(this, EventArgs.Empty);
                 return;
             }
+            
                 Camera.CamLookat(tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().transform);
-                tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().GetUnitDeloyed().UIShowOnForcus();
+               tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().GetUnitDeloyed().UIShowOnForcus();
+            
         }
         
     }
