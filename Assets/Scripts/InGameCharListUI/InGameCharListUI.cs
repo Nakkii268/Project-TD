@@ -5,6 +5,7 @@ using UnityEngine;
 public class InGameCharListUI : MonoBehaviour
 {
     [SerializeField] private List<InGameCharUI> charList;
+    [SerializeField] private LevelDPManager levelDPManager;
 
 
     private void Start()
@@ -24,6 +25,8 @@ public class InGameCharListUI : MonoBehaviour
     private void Single_OnCharDrop(object sender, CharacterData e)
     {
         LevelManager.instance.HanlderOnCharDrop(e);
+        charList[e.charIndex].gameObject.SetActive(false);
+        
     }
 
     public List<InGameCharUI> GetCharList()

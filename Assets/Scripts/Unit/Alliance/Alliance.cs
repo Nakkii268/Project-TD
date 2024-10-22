@@ -23,10 +23,13 @@ public class Alliance : MonoBehaviour
     {
         if (allianceInfo.IsPointerIn())
         {
+            Debug.Log("in");
             return;
         }
+        
         CameraManager.instance.SetCameraOriginRotation();
         UIHide();
+        
     }
 
     private void AllianceDirection_OnDeloyed(object sender, Vector2 e)
@@ -56,7 +59,7 @@ public class Alliance : MonoBehaviour
 
             range[i].x = unitPos.x + (unit.AttackRange[i].x) * Mathf.Cos(angle) - (unit.AttackRange[i].y) * Mathf.Sin(angle);
             range[i].y = unitPos.y + (unit.AttackRange[i].y ) * Mathf.Cos(angle) + (unit.AttackRange[i].x) * Mathf.Sin(angle);
-            Debug.Log("original" + range[i] + "===dirct"+ dir +"----angle" + angle);
+            
         }
         return range;
     }

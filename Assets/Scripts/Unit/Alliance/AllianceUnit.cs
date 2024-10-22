@@ -7,6 +7,7 @@ using UnityEngine;
 public class AllianceUnit : Unit
 {
     public GameObject prefab;
+    public int UnitDp;
     public Sprite unitSprite;
     public AllianceType type;
 

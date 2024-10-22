@@ -13,7 +13,7 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     [SerializeField]private AllianceUnit unit;
     [SerializeField] private GameObject Prefab;
     [SerializeField] private GameObject toPrefab;
-    [SerializeField] private int num;
+    [SerializeField] private int indx;
    [SerializeField]private Canvas Canvas;
     [SerializeField] private bool isPointerHover;
     [SerializeField] private RectTransform rectTransform;
@@ -47,7 +47,7 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     {
         Prefab.gameObject.SetActive(false);
         rectTransform.localScale = Vector3.one;
-        OnCharDrop?.Invoke(this, new CharacterData(toPrefab,unit));
+        OnCharDrop?.Invoke(this, new CharacterData(toPrefab,unit,indx));
         foreach (var block in LevelManager.instance.ValidBlock(unit.GetAllianceType()))
         {
             block.GetComponent<Block>().UnHighLightBlock();
@@ -85,6 +85,7 @@ public class CharacterData
     public GameObject character;
     
     public AllianceUnit unit;
+    public int charIndex;
 
-    public CharacterData(GameObject c, AllianceUnit u) { character = c;unit = u; }   
+    public CharacterData(GameObject c, AllianceUnit u,int index) { character = c;unit = u;charIndex = index; }   
 }

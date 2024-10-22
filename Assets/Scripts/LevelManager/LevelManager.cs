@@ -15,8 +15,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private CameraManager Camera;
     [SerializeField]private Quaternion cameraOriginRotate;
     [SerializeField] private InGameCharListUI charListUI;
+    [SerializeField] private LevelDPManager levelDPManager;
     public event EventHandler OnBlockClick;
     public event EventHandler OnClickOutSide;
+    public event EventHandler OnClickOtherTarget;
     private void Awake()
     {
         instance = this;
@@ -42,7 +44,7 @@ public class LevelManager : MonoBehaviour
                 return;
             }
             
-                Camera.CamLookat(tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().transform);
+               Camera.CamLookat(tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().transform);
                tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().GetUnitDeloyed().UIShowOnForcus();
             
         }
