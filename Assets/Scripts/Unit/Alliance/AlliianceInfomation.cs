@@ -18,11 +18,12 @@ public class AlliianceInfomation : MonoBehaviour, IPointerEnterHandler, IPointer
         RetreatBtn.onClick.AddListener(() =>
         {
             unit.Retreat();
+            unit.UIHide();
             CameraManager.instance.SetCameraOriginRotation();
         });
         SkillActiveBtn.onClick.AddListener(() => {
             Debug.Log("---Skill active---");
-            gameObject.SetActive(false);
+            unit.UIHide();
             CameraManager.instance.SetCameraOriginRotation();
 
         });

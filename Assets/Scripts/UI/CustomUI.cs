@@ -15,7 +15,7 @@ public class CustomUI : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(gameObject.transform.childCount);
+        
         mRectTransforms = transform.GetComponentsInChildren<RectTransform>();
        
         CalculateValue(GetActiveChild());

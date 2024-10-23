@@ -16,22 +16,22 @@ public class Alliance : MonoBehaviour
     {
         allianceDirection.OnCancleDeloy += AllianceDirection_OnCancleDeloy;
         allianceDirection.OnDeloyed += AllianceDirection_OnDeloyed;
-        LevelManager.instance.OnClickOutSide += LevelManager_OnClickOutSide;
+       
+        LevelManager.instance.OnClickOtherTarget += LevelManager_OnClickOtherTarget;
     }
 
-    private void LevelManager_OnClickOutSide(object sender, System.EventArgs e)
+    private void LevelManager_OnClickOtherTarget(object sender, System.EventArgs e)
     {
-        if (allianceInfo.IsPointerIn())
-        {
-            Debug.Log("in");
-            return;
-        }
-        
+        if (allianceInfo == null) return;
+        if (!allianceInfo.gameObject.activeInHierarchy) return;
+        Debug.Log(allianceInfo.IsPointerIn());
+        if (allianceInfo.IsPointerIn()) return;
+        Debug.Log("hide");
         CameraManager.instance.SetCameraOriginRotation();
         UIHide();
-        
     }
 
+    
     private void AllianceDirection_OnDeloyed(object sender, Vector2 e)
     {
         isDeloyed = true;

@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private InGameCharListUI charListUI;
     [SerializeField] private LevelDPManager levelDPManager;
     public event EventHandler OnBlockClick;
-    public event EventHandler OnClickOutSide;
+    
     public event EventHandler OnClickOtherTarget;
     private void Awake()
     {
@@ -39,9 +39,11 @@ public class LevelManager : MonoBehaviour
             if (currentSelect == -Vector2.one) return;
             if (!tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().IsHaveUnit())
             {
+                
+                OnClickOtherTarget?.Invoke(this, EventArgs.Empty);
 
-                OnClickOutSide?.Invoke(this, EventArgs.Empty);
                 return;
+               
             }
             
                Camera.CamLookat(tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().transform);
@@ -61,11 +63,14 @@ public class LevelManager : MonoBehaviour
             if (currentSelect == -Vector2.one)
             {
                 currentSelect = hitpos;
+                Debug.Log("set");
                
             }
             if (currentSelect != hitpos)
             {
+                Debug.Log("set");
                 currentSelect = hitpos;
+                
                 
             }
             
