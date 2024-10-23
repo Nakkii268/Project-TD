@@ -37,5 +37,21 @@ public class LevelDPManager : MonoBehaviour
     {
         return CurrentDp;
     }
-   
+    public void AddingDP(int amount)
+    {
+        if (CurrentDp >= MaxDp) return;
+        CurrentDp += amount;
+        if (CurrentDp > MaxDp)
+        {
+            CurrentDp = MaxDp;
+        }
+    }
+    public void ReduceDP(int amount)
+    {
+        CurrentDp -= amount;
+        if (CurrentDp < 0)
+        {
+            CurrentDp = 0;
+        }
+    }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class AllianceDirection : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class AllianceDirection : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] private Canvas canvas;
     [SerializeField] private GameObject directionUI;
@@ -13,7 +13,7 @@ public class AllianceDirection : MonoBehaviour, IPointerClickHandler, IBeginDrag
     [SerializeField] private Vector2 direction;
     [SerializeField] private CameraManager cam;
 
-    public event EventHandler OnCancleDeloy;
+    
     public event EventHandler<Vector2> OnDeloyed;
     [SerializeField]private Vector3 offset = new Vector3(0,-.7f,0);
     private void Start()
@@ -60,30 +60,13 @@ public class AllianceDirection : MonoBehaviour, IPointerClickHandler, IBeginDrag
             gameObject.SetActive(false);
             UnHighLightAttackRange();
             OnDeloyed?.Invoke(this,direction);
+            LevelManager.instance.GetLevelDPManager().ReduceDP(alliance.GetUnitCost());
             alliance.UnitDeloy(direction);
         }
         
     }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("DirectionSelect")))
-        {
-
-            if (Input.GetMouseButtonDown(0) && hit.collider.gameObject != directionUI)
-            {
-                gameObject.SetActive(false);
-                OnCancleDeloy?.Invoke(this, EventArgs.Empty);
-            }
-            else
-            {
-                alliance.UnitDeloy(direction);
-            }
-        }
-
-    }
+   
     private Vector3 ValueClamp(Vector3 v)
     {
         float x = v.x;

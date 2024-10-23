@@ -12,9 +12,10 @@ public class Alliance : MonoBehaviour
     [SerializeField] private bool isDeloyed;
     [SerializeField] private AllianceDirection allianceDirection;
     [SerializeField] private AlliianceInfomation allianceInfo;
+    public int charIndex;
     private void Start()
     {
-        allianceDirection.OnCancleDeloy += AllianceDirection_OnCancleDeloy;
+    
         allianceDirection.OnDeloyed += AllianceDirection_OnDeloyed;
        
         LevelManager.instance.OnClickOtherTarget += LevelManager_OnClickOtherTarget;
@@ -23,10 +24,15 @@ public class Alliance : MonoBehaviour
     private void LevelManager_OnClickOtherTarget(object sender, System.EventArgs e)
     {
         if (allianceInfo == null) return;
+        if (!isDeloyed)
+        {
+            Retreat(false);
+        }
         if (!allianceInfo.gameObject.activeInHierarchy) return;
-        Debug.Log(allianceInfo.IsPointerIn());
+        
         if (allianceInfo.IsPointerIn()) return;
-        Debug.Log("hide");
+        
+        
         CameraManager.instance.SetCameraOriginRotation();
         UIHide();
     }
@@ -36,12 +42,10 @@ public class Alliance : MonoBehaviour
     {
         isDeloyed = true;
         direction = e;
+        InGameCharListUI.Instance.HideDeloyedUnitUI(charIndex);
     }
 
-    private void AllianceDirection_OnCancleDeloy(object sender, System.EventArgs e)
-    {
-        Retreat();
-    }
+   
 
     private void SetAttackRange()
     {
@@ -67,11 +71,16 @@ public class Alliance : MonoBehaviour
     {
         return attackRange;
     } 
+    public int GetUnitCost()
+    {
+        return unit.UnitDp;
+    }
     
-    public void SetUnit(Unit u,Vector2 pos)
+    public void SetUnit(Unit u,Vector2 pos, int indx)
     {
         unitPos = pos;
         unit = (AllianceUnit)u;
+        charIndex = indx;
     }
     public void UnitDeloy(Vector2 dir) {
         allianceDirection.gameObject.SetActive(false);
@@ -80,12 +89,15 @@ public class Alliance : MonoBehaviour
        
         
     }
-    public void Retreat()
+    public void Retreat(bool isRetreat)
     {
+        if (isRetreat)
+        {
+            InGameCharListUI.Instance.ShowRetreatedUnitUI(charIndex);
+        }
         isDeloyed = false;
         LevelManager.instance.UnHighLightBlockList(attackRange);
         Block block = GetComponentInParent<Block>();
-
         block.UnitReTreat();
     }
     public void UIShowOnForcus()

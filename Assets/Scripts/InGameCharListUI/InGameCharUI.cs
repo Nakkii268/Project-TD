@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
+public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public event EventHandler OnCharSelect;
     public event EventHandler<CharacterData> OnCharDrop;
@@ -25,7 +25,9 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        rectTransform.localScale = new Vector3(2, 2, 2);
+        if (LevelManager.instance.GetLevelDPManager().GetCurrentDp() < unit.UnitDp) return;
+        rectTransform.localPosition += new Vector3(0, .5f, 0);
+
         Prefab.GetComponent<Image>().sprite = unit.unitSprite;
         Prefab.GetComponent<RectTransform>().position = Input.mousePosition;
         Prefab.gameObject.SetActive(true);
@@ -34,6 +36,7 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (LevelManager.instance.GetLevelDPManager().GetCurrentDp() < unit.UnitDp) return;
         Prefab.GetComponent<RectTransform>().anchoredPosition += eventData.delta/Canvas.scaleFactor;
         OnCharSelect?.Invoke(this,EventArgs.Empty);
         foreach(var block in LevelManager.instance.ValidBlock(unit.GetAllianceType()))
@@ -52,14 +55,15 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
         {
             block.GetComponent<Block>().UnHighLightBlock();
         }
+        Debug.Log("end drag");
 
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (isPointerHover) { 
-        
-            rectTransform.localScale = new Vector3(2, 2, 2);
+        if (isPointerHover) {
+
+            rectTransform.localPosition += new Vector3(0, .5f, 0);
         }
         else
         {
@@ -69,16 +73,6 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
         //set time scale
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-       isPointerHover = true;
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        isPointerHover = false;
-
-    }
 }
 public class CharacterData
 {

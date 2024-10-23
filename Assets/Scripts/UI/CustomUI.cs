@@ -21,9 +21,14 @@ public class CustomUI : MonoBehaviour
         CalculateValue(GetActiveChild());
 
     }
-    
+    public void ReArrangeChild()
+    {
+        CalculateValue(GetActiveChild());
+
+    }
     public void CalculateValue(List<RectTransform> childList)
     {
+        if (childList.Count <= 0) return;
         scrWidth = Screen.width;
         Yvalue = Screen.height * 0.16f;
         Xvalue = Screen.width / childList.Count;

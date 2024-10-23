@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField]private Quaternion cameraOriginRotate;
     [SerializeField] private InGameCharListUI charListUI;
     [SerializeField] private LevelDPManager levelDPManager;
-    public event EventHandler OnBlockClick;
+    
     
     public event EventHandler OnClickOtherTarget;
     private void Awake()
@@ -82,6 +82,10 @@ public class LevelManager : MonoBehaviour
         }
        
     }
+    public LevelDPManager GetLevelDPManager()
+    {
+        return levelDPManager;
+    }
 
     private GameObject[] GetTileList()
     {
@@ -127,7 +131,7 @@ public class LevelManager : MonoBehaviour
         if(currentSelect == -Vector2.one) return;
         if (tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().IsDeloyable() && tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().GetBlockType() == data.unit.GetAllianceType())
         {
-            tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().DeloyUnit(data.unit,data.character);
+            tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().DeloyUnit(data.unit,data.character,data.charIndex);
             
 
         }

@@ -26,15 +26,16 @@ public class Block : MonoBehaviour
     {
         return Deloyable;
     }
-    public void DeloyUnit(AllianceUnit u,GameObject g)
+    public void DeloyUnit(AllianceUnit u,GameObject g,int indx)
     {
         if (unit != null) return;
         unit = u;
         Deloyable = false;
 
-        SpawnUnit(u,g);
+        SpawnUnit(u,g,indx);
         UnHighLightBlock();
         unitDeloyed = GetComponentInChildren<Alliance>();
+        Debug.Log("deloyed");
         
     }
     public void UnitReTreat()
@@ -43,13 +44,15 @@ public class Block : MonoBehaviour
         unit = null;
         Destroy(gameObject.GetComponentInChildren<Alliance>().gameObject);
         Deloyable = true;
+        
        
     }
-    public void SpawnUnit(AllianceUnit u,GameObject g)
+    public void SpawnUnit(AllianceUnit u,GameObject g, int indx)
     {
         GameObject unit = Instantiate(g,transform);
         unit.transform.position = GetStandPos();
-        unit.GetComponent<Alliance>().SetUnit(u,new Vector2(transform.position.x, transform.position.y));
+        unit.GetComponent<Alliance>().SetUnit(u,new Vector2(transform.position.x, transform.position.y),indx);
+        
     }
     public string GetBlockType() { 
        

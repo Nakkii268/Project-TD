@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class InGameCharListUI : MonoBehaviour
 {
+    public static InGameCharListUI Instance;
     [SerializeField] private List<InGameCharUI> charList;
     [SerializeField] private LevelDPManager levelDPManager;
+    [SerializeField] private int currentUnitDeloy;
 
-
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         foreach (InGameCharUI single in charList)
@@ -25,7 +30,7 @@ public class InGameCharListUI : MonoBehaviour
     private void Single_OnCharDrop(object sender, CharacterData e)
     {
         LevelManager.instance.HanlderOnCharDrop(e);
-        charList[e.charIndex].gameObject.SetActive(false);
+        currentUnitDeloy  = e.charIndex;
         
     }
 
@@ -33,7 +38,15 @@ public class InGameCharListUI : MonoBehaviour
     {
         return charList;    
     }
-
-
+    public void HideDeloyedUnitUI(int index)
+    {
+        charList[index].gameObject.SetActive(false);
+        gameObject.GetComponent<CustomUI>().ReArrangeChild();
+    }
+    public void ShowRetreatedUnitUI(int index)
+    {
+        charList[index].gameObject.SetActive(true);
+        gameObject.GetComponent<CustomUI>().ReArrangeChild();
+    }
     
 }
