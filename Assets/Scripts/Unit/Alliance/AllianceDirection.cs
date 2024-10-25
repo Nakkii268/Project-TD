@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class AllianceDirection : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
@@ -12,13 +13,17 @@ public class AllianceDirection : MonoBehaviour, IBeginDragHandler, IEndDragHandl
     [SerializeField] private Alliance alliance;
     [SerializeField] private Vector2 direction;
     [SerializeField] private CameraManager cam;
-
+    [SerializeField] private Button retreatBtn;
     
     public event EventHandler<Vector2> OnDeloyed;
     [SerializeField]private Vector3 offset = new Vector3(0,-.7f,0);
     private void Start()
     {
         cam = CameraManager.instance;
+        retreatBtn.onClick.AddListener(() => {
+            alliance.Retreat(false);
+          
+        });
     }
     public void OnBeginDrag(PointerEventData eventData)
     {

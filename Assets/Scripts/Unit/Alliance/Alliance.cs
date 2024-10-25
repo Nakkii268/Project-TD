@@ -99,6 +99,8 @@ public class Alliance : MonoBehaviour
         LevelManager.instance.UnHighLightBlockList(attackRange);
         Block block = GetComponentInParent<Block>();
         block.UnitReTreat();
+        CameraManager.instance.SetCameraOriginRotation();
+        
     }
     public void UIShowOnForcus()
     {
