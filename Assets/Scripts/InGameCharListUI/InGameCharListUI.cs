@@ -46,6 +46,7 @@ public class InGameCharListUI : MonoBehaviour
     public void ShowRetreatedUnitUI(int index)
     {
         charList[index].gameObject.SetActive(true);
+        charList[index].InitCountDown();
         gameObject.GetComponent<CustomUI>().ReArrangeChild();
     }
     

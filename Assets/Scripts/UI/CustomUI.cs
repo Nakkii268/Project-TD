@@ -10,13 +10,13 @@ public class CustomUI : MonoBehaviour
     [SerializeField] private float Xvalue;
     [SerializeField] private float Yvalue;
     [SerializeField] private Corner corner=Corner.TopLeft;
-    [SerializeField] private RectTransform[] mRectTransforms;
+    [SerializeField] private InGameCharUI[] mChild;// just wanna get the first level child
     [SerializeField] private float scrWidth;
 
     private void Start()
     {
         
-        mRectTransforms = transform.GetComponentsInChildren<RectTransform>();
+        mChild = transform.GetComponentsInChildren<InGameCharUI>();
        
         CalculateValue(GetActiveChild());
 
@@ -69,11 +69,12 @@ public class CustomUI : MonoBehaviour
     public List<RectTransform> GetActiveChild()
     {
         List<RectTransform> active = new List<RectTransform>();
-        for (int i = 0; i < mRectTransforms.Length; i++)
+        for (int i = 0; i < mChild.Length; i++)
         {
-            if (mRectTransforms[i].gameObject.activeInHierarchy)
+            if (mChild[i].gameObject.activeInHierarchy)
             {
-                active.Add(mRectTransforms[i]);
+
+                active.Add(mChild[i].GetComponent<RectTransform>());
             }
         }
         return active;

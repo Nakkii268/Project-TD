@@ -10,7 +10,7 @@ public class AllianceUnit : Unit
     public int UnitDp;
     public Sprite unitSprite;
     public AllianceType type;
-
+    public float RedeloyTime;
     public string GetAllianceType() { return type.ToString(); }
 }
 [Serializable]

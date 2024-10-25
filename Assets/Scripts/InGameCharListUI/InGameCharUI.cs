@@ -17,6 +17,7 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
    [SerializeField]private Canvas Canvas;
     [SerializeField] private bool isPointerHover;
     [SerializeField] private RectTransform rectTransform;
+    [SerializeField] private  CountDownUI countDownUI;
 
     private void Start()
     {
@@ -25,7 +26,7 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (LevelManager.instance.GetLevelDPManager().GetCurrentDp() < unit.UnitDp) return;
+        if ((LevelManager.instance.GetLevelDPManager().GetCurrentDp() < unit.UnitDp) || !countDownUI.canDeloy) return;
         rectTransform.localPosition += new Vector3(0, .5f, 0);
 
         Prefab.GetComponent<Image>().sprite = unit.unitSprite;
@@ -36,7 +37,7 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (LevelManager.instance.GetLevelDPManager().GetCurrentDp() < unit.UnitDp) return;
+        if ((LevelManager.instance.GetLevelDPManager().GetCurrentDp() < unit.UnitDp) || !countDownUI.canDeloy) return;
         Prefab.GetComponent<RectTransform>().anchoredPosition += eventData.delta/Canvas.scaleFactor;
         OnCharSelect?.Invoke(this,EventArgs.Empty);
         foreach(var block in LevelManager.instance.ValidBlock(unit.GetAllianceType()))
@@ -72,7 +73,11 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
         }
         //set time scale
     }
-
+    public void InitCountDown()
+    {
+        countDownUI.gameObject.SetActive(true);
+        countDownUI.Inittialize(unit.RedeloyTime);
+    }
 }
 public class CharacterData
 {
