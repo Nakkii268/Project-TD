@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class AllianceDirection : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class AllianceDirection : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerClickHandler
 {
     [SerializeField] private Canvas canvas;
     [SerializeField] private GameObject directionUI;
@@ -66,6 +66,7 @@ public class AllianceDirection : MonoBehaviour, IBeginDragHandler, IEndDragHandl
             UnHighLightAttackRange();
             OnDeloyed?.Invoke(this,direction);
             LevelManager.instance.GetLevelDPManager().ReduceDP(alliance.GetUnitCost());
+            LevelManager.instance.GetLevelDPManager().DeploymentSlotOccp();
             alliance.UnitDeloy(direction);
         }
         
@@ -138,5 +139,10 @@ public class AllianceDirection : MonoBehaviour, IBeginDragHandler, IEndDragHandl
     {
        Vector2[] range = alliance.GetAttackRange(direction);
         LevelManager.instance.UnHighLightBlockList(range);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        return;
     }
 }

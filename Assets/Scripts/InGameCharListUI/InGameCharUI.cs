@@ -26,9 +26,11 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if ((LevelManager.instance.GetLevelDPManager().GetCurrentDp() < unit.UnitDp) || !countDownUI.canDeloy) return;
-        rectTransform.localPosition += new Vector3(0, .5f, 0);
+        if ((LevelManager.instance.GetLevelDPManager().GetCurrentDp() < unit.UnitDp) 
+            || !countDownUI.canDeloy 
+            || !LevelManager.instance.GetLevelDPManager().ReachDeployLimit()) return;
 
+        rectTransform.localPosition += new Vector3(0, .5f, 0);
         Prefab.GetComponent<Image>().sprite = unit.unitSprite;
         Prefab.GetComponent<RectTransform>().position = Input.mousePosition;
         Prefab.gameObject.SetActive(true);
@@ -37,7 +39,10 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
 
     public void OnDrag(PointerEventData eventData)
     {
-        if ((LevelManager.instance.GetLevelDPManager().GetCurrentDp() < unit.UnitDp) || !countDownUI.canDeloy) return;
+        if ((LevelManager.instance.GetLevelDPManager().GetCurrentDp() < unit.UnitDp) 
+            || !countDownUI.canDeloy 
+            ||  !LevelManager.instance.GetLevelDPManager().ReachDeployLimit()) return;
+
         Prefab.GetComponent<RectTransform>().anchoredPosition += eventData.delta/Canvas.scaleFactor;
         OnCharSelect?.Invoke(this,EventArgs.Empty);
         foreach(var block in LevelManager.instance.ValidBlock(unit.GetAllianceType()))

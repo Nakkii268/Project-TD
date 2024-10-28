@@ -43,6 +43,7 @@ public class Block : MonoBehaviour
         if (unit == null) return;
         unit = null;
         Destroy(gameObject.GetComponentInChildren<Alliance>().gameObject);
+        LevelManager.instance.GetLevelDPManager().DeploymentSlotFree();
         Deloyable = true;
         
        

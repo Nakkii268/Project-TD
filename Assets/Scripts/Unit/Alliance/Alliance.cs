@@ -12,6 +12,7 @@ public class Alliance : MonoBehaviour
     [SerializeField] private bool isDeloyed;
     [SerializeField] private AllianceDirection allianceDirection;
     [SerializeField] private AlliianceInfomation allianceInfo;
+    public Collider UnitUICollider;
     public int charIndex;
     private void Start()
     {
@@ -42,6 +43,8 @@ public class Alliance : MonoBehaviour
     {
         isDeloyed = true;
         direction = e;
+        UnitUICollider.gameObject.SetActive(false);
+
         InGameCharListUI.Instance.HideDeloyedUnitUI(charIndex);
     }
 
@@ -51,6 +54,11 @@ public class Alliance : MonoBehaviour
     {
         attackRange = GetAttackRange(direction);
        
+    }
+
+    public bool IsDeloyed()
+    {
+        return isDeloyed;
     }
     public Vector2[] GetAttackRange(Vector2 dir)
     {
@@ -74,6 +82,10 @@ public class Alliance : MonoBehaviour
     public int GetUnitCost()
     {
         return unit.UnitDp;
+    }
+    public int GetUnitIndex()
+    {
+        return charIndex;
     }
     
     public void SetUnit(Unit u,Vector2 pos, int indx)
@@ -99,6 +111,7 @@ public class Alliance : MonoBehaviour
         LevelManager.instance.UnHighLightBlockList(attackRange);
         Block block = GetComponentInParent<Block>();
         block.UnitReTreat();
+        
         CameraManager.instance.SetCameraOriginRotation();
         
     }
@@ -109,6 +122,8 @@ public class Alliance : MonoBehaviour
 
             allianceInfo.gameObject.SetActive(true);
             LevelManager.instance.HighLightBlockList(attackRange, 8);
+            UnitUICollider.gameObject.SetActive(true);
+
         }
     }
     public void UIHide()
@@ -116,6 +131,7 @@ public class Alliance : MonoBehaviour
         allianceInfo.gameObject.SetActive(false);
         allianceDirection.gameObject.SetActive(false);
         LevelManager.instance.UnHighLightBlockList(attackRange);
+        UnitUICollider.gameObject.SetActive(false);
 
     }
 

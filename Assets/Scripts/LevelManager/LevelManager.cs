@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
+
 
 public class LevelManager : MonoBehaviour
 {
@@ -16,8 +19,12 @@ public class LevelManager : MonoBehaviour
     [SerializeField]private Quaternion cameraOriginRotate;
     [SerializeField] private InGameCharListUI charListUI;
     [SerializeField] private LevelDPManager levelDPManager;
-    
-    
+    [SerializeField] private int currentUnitIndex;
+    [SerializeField] private int deloymentLimit;
+    [SerializeField] private int currentDeloyment = 0;
+    //
+    [SerializeField] private Transform unitUI;
+
     public event EventHandler OnClickOtherTarget;
     private void Awake()
     {
@@ -35,19 +42,28 @@ public class LevelManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if (HandleRaycastOnUI()) return;
             HandleRaycast();
             if (currentSelect == -Vector2.one) return;
-            if (!tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().IsHaveUnit())
+            if (!tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().IsHaveUnit() )
             {
-                
+              
                 OnClickOtherTarget?.Invoke(this, EventArgs.Empty);
-
                 return;
                
+            }else 
+            {
+                
+
+                Camera.CamLookat(tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().transform);
+                currentUnitIndex = tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().GetUnitDeloyed().GetUnitIndex();
+                OnClickOtherTarget?.Invoke(this, EventArgs.Empty);
+                tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().GetUnitDeloyed().UIShowOnForcus();
+                
+
             }
             
-               Camera.CamLookat(tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().transform);
-               tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().GetUnitDeloyed().UIShowOnForcus();
+               
             
         }
         
@@ -56,6 +72,7 @@ public class LevelManager : MonoBehaviour
     {
         RaycastHit info;
         Ray ray = Camera.GetCamera().ScreenPointToRay(Input.mousePosition);
+        
         if (Physics.Raycast(ray, out info, 100, LayerMask.GetMask("Block")))
         {
             
@@ -63,12 +80,12 @@ public class LevelManager : MonoBehaviour
             if (currentSelect == -Vector2.one)
             {
                 currentSelect = hitpos;
-                Debug.Log("set");
+                
                
             }
             if (currentSelect != hitpos)
             {
-                Debug.Log("set");
+               
                 currentSelect = hitpos;
                 
                 
@@ -80,7 +97,26 @@ public class LevelManager : MonoBehaviour
         {
             currentSelect = -Vector2Int.one;
         }
+        
        
+    }
+    public bool  HandleRaycastOnUI()
+    {
+
+        RaycastHit info;
+        Ray ray = Camera.GetCamera().ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out info, 100, LayerMask.GetMask("UnitUI")))
+        {
+            
+            if(info.transform.gameObject.layer == 10)
+            {
+                return true;
+            }
+
+        }
+        return false;
+        
     }
     public LevelDPManager GetLevelDPManager()
     {
@@ -192,10 +228,7 @@ public class LevelManager : MonoBehaviour
         return false;
     }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-       
-        Debug.Log("work");
-    }
+    
+   
 }
 

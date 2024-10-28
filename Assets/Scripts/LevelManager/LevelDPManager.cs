@@ -11,12 +11,17 @@ public class LevelDPManager : MonoBehaviour
     [SerializeField] private int MaxDp;
     [SerializeField] private float DpRegenRate;
     [SerializeField] private TextMeshProUGUI dptext;
+    [SerializeField] private TextMeshProUGUI dltext;
     [SerializeField] private Transform dpMaxUI;
+    [SerializeField] private int deploymentLimit;
+    [SerializeField] private int currentDeployment;
 
     private void Start()
     {
         CurrentDp = StartDp;
+        currentDeployment = deploymentLimit;
         dptext.text = Mathf.FloorToInt(CurrentDp).ToString();
+        dltext.text = "Deployment Limit: "+ currentDeployment.ToString();
 
     }
 
@@ -54,4 +59,27 @@ public class LevelDPManager : MonoBehaviour
             CurrentDp = 0;
         }
     }
+    public void DeploymentSlotOccp()
+    {
+        if (currentDeployment >0)
+        {
+            currentDeployment--;
+            dltext.text = "Deployment Limit: " + currentDeployment.ToString();
+
+        }
+    }
+    public void DeploymentSlotFree()
+    {
+        if (currentDeployment < deploymentLimit)
+        {
+            currentDeployment++;
+            dltext.text = "Deployment Limit: " + currentDeployment.ToString();
+
+        }
+    }
+    public bool ReachDeployLimit()
+    {
+        return currentDeployment > 0;
+    }
+
 }
