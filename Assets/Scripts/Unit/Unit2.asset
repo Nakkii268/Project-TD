@@ -40,3 +40,8 @@ MonoBehaviour:
   unitSprite: {fileID: -560534046, guid: ec17e23842b46dc4b8d09ddd969099e4, type: 3}
   type: 1
   RedeloyTime: 10
+  EnemyType:
+  - serializedVersion: 2
+    m_Bits: 2048
+  - serializedVersion: 2
+    m_Bits: 4096

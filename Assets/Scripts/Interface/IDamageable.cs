@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyUnit : Unit
+public interface IDamageable 
 {
-   
+    public void ReceiveDamaged(float damage);
 }

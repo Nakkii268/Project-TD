@@ -9,7 +9,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Vector3 target;
     [SerializeField] private Vector3[] path;
     [SerializeField] private int pathIndex = 0;
+    
 
+   
 
     private void Start()
     {
