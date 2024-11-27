@@ -49,7 +49,10 @@ public class Alliance : MonoBehaviour
         InGameCharListUI.Instance.HideDeloyedUnitUI(charIndex);
     }
 
-   
+   public AllianceUnit GetAllianceUnit()
+    {
+        return unit;
+    }
 
     private void SetAttackRange()
     {

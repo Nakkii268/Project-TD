@@ -6,20 +6,38 @@ using UnityEngine;
 public class AllienceAttackCollider : MonoBehaviour
 {
     public PolygonCollider2D collider; //need to set gameobject offset .25 cause the character is .25 up to compare with block
+    public Alliance Alliance;
+    [SerializeField]private LayerMask[] enemyLayer;
 
+    private void Start()
+    {
+        enemyLayer = Alliance.GetAllianceUnit().EnemyType;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("GroundEnemy"))
-        {
-            Debug.Log("enemy in");
+        foreach (LayerMask layerMask in enemyLayer) { 
+         
+            if ((layerMask.value & (1<<collision.gameObject.layer))==0)  return;
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                Debug.Log("enemy in");
+            }
+    
         }
+        
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("GroundEnemy"))
+        foreach (LayerMask layerMask in enemyLayer)
         {
-            Debug.Log("enemy out");
+            Debug.Log(layerMask.value);
+            if ((layerMask.value & (1 << collision.gameObject.layer)) == 0) return;
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                Debug.Log("enemy in");
+            }
+
         }
     }
 

@@ -11,6 +11,7 @@ public class AllianceUnit : Unit
     public Sprite unitSprite;
     public AllianceType type;
     public float RedeloyTime;
+    public LayerMask[] EnemyType;
     public string GetAllianceType() { return type.ToString(); }
 }
 [Serializable]

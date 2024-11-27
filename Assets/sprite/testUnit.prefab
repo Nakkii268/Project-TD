@@ -979,6 +979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider: {fileID: 6309078672311890361}
+  Alliance: {fileID: 4489595423137854530}
 --- !u!1 &6865232695306935221
 GameObject:
   m_ObjectHideFlags: 0
