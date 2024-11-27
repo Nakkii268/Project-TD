@@ -18,14 +18,15 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        Vector3 dir = target - transform.position;
-        transform.Translate(dir * speed * Time.deltaTime);
-        if(Vector3.Distance(transform.position, target) < .5f)
+       
+        if(Vector3.Distance(new Vector3( transform.position.x, transform.position.y,0), new Vector3(target.x,target.y,0)) < .1f)
         {
             if (pathIndex >= path.Length-1) return;
             pathIndex++;
             target = path[pathIndex];
 
         }
+        Vector2 dir = new Vector2(target.x, target.y) - new Vector2(transform.position.x, transform.position.y);
+        transform.Translate(new Vector3(dir.x, dir.y, 0) * speed * Time.deltaTime);
     }
 }

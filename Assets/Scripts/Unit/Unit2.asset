@@ -33,6 +33,8 @@ MonoBehaviour:
   - {x: 0, y: 0}
   - {x: -1, y: 0}
   - {x: -2, y: 0}
+  - {x: 0, y: 1}
+  - {x: 0, y: -1}
   prefab: {fileID: 6865232695306935221, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
   UnitDp: 10
   unitSprite: {fileID: -560534046, guid: ec17e23842b46dc4b8d09ddd969099e4, type: 3}

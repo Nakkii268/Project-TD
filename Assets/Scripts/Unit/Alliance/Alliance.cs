@@ -12,6 +12,7 @@ public class Alliance : MonoBehaviour
     [SerializeField] private bool isDeloyed;
     [SerializeField] private AllianceDirection allianceDirection;
     [SerializeField] private AlliianceInfomation allianceInfo;
+    [SerializeField] private AllienceAttackCollider allienceAttackCollider;
     public Collider UnitUICollider;
     public int charIndex;
     private void Start()
@@ -98,6 +99,7 @@ public class Alliance : MonoBehaviour
         allianceDirection.gameObject.SetActive(false);
         direction = dir;
         SetAttackRange();
+        allienceAttackCollider.SetCollider(attackRange,unitPos);
        
         
     }
