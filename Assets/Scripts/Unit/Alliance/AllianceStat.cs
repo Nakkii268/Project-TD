@@ -2,33 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AllianceStat : MonoBehaviour
+public class AllianceStat : UnitStat
 {
-    [SerializeField] private int unitLevel;
-    [SerializeField] private Alliance alliance;
-    [SerializeField] private float currentHp;
-    public Stat MaxHp;
-    public Stat Attack;
-    public Stat AttackInterval;
-    public Stat Defense;
-    public Stat Resistance;
-    public Stat RedeployTime;
-    public AllianceUnit unit;
-    public Vector2Int[] AttackRange;
 
-    private void Start()
+    [SerializeField] private Alliance alliance;
+  
+    public Stat RedeployTime;
+    
+
+    protected override void Start()
     {
         Initialized();
     }
-    private void Initialized()
+    protected override void Initialized()
     {
-        unit = alliance.GetAllianceUnit();
-        MaxHp = new Stat(unit.Heath);
-        Attack = new Stat(unit.Attack);
-        AttackInterval = new Stat(unit.AttackInterval);
-        Defense = new Stat(unit.Defense);
-        Resistance = new Stat(unit.Resistance);
-        AttackRange = unit.AttackRange;
+        
+         unit = alliance.GetAllianceUnit();
+         AllianceUnit allyUnit = (AllianceUnit)unit;
+        
+        MaxHp = new Stat(allyUnit.Heath);
+        Attack = new Stat(allyUnit.Attack);
+        AttackInterval = new Stat(allyUnit.AttackInterval);
+        Defense = new Stat(allyUnit.Defense);
+        Resistance = new Stat(allyUnit.Resistance);
+        RedeployTime = new Stat(allyUnit.RedeployTime);
+        Block = new Stat(allyUnit.Block);
+        AttackRange = allyUnit.AttackRange;
 
     }
 }

@@ -14,21 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitID: 0002
   Name: Alliance2
-  Heath:
-    BaseStat: 100
-    Modifier: 1
-  Damaged:
-    BaseStat: 100
-    Modifier: 0
-  Defense:
-    BaseStat: 0
-    Modifier: 0
-  Resitan:
-    BaseStat: 0
-    Modifier: 0
-  Block:
-    BaseStat: 0
-    Modifier: 0
+  Heath: 1500
+  Attack: 150
+  AttackInterval: 1
+  Defense: 20
+  Resistance: 10
+  Block: 1
   AttackRange:
   - {x: 0, y: 0}
   - {x: -1, y: 0}
@@ -39,7 +30,7 @@ MonoBehaviour:
   UnitDp: 10
   unitSprite: {fileID: -560534046, guid: ec17e23842b46dc4b8d09ddd969099e4, type: 3}
   type: 1
-  RedeloyTime: 10
+  RedeployTime: 20
   EnemyType:
   - serializedVersion: 2
     m_Bits: 2048

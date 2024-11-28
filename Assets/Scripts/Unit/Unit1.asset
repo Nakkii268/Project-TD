@@ -14,21 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitID: 0001
   Name: Unit1
-  Heath:
-    BaseStat: 1000
-    Modifier: 0
-  Damaged:
-    BaseStat: 0
-    Modifier: 0
-  Defense:
-    BaseStat: 0
-    Modifier: 0
-  Resitan:
-    BaseStat: 0
-    Modifier: 0
-  Block:
-    BaseStat: 0
-    Modifier: 0
+  Heath: 1000
+  Attack: 10
+  AttackInterval: 1
+  Defense: 10
+  Resistance: 10
+  Block: 1
   AttackRange:
   - {x: 0, y: 0}
   - {x: -1, y: 0}
@@ -36,7 +27,7 @@ MonoBehaviour:
   UnitDp: 20
   unitSprite: {fileID: -560534046, guid: ec17e23842b46dc4b8d09ddd969099e4, type: 3}
   type: 0
-  RedeloyTime: 60
+  RedeployTime: 10
   EnemyType:
   - serializedVersion: 2
     m_Bits: 2048

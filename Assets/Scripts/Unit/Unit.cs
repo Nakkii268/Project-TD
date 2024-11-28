@@ -12,7 +12,7 @@ public class Unit : ScriptableObject
     public float AttackInterval;
     public float Defense;
     public float Resistance;
-    public  float Block;
+    public float Block;
     public Vector2Int[] AttackRange;
 }
 [Serializable]// maybe save it for skill part
