@@ -13,6 +13,7 @@ public class Alliance : MonoBehaviour
     [SerializeField] private AllianceDirection allianceDirection;
     [SerializeField] private AlliianceInfomation allianceInfo;
     [SerializeField] private AllienceAttackCollider allienceAttackCollider;
+    [SerializeField] private AllianceStat allianceStat;
     public Collider UnitUICollider;
     public int charIndex;
     private void Start()
@@ -67,14 +68,14 @@ public class Alliance : MonoBehaviour
     public Vector2[] GetAttackRange(Vector2 dir)
     {
         if (dir == Vector2.zero) return null;
-        Vector2[] range  = new Vector2[unit.AttackRange.Length];
+        Vector2[] range  = new Vector2[allianceStat.AttackRange.Length];
         float angle = Vector2.SignedAngle(new Vector2(-1,0), dir) * Mathf.Deg2Rad;
         
-        for (int i = 0; i < unit.AttackRange.Length; i++)
+        for (int i = 0; i < allianceStat.AttackRange.Length; i++)
         {
 
-            range[i].x = unitPos.x + (unit.AttackRange[i].x) * Mathf.Cos(angle) - (unit.AttackRange[i].y) * Mathf.Sin(angle);
-            range[i].y = unitPos.y + (unit.AttackRange[i].y ) * Mathf.Cos(angle) + (unit.AttackRange[i].x) * Mathf.Sin(angle);
+            range[i].x = unitPos.x + (allianceStat.AttackRange[i].x) * Mathf.Cos(angle) - (allianceStat.AttackRange[i].y) * Mathf.Sin(angle);
+            range[i].y = unitPos.y + (allianceStat.AttackRange[i].y ) * Mathf.Cos(angle) + (allianceStat.AttackRange[i].x) * Mathf.Sin(angle);
             
         }
         return range;

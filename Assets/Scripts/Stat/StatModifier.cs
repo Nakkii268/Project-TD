@@ -1,13 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public enum StatModType
 {
     Flat,
     PercentAdd,
     PercentMult
 }
+[Serializable]
 public class StatModifier 
 {
     public readonly float Value;

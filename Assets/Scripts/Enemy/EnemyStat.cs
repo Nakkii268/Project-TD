@@ -11,8 +11,7 @@ public class EnemyStat : MonoBehaviour, IDamageable
 
     private void Start()
     {
-      //  MaxHp = eUnit.Heath.GetFinalStat(unitLevel); //only base stat, no modifier
-       // CurrentHp = eUnit.Heath.GetFinalStat(unitLevel); //only base stat, no modifier
+        
     }
 
     public void ReceiveDamaged(float damage)

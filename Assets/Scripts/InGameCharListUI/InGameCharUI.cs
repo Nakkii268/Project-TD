@@ -81,7 +81,7 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     public void InitCountDown()
     {
         countDownUI.gameObject.SetActive(true);
-        countDownUI.Inittialize(unit.RedeloyTime);
+        countDownUI.Inittialize(unit.RedeployTime);
     }
 }
 public class CharacterData
