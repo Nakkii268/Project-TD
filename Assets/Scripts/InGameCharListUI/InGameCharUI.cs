@@ -61,7 +61,7 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
         {
             block.GetComponent<Block>().UnHighLightBlock();
         }
-        Debug.Log("end drag");
+       
 
     }
 

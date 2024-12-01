@@ -6,13 +6,13 @@ public class UnitStat : MonoBehaviour
 {
    
     public Unit unit;
-    [SerializeField] private int unitLevel;
-    [SerializeField] private float currentHp;
+    public int unitLevel;
+    public float currentHp;
     public Stat MaxHp;
     public Stat Attack;
     public Stat AttackInterval;
-    public Stat Defense;
-    public Stat Resistance;
+    public Stat Defense;// reduce value = def/100
+    public Stat Resistance;//reduce value= res/100
     public Stat Block;
     public Vector2Int[] AttackRange;
 

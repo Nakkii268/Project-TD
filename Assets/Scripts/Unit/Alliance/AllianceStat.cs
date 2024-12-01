@@ -8,11 +8,12 @@ public class AllianceStat : UnitStat
     [SerializeField] private Alliance alliance;
   
     public Stat RedeployTime;
-    
+    public AllianceType type;
+
 
     protected override void Start()
     {
-        Initialized();
+        base.Start();
     }
     protected override void Initialized()
     {
@@ -28,6 +29,7 @@ public class AllianceStat : UnitStat
         RedeployTime = new Stat(allyUnit.RedeployTime);
         Block = new Stat(allyUnit.Block);
         AttackRange = allyUnit.AttackRange;
+       type = allyUnit.type;
 
     }
 }

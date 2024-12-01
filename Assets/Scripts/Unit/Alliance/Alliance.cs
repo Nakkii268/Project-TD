@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Alliance : MonoBehaviour
+public class Alliance : MonoBehaviour, IDamageable, IHealable
 {
     [SerializeField] private Vector2 unitPos;
     [SerializeField] private Vector2[] attackRange;
@@ -141,4 +141,33 @@ public class Alliance : MonoBehaviour
 
     }
 
+    public void ReceiveDamaged(float damage,DamageType type)
+    {
+        if(type == DamageType.MagicDamage)
+        {
+            allianceStat.currentHp -= (damage - damage * (allianceStat.Resistance.Value / 100));
+        }else if(type == DamageType.PhysicDamage)
+        {
+            allianceStat.currentHp -= (damage - damage * (allianceStat.Defense.Value / 100));
+
+        }
+        else if(type == DamageType.TrueDamage)
+        {
+            allianceStat.currentHp -= damage;
+
+        }
+        if(allianceStat.currentHp < 0)
+        {
+            allianceStat.currentHp = 0;
+        }
+    }
+
+    public void Heal(float amout)
+    {
+        allianceStat.currentHp += amout;
+        if(allianceStat.currentHp >= allianceStat.MaxHp.Value)
+        {
+            allianceStat.currentHp = allianceStat.MaxHp.Value;
+        }
+    }
 }
