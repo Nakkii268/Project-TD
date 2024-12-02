@@ -34,5 +34,11 @@ public class UnitStat : MonoBehaviour
 
     }
 
+    //test
+    public void Reduce(StatModifier amout, Stat stat)
+    {
+        amout = new StatModifier(100,StatModType.Flat);
+        stat.AddingModifier(amout);
+    }
 
 }

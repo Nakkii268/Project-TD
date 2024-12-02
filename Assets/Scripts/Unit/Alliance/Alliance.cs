@@ -14,6 +14,7 @@ public class Alliance : MonoBehaviour, IDamageable, IHealable
     [SerializeField] private AlliianceInfomation allianceInfo;
     [SerializeField] private AllienceAttackCollider allienceAttackCollider;
     [SerializeField] private AllianceStat allianceStat;
+    [SerializeField] private AllianceDirectionCircle directionCircle;
     public Collider UnitUICollider;
     public int charIndex;
     private void Start()
@@ -46,7 +47,8 @@ public class Alliance : MonoBehaviour, IDamageable, IHealable
         isDeloyed = true;
         direction = e;
         UnitUICollider.gameObject.SetActive(false);
-
+        directionCircle.gameObject.SetActive(true);
+        directionCircle.Initialize(e);
         InGameCharListUI.Instance.HideDeloyedUnitUI(charIndex);
     }
 
@@ -114,6 +116,7 @@ public class Alliance : MonoBehaviour, IDamageable, IHealable
             InGameCharListUI.Instance.ShowRetreatedUnitUI(charIndex);
         }
         isDeloyed = false;
+        directionCircle.gameObject.SetActive(false );
         LevelManager.instance.UnHighLightBlockList(attackRange);
         Block block = GetComponentInParent<Block>();
         block.UnitReTreat();
