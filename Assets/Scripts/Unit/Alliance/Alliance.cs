@@ -15,6 +15,8 @@ public class Alliance : MonoBehaviour, IDamageable, IHealable
     [SerializeField] private AllienceAttackCollider allienceAttackCollider;
     [SerializeField] private AllianceStat allianceStat;
     [SerializeField] private AllianceDirectionCircle directionCircle;
+   
+    
     public Collider UnitUICollider;
     public int charIndex;
     private void Start()
@@ -23,6 +25,7 @@ public class Alliance : MonoBehaviour, IDamageable, IHealable
         allianceDirection.OnDeloyed += AllianceDirection_OnDeloyed;
        
         LevelManager.instance.OnClickOtherTarget += LevelManager_OnClickOtherTarget;
+        unit.ApplyClassBuff();//maybe adding status effect or passive dk
     }
 
     private void LevelManager_OnClickOtherTarget(object sender, System.EventArgs e)
