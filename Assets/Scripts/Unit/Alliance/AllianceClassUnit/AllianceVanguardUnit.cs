@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(menuName = "Unit/Alliance/Defender")]
-public class AllianceDefenderUnit : AllianceUnit
+
+[CreateAssetMenu(menuName ="Unit/Alliance/Vanguard")]
+public class AllianceVanguardUnit : AllianceUnit
 {
-   
-    public DefenderBranch unitBranch;
+    public VanguardBranch unitBranch;
     public override void ApplyClassBuff()
     {
         base.ApplyClassBuff();
     }
-  
 }

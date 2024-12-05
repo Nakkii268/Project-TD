@@ -12,20 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d13eadea05d5cc84f8bb8c01eb01b038, type: 3}
   m_Name: Guard1
   m_EditorClassIdentifier: 
-  UnitID: 
-  Name: 
-  Heath: 0
-  Attack: 0
-  AttackInterval: 0
-  Defense: 0
-  Resistance: 0
-  Block: 0
-  AttackRange: []
-  prefab: {fileID: 0}
-  UnitDp: 0
-  unitSprite: {fileID: 0}
+  UnitID: 001
+  Name: GuardTest
+  Heath: 1000
+  Attack: 100
+  AttackInterval: 1
+  Defense: 10
+  Resistance: 10
+  Block: 1
+  AttackRange:
+  - {x: 0, y: 0}
+  - {x: -1, y: 0}
+  prefab: {fileID: 6865232695306935221, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
+  UnitDp: 10
+  unitSprite: {fileID: -560534046, guid: ec17e23842b46dc4b8d09ddd969099e4, type: 3}
   type: 0
-  RedeployTime: 0
-  EnemyType: []
+  RedeployTime: 10
+  EnemyType:
+  - serializedVersion: 2
+    m_Bits: 2048
   unitClass: 0
   unitBranch: 0

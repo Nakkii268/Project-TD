@@ -9,7 +9,8 @@ public enum Class
     Defender,
     Healer,
     Mage,
-    Sniper
+    Sniper,
+    Vanguard
 }
 public enum GuardBranch
 {
@@ -37,4 +38,9 @@ public enum SniperBranch
 {
     Maskman,
     HeavyShooter
+}
+public enum VanguardBranch
+{
+    Pioner
+
 }
