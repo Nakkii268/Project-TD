@@ -2,17 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActiveSkills : MonoBehaviour
+public class ActiveSkills : Skills
 {
-    // Start is called before the first frame update
-    void Start()
+    public ChargeType ChargeType;
+    public float SkillDuration;
+    public List<StatusEffect> effects;
+    public float SkillDmg;
+    public DamageType DamageType;
+    public override void SkillActivate(GameObject target)
     {
-        
-    }
+        if (skillEffect == SkillEffect.StatusEffect)
+        {
+            target.TryGetComponent<StatusEffectHolder>(out StatusEffectHolder effectHolder);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            for (int i = 0; i < effects.Count; i++)
+            {
+                effectHolder.AddStatusEffect(effects[i]);
+            }
+        }else if(skillEffect == SkillEffect.DamagedDeal)
+        {
+            target.TryGetComponent<IDamageable>(out IDamageable dmgTarget);
+            dmgTarget.ReceiveDamaged(SkillDmg, DamageType);
+        }else if(skillEffect == SkillEffect.Mix)
+        {
+            target.TryGetComponent<StatusEffectHolder>(out StatusEffectHolder effectHolder);
+            target.TryGetComponent<IDamageable>(out IDamageable dmgTarget);
+
+            dmgTarget.ReceiveDamaged(SkillDmg, DamageType);
+
+            for (int i = 0; i < effects.Count; i++)
+            {
+                effectHolder.AddStatusEffect(effects[i]);
+            }
+        }
     }
 }

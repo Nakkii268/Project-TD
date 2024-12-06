@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PassiveSkills : MonoBehaviour
+public class PassiveSkills : Skills
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void SkillActivate(GameObject target)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.SkillActivate(target);
     }
 }

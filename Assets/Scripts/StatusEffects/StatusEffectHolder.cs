@@ -1,18 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class StatusEffectHolder : MonoBehaviour
 {
-    public StatusEffect[] effects;
+    public List<StatusEffect> effects;
 
-
-    public void StartEffectCoroutine(IEnumerator effect)
+    //add-remove
+    public void AddStatusEffect(StatusEffect effect)
     {
-        StartCoroutine(effect);
+        //make sure status effect not stack
+        if (!effects.Contains(effect)) 
+        {
+            effects.Add(effect);
+            StartEffectCoroutine(effect);
+        }
+        else
+        {
+            StopEffectCoroutine(effect);
+            StartEffectCoroutine(effect);
+
+        }
     }
-    public void StopEffectCoroutine(IEnumerator effect)
+
+    public void RemoveStatusEffect(StatusEffect effect)
     {
-        StopCoroutine(effect);
+        if (!effects.Contains(effect)) return;
+        effects.Remove(effect);
+    }
+
+    //start- stop
+    public void StartEffectCoroutine(StatusEffect effect)
+    {
+        StartCoroutine(StatusEffectHandler(effect));
+    }
+    public void StopEffectCoroutine(StatusEffect effect)
+    {
+        StopCoroutine(StatusEffectHandler(effect));
+        
+    }
+   
+
+    public IEnumerator StatusEffectHandler(StatusEffect effect)
+    {
+        effect.OnApply();
+        yield return new WaitForSeconds(effect.duration);
+        StopEffectCoroutine(effect);
+        RemoveStatusEffect(effect);
     }
 }

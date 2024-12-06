@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class StatusEffect : ScriptableObject
 {
+    public float duration;
     public virtual void OnApply() { }
    
 }
