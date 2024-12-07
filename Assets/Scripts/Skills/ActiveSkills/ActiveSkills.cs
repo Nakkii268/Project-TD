@@ -17,7 +17,7 @@ public class ActiveSkills : Skills
 
             for (int i = 0; i < effects.Count; i++)
             {
-                effectHolder.AddStatusEffect(effects[i]);
+                effectHolder.AddStatusEffect(target,effects[i]);
             }
         }else if(skillEffect == SkillEffect.DamagedDeal)
         {
@@ -32,7 +32,7 @@ public class ActiveSkills : Skills
 
             for (int i = 0; i < effects.Count; i++)
             {
-                effectHolder.AddStatusEffect(effects[i]);
+                effectHolder.AddStatusEffect(target, effects[i]);
             }
         }
     }

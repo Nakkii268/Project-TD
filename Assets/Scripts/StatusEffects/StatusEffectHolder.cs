@@ -6,47 +6,48 @@ using UnityEngine;
 public class StatusEffectHolder : MonoBehaviour
 {
     public List<StatusEffect> effects;
+    public Alliance ally;
 
     //add-remove
-    public void AddStatusEffect(StatusEffect effect)
+    public void AddStatusEffect(GameObject target,StatusEffect effect)
     {
         //make sure status effect not stack
         if (!effects.Contains(effect)) 
         {
             effects.Add(effect);
-            StartEffectCoroutine(effect);
+            StartEffectCoroutine(target, effect);
         }
         else
         {
-            StopEffectCoroutine(effect);
-            StartEffectCoroutine(effect);
+            StopEffectCoroutine(target, effect);
+            StartEffectCoroutine(target, effect);
 
         }
     }
 
-    public void RemoveStatusEffect(StatusEffect effect)
+    public void RemoveStatusEffect(GameObject target, StatusEffect effect)
     {
         if (!effects.Contains(effect)) return;
         effects.Remove(effect);
     }
 
     //start- stop
-    public void StartEffectCoroutine(StatusEffect effect)
+    public void StartEffectCoroutine(GameObject target, StatusEffect effect)
     {
-        StartCoroutine(StatusEffectHandler(effect));
+        StartCoroutine(StatusEffectHandler(target, effect));
     }
-    public void StopEffectCoroutine(StatusEffect effect)
+    public void StopEffectCoroutine(GameObject target, StatusEffect effect)
     {
-        StopCoroutine(StatusEffectHandler(effect));
+        StopCoroutine(StatusEffectHandler(target, effect));
         
     }
    
 
-    public IEnumerator StatusEffectHandler(StatusEffect effect)
+    public IEnumerator StatusEffectHandler(GameObject target,StatusEffect effect)
     {
-        effect.OnApply();
+        effect.OnApply(target);
         yield return new WaitForSeconds(effect.duration);
-        StopEffectCoroutine(effect);
-        RemoveStatusEffect(effect);
+        StopEffectCoroutine(target, effect);
+        RemoveStatusEffect(target, effect);
     }
 }
