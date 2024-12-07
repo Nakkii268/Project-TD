@@ -8,8 +8,9 @@ public class Skills : ScriptableObject
     public float SkillPoint;
     public string Description;
     public SkillEffect skillEffect;
+    public SkillTarget skillTarget;
     
-    public virtual void SkillActivate(GameObject target)
+    public virtual void SkillActivate(GameObject User,GameObject target)
     {
 
     }
@@ -26,4 +27,17 @@ public enum SkillEffect
     DamagedDeal,
     StatusEffect,
     Mix
+}
+public enum SkillTarget
+{
+    Alliance,
+    Self,
+    Enemy
+}
+public enum SkillSubTarget
+{
+    None,
+    Alliance,
+    Self,
+    Enemy
 }

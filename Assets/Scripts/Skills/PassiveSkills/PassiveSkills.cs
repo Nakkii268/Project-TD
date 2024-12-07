@@ -6,7 +6,7 @@ public class PassiveSkills : Skills
 {
     public List<StatusEffect> effects;
 
-    public override void SkillActivate(GameObject target)
+    public override void SkillActivate(GameObject User, GameObject target)
     {
         target.TryGetComponent<StatusEffectHolder>(out StatusEffectHolder effectHolder);
 

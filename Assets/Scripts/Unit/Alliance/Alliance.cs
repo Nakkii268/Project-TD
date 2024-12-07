@@ -15,6 +15,8 @@ public class Alliance : MonoBehaviour, IDamageable, IHealable
     [SerializeField] private AllienceAttackCollider allienceAttackCollider;
     [SerializeField] private AllianceStat allianceStat;
     public AllianceStat Stat { get { return allianceStat; } }
+    [SerializeField] private AllianceSkill allianceSkill;
+
     [SerializeField] private AllianceDirectionCircle directionCircle;
    
     
