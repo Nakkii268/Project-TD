@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -11,17 +12,27 @@ public class Alliance : MonoBehaviour, IDamageable, IHealable
     [SerializeField] private Vector2 direction;
     [SerializeField] private bool isDeloyed;
     [SerializeField] private AllianceDirection allianceDirection;
+
     [SerializeField] private AlliianceInfomation allianceInfo;
+
     [SerializeField] private AllienceAttackCollider allienceAttackCollider;
+    public AllienceAttackCollider AllienceAttackCollider { get { return allienceAttackCollider; } }
+
     [SerializeField] private AllianceStat allianceStat;
     public AllianceStat Stat { get { return allianceStat; } }
+
     [SerializeField] private AllianceSkill allianceSkill;
 
+    [SerializeField] private AllianceAttack allianceAttack;
+    public AllianceAttack AllianceAttack { get { return allianceAttack; } }
+
     [SerializeField] private AllianceDirectionCircle directionCircle;
-   
     
     public Collider UnitUICollider;
     public int charIndex;
+
+    public event EventHandler OnGetHit;
+
     private void Start()
     {
     

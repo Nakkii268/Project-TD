@@ -5,17 +5,20 @@ using UnityEngine;
 public class Skills : ScriptableObject
 {
     public string Name;
-    public float SkillPoint;
     public string Description;
+    public SkillType skillType;
     public SkillEffect skillEffect;
     public SkillTarget skillTarget;
-    
     public virtual void SkillActivate(GameObject User,GameObject target)
     {
 
     }
 }
-
+public enum SkillType
+{
+    Active,
+    Passive
+}
 public enum ChargeType
 {
     Offensive,

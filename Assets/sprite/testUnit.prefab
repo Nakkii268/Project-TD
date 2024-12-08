@@ -617,6 +617,53 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &2870697607256348856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1700981332374570945}
+  - component: {fileID: 5668907197910484308}
+  m_Layer: 0
+  m_Name: UnitAtack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1700981332374570945
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2870697607256348856}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7674573493055352995}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5668907197910484308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2870697607256348856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e68be86a192a6a2499f1cff1149d55da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alliance: {fileID: 4489595423137854530}
+  allyAttack: 100
+  targets: []
 --- !u!1 &3175541071624894239
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,6 +1162,7 @@ Transform:
   - {fileID: 5065255644281316532}
   - {fileID: 5412022002190102695}
   - {fileID: 1960706406965795590}
+  - {fileID: 1700981332374570945}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4489595423137854530
@@ -1139,6 +1187,7 @@ MonoBehaviour:
   allienceAttackCollider: {fileID: 1590815215786026339}
   allianceStat: {fileID: 6804458130329327301}
   allianceSkill: {fileID: 185475534100180099}
+  allianceAttack: {fileID: 0}
   directionCircle: {fileID: 2478142655504761343}
   UnitUICollider: {fileID: 7719200145361649708}
   charIndex: 0
@@ -1186,9 +1235,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eab9ea8bf1202e448d49e6189cc12ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skills: []
   OnUseSkill: {fileID: 0}
   alliance: {fileID: 4489595423137854530}
+  target: {fileID: 0}
 --- !u!1 &7575087738944473143
 GameObject:
   m_ObjectHideFlags: 0

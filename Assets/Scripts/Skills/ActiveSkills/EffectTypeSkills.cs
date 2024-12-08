@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Skill/EffectTypeSkill")]
+
 public class EffectTypeSkills : ActiveSkills
 {
     public List<StatusEffect> effects;

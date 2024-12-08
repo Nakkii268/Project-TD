@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Skill/ComplexSkill")]
+
 public class ComplexSkills : ActiveSkills
 {
     public List<StatusEffect> effects;

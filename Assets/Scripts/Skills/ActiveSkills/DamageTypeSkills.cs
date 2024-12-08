@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName ="Skill/DamageTypeSkill")]
 public class DamageTypeSkills : ActiveSkills
 {
     public float SkillDmg;

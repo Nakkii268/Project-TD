@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.ShaderGraph.Internal;
@@ -10,6 +11,8 @@ public class Enemy : MonoBehaviour, IDamageable, IHealable
     [SerializeField] private Vector3[] path;
     [SerializeField] private int pathIndex = 0;
     [SerializeField] private EnemyStat stat;
+
+    public event EventHandler OnGetHit;
 
     public void Heal(float amout)
     {
@@ -57,7 +60,7 @@ public class Enemy : MonoBehaviour, IDamageable, IHealable
             target = path[pathIndex];
 
         }
-        Vector2 dir = new Vector2(target.x, target.y) - new Vector2(transform.position.x, transform.position.y);
-        transform.Translate(new Vector3(dir.x, dir.y, 0) * speed * Time.deltaTime);
+        Vector2 dir = (Vector2)target - new Vector2(transform.position.x, transform.position.y);
+        transform.Translate(speed * Time.deltaTime * (Vector3)dir);
     }
 }

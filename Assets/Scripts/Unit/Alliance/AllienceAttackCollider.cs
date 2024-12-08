@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,6 +9,8 @@ public class AllienceAttackCollider : MonoBehaviour
     public PolygonCollider2D collider; //need to set gameobject offset .25 cause the character is .25 up to compare with block
     public Alliance Alliance;
     [SerializeField]private LayerMask[] enemyLayer;
+    public event EventHandler<GameObject> OnEnemyIn;
+    public event EventHandler<GameObject> OnEnemyOut;
 
     private void Start()
     {
@@ -21,7 +24,7 @@ public class AllienceAttackCollider : MonoBehaviour
             if ((layerMask.value & (1<<collision.gameObject.layer))==0)  return;
             if (collision.gameObject.CompareTag("Enemy"))
             {
-                Debug.Log("enemy in");
+                OnEnemyIn?.Invoke(this, collision.gameObject);
             }
     
         }
@@ -31,11 +34,12 @@ public class AllienceAttackCollider : MonoBehaviour
     {
         foreach (LayerMask layerMask in enemyLayer)
         {
-            Debug.Log(layerMask.value);
+           
             if ((layerMask.value & (1 << collision.gameObject.layer)) == 0) return;
             if (collision.gameObject.CompareTag("Enemy"))
             {
-                Debug.Log("enemy in");
+                OnEnemyOut?.Invoke(this, collision.gameObject);
+
             }
 
         }
