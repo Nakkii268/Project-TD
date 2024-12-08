@@ -77,7 +77,7 @@ public class Stat
                 
                 sumPercentAdd += Modifiers[i].Value;
 
-                if (i+1 > Modifiers.Count || Modifiers[i+1].ModType != StatModType.PercentAdd)
+                if (i+1 >= Modifiers.Count || Modifiers[i+1].ModType != StatModType.PercentAdd)
                 {
                     finalValue *= sumPercentAdd;
                 }

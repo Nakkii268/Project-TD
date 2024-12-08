@@ -9,16 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de73a28a331d10a48980bf0f74253b28, type: 3}
-  m_Name: New Damage Type Skills
+  m_Script: {fileID: 11500000, guid: eb41e6c6384780a4285ce35b5d502967, type: 3}
+  m_Name: New Effect Type Skills
   m_EditorClassIdentifier: 
-  Name: supa dmg
-  Description: deal dmg
+  Name: 
+  Description: 
   skillType: 0
-  skillEffect: 0
-  skillTarget: 2
-  ChargeType: 2
-  SkillDuration: 0.1
-  SkillPoint: 10
-  SkillDmg: 1000
-  DamageType: 0
+  skillEffect: 1
+  skillTarget: 1
+  ChargeType: 0
+  SkillDuration: 0
+  SkillPoint: 0
+  effects:
+  - {fileID: 11400000, guid: f0787e38af17e05488ef854602385f5b, type: 2}

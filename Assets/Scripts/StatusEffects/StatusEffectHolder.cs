@@ -6,7 +6,7 @@ using UnityEngine;
 public class StatusEffectHolder : MonoBehaviour
 {
     public List<StatusEffect> effects;
-    public Alliance ally;
+    
 
     //add-remove
     public void AddStatusEffect(GameObject target,StatusEffect effect)
@@ -49,5 +49,7 @@ public class StatusEffectHolder : MonoBehaviour
         yield return new WaitForSeconds(effect.duration);
         StopEffectCoroutine(target, effect);
         RemoveStatusEffect(target, effect);
+        effect.OnRemove(target);
+
     }
 }

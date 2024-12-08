@@ -26,7 +26,7 @@ public class EffectTypeSkills : ActiveSkills
 
             for (int i = 0; i < effects.Count; i++)
             {
-                effectHolder.AddStatusEffect(target, effects[i]);
+                effectHolder.AddStatusEffect(User, effects[i]);
             }
         }
     }

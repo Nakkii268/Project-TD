@@ -7,5 +7,6 @@ public class StatusEffect : ScriptableObject
 {
     public float duration;
     public virtual void OnApply(GameObject target) { }
+    public virtual void OnRemove(GameObject target) { }
    
 }

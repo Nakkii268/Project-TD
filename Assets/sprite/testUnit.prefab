@@ -1135,6 +1135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7674573493055352995}
   - component: {fileID: 4489595423137854530}
+  - component: {fileID: 6074738120762529015}
   m_Layer: 0
   m_Name: testUnit
   m_TagString: Untagged
@@ -1187,10 +1188,23 @@ MonoBehaviour:
   allienceAttackCollider: {fileID: 1590815215786026339}
   allianceStat: {fileID: 6804458130329327301}
   allianceSkill: {fileID: 185475534100180099}
-  allianceAttack: {fileID: 0}
+  allianceAttack: {fileID: 5668907197910484308}
   directionCircle: {fileID: 2478142655504761343}
   UnitUICollider: {fileID: 7719200145361649708}
   charIndex: 0
+--- !u!114 &6074738120762529015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6865232695306935221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 513cb40aec2850043b37bab4d55b9850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effects: []
 --- !u!1 &7299307456705108564
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,9 +1249,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eab9ea8bf1202e448d49e6189cc12ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnUseSkill: {fileID: 0}
+  OnUseSkill: {fileID: 11400000, guid: 7acfcc20f5a7e4547bce5adaba9fa208, type: 2}
   alliance: {fileID: 4489595423137854530}
-  target: {fileID: 0}
+  target: {fileID: 6865232695306935221}
 --- !u!1 &7575087738944473143
 GameObject:
   m_ObjectHideFlags: 0

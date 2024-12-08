@@ -50,9 +50,9 @@ public class AllianceSkill : MonoBehaviour
 
     
 
-    public void OnSkilluse(Skills skill)
+    public void OnSkilluse()
     {
-        skill.SkillActivate(alliance.gameObject, target);
+        OnUseSkill.SkillActivate(alliance.gameObject, target);
         curSkillPoint = 0;
     }
     private void SkillPointRecover(float amout)

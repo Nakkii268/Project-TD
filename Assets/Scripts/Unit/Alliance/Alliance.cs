@@ -190,4 +190,10 @@ public class Alliance : MonoBehaviour, IDamageable, IHealable
             allianceStat.currentHp = allianceStat.MaxHp.Value;
         }
     }
+
+    public void Use()
+    {
+        allianceSkill.OnSkilluse();
+        Debug.Log(allianceStat.Attack.Value);
+    }
 }
