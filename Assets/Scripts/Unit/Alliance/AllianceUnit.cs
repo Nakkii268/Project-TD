@@ -14,8 +14,9 @@ public class AllianceUnit : Unit
     public LayerMask[] EnemyType;
     public string GetAllianceType() { return type.ToString(); }
     public Class unitClass;
+    public StatusEffect ClassBuff;
 
-    public virtual void ApplyClassBuff() { }
+    public virtual void ApplyClassBuff(GameObject unit) { }
 }
 [Serializable]
 

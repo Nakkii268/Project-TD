@@ -6,8 +6,7 @@ using UnityEngine;
 public class AllianceVanguardUnit : AllianceUnit
 {
     public VanguardBranch unitBranch;
-    public override void ApplyClassBuff()
+    public override void ApplyClassBuff(GameObject unit)
     {
-        base.ApplyClassBuff();
     }
 }

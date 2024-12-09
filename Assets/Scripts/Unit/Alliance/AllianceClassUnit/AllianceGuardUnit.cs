@@ -5,8 +5,10 @@ using UnityEngine;
 public class AllianceGuardUnit : AllianceUnit
 {
     public GuardBranch unitBranch;
-    public override void ApplyClassBuff()
+    public override void ApplyClassBuff(GameObject unit)
     {
-        base.ApplyClassBuff();
+        unit.TryGetComponent<StatusEffectHolder>(out StatusEffectHolder holder);
+        holder.AddStatusEffect(unit, ClassBuff);
+        
     }
 }

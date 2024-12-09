@@ -11,15 +11,32 @@ public class StatusEffectHolder : MonoBehaviour
     //add-remove
     public void AddStatusEffect(GameObject target,StatusEffect effect)
     {
+        if (effect.Stackable)
+        {
+            effects.Add(effect);
+            if (effect.duration > 99)// for effect have unlimited duration, set duration >99=> only apply and wont remove auto
+            {
+                effect.OnApply(target);
+            }
+            StartEffectCoroutine(target, effect);
+            return;
+        }
         //make sure status effect not stack
+
         if (!effects.Contains(effect)) 
         {
             effects.Add(effect);
+            if(effect.duration > 99)// for effect have unlimited duration, set duration >99=> only apply and wont remove auto
+            {
+                effect.OnApply(target);
+                return;
+            }
             StartEffectCoroutine(target, effect);
         }
         else
         {
             StopEffectCoroutine(target, effect);
+            effect.OnRemove(target);
             StartEffectCoroutine(target, effect);
 
         }
@@ -27,7 +44,12 @@ public class StatusEffectHolder : MonoBehaviour
 
     public void RemoveStatusEffect(GameObject target, StatusEffect effect)
     {
-        if (!effects.Contains(effect)) return;
+        if (!effects.Contains(effect)) {
+            Debug.Log("----");
+            return; 
+        }
+        Debug.Log("removed");
+
         effects.Remove(effect);
     }
 

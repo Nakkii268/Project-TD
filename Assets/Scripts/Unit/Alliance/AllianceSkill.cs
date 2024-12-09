@@ -8,7 +8,7 @@ public class AllianceSkill : MonoBehaviour
     public Skills OnUseSkill;
     public Alliance alliance;
     public GameObject target;
-    private float curSkillPoint;
+    [SerializeField]private float curSkillPoint;
 
     private void Start()
     {

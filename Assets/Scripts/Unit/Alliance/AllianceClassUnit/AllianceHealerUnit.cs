@@ -5,8 +5,7 @@ using UnityEngine;
 public class AllianceHealerUnit : AllianceUnit
 {
     public HealerBranch unitBranch;
-    public override void ApplyClassBuff()
+    public override void ApplyClassBuff(GameObject unit)
     {
-        base.ApplyClassBuff();
     }
 }

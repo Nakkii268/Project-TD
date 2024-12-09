@@ -5,8 +5,7 @@ using UnityEngine;
 public class AllianceSniperUnit : AllianceUnit
 {
     public SniperBranch unitBranch;
-    public override void ApplyClassBuff()
+    public override void ApplyClassBuff(GameObject unit)
     {
-        base.ApplyClassBuff();
     }
 }

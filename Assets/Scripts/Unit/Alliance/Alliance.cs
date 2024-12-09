@@ -39,7 +39,7 @@ public class Alliance : MonoBehaviour, IDamageable, IHealable
         allianceDirection.OnDeloyed += AllianceDirection_OnDeloyed;
        
         LevelManager.instance.OnClickOtherTarget += LevelManager_OnClickOtherTarget;
-        unit.ApplyClassBuff();//maybe adding status effect or passive dk
+        unit.ApplyClassBuff(this.gameObject);//maybe adding status effect or passive dk
     }
 
     private void LevelManager_OnClickOtherTarget(object sender, System.EventArgs e)
