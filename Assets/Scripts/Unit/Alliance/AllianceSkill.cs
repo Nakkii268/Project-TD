@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +15,8 @@ public class AllianceSkill : MonoBehaviour
     [SerializeField]private float curSkillPoint;
     [SerializeField] private Button SkillActiveBtn;
     [SerializeField] private bool IsSkillDuration;
+    public event EventHandler<float> OnSpChange;
+    public event EventHandler<float> OnSkillActive;
     private void Start()
     {
         
@@ -72,17 +76,27 @@ public class AllianceSkill : MonoBehaviour
     {
         if (!IsFullSkillPoint()) return;
         OnUseSkill.SkillActivate(alliance.gameObject, target);
+
         curSkillPoint = 0;
+
+        OnSpChange?.Invoke(this, 0);
+
+        OnSkillActive?.Invoke(this, GetSkillDuration());
+
         StartCoroutine(SkillActiveDurtation());
         DisableSkillBtn();
     }
     private void SkillPointRecover(float amout)
     {
         if (IsSkillDuration) return;
+
         ActiveSkills skill = (ActiveSkills)OnUseSkill;
 
         if (curSkillPoint >= skill.SkillPoint) return;
+
         curSkillPoint += amout;
+        OnSpChange?.Invoke(this,curSkillPoint/skill.SkillPoint);
+
         if (IsFullSkillPoint()){
             EnableSkillBtn();
         }
@@ -92,6 +106,13 @@ public class AllianceSkill : MonoBehaviour
         ActiveSkills skill = (ActiveSkills)OnUseSkill;
 
         return curSkillPoint >= skill.SkillPoint;
+    }
+
+    private float GetSkillDuration()
+    {
+        ActiveSkills skill = (ActiveSkills)OnUseSkill;
+
+        return skill.SkillDuration;
     }
     private void DisableSkillBtn()
     {

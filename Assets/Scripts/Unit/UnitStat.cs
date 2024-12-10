@@ -16,10 +16,7 @@ public class UnitStat : MonoBehaviour
     public Stat Block;
     public Vector2Int[] AttackRange;
 
-    protected virtual void Start()
-    {
-        Initialized();
-    }
+   
     protected virtual  void Initialized()
     {
         

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class AlliianceInfomation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class AllianceInfomation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField] private Alliance unit;
     [SerializeField] private Button RetreatBtn;

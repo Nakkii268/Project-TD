@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Alliance : MonoBehaviour, IDamageable, IHealable
+public class Alliance : MonoBehaviour, IDamageable, IHealable, IHasHpBar
 {
     [SerializeField] private Vector2 unitPos;
     [SerializeField] private Vector2[] attackRange;
@@ -13,25 +13,28 @@ public class Alliance : MonoBehaviour, IDamageable, IHealable
     [SerializeField] private bool isDeloyed;
     [SerializeField] private AllianceDirection allianceDirection;
 
-    [SerializeField] private AlliianceInfomation allianceInfo;
+    [SerializeField] private AllianceInfomation allianceInfo;
 
-    [SerializeField] private AllienceAttackCollider allienceAttackCollider;
-    public AllienceAttackCollider AllienceAttackCollider { get { return allienceAttackCollider; } }
+    [SerializeField] private AllianceAttackCollider allienceAttackCollider;
+    public AllianceAttackCollider AllienceAttackCollider { get { return allienceAttackCollider; } }
 
     [SerializeField] private AllianceStat allianceStat;
     public AllianceStat Stat { get { return allianceStat; } }
 
     [SerializeField] private AllianceSkill allianceSkill;
+    public AllianceSkill AllianceSkill { get { return allianceSkill; } }
 
     [SerializeField] private AllianceAttack allianceAttack;
     public AllianceAttack AllianceAttack { get { return allianceAttack; } }
 
     [SerializeField] private AllianceDirectionCircle directionCircle;
+    [SerializeField] private AllianceHeathBar heathBar;
     
     public Collider UnitUICollider;
     public int charIndex;
 
     public event EventHandler OnGetHit;
+    public event EventHandler<float> OnHpChange;
 
     private void Start()
     {
@@ -165,15 +168,25 @@ public class Alliance : MonoBehaviour, IDamageable, IHealable
         if(type == DamageType.MagicDamage)
         {
             allianceStat.currentHp -= (damage - damage * (allianceStat.Resistance.Value / 100));
+
+            OnGetHit?.Invoke(this, EventArgs.Empty);
+            OnHpChange?.Invoke(this, allianceStat.currentHp/allianceStat.MaxHp.Value);
+
         }else if(type == DamageType.PhysicDamage)
         {
             allianceStat.currentHp -= (damage - damage * (allianceStat.Defense.Value / 100));
 
+            OnGetHit?.Invoke(this, EventArgs.Empty);
+            OnHpChange?.Invoke(this, allianceStat.currentHp / allianceStat.MaxHp.Value);
         }
         else if(type == DamageType.TrueDamage)
         {
             allianceStat.currentHp -= damage;
 
+            OnGetHit?.Invoke(this, EventArgs.Empty);
+            OnHpChange?.Invoke(this, allianceStat.currentHp / allianceStat.MaxHp.Value);
+            Debug.Log(allianceStat.currentHp);
+            Debug.Log(allianceStat.MaxHp.Value);
         }
         if(allianceStat.currentHp < 0)
         {
@@ -184,15 +197,18 @@ public class Alliance : MonoBehaviour, IDamageable, IHealable
     public void Heal(float amout)
     {
         allianceStat.currentHp += amout;
-        if(allianceStat.currentHp >= allianceStat.MaxHp.Value)
+
+        OnHpChange?.Invoke(this, allianceStat.currentHp / allianceStat.MaxHp.Value);
+
+        if (allianceStat.currentHp >= allianceStat.MaxHp.Value)
         {
             allianceStat.currentHp = allianceStat.MaxHp.Value;
+
         }
     }
 
     public void Use()
     {
-        allianceSkill.SkillUsing();
-        Debug.Log(allianceStat.Attack.Value);
+      ReceiveDamaged(10,DamageType.TrueDamage);
     }
 }

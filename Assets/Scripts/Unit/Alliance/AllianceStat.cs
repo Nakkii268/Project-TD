@@ -11,16 +11,15 @@ public class AllianceStat : UnitStat
     public AllianceType type;
 
 
-    protected override void Start()
+    private  void Start()
     {
-        base.Start();
+        Initialized();
     }
     protected override void Initialized()
     {
         
-         unit = alliance.GetAllianceUnit();
-         AllianceUnit allyUnit = (AllianceUnit)unit;
-        
+        unit = alliance.GetAllianceUnit();
+        AllianceUnit allyUnit = (AllianceUnit)unit;
         MaxHp = new Stat(allyUnit.Heath);
         Attack = new Stat(allyUnit.Attack);
         AttackInterval = new Stat(allyUnit.AttackInterval);
@@ -29,7 +28,8 @@ public class AllianceStat : UnitStat
         RedeployTime = new Stat(allyUnit.RedeployTime);
         Block = new Stat(allyUnit.Block);
         AttackRange = allyUnit.AttackRange;
-       type = allyUnit.type;
+        type = allyUnit.type;
+        currentHp = MaxHp.Value;
 
     }
 }

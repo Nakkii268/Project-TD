@@ -10,10 +10,7 @@ public class EnemyStat : UnitStat
     public float CurrentHp;
 
 
-    protected override void Start()
-    {
-        base.Start();
-    }
+  
     protected override void Initialized()
     {
         

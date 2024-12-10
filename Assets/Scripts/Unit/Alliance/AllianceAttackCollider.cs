@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class AllienceAttackCollider : MonoBehaviour
+public class AllianceAttackCollider : MonoBehaviour
 {
     public PolygonCollider2D collider; //need to set gameobject offset .25 cause the character is .25 up to compare with block
     public Alliance Alliance;
