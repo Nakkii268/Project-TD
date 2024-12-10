@@ -32,4 +32,5 @@ MonoBehaviour:
   - serializedVersion: 2
     m_Bits: 2048
   unitClass: 0
+  ClassBuff: {fileID: 11400000, guid: f0787e38af17e05488ef854602385f5b, type: 2}
   unitBranch: 0

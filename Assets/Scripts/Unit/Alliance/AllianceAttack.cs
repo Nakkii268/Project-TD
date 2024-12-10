@@ -8,6 +8,8 @@ public class AllianceAttack : MonoBehaviour
     [SerializeField] private Alliance alliance;
     [SerializeField] private float allyAttack;
     [SerializeField] private List<GameObject> targets;
+    public List<GameObject> targetsInRange { get { return targets; } }
+
     public event EventHandler OnAttackPerform;
 
     private void Start()

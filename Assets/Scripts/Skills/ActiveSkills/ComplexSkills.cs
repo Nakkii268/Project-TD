@@ -17,30 +17,41 @@ public class ComplexSkills : ActiveSkills
     // dmg self, debuff enemy
     //buff self, dmg enemy
 
-    public override void SkillActivate(GameObject User, GameObject target)
+    public override void SkillActivate(GameObject User, List<GameObject> target)
     {
+
         if(skillTarget == SkillTarget.Self && subTarget == SkillSubTarget.Enemy)
         {
+            //dmg self
             User.TryGetComponent<IDamageable>(out IDamageable dmgTarget);
             dmgTarget.ReceiveDamaged(SkillDmg, DamageType);
-
-            target.TryGetComponent<StatusEffectHolder>(out StatusEffectHolder effectHolder);
-
-            for (int i = 0; i < effects.Count; i++)
+            //debuff target
+            foreach (GameObject tg in target)
             {
-                effectHolder.AddStatusEffect(target, effects[i]);
+                tg.TryGetComponent<StatusEffectHolder>(out StatusEffectHolder effectHolder);
+
+                for (int i = 0; i < effects.Count; i++)
+                {
+                    effectHolder.AddStatusEffect(tg, effects[i]);
+                }
             }
         }
+
         if (skillTarget == SkillTarget.Enemy && subTarget == SkillSubTarget.Self)
         {
-            target.TryGetComponent<IDamageable>(out IDamageable dmgTarget);
-            dmgTarget.ReceiveDamaged(SkillDmg, DamageType);
+            //dmg target
+            foreach (GameObject tg in target)
+            {
+                tg.TryGetComponent<IDamageable>(out IDamageable dmgTarget);
+                dmgTarget.ReceiveDamaged(SkillDmg, DamageType);
+            }
 
+            //buff self
             User.TryGetComponent<StatusEffectHolder>(out StatusEffectHolder effectHolder);
 
             for (int i = 0; i < effects.Count; i++)
             {
-                effectHolder.AddStatusEffect(target, effects[i]);
+                effectHolder.AddStatusEffect(User, effects[i]);
             }
         }
     }

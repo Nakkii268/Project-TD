@@ -1157,10 +1157,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3225348828468290020}
+  - {fileID: 5065255644281316532}
   - {fileID: 34318168760574872}
   - {fileID: 5631252494423573955}
   - {fileID: 5948395146130508513}
-  - {fileID: 5065255644281316532}
   - {fileID: 5412022002190102695}
   - {fileID: 1960706406965795590}
   - {fileID: 1700981332374570945}
@@ -1251,7 +1251,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnUseSkill: {fileID: 11400000, guid: 7acfcc20f5a7e4547bce5adaba9fa208, type: 2}
   alliance: {fileID: 4489595423137854530}
-  target: {fileID: 6865232695306935221}
+  target:
+  - {fileID: 0}
+  curSkillPoint: 50
+  SkillActiveBtn: {fileID: 7944637011915187758}
 --- !u!1 &7575087738944473143
 GameObject:
   m_ObjectHideFlags: 0

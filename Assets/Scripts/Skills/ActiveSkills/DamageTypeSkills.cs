@@ -8,15 +8,19 @@ public class DamageTypeSkills : ActiveSkills
     public float SkillDmg;
     public DamageType DamageType;
 
-    public override void SkillActivate(GameObject User, GameObject target)
+    public override void SkillActivate(GameObject User, List<GameObject> target)
     {
         if (skillTarget == SkillTarget.Enemy)
         {
-            target.TryGetComponent<IDamageable>(out IDamageable dmgTarget);
-            dmgTarget.ReceiveDamaged(SkillDmg, DamageType);
+            foreach (GameObject tg in target)
+            {
+                tg.TryGetComponent<IDamageable>(out IDamageable dmgTarget);
+                dmgTarget.ReceiveDamaged(SkillDmg, DamageType);
+            }
         }
         else if(skillTarget == SkillTarget.Self)
         {
+
             User.TryGetComponent<IDamageable>(out IDamageable dmgTarget);
             dmgTarget.ReceiveDamaged(SkillDmg, DamageType);
         }

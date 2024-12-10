@@ -9,7 +9,7 @@ public class Skills : ScriptableObject
     public SkillType skillType;
     public SkillEffect skillEffect;
     public SkillTarget skillTarget;
-    public virtual void SkillActivate(GameObject User,GameObject target)
+    public virtual void SkillActivate(GameObject User,List<GameObject> target)
     {
 
     }
