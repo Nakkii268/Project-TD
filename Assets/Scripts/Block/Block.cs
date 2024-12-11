@@ -70,7 +70,7 @@ public class Block : MonoBehaviour
     }
     private Vector3 GetStandPos()
     {
-        return new Vector3(transform.position.x, transform.position.y - .25f, transform.position.z - .5f);
+        return new Vector3(transform.position.x, transform.position.y - .25f, transform.position.z - .6f);
     }
 }
 [Serializable]

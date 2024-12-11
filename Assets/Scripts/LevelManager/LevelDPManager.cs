@@ -42,7 +42,7 @@ public class LevelDPManager : MonoBehaviour
     {
         return CurrentDp;
     }
-    public void AddingDP(int amount)
+    public void AddingDP(float amount)
     {
         if (CurrentDp >= MaxDp) return;
         CurrentDp += amount;
@@ -51,7 +51,7 @@ public class LevelDPManager : MonoBehaviour
             CurrentDp = MaxDp;
         }
     }
-    public void ReduceDP(int amount)
+    public void ReduceDP(float amount)
     {
         CurrentDp -= amount;
         if (CurrentDp < 0)
@@ -82,4 +82,19 @@ public class LevelDPManager : MonoBehaviour
         return currentDeployment > 0;
     }
 
+    public void DPRecoverSlow(int amount,float time)
+    {
+        StartCoroutine(DPRecover(amount,time));
+    }
+    private IEnumerator DPRecover(int amount,float time)
+    {
+        float timePerDP = time / amount;
+        int recovered = 0;
+        while (recovered < amount)
+        {
+            AddingDP(1);
+            recovered++;
+            yield return new WaitForSeconds(timePerDP);
+        }
+    }
 }

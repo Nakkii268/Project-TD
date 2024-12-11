@@ -20,7 +20,8 @@ public class AllianceSkill : MonoBehaviour
     private void Start()
     {
         
-        alliance.GetAllianceUnit().ApplyClassBuff(alliance.gameObject); //maybe adding status effect or passive dk
+        alliance.GetAllianceUnit().ApplyClassBuff(alliance.gameObject); //maybe adding status effect or passive idk
+
         if (OnUseSkill.skillType == SkillType.Active)
         {
             ActiveSkills skill = (ActiveSkills)OnUseSkill;

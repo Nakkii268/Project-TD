@@ -18,7 +18,7 @@ MonoBehaviour:
   skillEffect: 1
   skillTarget: 1
   ChargeType: 2
-  SkillDuration: 10
+  SkillDuration: 100
   SkillPoint: 20
   effects:
   - {fileID: 11400000, guid: f0787e38af17e05488ef854602385f5b, type: 2}
