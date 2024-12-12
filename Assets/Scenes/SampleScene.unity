@@ -7005,7 +7005,7 @@ MonoBehaviour:
   CurrentDp: 0
   StartDp: 30
   MaxDp: 99
-  DpRegenRate: 2
+  DpRegenRate: 0
   dptext: {fileID: 857323058}
   dltext: {fileID: 992880509}
   dpMaxUI: {fileID: 1922289295}
@@ -9819,6 +9819,7 @@ MonoBehaviour:
   allianceSkill: {fileID: 0}
   allianceAttack: {fileID: 0}
   directionCircle: {fileID: 0}
+  heathBar: {fileID: 0}
   UnitUICollider: {fileID: 7719200144387996719}
   charIndex: 0
 --- !u!1 &4543992185689976903
@@ -10189,10 +10190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 583f1722744d9be4fa60f93e57a8982c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 4489595424110725185}
-  RetreatBtn: {fileID: 8569762672819070844}
-  SkillActiveBtn: {fileID: 7944637013157681709}
-  isPointerIn: 0
 --- !u!1001 &6577011130093218764
 PrefabInstance:
   m_ObjectHideFlags: 0

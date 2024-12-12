@@ -7,11 +7,12 @@ using UnityEngine;
 public class AllianceUnit : Unit
 {
     public GameObject prefab;
-    public int UnitDp;
     public Sprite unitSprite;
     public AllianceType type;
+    public int UnitDp;
     public float RedeployTime;
     public LayerMask[] EnemyType;
+    public UnitTarget UnitTarget;
     public string GetAllianceType() { return type.ToString(); }
     public Class unitClass;
     public StatusEffect ClassBuff;
@@ -25,4 +26,10 @@ public class AllianceUnit : Unit
         Ground,
         HighGround
     }
+public enum UnitTarget
+{
+    Enemy,
+    Alliance,
+    Both
+}
 

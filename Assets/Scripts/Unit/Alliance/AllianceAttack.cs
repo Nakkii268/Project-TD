@@ -32,6 +32,21 @@ public class AllianceAttack : MonoBehaviour
     public void AttackPerform()
     {
         Debug.Log("attack");
+        if (alliance.GetAllianceUnit().UnitTarget == UnitTarget.Enemy) 
+        {
+            //attack enemy
+    
+        }
+        else if(alliance.GetAllianceUnit().UnitTarget == UnitTarget.Alliance)
+        {
+            //heal alliance
+
+        }
+        else if(alliance.GetAllianceUnit().UnitTarget == UnitTarget.Both)
+        {
+            //do both
+
+        }
         OnAttackPerform?.Invoke(this,EventArgs.Empty);
     }
 
