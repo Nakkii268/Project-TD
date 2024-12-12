@@ -22,11 +22,35 @@ public class AllianceAttackCollider : MonoBehaviour
         foreach (LayerMask layerMask in enemyLayer) { 
          
             if ((layerMask.value & (1<<collision.gameObject.layer))==0)  return;
-            if (collision.gameObject.CompareTag("Enemy"))
+           
+            if (Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Enemy)
             {
-                OnEnemyIn?.Invoke(this, collision.gameObject);
+                if (collision.gameObject.CompareTag("Enemy"))
+                {
+                    OnEnemyIn?.Invoke(this, collision.gameObject);
+                    Debug.Log("In e");
+
+                }
             }
-    
+            else if (Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Alliance)
+            {
+                if (collision.gameObject.CompareTag("Alliance"))
+                {
+                    OnEnemyIn?.Invoke(this, collision.gameObject);
+                    Debug.Log("In a");
+
+                }
+            }
+            else if (Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Both)
+            {
+                if (collision.gameObject.CompareTag("Alliance") || collision.gameObject.CompareTag("Enemy"))
+                {
+                    OnEnemyIn?.Invoke(this, collision.gameObject);
+                    Debug.Log("In b");
+
+                }
+            }
+
         }
         
     }
@@ -36,12 +60,31 @@ public class AllianceAttackCollider : MonoBehaviour
         {
            
             if ((layerMask.value & (1 << collision.gameObject.layer)) == 0) return;
-            if (collision.gameObject.CompareTag("Enemy"))
+            if (Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Enemy)
             {
-                OnEnemyOut?.Invoke(this, collision.gameObject);
+                if (collision.gameObject.CompareTag("Enemy"))
+                {
+                    OnEnemyOut?.Invoke(this, collision.gameObject);
+                    Debug.Log("out e");
 
+                }
+            }else if(Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Alliance)
+            {
+                if (collision.gameObject.CompareTag("Alliance"))
+                {
+                    OnEnemyOut?.Invoke(this, collision.gameObject);
+                    Debug.Log("out a");
+
+                }
+            }else if(Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Both)
+            {
+                if (collision.gameObject.CompareTag("Alliance") || collision.gameObject.CompareTag("Enemy"))
+                {
+                    OnEnemyOut?.Invoke(this, collision.gameObject);
+                    Debug.Log("out b");
+
+                }
             }
-
         }
     }
 
