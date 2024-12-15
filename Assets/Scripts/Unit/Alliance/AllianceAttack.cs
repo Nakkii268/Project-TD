@@ -49,7 +49,10 @@ public class AllianceAttack : MonoBehaviour
         }
         OnAttackPerform?.Invoke(this,EventArgs.Empty);
     }
-
+    public bool IsHaveTarget()
+    {
+        return targetsInRange.Count > 0;
+    }
     public void AddTarget(GameObject enemy)
     {
         targets.Add(enemy); 

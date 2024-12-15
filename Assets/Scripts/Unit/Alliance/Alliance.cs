@@ -34,6 +34,7 @@ public class Alliance : MonoBehaviour, IDamageable, IHealable, IHasHpBar
     public int charIndex;
 
     public event EventHandler OnGetHit;
+    public event EventHandler OnUnitRetreat;
     public event EventHandler<float> OnHpChange;
 
     private void Start()

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class AllianceAttackCollider : MonoBehaviour
 {
-    public PolygonCollider2D collider; //need to set gameobject offset .25 cause the character is .25 up to compare with block
+    public PolygonCollider2D AttackCollider; //need to set gameobject offset .25 cause the character is .25 up to compare with block
     public Alliance Alliance;
     [SerializeField]private LayerMask[] enemyLayer;
     public event EventHandler<GameObject> OnEnemyIn;
@@ -90,7 +90,7 @@ public class AllianceAttackCollider : MonoBehaviour
 
     public void SetCollider(Vector2[] range,Vector2 pos)
     {
-        collider.points = ArrangedPointInClockWise(GetColliderPoint(range, pos));
+        AttackCollider.points = ArrangedPointInClockWise(GetColliderPoint(range, pos));
         
 
     }

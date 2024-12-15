@@ -5,5 +5,6 @@ using UnityEngine;
 
 public class EnemyUnit : Unit
 {
-   
+    public float Speed;
+    public bool CanBlock;
 }

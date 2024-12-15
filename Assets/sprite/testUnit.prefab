@@ -1460,7 +1460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aa538e784db63f4a80af99c77087d38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 6309078672311890361}
+  AttackCollider: {fileID: 6309078672311890361}
   Alliance: {fileID: 4489595423137854530}
   enemyLayer: []
 --- !u!1 &5158387285606531378
@@ -1805,7 +1805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7135950834507883752}
   - component: {fileID: 16494464212875821}
-  - component: {fileID: 3604567380038112930}
+  - component: {fileID: 7795449935590479146}
   m_Layer: 0
   m_Name: UnitCollider
   m_TagString: Alliance
@@ -1873,33 +1873,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &3604567380038112930
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!114 &7795449935590479146
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7675820322187648685}
-  m_BodyType: 0
-  m_Simulated: 0
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e00c2514b78633f49827aee0ab142dbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Alliance: {fileID: 4489595423137854530}
+  BlockCollider: {fileID: 16494464212875821}
+  enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+    m_Bits: 2048
+  BlockCount: 1
 --- !u!1 &7814032976581365713
 GameObject:
   m_ObjectHideFlags: 0

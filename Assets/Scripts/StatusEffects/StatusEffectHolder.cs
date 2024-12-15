@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -6,6 +7,8 @@ using UnityEngine;
 public class StatusEffectHolder : MonoBehaviour
 {
     public List<StatusEffect> effects;
+    public event EventHandler OnGetDisable;
+    public event EventHandler OnEndDisable;
     
 
     //add-remove

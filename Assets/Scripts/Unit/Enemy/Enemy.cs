@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour, IDamageable, IHealable
     [SerializeField] private Vector3[] path;
     [SerializeField] private int pathIndex = 0;
     [SerializeField] private EnemyStat stat;
+    public event EventHandler<GameObject> OnEnemyDead;
 
     public event EventHandler OnGetHit;
 
@@ -62,5 +63,20 @@ public class Enemy : MonoBehaviour, IDamageable, IHealable
         }
         Vector2 dir = (Vector2)target - new Vector2(transform.position.x, transform.position.y);
         transform.Translate(speed * Time.deltaTime * (Vector3)dir);
+        
+    }
+    public void Blocked()
+    {
+        Debug.Log("Blocked");
+        speed = 0;
+    }
+    public void UnBlock()
+    {
+        Debug.Log("un-----Blocked");
+        speed = 1f;
+    }
+    public void DeadBtn()
+    {
+        OnEnemyDead?.Invoke(this, this.gameObject);
     }
 }

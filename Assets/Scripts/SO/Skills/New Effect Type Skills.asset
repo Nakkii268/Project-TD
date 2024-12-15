@@ -17,7 +17,7 @@ MonoBehaviour:
   skillType: 0
   skillEffect: 1
   skillTarget: 1
-  ChargeType: 2
+  ChargeType: 1
   SkillDuration: 5
   SkillPoint: 10
   effects:
