@@ -8,10 +8,13 @@ public class AllianceUnit : Unit
 {
     public GameObject prefab;
     public Sprite unitSprite;
+    public Vector2Int[] AttackRange;
+
     public AllianceType type;
     public int UnitDp;
     public float RedeployTime;
-    public LayerMask[] EnemyType;
+
+    public LayerMask EnemyType;
     public UnitTarget UnitTarget;
     public string GetAllianceType() { return type.ToString(); }
     public Class unitClass;

@@ -8,63 +8,65 @@ public class AllianceAttackCollider : MonoBehaviour
 {
     public PolygonCollider2D AttackCollider; //need to set gameobject offset .25 cause the character is .25 up to compare with block
     public Alliance Alliance;
-    [SerializeField]private LayerMask[] enemyLayer;
-    public event EventHandler<GameObject> OnEnemyIn;
-    public event EventHandler<GameObject> OnEnemyOut;
+    [SerializeField]private LayerMask enemyLayer;
+    public event EventHandler<GameObject> OnTargetIn;
+    public event EventHandler<GameObject> OnTargetOut;
+    public UnitTarget target;
 
     private void Start()
     {
         enemyLayer = Alliance.GetAllianceUnit().EnemyType;
+        target = Alliance.GetAllianceUnit().UnitTarget;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        foreach (LayerMask layerMask in enemyLayer) { 
+        Debug.Log(Alliance.GetAllianceUnit().UnitTarget.ToString());
+        
          
-            if ((layerMask.value & (1<<collision.gameObject.layer))==0)  return;
+            if ((enemyLayer.value & (1<<collision.gameObject.layer))==0)  return;
            
-            if (Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Enemy)
+            if (target == UnitTarget.Enemy)
             {
                 if (collision.gameObject.CompareTag("Enemy"))
                 {
-                    OnEnemyIn?.Invoke(this, collision.gameObject);
+                    OnTargetIn?.Invoke(this, collision.gameObject);
                     Debug.Log("In e");
 
                 }
             }
-            else if (Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Alliance)
+            else if (target == UnitTarget.Alliance)
             {
                 if (collision.gameObject.CompareTag("Alliance"))
                 {
-                    OnEnemyIn?.Invoke(this, collision.gameObject);
+                    OnTargetIn?.Invoke(this, collision.gameObject);
                     Debug.Log("In a");
 
                 }
             }
-            else if (Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Both)
+            else if (target == UnitTarget.Both)
             {
                 if (collision.gameObject.CompareTag("Alliance") || collision.gameObject.CompareTag("Enemy"))
                 {
-                    OnEnemyIn?.Invoke(this, collision.gameObject);
+                    OnTargetIn?.Invoke(this, collision.gameObject);
                     Debug.Log("In b");
 
                 }
             }
 
-        }
+        
         
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        foreach (LayerMask layerMask in enemyLayer)
-        {
+       
            
-            if ((layerMask.value & (1 << collision.gameObject.layer)) == 0) return;
+            if ((enemyLayer.value & (1 << collision.gameObject.layer)) == 0) return;
             if (Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Enemy)
             {
                 if (collision.gameObject.CompareTag("Enemy"))
                 {
-                    OnEnemyOut?.Invoke(this, collision.gameObject);
+                    OnTargetOut?.Invoke(this, collision.gameObject);
                     Debug.Log("out e");
 
                 }
@@ -72,7 +74,7 @@ public class AllianceAttackCollider : MonoBehaviour
             {
                 if (collision.gameObject.CompareTag("Alliance"))
                 {
-                    OnEnemyOut?.Invoke(this, collision.gameObject);
+                    OnTargetOut?.Invoke(this, collision.gameObject);
                     Debug.Log("out a");
 
                 }
@@ -80,12 +82,12 @@ public class AllianceAttackCollider : MonoBehaviour
             {
                 if (collision.gameObject.CompareTag("Alliance") || collision.gameObject.CompareTag("Enemy"))
                 {
-                    OnEnemyOut?.Invoke(this, collision.gameObject);
+                    OnTargetOut?.Invoke(this, collision.gameObject);
                     Debug.Log("out b");
 
                 }
             }
-        }
+        
     }
 
     public void SetCollider(Vector2[] range,Vector2 pos)

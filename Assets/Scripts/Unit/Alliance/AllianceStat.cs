@@ -6,7 +6,7 @@ public class AllianceStat : UnitStat
 {
 
     [SerializeField] private Alliance alliance;
-  
+    public Vector2Int[] AttackRange;
     public Stat RedeployTime;
     public AllianceType type;
 
@@ -14,6 +14,7 @@ public class AllianceStat : UnitStat
     private  void Start()
     {
         Initialized();
+        alliance.testattack = Attack.Value;
     }
     protected override void Initialized()
     {

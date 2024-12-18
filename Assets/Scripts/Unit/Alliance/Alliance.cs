@@ -36,6 +36,7 @@ public class Alliance : MonoBehaviour, IDamageable, IHealable, IHasHpBar
     public event EventHandler OnGetHit;
     public event EventHandler OnUnitRetreat;
     public event EventHandler<float> OnHpChange;
+    public float testattack;
 
     private void Start()
     {
@@ -43,6 +44,7 @@ public class Alliance : MonoBehaviour, IDamageable, IHealable, IHasHpBar
         allianceDirection.OnDeloyed += AllianceDirection_OnDeloyed;
        
         LevelManager.instance.OnClickOtherTarget += LevelManager_OnClickOtherTarget;
+       
     }
 
     private void LevelManager_OnClickOtherTarget(object sender, System.EventArgs e)
@@ -210,6 +212,6 @@ public class Alliance : MonoBehaviour, IDamageable, IHealable, IHasHpBar
 
     public void Use()
     {
-      ReceiveDamaged(10,DamageType.TrueDamage);
+        Debug.Log(Stat.Attack.Value);
     }
 }

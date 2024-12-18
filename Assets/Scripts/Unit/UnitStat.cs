@@ -14,7 +14,7 @@ public class UnitStat : MonoBehaviour
     public Stat Defense;// reduce value = def/100
     public Stat Resistance;//reduce value= res/100
     public Stat Block;
-    public Vector2Int[] AttackRange;
+    
 
    
     protected virtual  void Initialized()
@@ -27,7 +27,7 @@ public class UnitStat : MonoBehaviour
         Resistance = new Stat(unit.Resistance);
         
         Block = new Stat(unit.Block);
-        AttackRange = unit.AttackRange;
+       
 
     }
 

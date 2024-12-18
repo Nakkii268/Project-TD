@@ -13,7 +13,6 @@ public class Unit : ScriptableObject
     public float Defense;
     public float Resistance;
     public int Block;
-    public Vector2Int[] AttackRange;
 }
 [Serializable]// maybe save it for skill part
 public enum DamageType

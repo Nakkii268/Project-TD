@@ -7,4 +7,11 @@ public class EnemyUnit : Unit
 {
     public float Speed;
     public bool CanBlock;
+    public EnemyType type;
+    public float AttackRange;
+}
+public enum EnemyType
+{
+    Ground,
+    Air
 }

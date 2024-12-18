@@ -179,9 +179,9 @@ public class LevelManager : MonoBehaviour
     public List<GameObject> ValidBlock(string ut)
     {
         List<GameObject> list = new List<GameObject>();
-        for(int x=0; x <5 ; x++)
+        for(int x=0; x <MapSize_X ; x++)
         {
-            for(int y=0; y < 5; y++)
+            for(int y=0; y < MapSize_Y; y++)
             {
                 if (tiles[x, y].GetComponent<Block>().IsDeloyable() && tiles[x, y].GetComponent<Block>().GetBlockType() == ut)
                 {
