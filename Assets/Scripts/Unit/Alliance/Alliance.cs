@@ -170,14 +170,15 @@ public class Alliance : MonoBehaviour, IDamageable, IHealable, IHasHpBar
     {
         if(type == DamageType.MagicDamage)
         {
-            allianceStat.currentHp -= (damage - damage * (allianceStat.Resistance.Value / 100));
+            
+            allianceStat.currentHp -= (damage - damage * (GetReductionValue(allianceStat.Resistance.Value)));
 
             OnGetHit?.Invoke(this, EventArgs.Empty);
             OnHpChange?.Invoke(this, allianceStat.currentHp/allianceStat.MaxHp.Value);
 
         }else if(type == DamageType.PhysicDamage)
         {
-            allianceStat.currentHp -= (damage - damage * (allianceStat.Defense.Value / 100));
+            allianceStat.currentHp -= (damage - damage * (GetReductionValue(allianceStat.Defense.Value)));
 
             OnGetHit?.Invoke(this, EventArgs.Empty);
             OnHpChange?.Invoke(this, allianceStat.currentHp / allianceStat.MaxHp.Value);
@@ -210,8 +211,15 @@ public class Alliance : MonoBehaviour, IDamageable, IHealable, IHasHpBar
         }
     }
 
+    public float GetReductionValue(float def)
+    {
+        if (def / 100 >= 1) return (99 / 100); // make sure dmg reduce wont exceed 99%
+        return def / 100;
+
+    }
     public void Use()
     {
         Debug.Log(Stat.Attack.Value);
     }
+
 }
