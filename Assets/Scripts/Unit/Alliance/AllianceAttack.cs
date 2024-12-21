@@ -4,14 +4,16 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class AllianceAttack : MonoBehaviour
+public class AllianceAttack : MonoBehaviour, IAttackPerform
 {
     [SerializeField] private Alliance alliance;
     [SerializeField] private float allyAttack;
     [SerializeField] private List<GameObject> targets;
     public bool attackReady {  get; private set; }
     public List<GameObject> targetsInRange { get { return targets; } }
-    public event EventHandler OnAttackPerform;
+
+    public event EventHandler<List<GameObject>> OnAttackPerform;
+   
 
     private void Start()
     {
@@ -48,7 +50,7 @@ public class AllianceAttack : MonoBehaviour
             //do both
 
         }
-        OnAttackPerform?.Invoke(this,EventArgs.Empty);
+        OnAttackPerform?.Invoke(this,targets);
         attackReady = false;
         StartCoroutine(AttackCoolDown(alliance.Stat.AttackInterval.Value));
     }

@@ -1,11 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class EnemyAttack : MonoBehaviour, IAttackPerform
+
+public interface IAttackPerform 
 {
     public event EventHandler<List<GameObject>> OnAttackPerform;
-
-   
 }

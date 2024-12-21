@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IDamageable, IHealable
+public class Enemy : Character, IDamageable, IHealable
 {
     [SerializeField] private float speed = 1f;
     [SerializeField] private Vector3 target;

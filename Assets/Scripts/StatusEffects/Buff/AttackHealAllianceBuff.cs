@@ -9,7 +9,7 @@ public class AttackHealAllianceBuff : StatusEffect
     {
         target.TryGetComponent<Alliance>(out Alliance ally);
         ally.GetAllianceUnit().UnitTarget = UnitTarget.Alliance;
-        Debug.Log(ally.GetAllianceUnit().UnitTarget.ToString());
+      
     }
     public override void OnRemove(GameObject target)
     {

@@ -6,54 +6,116 @@ using UnityEngine;
 
 public class StatusEffectHolder : MonoBehaviour
 {
-    public List<StatusEffect> effects;
+    public Character holder;   
+    public List<NormalStatusEffect> NorEffect;
+    public List<OnHitStatusEffect> OnhitEffects;
     public event EventHandler OnGetDisable;
     public event EventHandler OnEndDisable;
-    
+
+    private void Start()
+    {
+        holder.GetComponentInChildren<IAttackPerform>().OnAttackPerform += AttackPerformer_OnAttackPerform;
+        
+    }
+
+    private void AttackPerformer_OnAttackPerform(object sender, List<GameObject> e)
+    {
+        if (OnhitEffects == null) return;
+        for (int i = 0; i < OnhitEffects.Count; i++)
+        {
+            for (int j = 0; i < e.Count; j++)
+            {
+                OnhitEffects[i].OnApply(this.gameObject, e[j]);
+            }
+        }
+    }
+
 
     //add-remove
     public void AddStatusEffect(GameObject target,StatusEffect effect)
     {
-        if (effect.Stackable)
+        if (effect.SType == StatusType.Normal)
         {
-            effects.Add(effect);
-            if (effect.duration > 99)// for effect have unlimited duration, set duration >99=> only apply and wont remove auto
+            NormalStatusEffect Neffect = (NormalStatusEffect)effect;   
+            if (Neffect.Stackable)
             {
-                effect.OnApply(target);
-            }
-            StartEffectCoroutine(target, effect);
-            return;
-        }
-        //make sure status effect not stack
-
-        if (!effects.Contains(effect)) 
-        {
-            effects.Add(effect);
-            if(effect.duration > 99)// for effect have unlimited duration, set duration >99=> only apply and wont remove auto
-            {
-                effect.OnApply(target);
+                NorEffect.Add(Neffect);
+                if (Neffect.duration > 99)// for effect have unlimited duration, set duration >99=> only apply and wont remove auto
+                {
+                    Neffect.OnApply(target);
+                }
+                StartEffectCoroutine(target, Neffect);
                 return;
             }
-            StartEffectCoroutine(target, effect);
-        }
-        else
-        {
-            StopEffectCoroutine(target, effect);
-            effect.OnRemove(target);
-            StartEffectCoroutine(target, effect);
+            //make sure status effect not stack
 
+            if (!NorEffect.Contains(Neffect))
+            {
+                NorEffect.Add(Neffect);
+                if (effect.duration > 99)// for effect have unlimited duration, set duration >99=> only apply and wont remove auto
+                {
+                    Neffect.OnApply(target);
+                    return;
+                }
+                StartEffectCoroutine(target, Neffect);
+            }
+            else
+            {
+                StopEffectCoroutine(target, Neffect);
+                Neffect.OnRemove(target);
+                StartEffectCoroutine(target, Neffect);
+
+            }
+        }else if(effect.SType == StatusType.OnHit)
+        {
+            OnHitStatusEffect OHeffect = (OnHitStatusEffect)effect;
+
+            if (OHeffect.Stackable)
+            {
+                OnhitEffects.Add(OHeffect);
+                if (OHeffect.duration > 99) return;
+                StartEffectCoroutine(target, OHeffect);
+                return;
+            }
+            if (!OnhitEffects.Contains(OHeffect))
+            {
+                OnhitEffects.Add(OHeffect);
+                if (effect.duration > 99)// for effect have unlimited duration, set duration >99=> only apply and wont remove auto
+                {
+                    OHeffect.OnApply(target);
+                    return;
+                }
+                StartEffectCoroutine(target, OHeffect);
+            }
+            else
+            {
+                return;
+            }
         }
     }
 
-    public void RemoveStatusEffect(GameObject target, StatusEffect effect)
+    public void RemoveStatusEffect(StatusEffect effect)
     {
-        if (!effects.Contains(effect)) {
-            Debug.Log("----");
-            return; 
-        }
-        Debug.Log("removed");
+        if (effect.SType == StatusType.Normal)
+        {
+            NormalStatusEffect Neffect = (NormalStatusEffect)effect;
 
-        effects.Remove(effect);
+            if (!NorEffect.Contains(Neffect))
+            {
+                return;
+            }
+            NorEffect.Remove(Neffect);
+        }else if( effect.SType == StatusType.OnHit)
+        {
+            OnHitStatusEffect OHeffect = (OnHitStatusEffect)effect;
+
+            if (!OnhitEffects.Contains(OHeffect))
+            {
+                return;
+            }
+            OnhitEffects.Remove(OHeffect);
+        }
+
     }
 
     //start- stop
@@ -73,8 +135,11 @@ public class StatusEffectHolder : MonoBehaviour
         effect.OnApply(target);
         yield return new WaitForSeconds(effect.duration);
         StopEffectCoroutine(target, effect);
-        RemoveStatusEffect(target, effect);
+        RemoveStatusEffect( effect);
         effect.OnRemove(target);
 
     }
+
+    
+
 }

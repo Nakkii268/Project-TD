@@ -29,11 +29,9 @@ MonoBehaviour:
   UnitDp: 10
   RedeployTime: 10
   EnemyType:
-  - serializedVersion: 2
-    m_Bits: 2048
-  - serializedVersion: 2
-    m_Bits: 8192
+    serializedVersion: 2
+    m_Bits: 10240
   UnitTarget: 2
-  unitClass: 0
+  UnitClass: 0
   ClassBuff: {fileID: 11400000, guid: f0787e38af17e05488ef854602385f5b, type: 2}
   unitBranch: 0

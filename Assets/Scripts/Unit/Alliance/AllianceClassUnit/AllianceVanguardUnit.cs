@@ -8,5 +8,6 @@ public class AllianceVanguardUnit : AllianceUnit
     public VanguardBranch unitBranch;
     public override void ApplyClassBuff(GameObject unit)
     {
+        
     }
 }

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: New Attack Heal Alliance Buff
   m_EditorClassIdentifier: 
   duration: 99
-  Stackable: 0
+  Stackable: 1
+  SType: 0

@@ -20,13 +20,16 @@ MonoBehaviour:
   Defense: 0
   Resistance: 0
   Block: 0
-  AttackRange: []
   prefab: {fileID: 0}
-  UnitDp: 0
   unitSprite: {fileID: 0}
+  AttackRange: []
   type: 0
+  UnitDp: 0
   RedeployTime: 0
-  EnemyType: []
-  unitClass: 0
-  unitClass: 1
+  EnemyType:
+    serializedVersion: 2
+    m_Bits: 0
+  UnitTarget: 0
+  UnitClass: 1
+  ClassBuff: {fileID: 0}
   unitBranch: 0

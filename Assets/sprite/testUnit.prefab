@@ -1462,7 +1462,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackCollider: {fileID: 6309078672311890361}
   Alliance: {fileID: 4489595423137854530}
-  enemyLayer: []
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
   target: 0
 --- !u!1 &5158387285606531378
 GameObject:
@@ -1673,7 +1675,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 513cb40aec2850043b37bab4d55b9850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effects: []
+  holder: {fileID: 4489595423137854530}
+  NorEffect: []
+  OnhitEffects: []
 --- !u!1 &7299307456705108564
 GameObject:
   m_ObjectHideFlags: 0

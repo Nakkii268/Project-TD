@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Alliance : MonoBehaviour, IDamageable, IHealable, IHasHpBar
+public class Alliance : Character, IDamageable, IHealable, IHasHpBar
 {
     [SerializeField] private Vector2 unitPos;
     [SerializeField] private Vector2[] attackRange;

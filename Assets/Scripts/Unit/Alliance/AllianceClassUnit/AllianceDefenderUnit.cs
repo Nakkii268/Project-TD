@@ -6,6 +6,9 @@ public class AllianceDefenderUnit : AllianceUnit
 {
    
     public DefenderBranch unitBranch;
+   
+
+    
 
     public override void ApplyClassBuff(GameObject unit)
     {

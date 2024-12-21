@@ -39,7 +39,7 @@ public class AllianceSkill : MonoBehaviour
             }
             else if (skill.ChargeType == ChargeType.Offensive)
             {
-                alliance.AllianceAttack.OnAttackPerform += AllianceAttack_OnAttackPerform;
+                alliance.GetComponentInChildren<IAttackPerform>().OnAttackPerform += AllianceSkill_OnAttackPerform;
             }
             else if (skill.ChargeType == ChargeType.Auto)
             {
@@ -57,15 +57,17 @@ public class AllianceSkill : MonoBehaviour
 
     }
 
+    private void AllianceSkill_OnAttackPerform(object sender, List<GameObject> e)
+    {
+        SkillPointRecover(1);
+
+    }
+
     private void OnDisable()
     {
         CancelInvoke("AutoRegenSkillPoint");
     }
-    private void AllianceAttack_OnAttackPerform(object sender, System.EventArgs e)
-    {
-        SkillPointRecover(1);
-    }
-
+    
     private void Alliance_OnGetHit(object sender, System.EventArgs e)
     {
         SkillPointRecover(1);
