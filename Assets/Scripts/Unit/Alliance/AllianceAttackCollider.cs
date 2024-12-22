@@ -17,6 +17,12 @@ public class AllianceAttackCollider : MonoBehaviour
     {
         enemyLayer = Alliance.GetAllianceUnit().EnemyType;
         target = Alliance.GetAllianceUnit().UnitTarget;
+        Alliance.AllianceAttackRange.OnAttackRangeChange += AllianceAttackRange_OnAttackRangeChange;
+    }
+
+    private void AllianceAttackRange_OnAttackRangeChange(object sender, EventArgs e)
+    {
+        SetCollider(Alliance.AllianceAttackRange.AttackRange, Alliance.GetUnitPos());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -90,13 +96,13 @@ public class AllianceAttackCollider : MonoBehaviour
         
     }
 
-    public void SetCollider(Vector2[] range,Vector2 pos)
+    public void SetCollider(List<Vector2> range,Vector2 pos)
     {
         AttackCollider.points = ArrangedPointInClockWise(GetColliderPoint(range, pos));
         
 
     }
-    private Vector2[] GetColliderPoint(Vector2[] attackRange,Vector2 pos)
+    private Vector2[] GetColliderPoint(List<Vector2> attackRange,Vector2 pos)
     {
         List<Vector2> points = new List<Vector2>();
         foreach (Vector2 point in attackRange) {

@@ -132,12 +132,12 @@ public class AllianceDirection : MonoBehaviour, IBeginDragHandler, IEndDragHandl
     }
     private void HighLightAttackRange()
     {
-       Vector2[] range = alliance.GetAttackRange(direction);
+       List<Vector2> range = alliance.AllianceAttackRange.CalcAttackRange(alliance.Stat.AttackRange, direction);
         LevelManager.instance.HighLightBlockList(range, 8);
     }
     private void UnHighLightAttackRange()
     {
-       Vector2[] range = alliance.GetAttackRange(direction);
+        List<Vector2> range = alliance.AllianceAttackRange.CalcAttackRange(alliance.Stat.AttackRange,direction);
         LevelManager.instance.UnHighLightBlockList(range);
     }
 

@@ -927,6 +927,53 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &3023783751708104200
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3822055281435156090}
+  - component: {fileID: 7841855919330626395}
+  m_Layer: 0
+  m_Name: UnitAtackRanger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3822055281435156090
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3023783751708104200}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7674573493055352995}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7841855919330626395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3023783751708104200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 879121b99c2130b40a53721e49d3fff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alliance: {fileID: 4489595423137854530}
+  attackRange: []
+  extendedRange: []
 --- !u!1 &3175541071624894239
 GameObject:
   m_ObjectHideFlags: 0
@@ -1633,6 +1680,7 @@ Transform:
   - {fileID: 1960706406965795590}
   - {fileID: 1700981332374570945}
   - {fileID: 7135950834507883752}
+  - {fileID: 3822055281435156090}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4489595423137854530
@@ -1648,11 +1696,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitPos: {x: 0, y: 0}
-  attackRange: []
   unit: {fileID: 0}
   direction: {x: 0, y: 0}
   isDeloyed: 0
   allianceDirection: {fileID: 126782879211679013}
+  allianceAttackRange: {fileID: 7841855919330626395}
   allianceInfo: {fileID: 3250759801568450005}
   allienceAttackCollider: {fileID: 1334589186098370004}
   allianceStat: {fileID: 6804458130329327301}

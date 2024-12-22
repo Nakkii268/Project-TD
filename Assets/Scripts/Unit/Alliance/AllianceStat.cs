@@ -6,7 +6,7 @@ public class AllianceStat : UnitStat
 {
 
     [SerializeField] private Alliance alliance;
-    public Vector2Int[] AttackRange;
+    public List<Vector2> AttackRange;
     public Stat RedeployTime;
     public AllianceType type;
 

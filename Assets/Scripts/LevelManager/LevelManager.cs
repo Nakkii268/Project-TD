@@ -193,7 +193,7 @@ public class LevelManager : MonoBehaviour
         
         return list;
     }
-    public void HighLightBlockList(Vector2[] list,int layer)
+    public void HighLightBlockList(List<Vector2> list,int layer)
     {
         if (list == null) return;
         foreach (var tile in list)
@@ -206,7 +206,7 @@ public class LevelManager : MonoBehaviour
             
         }
     }
-    public void UnHighLightBlockList(Vector2[] list)
+    public void UnHighLightBlockList(List<Vector2> list)
     {
         if (list == null) return;
         foreach (var tile in list)

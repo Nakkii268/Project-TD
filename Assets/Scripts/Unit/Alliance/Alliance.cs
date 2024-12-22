@@ -7,12 +7,14 @@ using UnityEngine;
 public class Alliance : Character, IDamageable, IHealable, IHasHpBar
 {
     [SerializeField] private Vector2 unitPos;
-    [SerializeField] private Vector2[] attackRange;
     [SerializeField] private AllianceUnit unit;
     [SerializeField] private Vector2 direction;
     [SerializeField] private bool isDeloyed;
+
     [SerializeField] private AllianceDirection allianceDirection;
 
+    [SerializeField] private AllianceAttackRange allianceAttackRange;
+    public AllianceAttackRange AllianceAttackRange { get { return allianceAttackRange; } }
     [SerializeField] private AllianceInfomation allianceInfo;
 
     [SerializeField] private AllianceAttackCollider allienceAttackCollider;
@@ -79,35 +81,17 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         return unit;
     }
 
-    private void SetAttackRange()
+
+
+    public Vector2 GetUnitDir()
     {
-        attackRange = GetAttackRange(direction);
-       
+        return direction;
     }
 
-    public bool IsDeloyed()
+    public Vector2 GetUnitPos()
     {
-        return isDeloyed;
+        return unitPos;
     }
-    public Vector2[] GetAttackRange(Vector2 dir)
-    {
-        if (dir == Vector2.zero) return null;
-        Vector2[] range  = new Vector2[allianceStat.AttackRange.Length];
-        float angle = Vector2.SignedAngle(new Vector2(-1,0), dir) * Mathf.Deg2Rad;
-        
-        for (int i = 0; i < allianceStat.AttackRange.Length; i++)
-        {
-
-            range[i].x = unitPos.x + (allianceStat.AttackRange[i].x) * Mathf.Cos(angle) - (allianceStat.AttackRange[i].y) * Mathf.Sin(angle);
-            range[i].y = unitPos.y + (allianceStat.AttackRange[i].y ) * Mathf.Cos(angle) + (allianceStat.AttackRange[i].x) * Mathf.Sin(angle);
-            
-        }
-        return range;
-    }
-    public Vector2[] GetAttackRange()
-    {
-        return attackRange;
-    } 
     public int GetUnitCost()
     {
         return unit.UnitDp;
@@ -126,8 +110,8 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
     public void UnitDeloy(Vector2 dir) {
         allianceDirection.gameObject.SetActive(false);
         direction = dir;
-        SetAttackRange();
-        allienceAttackCollider.SetCollider(attackRange,unitPos);
+        allianceAttackRange.SetAttackRange(dir);
+        allienceAttackCollider.SetCollider(allianceAttackRange.AttackRange,unitPos);
        
         
     }
@@ -139,7 +123,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         }
         isDeloyed = false;
         directionCircle.gameObject.SetActive(false );
-        LevelManager.instance.UnHighLightBlockList(attackRange);
+        LevelManager.instance.UnHighLightBlockList(allianceAttackRange.AttackRange);
         Block block = GetComponentInParent<Block>();
         block.UnitReTreat();
         
@@ -152,7 +136,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         {
 
             allianceInfo.gameObject.SetActive(true);
-            LevelManager.instance.HighLightBlockList(attackRange, 8);
+            LevelManager.instance.HighLightBlockList(allianceAttackRange.AttackRange, 8);
             UnitUICollider.gameObject.SetActive(true);
 
         }
@@ -161,7 +145,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
     {
         allianceInfo.gameObject.SetActive(false);
         allianceDirection.gameObject.SetActive(false);
-        LevelManager.instance.UnHighLightBlockList(attackRange);
+        LevelManager.instance.UnHighLightBlockList(allianceAttackRange.AttackRange);
         UnitUICollider.gameObject.SetActive(false);
 
     }

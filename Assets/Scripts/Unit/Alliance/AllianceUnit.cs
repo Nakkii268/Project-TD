@@ -8,7 +8,7 @@ public class AllianceUnit : Unit
 {
     public GameObject prefab;
     public Sprite unitSprite;
-    public Vector2Int[] AttackRange;
+    public List<Vector2> AttackRange;
 
     public AllianceType type;
     public int UnitDp;
