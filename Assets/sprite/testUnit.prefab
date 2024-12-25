@@ -814,7 +814,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1700981332374570945}
-  - component: {fileID: 5668907197910484308}
+  - component: {fileID: 581285926706446763}
   m_Layer: 0
   m_Name: UnitAtack
   m_TagString: Untagged
@@ -837,7 +837,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7674573493055352995}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5668907197910484308
+--- !u!114 &581285926706446763
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -846,11 +846,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2870697607256348856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e68be86a192a6a2499f1cff1149d55da, type: 3}
+  m_Script: {fileID: 11500000, guid: 66843eaff7f763640bf196f79413b39c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   alliance: {fileID: 4489595423137854530}
-  allyAttack: 100
+  allyAttack: 0
   targets: []
 --- !u!1 &2956980803203035853
 GameObject:
@@ -1705,7 +1705,7 @@ MonoBehaviour:
   allienceAttackCollider: {fileID: 1334589186098370004}
   allianceStat: {fileID: 6804458130329327301}
   allianceSkill: {fileID: 185475534100180099}
-  allianceAttack: {fileID: 5668907197910484308}
+  allianceAttack: {fileID: 581285926706446763}
   directionCircle: {fileID: 2478142655504761343}
   heathBar: {fileID: 4409546998237681809}
   UnitUICollider: {fileID: 7719200145361649708}

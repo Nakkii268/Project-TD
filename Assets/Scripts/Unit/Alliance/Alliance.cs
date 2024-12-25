@@ -29,6 +29,9 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
     [SerializeField] private AllianceAttack allianceAttack;
     public AllianceAttack AllianceAttack { get { return allianceAttack; } }
 
+    [SerializeField] private AllianceBlock allianceBlock;
+    public AllianceBlock AllianceBlock { get {  return allianceBlock; } }   
+
     [SerializeField] private AllianceDirectionCircle directionCircle;
     [SerializeField] private AllianceHeathBar heathBar;
     
@@ -206,4 +209,8 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         Debug.Log(Stat.Attack.Value);
     }
 
+    public float GetPercentHp()
+    {
+        return Stat.currentHp / Stat.MaxHp.Value;
+    }
 }

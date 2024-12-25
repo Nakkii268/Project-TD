@@ -18,7 +18,7 @@ MonoBehaviour:
   skillEffect: 0
   skillTarget: 2
   ChargeType: 2
-  SkillDuration: 0.1
+  SkillDuration: 10
   SkillPoint: 10
   SkillDmg: 1000
   DamageType: 0

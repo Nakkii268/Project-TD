@@ -6,9 +6,11 @@ using UnityEngine;
 
 public class AllianceAttack : MonoBehaviour, IAttackPerform
 {
-    [SerializeField] private Alliance alliance;
-    [SerializeField] private float allyAttack;
-    [SerializeField] private List<GameObject> targets;
+    [SerializeField] protected Alliance alliance;
+    public Alliance Alliance {  get { return alliance; } }
+    [SerializeField] protected float allyAttack;
+    [SerializeField] protected List<GameObject> targets;
+    [SerializeField] protected TargetCount targetCount;
     public bool attackReady {  get; private set; }
     public List<GameObject> targetsInRange { get { return targets; } }
 
@@ -32,26 +34,13 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
         AttackPerform();
     }
 
-    public void AttackPerform()//get attack.value right from stat
+    public virtual void AttackPerform()//get attack.value right from stat
     {
-        Debug.Log("attack");
-        if (alliance.GetAllianceUnit().UnitTarget == UnitTarget.Enemy) 
-        {
-            //attack enemy
-    
-        }
-        else if(alliance.GetAllianceUnit().UnitTarget == UnitTarget.Alliance)
-        {
-            //heal alliance
-
-        }
-        else if(alliance.GetAllianceUnit().UnitTarget == UnitTarget.Both)
-        {
-            //do both
-
-        }
+        
         OnAttackPerform?.Invoke(this,targets);
         attackReady = false;
+        Debug.Log("not ready");
+
         StartCoroutine(AttackCoolDown(alliance.Stat.AttackInterval.Value));
     }
     public bool IsHaveTarget()
@@ -67,6 +56,33 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
         targets.Remove(enemy);
     }
 
+    protected List<GameObject> GetMinHpTarget() {
+        List<GameObject> toReturn = new List<GameObject>();
+        GameObject min = targets[0];
+        for (int i = 1; i < targets.Count; i++) {
+            if (targets[i].GetComponent<IDamageable>().GetPercentHp() < min.GetComponent<IDamageable>().GetPercentHp())
+            {
+                min = targets[i];
+            }
+        }
+        toReturn.Add(min);  
+        return toReturn;
+    }
+    protected List<GameObject> GetTarget()
+    {
+        if(targetCount == TargetCount.Single)
+        {
+            return GetMinHpTarget();
+        }
+        else if(targetCount == TargetCount.Blocked)
+        {
+            return alliance.AllianceBlock.GetBlockedEnemy();
+        }else if(targetCount == TargetCount.Blocked)
+        {
+            return targets;
+        }
+        return null;
+    }
     private IEnumerator AttackCoolDown(float AttackSpeed)
     {
         float attackInterval=0;
@@ -77,6 +93,15 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
             yield return null;
         }
         attackReady = true;
+        Debug.Log("ready");
     }
+
     
+    
+}
+public enum TargetCount
+{
+    Single,
+    Blocked,
+    AllInRange
 }

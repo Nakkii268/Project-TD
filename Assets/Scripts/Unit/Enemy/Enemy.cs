@@ -15,6 +15,29 @@ public class Enemy : Character, IDamageable, IHealable
 
     public event EventHandler OnGetHit;
 
+   
+
+    private void Start()
+    {
+        target = path[pathIndex];
+    }
+
+    private void Update()
+    {
+       
+        if(Vector3.Distance(new Vector3( transform.position.x, transform.position.y,0), new Vector3(target.x,target.y,0)) < .1f)
+        {
+            if (pathIndex >= path.Length-1) return;
+            pathIndex++;
+            target = path[pathIndex];
+
+        }
+        Vector2 dir = (Vector2)target - new Vector2(transform.position.x, transform.position.y);
+        transform.Translate(speed * Time.deltaTime * (Vector3)dir);
+        
+    }
+
+
     public void Heal(float amout)
     {
         stat.currentHp += amout;
@@ -46,25 +69,7 @@ public class Enemy : Character, IDamageable, IHealable
         }
     }
 
-    private void Start()
-    {
-        target = path[pathIndex];
-    }
-
-    private void Update()
-    {
-       
-        if(Vector3.Distance(new Vector3( transform.position.x, transform.position.y,0), new Vector3(target.x,target.y,0)) < .1f)
-        {
-            if (pathIndex >= path.Length-1) return;
-            pathIndex++;
-            target = path[pathIndex];
-
-        }
-        Vector2 dir = (Vector2)target - new Vector2(transform.position.x, transform.position.y);
-        transform.Translate(speed * Time.deltaTime * (Vector3)dir);
-        
-    }
+  
     public void Blocked()
     {
         Debug.Log("Blocked");
@@ -78,5 +83,10 @@ public class Enemy : Character, IDamageable, IHealable
     public void DeadBtn()
     {
         OnEnemyDead?.Invoke(this, this.gameObject);
+    }
+
+    public float GetPercentHp()
+    {
+        return stat.currentHp / stat.MaxHp.Value;
     }
 }

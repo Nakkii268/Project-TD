@@ -51,7 +51,10 @@ public class AllianceBlock : MonoBehaviour
         }
     }
 
-  
+    public List<GameObject> GetBlockedEnemy()
+    {
+        return blockedEnemies;
+    }
 
     private void BlockOccupancy()
     {

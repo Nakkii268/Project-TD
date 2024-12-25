@@ -10,6 +10,7 @@ public class DamageTypeSkills : ActiveSkills
 
     public override void SkillActivate(GameObject User, List<GameObject> target)
     {
+        Debug.Log("dmged");
         if (skillTarget == SkillTarget.Enemy)
         {
             foreach (GameObject tg in target)

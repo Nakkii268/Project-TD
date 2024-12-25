@@ -20,6 +20,7 @@ public class StatusEffectHolder : MonoBehaviour
 
     private void AttackPerformer_OnAttackPerform(object sender, List<GameObject> e)
     {
+        Debug.Log(sender.ToString());
         if (OnhitEffects == null) return;
         for (int i = 0; i < OnhitEffects.Count; i++)
         {
