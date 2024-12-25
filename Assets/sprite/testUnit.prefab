@@ -852,6 +852,7 @@ MonoBehaviour:
   alliance: {fileID: 4489595423137854530}
   allyAttack: 0
   targets: []
+  targetCount: 0
 --- !u!1 &2956980803203035853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1706,6 +1707,7 @@ MonoBehaviour:
   allianceStat: {fileID: 6804458130329327301}
   allianceSkill: {fileID: 185475534100180099}
   allianceAttack: {fileID: 581285926706446763}
+  allianceBlock: {fileID: 7795449935590479146}
   directionCircle: {fileID: 2478142655504761343}
   heathBar: {fileID: 4409546998237681809}
   UnitUICollider: {fileID: 7719200145361649708}

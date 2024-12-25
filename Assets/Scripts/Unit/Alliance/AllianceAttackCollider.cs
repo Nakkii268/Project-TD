@@ -168,4 +168,9 @@ public class AllianceAttackCollider : MonoBehaviour
         angle += 360;
         return angle;
     }
+
+    public LayerMask GetEnemyLayer()
+    {
+        return enemyLayer;
+    }
 }

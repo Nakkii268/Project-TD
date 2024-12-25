@@ -83,6 +83,11 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
         }
         return null;
     }
+
+    public void SetTargetCount(TargetCount tc)
+    {
+        targetCount = tc;
+    }
     private IEnumerator AttackCoolDown(float AttackSpeed)
     {
         float attackInterval=0;
