@@ -16,6 +16,7 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
     public List<GameObject> targetsInRange { get { return targets; } }
 
     public event EventHandler<List<GameObject>> OnAttackPerform;
+    public event EventHandler OnNoEnemy;
    
 
     private void Start()
@@ -30,6 +31,10 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
     private void AllienceAttackCollider_OnEnemyOut(object sender, GameObject e)
     {
         RemoveTarget(e);
+        if (!IsHaveTarget()) //interupt attack if target out when attack already perform but still not dmg target yet (or may be already dmg)
+        {
+            OnNoEnemy?.Invoke(this, EventArgs.Empty); 
+        }
     }
 
     private void AllienceAttackCollider_OnEnemyIn(object sender, GameObject e)
@@ -98,13 +103,8 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
     }
     private IEnumerator AttackCoolDown(float AttackSpeed)
     {
-        float attackInterval=0;
-          
-        while (attackInterval < AttackSpeed)
-        {
-            attackInterval += Time.deltaTime;
-            yield return null;
-        }
+        
+        yield return new WaitForSeconds(AttackSpeed);
         attackReady = true;
         Debug.Log("ready");
     }

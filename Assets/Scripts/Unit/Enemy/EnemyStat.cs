@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class EnemyStat : UnitStat
 {
-    public EnemyUnit eUnit;
    
-    public float CurrentHp;
+   
+    
     public float AttackRange;
     public Stat Speed;
     public bool CanBlock;
@@ -21,7 +21,7 @@ public class EnemyStat : UnitStat
     protected override void Initialized()
     {
         
-        unit = eUnit;
+       
         EnemyUnit enemyUnit = (EnemyUnit)unit;
         MaxHp = new Stat(enemyUnit.Heath);
         Attack = new Stat(enemyUnit.Attack);

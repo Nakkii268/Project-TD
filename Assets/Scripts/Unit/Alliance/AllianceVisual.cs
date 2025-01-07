@@ -16,7 +16,7 @@ public class AllianceVisual : MonoBehaviour
     //for test
     public void PlayIdleAnim()
     {
-        animator.SetBool("Idle",true);
+        animator.Play("test");
     }
     public void StopIdleAnim()
     {
@@ -25,7 +25,8 @@ public class AllianceVisual : MonoBehaviour
     }
     public void PlayAttackAnim()
     {
-        animator.SetBool("Attack", true);
+
+        animator.Play("testAttack");
 
     }
     public void StopAttackAnim()

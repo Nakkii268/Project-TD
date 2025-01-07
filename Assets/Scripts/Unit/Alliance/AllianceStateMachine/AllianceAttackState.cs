@@ -21,22 +21,37 @@ public class AllianceAttackState : AllianceState, IState
     public override void Exit() 
     { 
         base.Exit();
-       //stop anim
-    }
-    public override void Update() 
-    {
-    
-    }
-    public override void FixedUpdate()
-    {
+        Debug.Log("aatack out");
+
     }
 
-    public override void OnAnimationEnterEvent()
+    protected override void AddCallBack()
     {
+        base.AddCallBack();
+        AllianceSMManager.Alliance.AllianceAttack.OnNoEnemy += Alliance_OnNoEnemy;
+    }
+    protected override void RemoveCallBack()
+    {
+        base.RemoveCallBack();
+        AllianceSMManager.Alliance.AllianceAttack.OnNoEnemy -= Alliance_OnNoEnemy;
+
+    }
+
+    private void Alliance_OnNoEnemy(object sender, System.EventArgs e)
+    {
+        if (AllianceSMManager.Alliance.AllianceSkill.IsSkillDuration)
+        {
+            AllianceSMManager.ChangeState(AllianceSMManager.AllianceSkillDuarationState);
+        }
+        AllianceSMManager.ChangeState(AllianceSMManager.AllianceIdleState);
     }
 
     public override void OnAnimationExitEvent() 
     {
+        if (AllianceSMManager.Alliance.AllianceSkill.IsSkillDuration)
+        {
+            AllianceSMManager.ChangeState(AllianceSMManager.AllianceSkillDuarationState);
+        }
         AllianceSMManager.ChangeState(AllianceSMManager.AllianceIdleState);
     }
 
