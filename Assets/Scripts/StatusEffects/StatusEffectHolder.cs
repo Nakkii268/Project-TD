@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class StatusEffectHolder : MonoBehaviour
@@ -119,6 +120,14 @@ public class StatusEffectHolder : MonoBehaviour
 
     }
 
+    public void GetDisableEffect()
+    {
+        OnGetDisable?.Invoke(this,EventArgs.Empty);
+    }
+    public void RemoveDisableEffect()
+    {
+        OnEndDisable?.Invoke(this,EventArgs.Empty);
+    }
     //start- stop
     public void StartEffectCoroutine(GameObject target, StatusEffect effect)
     {

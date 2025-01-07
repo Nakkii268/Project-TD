@@ -21,11 +21,7 @@ public class AllianceRangedAttack : AllianceAttack
             //heal alliance
 
         }
-        else if (Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Both)
-        {
-            //do both
-
-        }
+       
         base.AttackPerform();
     }
 

@@ -853,6 +853,7 @@ MonoBehaviour:
   allyAttack: 0
   targets: []
   targetCount: 0
+  damageType: 0
 --- !u!1 &2956980803203035853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,6 +1701,7 @@ MonoBehaviour:
   unit: {fileID: 0}
   direction: {x: 0, y: 0}
   isDeloyed: 0
+  allianceVisual: {fileID: 1051113050822113150}
   allianceDirection: {fileID: 126782879211679013}
   allianceAttackRange: {fileID: 7841855919330626395}
   allianceInfo: {fileID: 3250759801568450005}
@@ -1710,6 +1712,7 @@ MonoBehaviour:
   allianceBlock: {fileID: 7795449935590479146}
   directionCircle: {fileID: 2478142655504761343}
   heathBar: {fileID: 4409546998237681809}
+  statusEffectHolder: {fileID: 6074738120762529015}
   UnitUICollider: {fileID: 7719200145361649708}
   charIndex: 0
   testattack: 0
@@ -1779,7 +1782,8 @@ MonoBehaviour:
   startSkillPoint: 0
   curSkillPoint: 50
   SkillActiveBtn: {fileID: 7944637011915187758}
-  IsSkillDuration: 0
+  _isSkillDuration: 0
+  CanAttackInDuration: 0
 --- !u!1 &7575087738944473143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1959,6 +1963,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3225348828468290020}
   - component: {fileID: 2106077116881854328}
+  - component: {fileID: 5796042052960294550}
+  - component: {fileID: 1051113050822113150}
   m_Layer: 0
   m_Name: CharacterVisual
   m_TagString: Untagged
@@ -2033,6 +2039,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &5796042052960294550
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7814032976581365713}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 23869c0d8b3d0f140b83d573169700bc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1051113050822113150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7814032976581365713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d21e9ea6f93303e4a939d8885bd3750f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alliance: {fileID: 4489595423137854530}
+  animator: {fileID: 5796042052960294550}
 --- !u!1 &7919262810285068697
 GameObject:
   m_ObjectHideFlags: 0

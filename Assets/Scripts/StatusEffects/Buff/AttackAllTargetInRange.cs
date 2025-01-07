@@ -1,13 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.WSA;
 
-[CreateAssetMenu(menuName = "StatusEffect/OnHitEffect/AttackAllInRange")]
-public class AttackAllTargetInRange : OnHitStatusEffect
+[CreateAssetMenu(menuName = "StatusEffect/AttackAllInRange")]
+public class AttackAllTargetInRange : NormalStatusEffect
 {
-    public override void OnApply(GameObject holder, GameObject target)
+    public override void OnApply(GameObject target)
     {
-        holder.GetComponent<Alliance>().AllianceAttack.SetTargetCount(TargetCount.AllInRange);
+        target.GetComponent<Alliance>().AllianceAttack.SetTargetCount(TargetCount.AllInRange);
+    }
+
+    public override void OnRemove(GameObject target)
+    {
+        target.GetComponent<Alliance>().AllianceAttack.SetTargetCount(TargetCount.Single);
+
     }
 
 }

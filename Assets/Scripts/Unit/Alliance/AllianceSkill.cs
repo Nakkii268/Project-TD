@@ -14,9 +14,12 @@ public class AllianceSkill : MonoBehaviour
     [SerializeField] private float startSkillPoint;
     [SerializeField]private float curSkillPoint;
     [SerializeField] private Button SkillActiveBtn;
-    [SerializeField] private bool IsSkillDuration;
+    [SerializeField] private bool _isSkillDuration;
+    public bool CanAttackInDuration;
+    public bool IsSkillDuration {  get { return _isSkillDuration; } }
     public event EventHandler<float> OnSpChange;
     public event EventHandler<float> OnSkillActive;
+    public event EventHandler OnSkillEnd;
     private void Start()
     {
         
@@ -45,7 +48,9 @@ public class AllianceSkill : MonoBehaviour
             {
                 InvokeRepeating("AutoRegenSkillPoint", 1f, 1f);
             }
-        }else if(OnUseSkill.skillType == SkillType.Passive)
+            CanAttackInDuration = skill.CanAttack;
+        }
+        else if(OnUseSkill.skillType == SkillType.Passive)
         {
             OnUseSkill.SkillActivate(alliance.gameObject, target);
             
@@ -53,7 +58,7 @@ public class AllianceSkill : MonoBehaviour
 
 
         }
-
+        
 
     }
 
@@ -91,7 +96,7 @@ public class AllianceSkill : MonoBehaviour
     }
     private void SkillPointRecover(float amout)
     {
-        if (IsSkillDuration) return;
+        if (_isSkillDuration) return;
 
         ActiveSkills skill = (ActiveSkills)OnUseSkill;
 
@@ -137,9 +142,10 @@ public class AllianceSkill : MonoBehaviour
     }
     private IEnumerator SkillActiveDurtation()
     {
-        IsSkillDuration = true;
+        _isSkillDuration = true;
         ActiveSkills skill = (ActiveSkills)OnUseSkill;
         yield return new WaitForSeconds(skill.SkillDuration);
-        IsSkillDuration = false;
+        OnSkillEnd?.Invoke(this, EventArgs.Empty);
+        _isSkillDuration = false;
     }
 }

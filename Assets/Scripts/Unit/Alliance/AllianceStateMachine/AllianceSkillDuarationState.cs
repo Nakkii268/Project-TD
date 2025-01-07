@@ -10,27 +10,36 @@ public class AllianceSkillDuarationState : AllianceState, IState
 
     public override void Enter()
     {
+        base.Enter();
+        //play anim
     }
     public override void Exit()
     {
+        base.Exit();
     }
     public override void Update()
     {
-
-    }
-    public override void FixedUpdate()
-    {
-    }
-
-    public override void OnAnimationEnterEvent()
-    {
+        if (!AllianceSMManager.Alliance.AllianceSkill.CanAttackInDuration) return;
+        if (AllianceSMManager.Alliance.AllianceAttack.CanPerformAttack())
+        {
+            AllianceSMManager.ChangeState(AllianceSMManager.AllianceAttackState);
+        }
     }
 
-    public override void OnAnimationExitEvent()
+    protected override void AddCallBack()
     {
+        base.AddCallBack();
+        AllianceSMManager.Alliance.AllianceSkill.OnSkillEnd += AllianceSkill_OnSkillEnd;
+    }
+    protected override void RemoveCallBack()
+    {
+        base.RemoveCallBack();
+        AllianceSMManager.Alliance.AllianceSkill.OnSkillEnd -= AllianceSkill_OnSkillEnd;
+
     }
 
-    public override void OnAnimationTransitionEvent()
+    private void AllianceSkill_OnSkillEnd(object sender, System.EventArgs e)
     {
+        AllianceSMManager.ChangeState(AllianceSMManager.AllianceIdleState);
     }
 }

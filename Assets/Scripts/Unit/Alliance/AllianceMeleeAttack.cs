@@ -7,22 +7,33 @@ public class AllianceMeleeAttack : AllianceAttack
     public override void AttackPerform()
     {
         Debug.Log("attack");
+        
+        base.AttackPerform();
+        
+    }
+
+    public override void Attack()
+    {
+        List<GameObject> target = GetTarget();
         if (Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Enemy)
         {
-            //attack enemy
+            foreach (GameObject tg in target)
+            {
+                tg.GetComponentInParent<IDamageable>().ReceiveDamaged(allyAttack, damageType);
+            }
 
         }
         else if (Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Alliance)
         {
-            //heal alliance
+            AllianceHealerUnit healScale = (AllianceHealerUnit)alliance.GetAllianceUnit();
+            
+            foreach (GameObject tg in target)
+            {
+                tg.GetComponentInParent<IHealable>().Heal(allyAttack,1);
+            }
 
         }
-        else if (Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Both)
-        {
-            //do both
-
-        }
-        base.AttackPerform();
-        
+       
+       
     }
 }

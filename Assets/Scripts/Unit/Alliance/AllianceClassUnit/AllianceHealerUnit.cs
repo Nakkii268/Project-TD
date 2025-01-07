@@ -5,6 +5,7 @@ using UnityEngine;
 public class AllianceHealerUnit : AllianceUnit
 {
     public HealerBranch unitBranch;
+    public float HealScale;
     public override void ApplyClassBuff(GameObject unit)
     {
     }

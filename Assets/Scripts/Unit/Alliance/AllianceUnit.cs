@@ -16,6 +16,8 @@ public class AllianceUnit : Unit
 
     public LayerMask EnemyType;
     public UnitTarget UnitTarget;
+    public TargetCount TargetCount;
+    public DamageType DamageType;
     public string GetAllianceType() { return type.ToString(); }
     public Class UnitClass;
     public StatusEffect ClassBuff;
@@ -32,7 +34,7 @@ public class AllianceUnit : Unit
 public enum UnitTarget
 {
     Enemy,
-    Alliance,
-    Both
+    Alliance
+    
 }
 

@@ -11,6 +11,10 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
     [SerializeField] private Vector2 direction;
     [SerializeField] private bool isDeloyed;
 
+
+    [SerializeField] private AllianceVisual allianceVisual;
+    public AllianceVisual AllianceVisual { get { return allianceVisual; } }
+
     [SerializeField] private AllianceDirection allianceDirection;
 
     [SerializeField] private AllianceAttackRange allianceAttackRange;
@@ -34,24 +38,41 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
 
     [SerializeField] private AllianceDirectionCircle directionCircle;
     [SerializeField] private AllianceHeathBar heathBar;
+    [SerializeField] private StatusEffectHolder statusEffectHolder;
+    public StatusEffectHolder StatusEffectHolder { get {    return statusEffectHolder; } }  
+
+    //state machine
+    [SerializeField] private AllianceSMManager stateMachine; 
+    public AllianceSMManager StateMachine { get { return stateMachine; } }
     
+
     public Collider UnitUICollider;
     public int charIndex;
 
     public event EventHandler OnGetHit;
     public event EventHandler OnUnitRetreat;
     public event EventHandler<float> OnHpChange;
+    public event EventHandler OnUnitDead;
     public float testattack;
 
+    private void Awake()
+    {
+        stateMachine = new AllianceSMManager(this);
+
+    }
     private void Start()
     {
     
         allianceDirection.OnDeloyed += AllianceDirection_OnDeloyed;
        
         LevelManager.instance.OnClickOtherTarget += LevelManager_OnClickOtherTarget;
-       
-    }
 
+    }
+    private void Update()
+    {
+        stateMachine.Update();
+    }
+   
     private void LevelManager_OnClickOtherTarget(object sender, System.EventArgs e)
     {
         if (allianceInfo == null) return;
@@ -69,7 +90,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
     }
 
     
-    private void AllianceDirection_OnDeloyed(object sender, Vector2 e)
+    private void AllianceDirection_OnDeloyed(object sender, Vector2 e) // just drop to block not really deploy
     {
         isDeloyed = true;
         direction = e;
@@ -77,9 +98,10 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         directionCircle.gameObject.SetActive(true);
         directionCircle.Initialize(e);
         InGameCharListUI.Instance.HideDeloyedUnitUI(charIndex);
+
     }
 
-   public AllianceUnit GetAllianceUnit()
+    public AllianceUnit GetAllianceUnit()
     {
         return unit;
     }
@@ -115,8 +137,9 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         direction = dir;
         allianceAttackRange.SetAttackRange(dir);
         allienceAttackCollider.SetCollider(allianceAttackRange.AttackRange,unitPos);
-       
-        
+        stateMachine.ChangeState(stateMachine.AllianceIdleState);
+
+
     }
     public void Retreat(bool isRetreat)
     {
@@ -182,6 +205,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         if(allianceStat.currentHp < 0)
         {
             allianceStat.currentHp = 0;
+            OnUnitDead?.Invoke(this, EventArgs.Empty);
         }
     }
 
@@ -204,7 +228,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         return def / 100;
 
     }
-    public void Use()
+    public void Use() //test func
     {
         Debug.Log(Stat.Attack.Value);
     }
@@ -212,5 +236,10 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
     public float GetPercentHp()
     {
         return Stat.currentHp / Stat.MaxHp.Value;
+    }
+
+    public void Heal(float amout, float Scale)
+    {
+        throw new NotImplementedException();
     }
 }

@@ -9,16 +9,21 @@ public class AllianceIdleState : AllianceState, IState
     }
     public override void Enter()
     {
+        Debug.Log("idle in");
 
-        //play anim
+        AllianceSMManager.Alliance.AllianceVisual.PlayIdleAnim();
     }
     public override void Exit()
     {
-        //stopanim
+        AllianceSMManager.Alliance.AllianceVisual.StopIdleAnim();
+
     }
     public override void Update()
     {
-
+        if (AllianceSMManager.Alliance.AllianceAttack.CanPerformAttack())
+        {
+            AllianceSMManager.ChangeState(AllianceSMManager.AllianceAttackState);
+        }
     }
     public override void FixedUpdate()
     {

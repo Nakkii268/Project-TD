@@ -27,7 +27,7 @@ public class AllianceAttackCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(Alliance.GetAllianceUnit().UnitTarget.ToString());
+        
         
          
             if ((enemyLayer.value & (1<<collision.gameObject.layer))==0)  return;
@@ -50,15 +50,7 @@ public class AllianceAttackCollider : MonoBehaviour
 
                 }
             }
-            else if (target == UnitTarget.Both)
-            {
-                if (collision.gameObject.CompareTag("Alliance") || collision.gameObject.CompareTag("Enemy"))
-                {
-                    OnTargetIn?.Invoke(this, collision.gameObject);
-                    Debug.Log("In b");
-
-                }
-            }
+            
 
         
         
@@ -82,14 +74,6 @@ public class AllianceAttackCollider : MonoBehaviour
                 {
                     OnTargetOut?.Invoke(this, collision.gameObject);
                     Debug.Log("out a");
-
-                }
-            }else if(Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Both)
-            {
-                if (collision.gameObject.CompareTag("Alliance") || collision.gameObject.CompareTag("Enemy"))
-                {
-                    OnTargetOut?.Invoke(this, collision.gameObject);
-                    Debug.Log("out b");
 
                 }
             }

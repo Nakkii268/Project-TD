@@ -3792,11 +3792,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7674573493055352995, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: 3.73
       objectReference: {fileID: 0}
     - target: {fileID: 7674573493055352995, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.94
       objectReference: {fileID: 0}
     - target: {fileID: 7674573493055352995, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10315,16 +10315,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitPos: {x: 0, y: 0}
-  attackRange: []
   unit: {fileID: 0}
   direction: {x: 0, y: 0}
   isDeloyed: 0
   allianceDirection: {fileID: 126782877970747686}
+  allianceAttackRange: {fileID: 0}
   allianceInfo: {fileID: 6472264804625271292}
   allienceAttackCollider: {fileID: 0}
   allianceStat: {fileID: 0}
   allianceSkill: {fileID: 0}
   allianceAttack: {fileID: 0}
+  allianceBlock: {fileID: 0}
   directionCircle: {fileID: 0}
   heathBar: {fileID: 0}
   UnitUICollider: {fileID: 7719200144387996719}

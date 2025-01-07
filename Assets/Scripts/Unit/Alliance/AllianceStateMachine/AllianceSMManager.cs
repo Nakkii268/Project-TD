@@ -10,6 +10,9 @@ public class AllianceSMManager : StateMachineManager
     public AllianceSkillDuarationState AllianceSkillDuarationState { get; }
     public AllianceDisableState AllianceDisableState { get; }
 
+    public AllianceDeadState AllianceDeadState { get; }
+    public AllianceGetHitState AllianceGetHitState { get; }
+
     public AllianceSMManager (Alliance alliance)
     {
         Alliance = alliance;
@@ -17,5 +20,6 @@ public class AllianceSMManager : StateMachineManager
         AllianceAttackState = new AllianceAttackState(this);
         AllianceSkillDuarationState = new AllianceSkillDuarationState(this);
         AllianceDisableState = new AllianceDisableState(this);
+        AllianceGetHitState = new AllianceGetHitState(this);    
     }
 }

@@ -89,4 +89,9 @@ public class Enemy : Character, IDamageable, IHealable
     {
         return stat.currentHp / stat.MaxHp.Value;
     }
+
+    public void Heal(float amout, float Scale)
+    {
+        throw new NotImplementedException();
+    }
 }

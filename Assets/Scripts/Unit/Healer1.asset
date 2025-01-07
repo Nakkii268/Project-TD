@@ -30,6 +30,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   UnitTarget: 0
+  TargetCount: 0
+  DamageType: 0
   UnitClass: 0
   ClassBuff: {fileID: 0}
-  unitBranch: 1
+  unitBranch: 0
+  HealScale: 0

@@ -11,7 +11,8 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
     [SerializeField] protected float allyAttack;
     [SerializeField] protected List<GameObject> targets;
     [SerializeField] protected TargetCount targetCount;
-    public bool attackReady {  get; private set; }
+    [SerializeField] protected DamageType damageType;
+    [SerializeField] protected bool attackReady {  get; private set; }
     public List<GameObject> targetsInRange { get { return targets; } }
 
     public event EventHandler<List<GameObject>> OnAttackPerform;
@@ -21,6 +22,9 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
     {
         alliance.AllienceAttackCollider.OnTargetIn += AllienceAttackCollider_OnEnemyIn;
         alliance.AllienceAttackCollider.OnTargetOut += AllienceAttackCollider_OnEnemyOut;
+        targetCount = alliance.GetAllianceUnit().TargetCount;
+        damageType = alliance.GetAllianceUnit().DamageType;
+        attackReady = true;
     }
 
     private void AllienceAttackCollider_OnEnemyOut(object sender, GameObject e)
@@ -31,21 +35,25 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
     private void AllienceAttackCollider_OnEnemyIn(object sender, GameObject e)
     {
         AddTarget(e);
-        AttackPerform();
+       
     }
 
-    public virtual void AttackPerform()//get attack.value right from stat
+    public virtual void AttackPerform()
     {
         
         OnAttackPerform?.Invoke(this,targets);
         attackReady = false;
-        Debug.Log("not ready");
-
         StartCoroutine(AttackCoolDown(alliance.Stat.AttackInterval.Value));
     }
+
+    public virtual void Attack() { }
     public bool IsHaveTarget()
     {
         return targetsInRange.Count > 0;
+    }
+    public bool CanPerformAttack()
+    {
+        return IsHaveTarget() && attackReady;
     }
     public void AddTarget(GameObject enemy)
     {

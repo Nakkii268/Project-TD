@@ -20,5 +20,6 @@ MonoBehaviour:
   ChargeType: 2
   SkillDuration: 5
   SkillPoint: 10
+  CanAttack: 1
   effects:
   - {fileID: 11400000, guid: f0787e38af17e05488ef854602385f5b, type: 2}

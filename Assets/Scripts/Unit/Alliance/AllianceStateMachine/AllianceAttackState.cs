@@ -10,12 +10,17 @@ public class AllianceAttackState : AllianceState, IState
 
     public override void Enter()
     {
-        //play animation
-        //get dm value, dmg ttype
-        //attack
+        base.Enter();
+
+
+        Debug.Log("aatack in");
+        AllianceSMManager.Alliance.AllianceAttack.AttackPerform();
+        AllianceSMManager.Alliance.AllianceVisual.PlayAttackAnim();
+
     }
     public override void Exit() 
     { 
+        base.Exit();
        //stop anim
     }
     public override void Update() 
@@ -31,11 +36,14 @@ public class AllianceAttackState : AllianceState, IState
     }
 
     public override void OnAnimationExitEvent() 
-    { 
+    {
+        AllianceSMManager.ChangeState(AllianceSMManager.AllianceIdleState);
     }
 
     public override void OnAnimationTransitionEvent()
     {
+        AllianceSMManager.Alliance.AllianceAttack.Attack();
+
     }
 }
 

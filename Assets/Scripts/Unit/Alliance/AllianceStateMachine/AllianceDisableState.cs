@@ -10,27 +10,26 @@ public class AllianceDisableState : AllianceState, IState
 
     public override void Enter()
     {
+        base.Enter();   
     }
     public override void Exit()
     {
+        base.Exit();
     }
-    public override void Update()
+    protected override void AddCallBack()
     {
+        base.AddCallBack();
+        AllianceSMManager.Alliance.StatusEffectHolder.OnEndDisable += StatusEffectHolder_OnEndDisable;
+    }
+    protected override void RemoveCallBack()
+    {
+        base.RemoveCallBack();
+        AllianceSMManager.Alliance.StatusEffectHolder.OnEndDisable -= StatusEffectHolder_OnEndDisable;
 
     }
-    public override void FixedUpdate()
+    private void StatusEffectHolder_OnEndDisable(object sender, System.EventArgs e)
     {
-    }
+        AllianceSMManager.ChangeState(AllianceSMManager.AllianceIdleState);
 
-    public override void OnAnimationEnterEvent()
-    {
-    }
-
-    public override void OnAnimationExitEvent()
-    {
-    }
-
-    public override void OnAnimationTransitionEvent()
-    {
     }
 }
