@@ -10,7 +10,8 @@ public class AllianceDisableState : AllianceState, IState
 
     public override void Enter()
     {
-        base.Enter();   
+        base.Enter();
+        AllianceSMManager.Alliance.AllianceVisual.PlayDisableAnim();
     }
     public override void Exit()
     {

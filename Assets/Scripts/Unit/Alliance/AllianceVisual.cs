@@ -38,6 +38,10 @@ public class AllianceVisual : MonoBehaviour
     {
         animator.Play("Get Hit");
     }
+    public void PlayDisableAnim()
+    {
+        animator.Play("Disable");
+    }
     public void PlayDeadAnim()
     {
         animator.SetBool("Dead", true);

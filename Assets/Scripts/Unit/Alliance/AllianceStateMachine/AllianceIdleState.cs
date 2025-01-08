@@ -9,12 +9,14 @@ public class AllianceIdleState : AllianceState, IState
     }
     public override void Enter()
     {
+        base.Enter();
         Debug.Log("idle in");
 
         AllianceSMManager.Alliance.AllianceVisual.PlayIdleAnim();
     }
     public override void Exit()
     {
+        base.Exit();
         AllianceSMManager.Alliance.AllianceVisual.StopIdleAnim();
 
     }

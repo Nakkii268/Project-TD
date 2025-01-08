@@ -13,7 +13,7 @@ public class AllianceAttackState : AllianceState, IState
         base.Enter();
 
 
-        Debug.Log("aatack in");
+        
         AllianceSMManager.Alliance.AllianceAttack.AttackPerform();
         AllianceSMManager.Alliance.AllianceVisual.PlayAttackAnim();
 
@@ -21,7 +21,6 @@ public class AllianceAttackState : AllianceState, IState
     public override void Exit() 
     { 
         base.Exit();
-        Debug.Log("aatack out");
 
     }
 
