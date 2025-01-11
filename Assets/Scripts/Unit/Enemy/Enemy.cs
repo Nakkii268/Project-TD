@@ -11,20 +11,34 @@ public class Enemy : Character, IDamageable, IHealable
     [SerializeField] private Vector3[] path;
     [SerializeField] private int pathIndex = 0;
     [SerializeField] private EnemyStat stat;
-    public event EventHandler<GameObject> OnEnemyDead;
+    public EnemyStat Stat { get { return stat; } }
 
+    [SerializeField] private EnemyAttack enemyAttack;
+    public EnemyAttack EnemyAttack { get { return enemyAttack; } }
+    [SerializeField] private EnemySMManager eStateMachine;
+    public EnemySMManager EnemySMManager { get { return eStateMachine; } }
+
+    public event EventHandler<GameObject> OnEnemyDead;
     public event EventHandler OnGetHit;
 
-   
+
+
+    private void Awake()
+    {
+        eStateMachine = new EnemySMManager(this);
+
+    }
 
     private void Start()
     {
+
         target = path[pathIndex];
+        
     }
 
     private void Update()
     {
-       
+       eStateMachine.Update();
         if(Vector3.Distance(new Vector3( transform.position.x, transform.position.y,0), new Vector3(target.x,target.y,0)) < .1f)
         {
             if (pathIndex >= path.Length-1) return;
@@ -35,8 +49,12 @@ public class Enemy : Character, IDamageable, IHealable
         Vector2 dir = (Vector2)target - new Vector2(transform.position.x, transform.position.y);
         transform.Translate(speed * Time.deltaTime * (Vector3)dir);
         
+        
     }
-
+    private void FixedUpdate()
+    {
+        eStateMachine?.FixedUpate();
+    }
 
     public void Heal(float amout)
     {
@@ -72,13 +90,13 @@ public class Enemy : Character, IDamageable, IHealable
   
     public void Blocked()
     {
-        Debug.Log("Blocked");
-        speed = 0;
+        
+        speed *= 0;
     }
     public void UnBlock()
     {
-        Debug.Log("un-----Blocked");
-        speed = 1f;
+        
+        speed *= 1f;
     }
     public void DeadBtn()
     {
