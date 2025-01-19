@@ -18,19 +18,12 @@ public class EnemyDeadState : EnemyState
     {
         base.Exit();
     }
-    public override void FixedUpdate()
-    {
-    }
-    public override void OnAnimationEnterEvent()
-    {
-    }
+   
+   
     public override void OnAnimationExitEvent()
     {
+        EnemySMManager.Enemy.Dead();
     }
-    public override void OnAnimationTransitionEvent()
-    {
-    }
-    public override void Update()
-    {
-    }
+   
+    
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyState : MonoBehaviour, IState
+public class EnemyState :  IState
 {
 
     public EnemySMManager EnemySMManager;
@@ -43,13 +43,21 @@ public class EnemyState : MonoBehaviour, IState
     {
         EnemySMManager.Enemy.OnEnemyDead += Enemy_OnEnemyDead;
         EnemySMManager.Enemy.OnGetHit += Enemy_OnGetHit;
+        EnemySMManager.Enemy.StatusEffectHolder.OnGetDisable += StatusEffectHolder_OnGetDisable;
     }
+
+    
+
     protected virtual void RemoveCallBack()
     {
         EnemySMManager.Enemy.OnEnemyDead -= Enemy_OnEnemyDead;
         EnemySMManager.Enemy.OnGetHit -= Enemy_OnGetHit;
     }
 
+    private void StatusEffectHolder_OnGetDisable(object sender, System.EventArgs e)
+    {
+        EnemySMManager.ChangeState(EnemySMManager.EnemyDisableState);
+    }
     private void Enemy_OnGetHit(object sender, System.EventArgs e)
     {
         EnemySMManager.ChangeState(EnemySMManager.EnemyGetHitState);
@@ -59,5 +67,9 @@ public class EnemyState : MonoBehaviour, IState
     {
         EnemySMManager.ChangeState(EnemySMManager.EnemyDeadState);
 
+    }
+    protected void Move()
+    {
+        EnemySMManager.Enemy.GetNextTarget();
     }
 }

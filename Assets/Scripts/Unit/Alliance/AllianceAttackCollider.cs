@@ -37,7 +37,6 @@ public class AllianceAttackCollider : MonoBehaviour
                 if (collision.gameObject.CompareTag("Enemy"))
                 {
                     OnTargetIn?.Invoke(this, collision.gameObject);
-                    Debug.Log("In e");
 
                 }
             }
@@ -46,7 +45,6 @@ public class AllianceAttackCollider : MonoBehaviour
                 if (collision.gameObject.CompareTag("Alliance"))
                 {
                     OnTargetIn?.Invoke(this, collision.gameObject);
-                    Debug.Log("In a");
 
                 }
             }
@@ -65,7 +63,6 @@ public class AllianceAttackCollider : MonoBehaviour
                 if (collision.gameObject.CompareTag("Enemy"))
                 {
                     OnTargetOut?.Invoke(this, collision.gameObject);
-                    Debug.Log("out e");
 
                 }
             }else if(Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Alliance)
@@ -73,7 +70,6 @@ public class AllianceAttackCollider : MonoBehaviour
                 if (collision.gameObject.CompareTag("Alliance"))
                 {
                     OnTargetOut?.Invoke(this, collision.gameObject);
-                    Debug.Log("out a");
 
                 }
             }

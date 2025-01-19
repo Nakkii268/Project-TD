@@ -947,7 +947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &136432688
 Transform:
   m_ObjectHideFlags: 0
@@ -981,14 +981,20 @@ MonoBehaviour:
   speed: 0.5
   target: {x: -1, y: -1, z: -1}
   path:
-  - {x: 0, y: 0, z: -1}
-  - {x: 3, y: 0, z: -1}
-  - {x: 3, y: 2, z: -1}
-  - {x: 3, y: 1, z: -1}
-  - {x: 3, y: 0, z: -1}
-  - {x: 5, y: 0, z: -1}
+  - {x: 0, y: 0}
+  - {x: 1, y: 0}
+  - {x: 2, y: 0}
+  - {x: 3, y: 0}
+  - {x: 3, y: 1}
+  - {x: 3, y: 2}
+  - {x: 3, y: 1}
+  - {x: 3, y: 0}
+  - {x: 4, y: 0}
+  - {x: 5, y: 0}
   pathIndex: 0
+  isBlocked: 0
   stat: {fileID: 2123946164}
+  enemyAttack: {fileID: 0}
 --- !u!1 &140391750
 GameObject:
   m_ObjectHideFlags: 0

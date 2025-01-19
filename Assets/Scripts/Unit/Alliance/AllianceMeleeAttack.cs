@@ -6,7 +6,6 @@ public class AllianceMeleeAttack : AllianceAttack
 {
     public override void AttackPerform()
     {
-        Debug.Log("attack");
         
         base.AttackPerform();
         
@@ -29,7 +28,7 @@ public class AllianceMeleeAttack : AllianceAttack
             
             foreach (GameObject tg in target)
             {
-                tg.GetComponentInParent<IHealable>().Heal(allyAttack,1);
+                tg.GetComponentInParent<IHealable>().Heal(allyAttack);
             }
 
         }

@@ -10,6 +10,7 @@ public class EnemySMManager :StateMachineManager
     public EnemyGetHitState EnemyGetHitState { get; }
     public EnemyDeadState EnemyDeadState { get; }
     public EnemyMovingState EnemyMovingState { get; }
+    public EnemyDisableState EnemyDisableState { get; }
 
     public EnemySMManager(Enemy enemy)
     {
@@ -19,6 +20,7 @@ public class EnemySMManager :StateMachineManager
         EnemyGetHitState = new EnemyGetHitState(this);
         EnemyDeadState = new EnemyDeadState(this);
         EnemyMovingState = new EnemyMovingState(this);
+        EnemyDisableState = new EnemyDisableState(this);
     }
 
 

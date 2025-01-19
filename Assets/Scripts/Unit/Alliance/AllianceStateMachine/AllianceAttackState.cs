@@ -45,19 +45,20 @@ public class AllianceAttackState : AllianceState, IState
         AllianceSMManager.ChangeState(AllianceSMManager.AllianceIdleState);
     }
 
-    public override void OnAnimationExitEvent() 
+
+    public override void OnAnimationTransitionEvent()
+    {
+        AllianceSMManager.Alliance.AllianceAttack.Attack();
+
+    }
+
+    public override void OnAnimationExitEvent()
     {
         if (AllianceSMManager.Alliance.AllianceSkill.IsSkillDuration)
         {
             AllianceSMManager.ChangeState(AllianceSMManager.AllianceSkillDuarationState);
         }
         AllianceSMManager.ChangeState(AllianceSMManager.AllianceIdleState);
-    }
-
-    public override void OnAnimationTransitionEvent()
-    {
-        AllianceSMManager.Alliance.AllianceAttack.Attack();
-
     }
 }
 

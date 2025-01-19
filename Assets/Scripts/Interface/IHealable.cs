@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IHealable 
 {
-    public void Heal(float amout,float Scale);
+    public void Heal(float amout);
    
 }

@@ -18,19 +18,12 @@ public class EnemyGetHitState : EnemyState
     {
         base.Exit();
     }
-    public override void FixedUpdate()
-    {
-    }
-    public override void OnAnimationEnterEvent()
-    {
-    }
+    
+  
     public override void OnAnimationExitEvent()
     {
+        //back to previous state
     }
-    public override void OnAnimationTransitionEvent()
-    {
-    }
-    public override void Update()
-    {
-    }
+    
+    
 }

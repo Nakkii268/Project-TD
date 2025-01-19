@@ -26,6 +26,7 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
         targetCount = alliance.GetAllianceUnit().TargetCount;
         damageType = alliance.GetAllianceUnit().DamageType;
         attackReady = true;
+        
     }
 
     private void AllienceAttackCollider_OnEnemyOut(object sender, GameObject e)
@@ -46,7 +47,7 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
     public virtual void AttackPerform()
     {
         
-        OnAttackPerform?.Invoke(this,targets);
+        OnAttackPerform?.Invoke(this,GetTarget());
         attackReady = false;
         StartCoroutine(AttackCoolDown(alliance.Stat.AttackInterval.Value));
     }

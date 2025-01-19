@@ -18,8 +18,9 @@ public class EnemyMovingState : EnemyState
     {
         base.Exit();
     }
-    public override void FixedUpdate()
+    public override void Update()
     {
+         
     }
     public override void OnAnimationEnterEvent()
     {
@@ -30,7 +31,5 @@ public class EnemyMovingState : EnemyState
     public override void OnAnimationTransitionEvent()
     {
     }
-    public override void Update()
-    {
-    }
+    
 }

@@ -18,19 +18,11 @@ public class EnemyIdleState : EnemyState
     {
         base.Exit();
     }
-    public override void FixedUpdate()
-    {
-    }
-    public override void OnAnimationEnterEvent()
-    {
-    }
-    public override void OnAnimationExitEvent()
-    {
-    }
-    public override void OnAnimationTransitionEvent()
-    {
-    }
     public override void Update()
     {
+        if (!EnemySMManager.Enemy.EnemyAttack.AttackReady) return;
+        EnemySMManager.Enemy.EnemyAttackCollider.DetectEnenmy();
     }
+
+  
 }

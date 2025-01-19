@@ -184,29 +184,27 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
             allianceStat.currentHp -= (damage - damage * (GetReductionValue(allianceStat.Resistance.Value)));
 
             OnGetHit?.Invoke(this, EventArgs.Empty);
-            OnHpChange?.Invoke(this, allianceStat.currentHp/allianceStat.MaxHp.Value);
 
         }else if(type == DamageType.PhysicDamage)
         {
             allianceStat.currentHp -= (damage - damage * (GetReductionValue(allianceStat.Defense.Value)));
 
             OnGetHit?.Invoke(this, EventArgs.Empty);
-            OnHpChange?.Invoke(this, allianceStat.currentHp / allianceStat.MaxHp.Value);
         }
         else if(type == DamageType.TrueDamage)
         {
             allianceStat.currentHp -= damage;
 
             OnGetHit?.Invoke(this, EventArgs.Empty);
-            OnHpChange?.Invoke(this, allianceStat.currentHp / allianceStat.MaxHp.Value);
-            Debug.Log(allianceStat.currentHp);
-            Debug.Log(allianceStat.MaxHp.Value);
+            
         }
         if(allianceStat.currentHp < 0)
         {
             allianceStat.currentHp = 0;
             OnUnitDead?.Invoke(this, EventArgs.Empty);
         }
+        OnHpChange?.Invoke(this, allianceStat.currentHp / allianceStat.MaxHp.Value);
+
     }
 
     public void Heal(float amout)
@@ -238,8 +236,5 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         return Stat.currentHp / Stat.MaxHp.Value;
     }
 
-    public void Heal(float amout, float Scale)
-    {
-        throw new NotImplementedException();
-    }
+    
 }

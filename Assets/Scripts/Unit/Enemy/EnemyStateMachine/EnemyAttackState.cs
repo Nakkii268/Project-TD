@@ -17,19 +17,28 @@ public class EnemyAttackState : EnemyState
     {
         base.Exit();
     }
-    public override void FixedUpdate()
-    {
-    }
+
     public override void OnAnimationEnterEvent()
     {
+        //dmg
     }
-    public override void OnAnimationExitEvent()
-    {
-    }
+
     public override void OnAnimationTransitionEvent()
     {
+        EnemySMManager.Enemy.EnemyAttack.Attack(EnemySMManager.Enemy.EnemyAttackCollider.DetectEnenmy());
     }
-    public override void Update()
+
+    public override void OnAnimationExitEvent()
     {
+        if (EnemySMManager.Enemy.IsBlocked)
+        {
+            EnemySMManager.ChangeState(EnemySMManager.EnemyIdleState);
+
+        }
+
+        EnemySMManager.ChangeState(EnemySMManager.EnemyMovingState);
+
+
     }
+
 }

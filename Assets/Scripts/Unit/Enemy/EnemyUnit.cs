@@ -8,6 +8,7 @@ public class EnemyUnit : Unit
     public float Speed;
     public bool CanBlock;
     public EnemyType type;
+    public DamageType damageType;
     public float AttackRange;
 }
 public enum EnemyType
