@@ -30,6 +30,12 @@ public class EnemyDisableState : EnemyState
 
     private void StatusEffectHolder_OnEndDisable(object sender, System.EventArgs e)
     {
-        
+        if(EnemySMManager.Enemy.IsMoving  && !EnemySMManager.Enemy.IsBlocked)
+        {
+            EnemySMManager.ChangeState(EnemySMManager.EnemyMovingState);
+            return;
+        }
+        EnemySMManager.ChangeState(EnemySMManager.EnemyIdleState);
+
     }
 }

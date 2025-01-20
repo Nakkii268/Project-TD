@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class EnemyState :  IState
 {
 
     public EnemySMManager EnemySMManager;
+    public EnemyState previousState;
     public EnemyState(EnemySMManager enemySMManager)
     {
            EnemySMManager = enemySMManager; 
@@ -17,6 +20,7 @@ public class EnemyState :  IState
 
     public virtual void Exit()
     {
+        
         RemoveCallBack();
     }
     public virtual void Update()
@@ -70,6 +74,34 @@ public class EnemyState :  IState
     }
     protected void Move()
     {
-        EnemySMManager.Enemy.GetNextTarget();
+
+        Vector3 target;
+            if (EnemySMManager.Enemy.Path.Length == 0) return;
+            target = new Vector3(EnemySMManager.Enemy.Path[EnemySMManager.Enemy.pathIndex].x, EnemySMManager.Enemy.Path[EnemySMManager.Enemy.pathIndex].y, EnemySMManager.Enemy.transform.position.z);
+            EnemySMManager.Enemy.transform.position = Vector3.MoveTowards(EnemySMManager.Enemy.transform.position, target, EnemySMManager.Enemy.speed * Time.deltaTime);
+            CheckNextIndex();
+            //move
+            if (Vector3.Distance(new Vector3(EnemySMManager.Enemy.transform.position.x, EnemySMManager.Enemy.transform.position.y, 0), new Vector3(target.x, target.y, 0)) < .3f)
+            {
+                if (EnemySMManager.Enemy.pathIndex >= EnemySMManager.Enemy.Path.Length - 1) return;
+                EnemySMManager.Enemy.pathIndex++;
+                target = EnemySMManager.Enemy.Path[EnemySMManager.Enemy.pathIndex];
+
+            }
+            Vector2 dir = (Vector2)target - new Vector2(EnemySMManager.Enemy.transform.position.x, EnemySMManager.Enemy.transform.position.y);
+        
+    }
+    private void CheckNextIndex()
+    {
+        if (EnemySMManager.Enemy.Path[EnemySMManager.Enemy.pathIndex].x != -99)
+        {
+            return;
+        }
+        EnemySMManager.ChangeState(EnemySMManager.EnemyIdleState);
+
+    }
+    protected float GetWaitTime()
+    {
+        return EnemySMManager.Enemy.Path[EnemySMManager.Enemy.pathIndex].y;
     }
 }

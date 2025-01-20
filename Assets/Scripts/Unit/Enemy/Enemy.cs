@@ -6,12 +6,17 @@ using UnityEngine;
 
 public class Enemy : Character, IDamageable, IHealable, IHasHpBar
 {
-    [SerializeField] private float speed = 1f;
-    [SerializeField] private Vector3 target;
+    [SerializeField] public float speed = 1f;
+
+
     [SerializeField] private Vector2[] path;
-    [SerializeField] private int pathIndex = 0;
+    public Vector2[] Path { get { return path; } }
+    [SerializeField] public int pathIndex = 0;
     [SerializeField] private bool isBlocked;
     public bool IsBlocked {  get { return isBlocked; } }
+
+    [SerializeField] private bool isMoving;
+    public bool IsMoving {  get { return isMoving; }set { isMoving = value; } }
 
     [SerializeField] private EnemyStat stat;
     public EnemyStat Stat { get { return stat; } }
@@ -40,31 +45,19 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
     private void Start()
     {
 
-        target = path[pathIndex];
+        eStateMachine.ChangeState(eStateMachine.EnemyIdleState);
         
     }
 
     private void Update()
     {
-       //eStateMachine.Update();
-        if (path.Length == 0) return;
-        target = new Vector3(path[pathIndex].x, path[pathIndex].y, transform.position.z);
-       transform.position= Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-
-        //move
-        if (Vector3.Distance(new Vector3(transform.position.x, transform.position.y, 0), new Vector3(target.x, target.y, 0)) < .3f)
-        {
-            if (pathIndex >= path.Length - 1) return;
-            pathIndex++;
-            target = path[pathIndex];
-
-        }
-        Vector2 dir = (Vector2)target - new Vector2(transform.position.x, transform.position.y);
-        
-        
-
+        eStateMachine.Update();
+      
 
     }
+
+   
+
     private void FixedUpdate()
     {
         eStateMachine?.FixedUpate();

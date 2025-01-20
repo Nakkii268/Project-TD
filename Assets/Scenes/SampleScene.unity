@@ -941,6 +941,9 @@ GameObject:
   m_Component:
   - component: {fileID: 136432688}
   - component: {fileID: 136432689}
+  - component: {fileID: 136432692}
+  - component: {fileID: 136432691}
+  - component: {fileID: 136432690}
   m_Layer: 11
   m_Name: Capsule
   m_TagString: Enemy
@@ -979,22 +982,70 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
-  target: {x: -1, y: -1, z: -1}
   path:
+  - {x: -99, y: 1}
   - {x: 0, y: 0}
   - {x: 1, y: 0}
   - {x: 2, y: 0}
   - {x: 3, y: 0}
   - {x: 3, y: 1}
+  - {x: -99, y: 3}
   - {x: 3, y: 2}
   - {x: 3, y: 1}
   - {x: 3, y: 0}
   - {x: 4, y: 0}
-  - {x: 5, y: 0}
   pathIndex: 0
   isBlocked: 0
+  isMoving: 0
   stat: {fileID: 2123946164}
-  enemyAttack: {fileID: 0}
+  enemyAttack: {fileID: 136432692}
+  enemyAttackCollider: {fileID: 136432691}
+  statusEffectHolder: {fileID: 136432690}
+--- !u!114 &136432690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136432686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 513cb40aec2850043b37bab4d55b9850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  holder: {fileID: 136432689}
+  NorEffect: []
+  OnhitEffects: []
+--- !u!114 &136432691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136432686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18755afbbdccff84ea3481947b99e68c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy: {fileID: 136432689}
+  attackRange: 0
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &136432692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136432686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3accb7d1e07407c40b95390d3cdfe59a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
 --- !u!1 &140391750
 GameObject:
   m_ObjectHideFlags: 0

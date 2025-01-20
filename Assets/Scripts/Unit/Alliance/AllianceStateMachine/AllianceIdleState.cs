@@ -10,7 +10,7 @@ public class AllianceIdleState : AllianceState, IState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("idle in");
+        
 
         AllianceSMManager.Alliance.AllianceVisual.PlayIdleAnim();
     }

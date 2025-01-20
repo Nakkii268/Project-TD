@@ -22,7 +22,12 @@ public class EnemyGetHitState : EnemyState
   
     public override void OnAnimationExitEvent()
     {
-        //back to previous state
+        if (EnemySMManager.Enemy.IsMoving && !EnemySMManager.Enemy.IsBlocked)
+        {
+            EnemySMManager.ChangeState(EnemySMManager.EnemyMovingState);
+            return;
+        }
+        EnemySMManager.ChangeState(EnemySMManager.EnemyIdleState);
     }
     
     
