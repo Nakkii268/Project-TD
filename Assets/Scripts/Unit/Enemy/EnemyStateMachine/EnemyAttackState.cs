@@ -20,7 +20,7 @@ public class EnemyAttackState : EnemyState
 
     public override void OnAnimationEnterEvent()
     {
-        //dmg
+        
     }
 
     public override void OnAnimationTransitionEvent()
