@@ -14,6 +14,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private int MapSize_X=10;
     [SerializeField] private int MapSize_Y=10;
     [SerializeField] private GameObject[,] tiles;
+    [SerializeField] private MapSO map;
+
     [SerializeField] private Vector2Int currentSelect;
     [SerializeField] private CameraManager Camera;
     [SerializeField]private Quaternion cameraOriginRotate;
@@ -24,6 +26,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private int currentDeloyment = 0;
     //
     [SerializeField] private Transform unitUI;
+    [SerializeField] private LevelLifePointManager levelLifePointManager;
+    [SerializeField] private WaveManager waveManager;
+
 
     public event EventHandler OnClickOtherTarget;
     private void Awake()
