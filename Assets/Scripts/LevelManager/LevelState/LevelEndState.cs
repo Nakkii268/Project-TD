@@ -7,4 +7,21 @@ public class LevelEndState : LevelState
     public LevelEndState(LevelStateMachineManager levelStateMachineManager) : base(levelStateMachineManager)
     {
     }
+    public override void Enter()
+    {
+        base.Enter();
+    }
+    public override void Exit()
+    {
+        base.Exit();
+    }
+    public override void FixedUpdate()
+    {
+        base.FixedUpdate();
+    }
+    public override void Update()
+    {
+        base.Update();
+    }
+    
 }

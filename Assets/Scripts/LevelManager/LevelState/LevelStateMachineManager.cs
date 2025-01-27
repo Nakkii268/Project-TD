@@ -9,7 +9,8 @@ public class LevelStateMachineManager : StateMachineManager
     public LevelGameState LevelGameState { get; }
     public LevelPauseState  LevelPauseState { get; }
     public LevelEndState LevelEndState { get; }
-
+    public float entryTime;
+    
     public LevelStateMachineManager (LevelManager lm)
     {
         _levelManager = lm;
@@ -18,5 +19,6 @@ public class LevelStateMachineManager : StateMachineManager
         LevelPauseState = new LevelPauseState(this);
         LevelEndState = new LevelEndState(this);
     }
+
     
 }

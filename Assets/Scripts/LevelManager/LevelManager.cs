@@ -28,6 +28,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Transform unitUI;
     [SerializeField] private LevelLifePointManager levelLifePointManager;
     [SerializeField] private WaveManager waveManager;
+    [SerializeField] private LevelStateMachineManager levelStateMachineManager;
+    public LevelStateMachineManager LevelStateMachineManager { get { return levelStateMachineManager; } }
 
 
     public event EventHandler OnClickOtherTarget;
@@ -35,12 +37,15 @@ public class LevelManager : MonoBehaviour
     {
         instance = this;
         Camera = CameraManager.instance;
+        levelStateMachineManager = new LevelStateMachineManager(this);
+        DisableComponent();
     }
     private void Start()
     {
         
         TilesSetup(MapSize_X, MapSize_Y);
         cameraOriginRotate = Camera.transform.rotation;
+        levelStateMachineManager.ChangeState(levelStateMachineManager.LevelPrepareState);
     }
 
     private void Update()
@@ -233,7 +238,16 @@ public class LevelManager : MonoBehaviour
         return false;
     }
 
-    
-   
+
+    public void DisableComponent()
+    {
+        levelDPManager.enabled = false; 
+        waveManager.enabled = false;
+    }
+    public void EnableComponent()
+    {
+        levelDPManager.enabled = true;
+        waveManager.enabled = true;
+    }
 }
 
