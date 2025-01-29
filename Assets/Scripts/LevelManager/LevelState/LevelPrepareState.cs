@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelPrepareState : LevelState
 {
+    private float waitTime=0;
     public LevelPrepareState(LevelStateMachineManager levelStateMachineManager) : base(levelStateMachineManager)
     {
     }
@@ -17,11 +18,20 @@ public class LevelPrepareState : LevelState
     }
     public override void FixedUpdate()
     {
-        base.FixedUpdate();
     }
     public override void Update()
     {
-        base.Update();
-    }
+        if(waitTime >= 3)
+        {
+            LevelStateMachineManager.ChangeState(LevelStateMachineManager.LevelGameState);
 
+        }
+        waitTime += Time.deltaTime;
+    }
+    protected override void AddCallBack()
+    {
+    }
+    protected override void RemoveCallBack()
+    {
+    }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,6 +8,8 @@ public class LevelLifePointManager : MonoBehaviour
 {
     [SerializeField] private LevelManager levelManager;
     [SerializeField] private int LifePoint;
+    [SerializeField] private int MaxLifePoint;
+
     [SerializeField] private int ReducedLifePoint;
 
     [SerializeField] private TextMeshProUGUI lifePointText;
@@ -18,6 +21,7 @@ public class LevelLifePointManager : MonoBehaviour
         ReducedLifePoint = 0;
         SetLifePointText();
         reducedLifePointText.gameObject.SetActive(false);
+        
 
     }
 
@@ -27,12 +31,15 @@ public class LevelLifePointManager : MonoBehaviour
         ReducedLifePoint++;
         reducedLifePointText.gameObject.SetActive(true);
         SetLifePointText();
-        if (LifePoint <= 0) { 
-            //lose
+        if (LifePoint <= 0) {
+            levelManager.GameEnd(0);
         }
 
     }
-    
+    public float GetGameEndLifePoint()
+    {
+        return LifePoint/MaxLifePoint;
+    }
     private void SetLifePointText()
     {
         lifePointText.text = LifePoint.ToString();

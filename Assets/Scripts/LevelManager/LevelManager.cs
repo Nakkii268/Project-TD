@@ -33,6 +33,10 @@ public class LevelManager : MonoBehaviour
 
 
     public event EventHandler OnClickOtherTarget;
+    public event EventHandler OnGamePause;
+    public event EventHandler OnGameUnPause;
+    public event EventHandler<float> OnGameEnd;// win = 1; lose = 0; win but leaked =0.x
+
     private void Awake()
     {
         instance = this;
@@ -76,6 +80,7 @@ public class LevelManager : MonoBehaviour
                
             
         }
+        levelStateMachineManager.Update();
         
     }
     public void HandleRaycast()
@@ -237,7 +242,10 @@ public class LevelManager : MonoBehaviour
         }
         return false;
     }
-
+    public void GameEnd(float endState)
+    {
+        OnGameEnd?.Invoke(this, endState);
+    }
 
     public void DisableComponent()
     {
