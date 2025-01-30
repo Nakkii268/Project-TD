@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private int MapSize_Y=10;
     [SerializeField] private GameObject[,] tiles;
     [SerializeField] private MapSO map;
+    public MapSO Map { get  { return map; } }
 
     [SerializeField] private Vector2Int currentSelect;
     [SerializeField] private CameraManager Camera;

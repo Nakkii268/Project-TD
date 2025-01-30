@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Enemy
   m_EditorClassIdentifier: 
   UnitID: 1221
+  UnitPrefab: {fileID: 7337458643970106659, guid: 5813ce2ba261bb841a074e50c19f5b72, type: 3}
   Name: "s\xE2s"
   Heath: 100000
   Attack: 1
@@ -23,4 +24,5 @@ MonoBehaviour:
   Speed: 1
   CanBlock: 1
   type: 0
+  damageType: 0
   AttackRange: 2

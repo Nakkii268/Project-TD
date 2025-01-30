@@ -120,6 +120,10 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
     {
         return path[pathIndex+1];
     }
+    public void SetPath(Vector2[] p)
+    {
+        path = p;
+    }
 
     public void Dead()
     {

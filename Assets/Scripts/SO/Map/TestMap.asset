@@ -20,8 +20,18 @@ MonoBehaviour:
     - {x: 1, y: 0}
     - {x: 2, y: 0}
     EnemyUnit: {fileID: 11400000, guid: cd67ce6d899f05a4c9e6c25c43ab52ee, type: 2}
+    EnemyQuantity: 5
+    SpawnDelay: 2
+    SpawnPos: {x: 0, y: 0, z: 0}
+  - SpawnTime: 25
+    Path:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 2, y: 0}
+    - {x: 3, y: 0}
+    EnemyUnit: {fileID: 11400000, guid: cd67ce6d899f05a4c9e6c25c43ab52ee, type: 2}
     EnemyQuantity: 10
-    SpawnDelay: 0.1
+    SpawnDelay: 1.5
     SpawnPos: {x: 0, y: 0, z: 0}
   TotalEnemy: 0
   LifePoint: 0

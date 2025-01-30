@@ -6,6 +6,7 @@ using UnityEngine;
 public class Unit : ScriptableObject
 {
     public string UnitID;
+    public GameObject UnitPrefab;
     public string Name;
     public float Heath;
     public float Attack;
