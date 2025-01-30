@@ -243,9 +243,9 @@ public class LevelManager : MonoBehaviour
         }
         return false;
     }
-    public void GameEnd(float endState)
+    public void GameEnd()
     {
-        OnGameEnd?.Invoke(this, endState);
+        OnGameEnd?.Invoke(this, levelLifePointManager.GetGameEndLifePoint());
     }
 
     public void DisableComponent()

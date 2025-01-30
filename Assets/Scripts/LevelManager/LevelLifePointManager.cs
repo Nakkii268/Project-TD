@@ -32,7 +32,7 @@ public class LevelLifePointManager : MonoBehaviour
         reducedLifePointText.gameObject.SetActive(true);
         SetLifePointText();
         if (LifePoint <= 0) {
-            levelManager.GameEnd(0);
+            levelManager.GameEnd();
         }
 
     }
