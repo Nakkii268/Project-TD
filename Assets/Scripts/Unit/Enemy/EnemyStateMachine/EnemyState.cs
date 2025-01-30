@@ -67,7 +67,7 @@ public class EnemyState :  IState
         EnemySMManager.ChangeState(EnemySMManager.EnemyGetHitState);
     }
 
-    private void Enemy_OnEnemyDead(object sender, GameObject e)
+    private void Enemy_OnEnemyDead(object sender, EnemyDeadArg e)
     {
         EnemySMManager.ChangeState(EnemySMManager.EnemyDeadState);
 

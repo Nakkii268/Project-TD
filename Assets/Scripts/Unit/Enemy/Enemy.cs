@@ -13,6 +13,7 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
     public Vector2[] Path { get { return path; } }
     [SerializeField] public int pathIndex = 0;
     [SerializeField] private bool isBlocked;
+    [SerializeField] public bool isWaveEnemy;
     public bool IsBlocked {  get { return isBlocked; } }
 
     [SerializeField] private bool isMoving;
@@ -32,7 +33,7 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
     [SerializeField] private EnemySMManager eStateMachine;
     public EnemySMManager EnemySMManager { get { return eStateMachine; } }
 
-    public event EventHandler<GameObject> OnEnemyDead;
+    public event EventHandler<EnemyDeadArg> OnEnemyDead;
     public event EventHandler OnGetHit;
     public event EventHandler<float> OnHpChange;
 
@@ -100,16 +101,16 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
     public void Blocked()
     {
         
-        speed *= 0;
+        speed = 0;
     }
     public void UnBlock()
     {
         
-        speed *= 1f;
+        speed  = stat.Speed.Value;
     }
     public void DeadBtn()
     {
-        OnEnemyDead?.Invoke(this, this.gameObject);
+        OnEnemyDead?.Invoke(this, new EnemyDeadArg(this.gameObject,isWaveEnemy));
     }
 
     public float GetPercentHp()
@@ -130,4 +131,14 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
         Destroy(gameObject);
     }
    
+}
+public class EnemyDeadArg
+{
+   public GameObject enemy;
+   public  bool isWave;
+    public EnemyDeadArg(GameObject enemy, bool isWave)
+    {
+        this.enemy = enemy;
+        this.isWave = isWave;
+    }
 }

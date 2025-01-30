@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
@@ -10,6 +11,8 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private int currentWaveIndex;
     [SerializeField] private int nextWaveIndex;
     [SerializeField] private float entryTime;
+    [SerializeField] private int enemyCount;
+    [SerializeField] private TextMeshProUGUI enemyCountText;
 
     private void Start()
     {
@@ -17,6 +20,8 @@ public class WaveManager : MonoBehaviour
         nextWaveIndex = 0;
         entryTime = levelManager.LevelStateMachineManager.entryTime;
         m_MapSO = levelManager.Map;
+        enemyCount = 0;
+        SetEnemyCountText(0);
     }
     private void Update()
     {
@@ -38,8 +43,28 @@ public class WaveManager : MonoBehaviour
     private void SpawnWave(Wave wave)
     {
         GameObject enemy = Instantiate(wave.EnemyUnit.UnitPrefab);
-        enemy.GetComponent<Enemy>().SetPath(wave.Path);
+        Enemy enemyClass = enemy.GetComponent<Enemy>();
+        enemyClass.SetPath(wave.Path);
+        enemyClass.OnEnemyDead += EnemyClass_OnEnemyDead;
         enemy.transform.position = wave.SpawnPos;
+        
+    }
+
+    private void EnemyClass_OnEnemyDead(object sender, EnemyDeadArg e)
+    {
+        if (e.isWave)
+        {
+            enemyCount++;
+            SetEnemyCountText(enemyCount);
+            if(enemyCount == m_MapSO.TotalEnemy)
+            {
+                levelManager.GameEnd(1);
+            }
+        }
+    }
+    private void SetEnemyCountText(int curr)
+    {
+        enemyCountText.text = curr.ToString() + " / " + m_MapSO.TotalEnemy.ToString();
     }
 
     private IEnumerator DelaySpawn( Wave wave)
