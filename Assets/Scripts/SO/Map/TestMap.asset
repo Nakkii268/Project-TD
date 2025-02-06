@@ -33,7 +33,8 @@ MonoBehaviour:
     EnemyQuantity: 10
     SpawnDelay: 1.5
     SpawnPos: {x: 0, y: 0, z: 0}
-  TotalEnemy: 0
-  LifePoint: 0
-  StartDeployPoint: 0
-  DeployLimit: 0
+  TotalEnemy: 15
+  LifePoint: 2
+  StartDeployPoint: 30
+  DpRecoveryRate: 1
+  DeployLimit: 1

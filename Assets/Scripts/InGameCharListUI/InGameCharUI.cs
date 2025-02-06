@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    [SerializeField] private LevelManager levelManager;
     public event EventHandler OnCharSelect;
     public event EventHandler<CharacterData> OnCharDrop;
 
@@ -21,14 +22,14 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
 
     private void Start()
     {
-        
+        levelManager = LevelManager.instance;
         rectTransform = GetComponent<RectTransform>();
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if ((LevelManager.instance.GetLevelDPManager().GetCurrentDp() < unit.UnitDp) 
+        if ((levelManager.GetLevelDPManager().GetCurrentDp() < unit.UnitDp) 
             || !countDownUI.canDeloy 
-            || !LevelManager.instance.GetLevelDPManager().ReachDeployLimit()) return;
+            || !levelManager.GetLevelDPManager().ReachDeployLimit()) return;
 
         rectTransform.localPosition += new Vector3(0, .5f, 0);
         Prefab.GetComponent<Image>().sprite = unit.unitSprite;
@@ -39,13 +40,13 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
 
     public void OnDrag(PointerEventData eventData)
     {
-        if ((LevelManager.instance.GetLevelDPManager().GetCurrentDp() < unit.UnitDp) 
+        if ((levelManager.GetLevelDPManager().GetCurrentDp() < unit.UnitDp) 
             || !countDownUI.canDeloy 
-            ||  !LevelManager.instance.GetLevelDPManager().ReachDeployLimit()) return;
+            ||  !levelManager.GetLevelDPManager().ReachDeployLimit()) return;
 
         Prefab.GetComponent<RectTransform>().anchoredPosition += eventData.delta/Canvas.scaleFactor;
         OnCharSelect?.Invoke(this,EventArgs.Empty);
-        foreach(var block in LevelManager.instance.ValidBlock(unit.GetAllianceType()))
+        foreach(var block in levelManager.MapManager.ValidBlock(unit.GetAllianceType()))
         {
             block.GetComponent<Block>().HighLightBlock(7);
         }
@@ -57,7 +58,7 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
         Prefab.gameObject.SetActive(false);
         rectTransform.localScale = Vector3.one;
         OnCharDrop?.Invoke(this, new CharacterData(toPrefab,unit,indx));
-        foreach (var block in LevelManager.instance.ValidBlock(unit.GetAllianceType()))
+        foreach (var block in levelManager.MapManager.ValidBlock(unit.GetAllianceType()))
         {
             block.GetComponent<Block>().UnHighLightBlock();
         }

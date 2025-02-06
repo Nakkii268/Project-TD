@@ -58,7 +58,7 @@ public class WaveManager : MonoBehaviour
             SetEnemyCountText(enemyCount);
             if(enemyCount == m_MapSO.TotalEnemy)
             {
-                levelManager.GameEnd(1);
+                levelManager.GameEnd();
             }
         }
     }

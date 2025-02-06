@@ -65,7 +65,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
     
         allianceDirection.OnDeloyed += AllianceDirection_OnDeloyed;
        
-        LevelManager.instance.OnClickOtherTarget += LevelManager_OnClickOtherTarget;
+        LevelManager.instance.MapManager.OnClickOtherTarget += LevelManager_OnClickOtherTarget;
 
     }
     private void Update()
@@ -149,7 +149,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         }
         isDeloyed = false;
         directionCircle.gameObject.SetActive(false );
-        LevelManager.instance.UnHighLightBlockList(allianceAttackRange.AttackRange);
+        LevelManager.instance.MapManager.UnHighLightBlockList(allianceAttackRange.AttackRange);
         Block block = GetComponentInParent<Block>();
         block.UnitReTreat();
         
@@ -162,7 +162,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         {
 
             allianceInfo.gameObject.SetActive(true);
-            LevelManager.instance.HighLightBlockList(allianceAttackRange.AttackRange, 8);
+            LevelManager.instance.MapManager.HighLightBlockList(allianceAttackRange.AttackRange, 8);
             UnitUICollider.gameObject.SetActive(true);
 
         }
@@ -171,7 +171,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
     {
         allianceInfo.gameObject.SetActive(false);
         allianceDirection.gameObject.SetActive(false);
-        LevelManager.instance.UnHighLightBlockList(allianceAttackRange.AttackRange);
+        LevelManager.instance.MapManager.UnHighLightBlockList(allianceAttackRange.AttackRange);
         UnitUICollider.gameObject.SetActive(false);
 
     }

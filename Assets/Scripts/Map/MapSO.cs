@@ -11,6 +11,7 @@ public class MapSO : ScriptableObject
     public int TotalEnemy;
     public int LifePoint;
     public float StartDeployPoint;
+    public float DpRecoveryRate;
     public int DeployLimit;
     //stamina cost
     //droped material

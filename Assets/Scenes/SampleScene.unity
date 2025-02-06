@@ -1959,6 +1959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28d3bf67972f5440b79b7994a66e628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelManager: {fileID: 0}
   unit: {fileID: 11400000, guid: b18f85b780946e8409d3a4e0589a984a, type: 2}
   Prefab: {fileID: 608261475}
   toPrefab: {fileID: 6865232695306935221, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
@@ -6860,6 +6861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad15b7f173002bc48837078b982aa303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelManager: {fileID: 1956044683}
   CurrentDp: 0
   StartDp: 30
   MaxDp: 99
@@ -6959,6 +6961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28d3bf67972f5440b79b7994a66e628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelManager: {fileID: 0}
   unit: {fileID: 11400000, guid: b18f85b780946e8409d3a4e0589a984a, type: 2}
   Prefab: {fileID: 608261475}
   toPrefab: {fileID: 6865232695306935221, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}

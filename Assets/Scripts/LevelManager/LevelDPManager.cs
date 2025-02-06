@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class LevelDPManager : MonoBehaviour
 {
+    [SerializeField] private LevelManager levelManager;
     [SerializeField] private float CurrentDp;
     [SerializeField] private int StartDp;
     [SerializeField] private int MaxDp;
@@ -16,10 +17,13 @@ public class LevelDPManager : MonoBehaviour
     [SerializeField] private int deploymentLimit;
     [SerializeField] private int currentDeployment;
 
+    
     private void Start()
     {
-        CurrentDp = StartDp;
-        currentDeployment = deploymentLimit;
+        levelManager = LevelManager.instance;
+        CurrentDp = levelManager.Map.StartDeployPoint;
+        DpRegenRate = levelManager.Map.DpRecoveryRate;
+        currentDeployment = levelManager.Map.DeployLimit ;
         dptext.text = Mathf.FloorToInt(CurrentDp).ToString();
         dltext.text = "Deployment Limit: "+ currentDeployment.ToString();
 

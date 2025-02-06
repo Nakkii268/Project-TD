@@ -24,12 +24,12 @@ public class InGameCharListUI : MonoBehaviour
 
     private void Single_OnCharSelect(object sender, System.EventArgs e)
     {
-        LevelManager.instance.HandleRaycast();
+        LevelManager.instance.MapManager.HandleRaycast();
     }
 
     private void Single_OnCharDrop(object sender, CharacterData e)
     {
-        LevelManager.instance.HanlderOnCharDrop(e);
+        LevelManager.instance.MapManager.HanlderOnCharDrop(e);
         currentUnitDeloy  = e.charIndex;
         
     }
