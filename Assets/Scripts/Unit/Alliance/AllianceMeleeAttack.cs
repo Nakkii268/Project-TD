@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class AllianceMeleeAttack : AllianceAttack
 {
+    protected override void Start()
+    {
+        base.Start();
+    }
     public override void AttackPerform()
     {
         
@@ -13,10 +17,10 @@ public class AllianceMeleeAttack : AllianceAttack
 
     public override void Attack()
     {
-        List<GameObject> target = GetTarget();
+        
         if (Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Enemy)
         {
-            foreach (GameObject tg in target)
+            foreach (GameObject tg in currentTarget)
             {
                 tg.GetComponentInParent<IDamageable>().ReceiveDamaged(allyAttack, damageType);
             }
@@ -26,7 +30,7 @@ public class AllianceMeleeAttack : AllianceAttack
         {
             AllianceHealerUnit healScale = (AllianceHealerUnit)alliance.GetAllianceUnit();
             
-            foreach (GameObject tg in target)
+            foreach (GameObject tg in currentTarget)
             {
                 tg.GetComponentInParent<IHealable>().Heal(allyAttack);
             }

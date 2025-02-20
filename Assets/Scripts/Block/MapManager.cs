@@ -173,12 +173,12 @@ public class MapManager : MonoBehaviour
         List<GameObject> list = new List<GameObject>();
         for (int x = 0; x < MapSize_X; x++)
         {
-            Debug.Log("x"+x);
+           // Debug.Log("x"+x);
             for (int y = 0; y < MapSize_Y; y++)
             {
-                Debug.Log("y"+y);
+                //Debug.Log("y"+y);
 
-                Debug.Log(tiles[x, y]);
+               // Debug.Log(tiles[x, y]);
                 if (tiles[x, y].GetComponent<Block>().IsDeloyable() && tiles[x, y].GetComponent<Block>().GetBlockType() == ut)
                 {
                     list.Add(tiles[x, y]);

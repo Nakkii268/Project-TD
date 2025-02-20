@@ -9,31 +9,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d13eadea05d5cc84f8bb8c01eb01b038, type: 3}
-  m_Name: Guard1
+  m_Script: {fileID: 11500000, guid: 03e20d8a3e02e2449b839f06100caff6, type: 3}
+  m_Name: New Alliance Sniper Unit 1
   m_EditorClassIdentifier: 
-  UnitID: 001
+  UnitID: 002
   UnitPrefab: {fileID: 6865232695306935221, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
-  Name: GuardTest
-  Heath: 1000
-  Attack: 1000
-  AttackInterval: 1
-  Defense: 10
-  Resistance: 10
-  Block: 2
-  unitSprite: {fileID: -560534046, guid: ec17e23842b46dc4b8d09ddd969099e4, type: 3}
+  Name: snipe
+  Heath: 10000
+  Attack: 100000
+  AttackInterval: 10
+  Defense: 0
+  Resistance: 0
+  Block: 0
+  unitSprite: {fileID: 1087698108, guid: 07569e0c26a31b043833ee55836fb215, type: 3}
   AttackRange:
   - {x: 0, y: 0}
   - {x: -1, y: 0}
-  type: 0
+  - {x: 0, y: 1}
+  - {x: 0, y: -1}
+  - {x: -1, y: -1}
+  - {x: -1, y: 1}
+  type: 1
   UnitDp: 10
-  RedeployTime: 10
+  RedeployTime: 60
   EnemyType:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 6144
   UnitTarget: 0
   TargetCount: 0
   DamageType: 0
-  UnitClass: 0
+  UnitClass: 4
   ClassBuff: {fileID: 11400000, guid: f0787e38af17e05488ef854602385f5b, type: 2}
   unitBranch: 0

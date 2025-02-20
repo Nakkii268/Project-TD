@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class AllianceUnit : Unit
 {
-    public GameObject prefab;
+
     public Sprite unitSprite;
     public List<Vector2> AttackRange;
 

@@ -111,16 +111,21 @@ public class AllianceAttackCollider : MonoBehaviour
         List<Vector2> arranged = new List<Vector2>();
         arranged.AddRange(range);
         List<Vector2> nonDup = new List<Vector2>(RemoveDup(arranged));
-        Vector2 center = GetRangeCenter(nonDup);
+      //  Vector2 center = GetRangeCenter(nonDup);
+        Vector2 center = new Vector2(-.1f, 0);
        
-        nonDup.Sort((a, b) =>
+      /*  nonDup.Sort((a, b) =>
         {
-            float angleA = ConvertAngle(Vector2.SignedAngle(new Vector2(center.x, center.y), a));
+            float angleA = ConvertAngle(Vector2.SignedAngle(new Vector2(center.x, 0), a));
             
-            float angleB = ConvertAngle(Vector2.SignedAngle(new Vector2(center.x, center.y), b));
+            float angleB = ConvertAngle(Vector2.SignedAngle(new Vector2(center.x, 0), b));
             
             return angleB.CompareTo(angleA);
-        });
+        });*/
+         nonDup.Sort((a, b) => 
+         Mathf.Atan2(a.y - center.y, a.x - center.x).CompareTo(
+             Mathf.Atan2(b.y - center.y, b.x - center.x))
+         );
 
 
         return nonDup.ToArray();
@@ -134,18 +139,47 @@ public class AllianceAttackCollider : MonoBehaviour
             sumX += point.x;
             sumY += point.y;
         }
+        Debug.Log("x"+ sumX / range.Count + "   y"+ sumY / range.Count);
         return new Vector2(sumX / range.Count, sumY / range.Count);
     }
     private List<Vector2> RemoveDup(List<Vector2> range)
     {
-        HashSet<Vector2> uniquePointsSet = new HashSet<Vector2>(range);
-        return new List<Vector2>(uniquePointsSet);
+        List<Vector2> uniquePointsSet = new List<Vector2>();
+        //return new List<Vector2>(uniquePointsSet);
+        Dictionary<Vector2, int> pointCount = new Dictionary<Vector2, int>();
+        foreach (Vector2 point in range)
+        {
+            if (pointCount.ContainsKey(point))
+            {
+                pointCount[point]++;
+            }
+            else {
+                pointCount[point] = 1;
+            }
+            
+        }
+        foreach (var point in pointCount) { 
+            if(point.Value >= 4)
+            {
+                Debug.LogWarning(point.Key + "---" + point.Value);
+                continue;
+            }
+            else
+            {
+                Debug.Log(point.Key + "---" + point.Value);
+
+                uniquePointsSet.Add(point.Key);
+            }
+        }
+
+        return uniquePointsSet;
     }
 
     private float ConvertAngle(float angle)
     {
         if(angle >=0) return angle;
         angle += 360;
+        Debug.Log(angle);
         return angle;
     }
 

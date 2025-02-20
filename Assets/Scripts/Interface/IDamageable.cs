@@ -8,5 +8,4 @@ public interface IDamageable
     public event EventHandler OnGetHit;
 
     public void ReceiveDamaged(float damage,DamageType type);
-    public float GetPercentHp();
 }

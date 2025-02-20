@@ -29,7 +29,7 @@ public class AllianceAttackRange : MonoBehaviour
 
            float tempx = alliance.GetUnitPos().x + ranges[i].x * Mathf.Cos(angle) - (ranges[i].y) * Mathf.Sin(angle);
            float tempy = alliance.GetUnitPos().y + ranges[i].y * Mathf.Cos(angle) + (ranges[i].x) * Mathf.Sin(angle);
-            range.Add(new Vector2(tempx, tempy));
+            range.Add(new Vector2((float)Math.Round(tempx,1), (float)Math.Round(tempy, 1)));
 
         }
         return range;

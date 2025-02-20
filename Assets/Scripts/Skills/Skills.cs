@@ -9,6 +9,8 @@ public class Skills : ScriptableObject
     public SkillType skillType;
     public SkillEffect skillEffect;
     public SkillTarget skillTarget;
+    public bool TargetRequire;
+    public Vector2[] SkillRange;
     public virtual void SkillActivate(GameObject User,List<GameObject> target)
     {
 
