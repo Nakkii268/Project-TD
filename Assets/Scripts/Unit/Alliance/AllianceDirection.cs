@@ -108,6 +108,7 @@ public class AllianceDirection : MonoBehaviour, IBeginDragHandler, IEndDragHandl
         if (angle <= 15 && angle >= -15)
         {
             direction = new Vector2(1, 0);
+            alliance.AllianceVisual.RotateToDirection(direction);
         }
         else if (75 <= angle && angle <= 105)
         {
@@ -117,6 +118,8 @@ public class AllianceDirection : MonoBehaviour, IBeginDragHandler, IEndDragHandl
         else if (angle >= 165 || angle <= -165)
         {
             direction = new Vector2(-1, 0);
+            alliance.AllianceVisual.RotateToDirection(direction);
+
 
         }
         else if(-75 >= angle && angle >= -105)

@@ -24,6 +24,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private LevelLifePointManager levelLifePointManager;
     [SerializeField] private WaveManager waveManager;
     [SerializeField] private LevelStateMachineManager levelStateMachineManager;
+    [SerializeField] private Transform LevelInfoUI;
     public LevelStateMachineManager LevelStateMachineManager { get { return levelStateMachineManager; } }
 
 
@@ -31,6 +32,8 @@ public class LevelManager : MonoBehaviour
     public event EventHandler OnGamePause;
     public event EventHandler OnGameUnPause;
     public event EventHandler<float> OnGameEnd;// win = 1; lose = 0; win but leaked =0.x
+
+
 
     private void Awake()
     {
@@ -66,13 +69,17 @@ public class LevelManager : MonoBehaviour
 
     public void DisableComponent()
     {
-        levelDPManager.enabled = false; 
-        waveManager.enabled = false;
+        levelDPManager.gameObject.SetActive(false);
+        waveManager.gameObject.SetActive(false);
+        LevelInfoUI.gameObject.SetActive(false );
     }
     public void EnableComponent()
     {
-        levelDPManager.enabled = true;
-        waveManager.enabled = true;
+        levelDPManager.gameObject.SetActive(true);
+        waveManager.gameObject.SetActive(true);
+        LevelInfoUI.gameObject.SetActive(true );
     }
+
+    
 }
 

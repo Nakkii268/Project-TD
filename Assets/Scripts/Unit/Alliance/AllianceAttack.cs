@@ -49,6 +49,7 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
     private void AllienceAttackCollider_OnEnemyIn(object sender, GameObject e)
     {
         AddTarget(e);
+        GetTarget();
        
     }
 
@@ -91,9 +92,9 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
         toReturn.Add(min);  
         return toReturn;
     }
-    protected List<GameObject> GetMinHpTarget()//remind to change
+    protected GameObject GetMinHpTarget()//remind to change
     {
-        List<GameObject> toReturn = new();
+       GameObject toReturn = new();
         GameObject min = targets[0];
         for (int i = 1; i < targets.Count; i++)
         {
@@ -101,8 +102,9 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
             {
                 min = targets[i];
             }
+            toReturn = min;
         }
-        toReturn.Add(min);
+        
         return toReturn;
     }
     protected void GetTarget()
@@ -117,7 +119,7 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
             }
             else if (Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Alliance)
             {
-                currentTarget= GetMinHpTarget(); 
+                //currentTarget= GetMinHpTarget(); 
 
             }
         }
@@ -130,7 +132,7 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
             currentTarget= targets;
         }
 
-        currentTarget= null;
+        
     }
 
     public void SetTargetCount(TargetCount tc)

@@ -25,6 +25,10 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
         levelManager = LevelManager.instance;
         rectTransform = GetComponent<RectTransform>();
     }
+    public void Initialized()
+    {
+        //toPrefab = unit.UnitPrefab;
+    }
     public void OnBeginDrag(PointerEventData eventData)
     {
         if ((levelManager.GetLevelDPManager().GetCurrentDp() < unit.UnitDp) 

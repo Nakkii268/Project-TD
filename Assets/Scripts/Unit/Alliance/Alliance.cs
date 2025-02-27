@@ -16,6 +16,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
     public AllianceVisual AllianceVisual { get { return allianceVisual; } }
 
     [SerializeField] private AllianceDirection allianceDirection;
+    public AllianceDirection AllianceDirection { get { return allianceDirection; } }
 
     [SerializeField] private AllianceAttackRange allianceAttackRange;
     public AllianceAttackRange AllianceAttackRange { get { return allianceAttackRange; } }

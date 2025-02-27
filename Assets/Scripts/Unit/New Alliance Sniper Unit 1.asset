@@ -17,18 +17,19 @@ MonoBehaviour:
   Name: snipe
   Heath: 10000
   Attack: 100000
-  AttackInterval: 10
+  AttackInterval: 1
   Defense: 0
   Resistance: 0
   Block: 0
   unitSprite: {fileID: 1087698108, guid: 07569e0c26a31b043833ee55836fb215, type: 3}
   AttackRange:
   - {x: 0, y: 0}
-  - {x: -1, y: 0}
   - {x: 0, y: 1}
   - {x: 0, y: -1}
-  - {x: -1, y: -1}
+  - {x: -1, y: 0}
+  - {x: -2, y: 0}
   - {x: -1, y: 1}
+  - {x: -1, y: -1}
   type: 1
   UnitDp: 10
   RedeployTime: 60

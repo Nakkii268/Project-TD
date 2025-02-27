@@ -11,40 +11,43 @@ public class AllianceVisual : MonoBehaviour
 
     //!!!! Need to handle visual direction when deploy
 
+   
 
+    public void RotateToDirection(Vector2 direction)
+    {
+        if(direction == new Vector2(-1, 0))
+        {
+            transform.rotation = Quaternion.Euler(30, 180, 0);
+        }else if(direction == new Vector2(1, 0))
+        {
+            transform.rotation = Quaternion.Euler(-30, 0, 0);
 
-    //for test
+        }
+    }
+    //for test}
     public void PlayIdleAnim()
     {
-        animator.Play("test");
+        animator.Play("idle");
     }
-    public void StopIdleAnim()
-    {
-        animator.SetBool("Idle",false);
-        
-    }
+  
     public void PlayAttackAnim()
     {
 
-        animator.Play("testAttack");
+        animator.Play("attack");
 
     }
-    public void StopAttackAnim()
-    {
-        animator.SetBool("Attack", false);
-
-    }
+  
     public void PlayGetHitkAnim()
     {
-        animator.Play("Get Hit");
+        animator.Play("gethit");
     }
     public void PlayDisableAnim()
     {
-        animator.Play("Disable");
+        animator.Play("disable");
     }
     public void PlayDeadAnim()
     {
-        animator.SetBool("Dead", true);
+        animator.Play("dead");
     }
 
     // basicaly anim name will be charname + action eg: char1 idle

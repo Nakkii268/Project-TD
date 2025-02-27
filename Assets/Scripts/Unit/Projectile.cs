@@ -9,20 +9,22 @@ public class Projectile : MonoBehaviour
     [SerializeField] private DamageType damageType;
     [SerializeField] private GameObject target;
     [SerializeField] private UnitTarget targetUnit;
-    private void Start()
-    {
-        RotateToTarget();
-    }
+    [SerializeField] private float Speed =5f;
+    [SerializeField] private Transform source;
+   
     private void Update()
     {
-        
+        MoveToTarget();
+        RotateToTarget();
     }
-    public void SetInfomation(float dmg, DamageType type,UnitTarget ut, GameObject tg)
+    public void SetInfomation(float dmg, DamageType type,UnitTarget ut, GameObject tg,Transform s)
     {
         damaged = dmg;  
         damageType = type;
         targetUnit = ut;
         target = tg;
+        source = s;
+        Debug.Log("success");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -47,10 +49,17 @@ public class Projectile : MonoBehaviour
             
         }
     }
+    private void MoveToTarget()
+    {
+        transform.Translate(Vector2.right * Speed * Time.deltaTime);
+        
+    }
     private void RotateToTarget()
     {
-        float angle = Vector2.Angle(target.transform.position- transform.position, Vector2.right);
-       transform.rotation= Quaternion.Euler(0f, 0f,angle);
-        //may be reconsider to use lookat
+       Vector2 dir = target.transform.position - source.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle );   
+        
+      
     }
 }

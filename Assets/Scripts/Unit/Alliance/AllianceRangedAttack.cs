@@ -11,23 +11,28 @@ public class AllianceRangedAttack : AllianceAttack
     public bool isEnhance;
     [SerializeField] private int hitCount=1;
     [SerializeField] private Transform firePoint;
-   [SerializeField] private Transform fireTarget;
+
 
     protected override void Start()
     {
         base.Start();
-        SpawnProjectiles();
+        //SpawnProjectiles();
     }
     public override void AttackPerform()
     {
         base.AttackPerform();
     }
+    public override void Attack()
+    {
+        Transform SpawnedProjectile1 = Instantiate(Projectile, firePoint.position, Quaternion.identity);
+        SpawnedProjectile1.gameObject.GetComponent<Projectile>().SetInfomation(allyAttack, damageType, alliance.GetAllianceUnit().UnitTarget, currentTarget[0],firePoint);
 
+    }
 
     public void SpawnProjectiles()
     {
-        SpawnedProjectile =  Instantiate(Projectile, firePoint.position, firePoint.rotation);
-      //  SpawnedProjectile.gameObject.GetComponent<Projectile>().SetInfomation(allyAttack,damageType,alliance.GetAllianceUnit().UnitTarget,GetMinHpTarget())
+       //GameObject SpawnedProjectile =  Instantiate(Projectile, firePoint.position, Quaternion.identity);
+       // SpawnedProjectile.gameObject.SetActive(false);
 
     }
 }

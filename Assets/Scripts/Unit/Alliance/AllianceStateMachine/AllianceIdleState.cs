@@ -17,7 +17,7 @@ public class AllianceIdleState : AllianceState, IState
     public override void Exit()
     {
         base.Exit();
-        AllianceSMManager.Alliance.AllianceVisual.StopIdleAnim();
+        
 
     }
     public override void Update()
