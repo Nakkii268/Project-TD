@@ -52,6 +52,7 @@ MonoBehaviour:
   targetUnit: 0
   Speed: 5
   source: {fileID: 0}
+  projectileVisual: {fileID: 767294114583250610}
 --- !u!61 &3100761932867680957
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AllianceRangedAttack : AllianceAttack
 {
-    [SerializeField] private Transform Projectile;
-    [SerializeField] private Transform SpawnedProjectile;
+    [SerializeField] private Sprite ProjectileVisual;
+    
     [SerializeField] private Transform EnhanceProjectile;
     [SerializeField] private Transform SpawnedEnhanceProjectile;
     public bool isEnhance;
@@ -16,7 +16,7 @@ public class AllianceRangedAttack : AllianceAttack
     protected override void Start()
     {
         base.Start();
-        //SpawnProjectiles();
+       
     }
     public override void AttackPerform()
     {
@@ -24,15 +24,12 @@ public class AllianceRangedAttack : AllianceAttack
     }
     public override void Attack()
     {
-        Transform SpawnedProjectile1 = Instantiate(Projectile, firePoint.position, Quaternion.identity);
-        SpawnedProjectile1.gameObject.GetComponent<Projectile>().SetInfomation(allyAttack, damageType, alliance.GetAllianceUnit().UnitTarget, currentTarget[0],firePoint);
+       GameObject projectile =  LevelManager.instance.projectilePool.GetProjectile();
+        
+        projectile.transform.position = firePoint.position;
+        projectile.GetComponent<Projectile>().SetInfomation(allyAttack, damageType, alliance.GetAllianceUnit().UnitTarget, currentTarget[0],firePoint,ProjectileVisual);
 
     }
 
-    public void SpawnProjectiles()
-    {
-       //GameObject SpawnedProjectile =  Instantiate(Projectile, firePoint.position, Quaternion.identity);
-       // SpawnedProjectile.gameObject.SetActive(false);
-
-    }
+    
 }

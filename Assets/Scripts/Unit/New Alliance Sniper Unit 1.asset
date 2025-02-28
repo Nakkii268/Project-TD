@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: New Alliance Sniper Unit 1
   m_EditorClassIdentifier: 
   UnitID: 002
-  UnitPrefab: {fileID: 6865232695306935221, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
+  UnitPrefab: {fileID: 6865232695306935221, guid: 25c51bdf62ab3964783a457aa28eb066, type: 3}
   Name: snipe
   Heath: 10000
   Attack: 100000
@@ -32,7 +32,7 @@ MonoBehaviour:
   - {x: -1, y: -1}
   type: 1
   UnitDp: 10
-  RedeployTime: 60
+  RedeployTime: 10
   EnemyType:
     serializedVersion: 2
     m_Bits: 6144

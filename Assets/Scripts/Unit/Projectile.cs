@@ -11,19 +11,22 @@ public class Projectile : MonoBehaviour
     [SerializeField] private UnitTarget targetUnit;
     [SerializeField] private float Speed =5f;
     [SerializeField] private Transform source;
+    [SerializeField] private SpriteRenderer projectileVisual;
    
     private void Update()
     {
         MoveToTarget();
         RotateToTarget();
     }
-    public void SetInfomation(float dmg, DamageType type,UnitTarget ut, GameObject tg,Transform s)
+    public void SetInfomation(float dmg, DamageType type,UnitTarget ut, GameObject tg,Transform s,Sprite visual)
     {
         damaged = dmg;  
         damageType = type;
         targetUnit = ut;
         target = tg;
         source = s;
+        projectileVisual.sprite = visual;
+
         Debug.Log("success");
     }
 
@@ -62,4 +65,5 @@ public class Projectile : MonoBehaviour
         
       
     }
+   
 }
