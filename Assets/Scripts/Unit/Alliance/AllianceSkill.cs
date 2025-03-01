@@ -29,11 +29,14 @@ public class AllianceSkill : MonoBehaviour
         {
             ActiveSkills skill = (ActiveSkills)OnUseSkill;
             curSkillPoint = startSkillPoint;
-
-            SkillActiveBtn.onClick.AddListener(() => {
-                SkillUsing();
-            });
-
+            if (skill.ActiveType == SkillActiveType.ManualUse)
+            {
+                SkillActiveBtn.onClick.AddListener(() =>
+                {
+                    SkillUsing();
+                });
+            }
+           
             DisableSkillBtn();
 
             if (skill.ChargeType == ChargeType.Defensive)
@@ -105,9 +108,16 @@ public class AllianceSkill : MonoBehaviour
 
         curSkillPoint += amout;
         OnSpChange?.Invoke(this,curSkillPoint/skill.SkillPoint);
-
+        
         if (IsFullSkillPoint()){
-            EnableSkillBtn();
+            if (skill.ActiveType == SkillActiveType.AutoUse)
+            {
+                SkillUsing();
+            }
+            else
+            {
+                EnableSkillBtn();
+            }
         }
     }
     private bool IsFullSkillPoint()

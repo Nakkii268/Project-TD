@@ -16,33 +16,3 @@ public class Skills : ScriptableObject
 
     }
 }
-public enum SkillType
-{
-    Active,
-    Passive
-}
-public enum ChargeType
-{
-    Offensive,
-    Defensive,
-    Auto
-}
-public enum SkillEffect
-{
-    DamagedDeal,
-    StatusEffect,
-    Mix
-}
-public enum SkillTarget
-{
-    Alliance,
-    Self,
-    Enemy
-}
-public enum SkillSubTarget
-{
-    None,
-    Alliance,
-    Self,
-    Enemy
-}

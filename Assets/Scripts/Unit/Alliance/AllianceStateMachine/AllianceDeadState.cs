@@ -15,7 +15,7 @@ public class AllianceDeadState : AllianceState
     public override void Exit()
     {
         base.Exit();
-        //stop anim
+        
     }
 
 

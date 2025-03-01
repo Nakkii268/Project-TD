@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,12 +20,18 @@ public class AllianceDisableState : AllianceState, IState
     }
     protected override void AddCallBack()
     {
-        base.AddCallBack();
+        AllianceSMManager.Alliance.OnUnitDead += Alliance_OnUnitDead;
         AllianceSMManager.Alliance.StatusEffectHolder.OnEndDisable += StatusEffectHolder_OnEndDisable;
     }
+
+    private void Alliance_OnUnitDead(object sender, EventArgs e)
+    {
+        AllianceSMManager.ChangeState(AllianceSMManager.AllianceDeadState);
+    }
+
     protected override void RemoveCallBack()
     {
-        base.RemoveCallBack();
+        AllianceSMManager.Alliance.OnUnitDead -= Alliance_OnUnitDead;
         AllianceSMManager.Alliance.StatusEffectHolder.OnEndDisable -= StatusEffectHolder_OnEndDisable;
 
     }

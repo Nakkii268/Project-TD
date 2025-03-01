@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectilePooling : MonoBehaviour
+public class Pooling : MonoBehaviour
 {
-    public GameObject ProjectilePrefab;
+    public GameObject Prefab;
     public List<GameObject> Pool;
     public int poolSize;
 
@@ -17,7 +17,7 @@ public class ProjectilePooling : MonoBehaviour
         Pool = new List<GameObject>();
         for (int i = 0; i < poolSize; i++)
         {
-            GameObject obj = Instantiate(ProjectilePrefab);
+            GameObject obj = Instantiate(Prefab);
             obj.SetActive(false);
             Pool.Add(obj);
         }

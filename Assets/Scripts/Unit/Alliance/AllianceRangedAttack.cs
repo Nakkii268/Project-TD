@@ -27,6 +27,7 @@ public class AllianceRangedAttack : AllianceAttack
        GameObject projectile =  LevelManager.instance.projectilePool.GetProjectile();
         
         projectile.transform.position = firePoint.position;
+        projectile.gameObject.SetActive(true);
         projectile.GetComponent<Projectile>().SetInfomation(allyAttack, damageType, alliance.GetAllianceUnit().UnitTarget, currentTarget[0],firePoint,ProjectileVisual);
 
     }

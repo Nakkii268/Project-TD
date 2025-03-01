@@ -8,6 +8,7 @@ public class ActiveSkills : Skills
     public float SkillDuration;
     public float SkillPoint;
     public bool CanAttack;
+    public SkillActiveType ActiveType;
     public override void SkillActivate(GameObject User, List<GameObject> target)
     {
         

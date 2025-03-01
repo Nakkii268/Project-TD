@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
@@ -93,6 +94,8 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
         if (stat.currentHp < 0)
         {
             stat.currentHp = 0;
+            OnEnemyDead?.Invoke(this, new EnemyDeadArg(this.gameObject, isWaveEnemy));
+            Debug.Log("dead");
         }
         OnHpChange?.Invoke(this, stat.currentHp / stat.MaxHp.Value);
     }
@@ -128,6 +131,7 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
 
     public void Dead()
     {
+        Debug.Log("destroyed");
         Destroy(gameObject);
     }
    

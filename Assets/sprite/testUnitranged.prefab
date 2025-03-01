@@ -856,8 +856,7 @@ MonoBehaviour:
   currentTarget: []
   targetCount: 0
   damageType: 0
-  Projectile: {fileID: 2033686525427427824, guid: 6b55a28090dfe57488a0e127f8ab1e63, type: 3}
-  SpawnedProjectile: {fileID: 0}
+  ProjectileVisual: {fileID: 654593747, guid: b23718bcca7e9244eab9fb4c5f98b011, type: 3}
   EnhanceProjectile: {fileID: 2033686525427427824, guid: 6b55a28090dfe57488a0e127f8ab1e63, type: 3}
   SpawnedEnhanceProjectile: {fileID: 0}
   isEnhance: 0
