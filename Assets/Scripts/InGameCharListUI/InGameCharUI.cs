@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -19,11 +20,14 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     [SerializeField] private bool isPointerHover;
     [SerializeField] private RectTransform rectTransform;
     [SerializeField] private  CountDownUI countDownUI;
+    [SerializeField] private TextMeshProUGUI UnitCostTxt;
+    [SerializeField] private Image ClassIcon;
 
     private void Start()
     {
         levelManager = LevelManager.instance;
         rectTransform = GetComponent<RectTransform>();
+        UnitCostTxt.text = unit.UnitDp.ToString();
     }
     public void Initialized()
     {

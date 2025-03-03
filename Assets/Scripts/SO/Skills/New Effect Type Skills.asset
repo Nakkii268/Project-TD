@@ -17,9 +17,12 @@ MonoBehaviour:
   skillType: 0
   skillEffect: 1
   skillTarget: 1
+  TargetRequire: 0
+  SkillRange: []
   ChargeType: 2
   SkillDuration: 10
   SkillPoint: 10
   CanAttack: 1
+  ActiveType: 1
   effects:
   - {fileID: 11400000, guid: 6bb87a4870ecee04a958d35c5fb44a10, type: 2}

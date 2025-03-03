@@ -15,11 +15,11 @@ MonoBehaviour:
   UnitID: 1221
   UnitPrefab: {fileID: 7337458643970106659, guid: 5813ce2ba261bb841a074e50c19f5b72, type: 3}
   Name: "s\xE2s"
-  Heath: 100000
+  Heath: 1000
   Attack: 1
   AttackInterval: 10
-  Defense: 100
-  Resistance: 100
+  Defense: 1
+  Resistance: 1
   Block: 0
   Speed: 1
   CanBlock: 1
