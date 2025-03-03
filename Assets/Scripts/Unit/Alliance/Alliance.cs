@@ -54,7 +54,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
     public event EventHandler OnUnitRetreat;
     public event EventHandler<float> OnHpChange;
     public event EventHandler OnUnitDead;
-    public float testattack;
+    
 
     private void Awake()
     {

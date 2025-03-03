@@ -25,6 +25,10 @@ public class AllianceVisual : MonoBehaviour
         }
     }
     //for test}
+    public void PlayDefaultAnim()
+    {
+        animator.Play("default");
+    }
     public void PlayIdleAnim()
     {
         animator.Play("idle");

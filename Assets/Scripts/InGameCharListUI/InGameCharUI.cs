@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class InGameCharUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] private LevelManager levelManager;
     public event EventHandler OnCharSelect;
@@ -74,19 +74,7 @@ public class InGameCharUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
 
     }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (isPointerHover) {
-
-            rectTransform.localPosition += new Vector3(0, .5f, 0);
-        }
-        else
-        {
-            rectTransform.localScale = Vector3.one;
-
-        }
-        //set time scale
-    }
+   
     public void InitCountDown()
     {
         countDownUI.gameObject.SetActive(true);

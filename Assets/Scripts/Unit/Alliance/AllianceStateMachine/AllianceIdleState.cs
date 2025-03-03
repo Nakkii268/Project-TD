@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AllianceIdleState : AllianceState, IState
+public class AllianceIdleState : AllianceState
 {
     public AllianceIdleState(AllianceSMManager allianceSMManager) : base(allianceSMManager)
     {
@@ -27,19 +27,5 @@ public class AllianceIdleState : AllianceState, IState
             AllianceSMManager.ChangeState(AllianceSMManager.AllianceAttackState);
         }
     }
-    public override void FixedUpdate()
-    {
-    }
-
-    public override void OnAnimationEnterEvent()
-    {
-    }
-
-    public override void OnAnimationExitEvent()
-    {
-    }
-
-    public override void OnAnimationTransitionEvent()
-    {
-    }
+  
 }

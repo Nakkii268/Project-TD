@@ -14,7 +14,7 @@ public class AllianceStat : UnitStat
     private  void Start()
     {
         Initialized();
-        alliance.testattack = Attack.Value;
+        
     }
     protected override void Initialized()
     {
