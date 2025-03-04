@@ -19,7 +19,7 @@ public class InGameCharListUI : MonoBehaviour
         {
             single.OnCharDrop += Single_OnCharDrop;
             single.OnCharSelect += Single_OnCharSelect;
-            single.Initialized();
+           
         }
     }
 

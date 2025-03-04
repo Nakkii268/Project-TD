@@ -1,12 +1,10 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InGameCharUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] private LevelManager levelManager;
     public event EventHandler OnCharSelect;
@@ -16,23 +14,22 @@ public class InGameCharUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     [SerializeField] private GameObject Prefab;
     [SerializeField] private GameObject toPrefab;
     [SerializeField] private int indx;
-   [SerializeField]private Canvas Canvas;
-    [SerializeField] private bool isPointerHover;
+    [SerializeField]private Canvas Canvas;
+
     [SerializeField] private RectTransform rectTransform;
     [SerializeField] private  CountDownUI countDownUI;
     [SerializeField] private TextMeshProUGUI UnitCostTxt;
     [SerializeField] private Image ClassIcon;
-
-    private void Start()
+    [SerializeField] private bool isForcused;
+    protected override void Start()
     {
+        base.Start();
         levelManager = LevelManager.instance;
         rectTransform = GetComponent<RectTransform>();
         UnitCostTxt.text = unit.UnitDp.ToString();
+        
     }
-    public void Initialized()
-    {
-        //toPrefab = unit.UnitPrefab;
-    }
+    
     public void OnBeginDrag(PointerEventData eventData)
     {
         if ((levelManager.GetLevelDPManager().GetCurrentDp() < unit.UnitDp) 
@@ -73,12 +70,31 @@ public class InGameCharUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
        
 
     }
+    protected override void PointerClickHandler_OnPointerClick(object sender, EventArgs e)
+    {
+        if (isPointerIn)
+        {
+            if (isForcused) return;
+            rectTransform.position += new Vector3(0,  50,0);
+            isForcused = true;
+        }
+        else
+        {
+            if (!isForcused) return;
+            rectTransform.position -= new Vector3(0, 50, 0);
+            isForcused = false;
 
-   
+        }
+    }
+
     public void InitCountDown()
     {
         countDownUI.gameObject.SetActive(true);
         countDownUI.Inittialize(unit.RedeployTime);
+    }
+    protected override void OnDisable()
+    {
+        base.OnDisable();
     }
 }
 public class CharacterData

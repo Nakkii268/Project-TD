@@ -1,10 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 
 
@@ -34,7 +29,7 @@ public class LevelManager : MonoBehaviour
     public event EventHandler OnGameUnPause;
     public event EventHandler<float> OnGameEnd;// win = 1; lose = 0; win but leaked =0.x
 
-
+    public PointerClickHandle PointerClickHandler;
 
     private void Awake()
     {
@@ -42,13 +37,23 @@ public class LevelManager : MonoBehaviour
         
         levelStateMachineManager = new LevelStateMachineManager(this);
         DisableComponent();
+     
+       
+       
     }
+
+   
+
     private void Start()
     {
         //
         
         levelStateMachineManager.ChangeState(levelStateMachineManager.LevelPrepareState);
+        
     }
+
+    
+
     //
     private void Update()
     {

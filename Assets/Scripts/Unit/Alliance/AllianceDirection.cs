@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class AllianceDirection : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerClickHandler
+public class AllianceDirection : PointerDetect, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] private Canvas canvas;
     [SerializeField] private GameObject directionUI;
@@ -17,8 +17,9 @@ public class AllianceDirection : MonoBehaviour, IBeginDragHandler, IEndDragHandl
     
     public event EventHandler<Vector2> OnDeloyed;
     [SerializeField]private Vector3 offset = new Vector3(0,-.7f,0);
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         cam = CameraManager.instance;
         retreatBtn.onClick.AddListener(() => {
             alliance.Retreat(false);
@@ -144,8 +145,16 @@ public class AllianceDirection : MonoBehaviour, IBeginDragHandler, IEndDragHandl
         LevelManager.instance.MapManager.UnHighLightBlockList(range);
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    protected override void PointerClickHandler_OnPointerClick(object sender, EventArgs e)
     {
-        return;
+        if (!isPointerIn)
+        {
+            alliance.Retreat(false);
+
+        }
+    }
+    protected override void OnDisable()
+    {
+        base.OnDisable();
     }
 }

@@ -149,7 +149,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
             InGameCharListUI.Instance.ShowRetreatedUnitUI(charIndex);
         }
         isDeloyed = false;
-        directionCircle.gameObject.SetActive(false );
+        //directionCircle.gameObject.SetActive(false);
         LevelManager.instance.MapManager.UnHighLightBlockList(allianceAttackRange.AttackRange);
         Block block = GetComponentInParent<Block>();
         block.UnitReTreat();

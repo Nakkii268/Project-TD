@@ -21,7 +21,7 @@ MonoBehaviour:
   Defense: 0
   Resistance: 0
   Block: 0
-  unitSprite: {fileID: 1087698108, guid: 07569e0c26a31b043833ee55836fb215, type: 3}
+  unitSprite: {fileID: -1987341610, guid: ce316dec69b383242ae19e5c5b543d1a, type: 3}
   AttackRange:
   - {x: 0, y: 0}
   - {x: 0, y: 1}
