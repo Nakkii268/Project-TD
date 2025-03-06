@@ -31,8 +31,7 @@ public class EnemyIdleState : EnemyState
             EnemySMManager.ChangeState(EnemySMManager.EnemyMovingState); 
         }
         timeCounter += Time.deltaTime;
-        if (!EnemySMManager._enemy.EnemyAttack.AttackReady) return;
-        EnemySMManager._enemy.EnemyAttackCollider.DetectEnenmy();
+        
     }
     
   
