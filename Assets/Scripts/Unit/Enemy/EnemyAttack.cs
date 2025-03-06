@@ -13,16 +13,42 @@ public class EnemyAttack : MonoBehaviour, IAttackPerform
     protected float attackDmg;
     protected DamageType damageType;
     public event EventHandler<List<GameObject>> OnAttackPerform;
-    public  List<GameObject> targets;
-    
+    public  List<GameObject> targetsInRange;
+    public GameObject target;
 
-    
+
+    private void Start()
+    {
+        m_Enemy.EnemyAttackCollider.OnTargetIn += EnemyAttackCollider_OnTargetIn;
+        m_Enemy.EnemyAttackCollider.OnTargetOut += EnemyAttackCollider_OnTargetOut;
+    }
+
+    private void EnemyAttackCollider_OnTargetOut(object sender, GameObject e)
+    {
+        targetsInRange.Remove(e);
+        target = GetTarget();
+    }
+
+    private void EnemyAttackCollider_OnTargetIn(object sender, GameObject e)
+    {
+        targetsInRange.Add(e);
+        target = GetTarget();
+
+    }
+
+    private void EnemyAttackCollider_OnDetectEnemy(object sender, Collider2D[] e)
+    {
+        for (int i = 0; i < e.Length; i++) {
+            targetsInRange.Add(e[i].gameObject);
+        }
+    }
+
     protected virtual void PerformAttack()
     {
-        OnAttackPerform?.Invoke(this,targets );
+        OnAttackPerform?.Invoke(this,targetsInRange );
         AttackCoolDown(m_Enemy.Stat.AttackInterval.Value);
     }
-    public virtual void Attack(GameObject target) { }
+    public virtual void Attack() { }
 
 
     private IEnumerator AttackCoolDown(float AttackSpeed)
@@ -32,20 +58,34 @@ public class EnemyAttack : MonoBehaviour, IAttackPerform
         attackReady = true;
        
     }
+    public bool CanPerformAttack()
+    {
+        return attackReady;
+    }
     protected GameObject GetClosestTarget()
     {
         
-        GameObject min = targets[0];
-        for (int i = 1; i < targets.Count; i++)
+        GameObject min = targetsInRange[0];
+        for (int i = 1; i < targetsInRange.Count; i++)
         {
-            if (Vector2.Distance(targets[i].transform.position, transform.position) < Vector2.Distance(min.transform.position, transform.position))
+            if (Vector2.Distance(targetsInRange[i].transform.position, transform.position) < Vector2.Distance(min.transform.position, transform.position))
             {
-                min = targets[i];
+                min = targetsInRange[i];
             }
         }
 
        
         return min;
     }
-
+    private GameObject GetTarget()
+    {
+        if (m_Enemy.IsBlocked)
+        {
+            return m_Enemy.Blocker;
+        }
+        else
+        {
+            return GetClosestTarget();
+        }
+    }
 }

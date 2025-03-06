@@ -63,7 +63,10 @@ public class EnemyState :  IState
     }
     private void EnemyAttack_OnAttackPerform(object sender, List<GameObject> e)
     {
-        EnemySMManager.ChangeState(EnemySMManager.EnemyAttackState);
+        if (EnemySMManager._enemy.EnemyAttack.CanPerformAttack())
+        {
+            EnemySMManager.ChangeState(EnemySMManager.EnemyAttackState);
+        }
     }
 
 

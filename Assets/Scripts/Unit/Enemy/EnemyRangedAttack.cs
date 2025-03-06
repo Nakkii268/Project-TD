@@ -13,13 +13,13 @@ public class EnemyRangedAttack : EnemyAttack
 
     }
 
-    public override void Attack(GameObject target)
+    public override void Attack()
     {
         GameObject projectile = LevelManager.instance.projectilePool.GetProjectile();
 
         projectile.transform.position = firePoint.position;
         projectile.gameObject.SetActive(true);
-        projectile.GetComponent<Projectile>().SetInfomation(attackDmg, damageType, m_Enemy.Unit.target, GetClosestTarget(), firePoint, ProjectileSprite);
+        projectile.GetComponent<Projectile>().SetInfomation(attackDmg, damageType, m_Enemy.Unit.target, target, firePoint, ProjectileSprite);
 
     }
 

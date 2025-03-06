@@ -23,7 +23,7 @@ public class EnemyAttackState : EnemyState
 
     public override void OnAnimationTransitionEvent()
     {
-        EnemySMManager._enemy.EnemyAttack.Attack(EnemySMManager._enemy.EnemyAttackCollider.DetectEnenmy());
+       // EnemySMManager._enemy.EnemyAttack.Attack(EnemySMManager._enemy.EnemyAttackCollider.DetectEnenmy());
     }
 
     public override void OnAnimationExitEvent()

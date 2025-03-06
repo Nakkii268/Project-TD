@@ -40,6 +40,7 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
     public event EventHandler<EnemyDeadArg> OnEnemyDead;
     public event EventHandler OnGetHit;
     public event EventHandler<float> OnHpChange;
+    public GameObject Blocker;
 
     private void Awake()
     {
@@ -81,11 +82,11 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
     {
         if (type == DamageType.MagicDamage)
         {
-            stat.currentHp -= (damage - damage * (stat.Resistance.Value / 100));
+            stat.currentHp -= (damage - damage * (GetReductionValue(stat.Resistance.Value)));
         }
         else if (type == DamageType.PhysicDamage)
         {
-            stat.currentHp -= (damage - damage * (stat.Defense.Value / 100));
+            stat.currentHp -= (damage - damage * (GetReductionValue(stat.Defense.Value)));
 
 
         }
@@ -104,14 +105,14 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
     }
 
   
-    public void Blocked()
+    public void Blocked(GameObject blocker)
     {
-        
+        Blocker = blocker;
         speed = 0;
     }
-    public void UnBlock()
+    public void UnBlock(GameObject blocker)
     {
-        
+        Blocker=null;
         speed  = stat.Speed.Value;
     }
     public void DeadBtn()
@@ -137,7 +138,12 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
         Debug.Log("destroyed");
         Destroy(gameObject);
     }
-   
+    public float GetReductionValue(float def)
+    {
+        if (def / 100 >= 1) return (99 / 100); // make sure dmg reduce wont exceed 99%
+        return def / 100;
+
+    }
 }
 public class EnemyDeadArg
 {

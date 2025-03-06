@@ -27,7 +27,7 @@ public class AllianceBlock : MonoBehaviour
         if ((enemyLayer.value & (1<<collision.gameObject.layer))==0)  return;
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponentInParent<Enemy>().Blocked();
+            collision.gameObject.GetComponentInParent<Enemy>().Blocked(this.gameObject);
             blockedEnemies.Add(collision.gameObject);
             
             BlockOccupancy();
@@ -38,7 +38,7 @@ public class AllianceBlock : MonoBehaviour
         if ((enemyLayer.value & (1 << collision.gameObject.layer)) == 0) return;
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponentInParent<Enemy>().UnBlock();
+            collision.gameObject.GetComponentInParent<Enemy>().UnBlock(this.gameObject);
             blockedEnemies.Remove(collision.gameObject);
             BlockFree();
         }
@@ -47,7 +47,7 @@ public class AllianceBlock : MonoBehaviour
     {
         foreach (GameObject obj in blockedEnemies)
         {
-            obj.GetComponent<Enemy>().UnBlock();
+            obj.GetComponent<Enemy>().UnBlock(this.gameObject);
         }
     }
 

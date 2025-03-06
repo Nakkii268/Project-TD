@@ -13,7 +13,7 @@ public class EnemyMeleeAttack : EnemyAttack
 
     }
 
-    public override void Attack(GameObject target)
+    public override void Attack()
     {
          target.GetComponentInParent<IDamageable>().ReceiveDamaged(attackDmg, damageType);
 

@@ -11,6 +11,7 @@ public class EnemyUnit : Unit
     public DamageType damageType;
     public float AttackRange;
     public UnitTarget target;
+    public LayerMask targetlayer;
 }
 public enum EnemyType
 {

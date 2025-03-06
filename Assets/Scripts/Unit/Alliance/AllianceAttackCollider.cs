@@ -111,17 +111,9 @@ public class AllianceAttackCollider : MonoBehaviour
         List<Vector2> arranged = new List<Vector2>();
         arranged.AddRange(range);
         List<Vector2> nonDup = new List<Vector2>(RemoveDup(arranged));
-      //  Vector2 center = GetRangeCenter(nonDup);
+   
         Vector2 center = new Vector2(-.1f, 0);
-       
-      /*  nonDup.Sort((a, b) =>
-        {
-            float angleA = ConvertAngle(Vector2.SignedAngle(new Vector2(center.x, 0), a));
-            
-            float angleB = ConvertAngle(Vector2.SignedAngle(new Vector2(center.x, 0), b));
-            
-            return angleB.CompareTo(angleA);
-        });*/
+      
          nonDup.Sort((a, b) => 
          Mathf.Atan2(a.y - center.y, a.x - center.x).CompareTo(
              Mathf.Atan2(b.y - center.y, b.x - center.x))
