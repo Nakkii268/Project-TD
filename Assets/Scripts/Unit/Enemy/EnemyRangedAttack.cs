@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class EnemyRangedAttack : EnemyAttack
 {
-    [SerializeField] private Transform Projectile;
+    [SerializeField] private Sprite ProjectileSprite;
+    [SerializeField] private Transform firePoint;
     protected override void PerformAttack()
     {
         base.PerformAttack();
@@ -14,7 +15,11 @@ public class EnemyRangedAttack : EnemyAttack
 
     public override void Attack(GameObject target)
     {
-        target.GetComponentInParent<IDamageable>().ReceiveDamaged(attackDmg, damageType);
+        GameObject projectile = LevelManager.instance.projectilePool.GetProjectile();
+
+        projectile.transform.position = firePoint.position;
+        projectile.gameObject.SetActive(true);
+        projectile.GetComponent<Projectile>().SetInfomation(attackDmg, damageType, m_Enemy.Unit.target, GetClosestTarget(), firePoint, ProjectileSprite);
 
     }
 

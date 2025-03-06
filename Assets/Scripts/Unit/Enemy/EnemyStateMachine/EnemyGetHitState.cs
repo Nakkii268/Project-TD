@@ -12,6 +12,8 @@ public class EnemyGetHitState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        EnemySMManager._enemy.EnemyVisual.PlayGetHitAnim();
+
     }
 
     public override void Exit()
@@ -22,7 +24,7 @@ public class EnemyGetHitState : EnemyState
   
     public override void OnAnimationExitEvent()
     {
-        if (EnemySMManager.Enemy.IsMoving && !EnemySMManager.Enemy.IsBlocked)
+        if (EnemySMManager._enemy.IsMoving && !EnemySMManager._enemy.IsBlocked)
         {
             EnemySMManager.ChangeState(EnemySMManager.EnemyMovingState);
             return;

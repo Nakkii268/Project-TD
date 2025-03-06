@@ -10,6 +10,7 @@ public class EnemyUnit : Unit
     public EnemyType type;
     public DamageType damageType;
     public float AttackRange;
+    public UnitTarget target;
 }
 public enum EnemyType
 {

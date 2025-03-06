@@ -13,6 +13,8 @@ public class EnemyIdleState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        EnemySMManager._enemy.EnemyVisual.PlayIdleAnim();
+
     }
 
     public override void Exit()
@@ -25,12 +27,12 @@ public class EnemyIdleState : EnemyState
     {
         if(timeCounter > GetWaitTime())
         {
-            EnemySMManager.Enemy.pathIndex ++;
+            EnemySMManager._enemy.pathIndex ++;
             EnemySMManager.ChangeState(EnemySMManager.EnemyMovingState); 
         }
         timeCounter += Time.deltaTime;
-        if (!EnemySMManager.Enemy.EnemyAttack.AttackReady) return;
-        EnemySMManager.Enemy.EnemyAttackCollider.DetectEnenmy();
+        if (!EnemySMManager._enemy.EnemyAttack.AttackReady) return;
+        EnemySMManager._enemy.EnemyAttackCollider.DetectEnenmy();
     }
     
   

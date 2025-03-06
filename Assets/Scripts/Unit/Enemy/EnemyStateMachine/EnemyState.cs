@@ -45,18 +45,27 @@ public class EnemyState :  IState
     }
     protected virtual void AddCallBack()
     {
-        EnemySMManager.Enemy.OnEnemyDead += Enemy_OnEnemyDead;
-        EnemySMManager.Enemy.OnGetHit += Enemy_OnGetHit;
-        EnemySMManager.Enemy.StatusEffectHolder.OnGetDisable += StatusEffectHolder_OnGetDisable;
+        EnemySMManager._enemy.EnemyAttack.OnAttackPerform += EnemyAttack_OnAttackPerform;
+        EnemySMManager._enemy.OnEnemyDead += Enemy_OnEnemyDead;
+        EnemySMManager._enemy.OnGetHit += Enemy_OnGetHit;
+        EnemySMManager._enemy.StatusEffectHolder.OnGetDisable += StatusEffectHolder_OnGetDisable;
     }
 
-    
-
+   
     protected virtual void RemoveCallBack()
     {
-        EnemySMManager.Enemy.OnEnemyDead -= Enemy_OnEnemyDead;
-        EnemySMManager.Enemy.OnGetHit -= Enemy_OnGetHit;
+        EnemySMManager._enemy.EnemyAttack.OnAttackPerform -= EnemyAttack_OnAttackPerform;
+
+        EnemySMManager._enemy.OnEnemyDead -= Enemy_OnEnemyDead;
+        EnemySMManager._enemy.OnGetHit -= Enemy_OnGetHit;
+        EnemySMManager._enemy.StatusEffectHolder.OnGetDisable -= StatusEffectHolder_OnGetDisable;
+
     }
+    private void EnemyAttack_OnAttackPerform(object sender, List<GameObject> e)
+    {
+        EnemySMManager.ChangeState(EnemySMManager.EnemyAttackState);
+    }
+
 
     private void StatusEffectHolder_OnGetDisable(object sender, System.EventArgs e)
     {
@@ -76,24 +85,24 @@ public class EnemyState :  IState
     {
 
         Vector3 target;
-            if (EnemySMManager.Enemy.Path.Length == 0) return;
-            target = new Vector3(EnemySMManager.Enemy.Path[EnemySMManager.Enemy.pathIndex].x, EnemySMManager.Enemy.Path[EnemySMManager.Enemy.pathIndex].y, EnemySMManager.Enemy.transform.position.z);
-            EnemySMManager.Enemy.transform.position = Vector3.MoveTowards(EnemySMManager.Enemy.transform.position, target, EnemySMManager.Enemy.speed * Time.deltaTime);
+            if (EnemySMManager._enemy.Path.Length == 0) return;
+            target = new Vector3(EnemySMManager._enemy.Path[EnemySMManager._enemy.pathIndex].x, EnemySMManager._enemy.Path[EnemySMManager._enemy.pathIndex].y, EnemySMManager._enemy.transform.position.z);
+            EnemySMManager._enemy.transform.position = Vector3.MoveTowards(EnemySMManager._enemy.transform.position, target, EnemySMManager._enemy.speed * Time.deltaTime);
             CheckNextIndex();
             //move
-            if (Vector3.Distance(new Vector3(EnemySMManager.Enemy.transform.position.x, EnemySMManager.Enemy.transform.position.y, 0), new Vector3(target.x, target.y, 0)) < .3f)
+            if (Vector3.Distance(new Vector3(EnemySMManager._enemy.transform.position.x, EnemySMManager._enemy.transform.position.y, 0), new Vector3(target.x, target.y, 0)) < .3f)
             {
-                if (EnemySMManager.Enemy.pathIndex >= EnemySMManager.Enemy.Path.Length - 1) return;
-                EnemySMManager.Enemy.pathIndex++;
-                target = EnemySMManager.Enemy.Path[EnemySMManager.Enemy.pathIndex];
+                if (EnemySMManager._enemy.pathIndex >= EnemySMManager._enemy.Path.Length - 1) return;
+                EnemySMManager._enemy.pathIndex++;
+                target = EnemySMManager._enemy.Path[EnemySMManager._enemy.pathIndex];
 
             }
-            Vector2 dir = (Vector2)target - new Vector2(EnemySMManager.Enemy.transform.position.x, EnemySMManager.Enemy.transform.position.y);
+            Vector2 dir = (Vector2)target - new Vector2(EnemySMManager._enemy.transform.position.x, EnemySMManager._enemy.transform.position.y);
         
     }
     private void CheckNextIndex()
     {
-        if (EnemySMManager.Enemy.Path[EnemySMManager.Enemy.pathIndex].x != -99)
+        if (EnemySMManager._enemy.Path[EnemySMManager._enemy.pathIndex].x != -99)
         {
             return;
         }
@@ -102,6 +111,6 @@ public class EnemyState :  IState
     }
     protected float GetWaitTime()
     {
-        return EnemySMManager.Enemy.Path[EnemySMManager.Enemy.pathIndex].y;
+        return EnemySMManager._enemy.Path[EnemySMManager._enemy.pathIndex].y;
     }
 }

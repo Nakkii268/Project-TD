@@ -14,6 +14,7 @@ public class EnemyAttack : MonoBehaviour, IAttackPerform
     protected DamageType damageType;
     public event EventHandler<List<GameObject>> OnAttackPerform;
     public  List<GameObject> targets;
+    
 
     
     protected virtual void PerformAttack()
@@ -31,5 +32,20 @@ public class EnemyAttack : MonoBehaviour, IAttackPerform
         attackReady = true;
        
     }
-    
+    protected GameObject GetClosestTarget()
+    {
+        
+        GameObject min = targets[0];
+        for (int i = 1; i < targets.Count; i++)
+        {
+            if (Vector2.Distance(targets[i].transform.position, transform.position) < Vector2.Distance(min.transform.position, transform.position))
+            {
+                min = targets[i];
+            }
+        }
+
+       
+        return min;
+    }
+
 }

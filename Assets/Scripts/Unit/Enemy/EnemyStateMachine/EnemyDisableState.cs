@@ -11,6 +11,8 @@ public class EnemyDisableState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        EnemySMManager._enemy.EnemyVisual.PlayDisableAnim();
+
     }
     public override void Exit() 
     { 
@@ -20,17 +22,17 @@ public class EnemyDisableState : EnemyState
     protected override void AddCallBack()
     {
         base.AddCallBack();
-        EnemySMManager.Enemy.StatusEffectHolder.OnEndDisable += StatusEffectHolder_OnEndDisable;
+        EnemySMManager._enemy.StatusEffectHolder.OnEndDisable += StatusEffectHolder_OnEndDisable;
     }
     protected override void RemoveCallBack()
     {
-        EnemySMManager.Enemy.StatusEffectHolder.OnEndDisable -= StatusEffectHolder_OnEndDisable;
+        EnemySMManager._enemy.StatusEffectHolder.OnEndDisable -= StatusEffectHolder_OnEndDisable;
 
     }
 
     private void StatusEffectHolder_OnEndDisable(object sender, System.EventArgs e)
     {
-        if(EnemySMManager.Enemy.IsMoving  && !EnemySMManager.Enemy.IsBlocked)
+        if(EnemySMManager._enemy.IsMoving  && !EnemySMManager._enemy.IsBlocked)
         {
             EnemySMManager.ChangeState(EnemySMManager.EnemyMovingState);
             return;

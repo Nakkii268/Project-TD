@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySMManager :StateMachineManager
 {
-    public Enemy Enemy{  get;  }
+    public Enemy _enemy{  get;  }
     public EnemyIdleState EnemyIdleState { get; }
     public EnemyAttackState EnemyAttackState { get; }
     public EnemyGetHitState EnemyGetHitState { get; }
@@ -14,7 +14,7 @@ public class EnemySMManager :StateMachineManager
 
     public EnemySMManager(Enemy enemy)
     {
-        Enemy = enemy;
+        _enemy = enemy;
         EnemyIdleState = new EnemyIdleState(this);
         EnemyAttackState = new EnemyAttackState(this);
         EnemyGetHitState = new EnemyGetHitState(this);

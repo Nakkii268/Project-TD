@@ -19,7 +19,10 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
 
     [SerializeField] private bool isMoving;
     public bool IsMoving {  get { return isMoving; }set { isMoving = value; } }
-
+    [SerializeField] private EnemyVisual _enemyVisual;
+    public EnemyVisual EnemyVisual { get { return _enemyVisual; } }
+    [SerializeField] private EnemyUnit unit;
+     public EnemyUnit Unit { get { return unit; } }
     [SerializeField] private EnemyStat stat;
     public EnemyStat Stat { get { return stat; } }
 

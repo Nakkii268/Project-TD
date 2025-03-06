@@ -12,7 +12,9 @@ public class EnemyMovingState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        EnemySMManager.Enemy.IsMoving = true;
+        EnemySMManager._enemy.IsMoving = true;
+        EnemySMManager._enemy.EnemyVisual.PlayMoveAnim();
+
     }
 
     public override void Exit()
@@ -23,14 +25,6 @@ public class EnemyMovingState : EnemyState
     {
         Move();
     }
-    public override void OnAnimationEnterEvent()
-    {
-    }
-    public override void OnAnimationExitEvent()
-    {
-    }
-    public override void OnAnimationTransitionEvent()
-    {
-    }
+   
     
 }

@@ -12,6 +12,8 @@ public class EnemyDeadState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        EnemySMManager._enemy.EnemyVisual.PlayDeadAnim();
+
     }
 
     public override void Exit()
@@ -22,7 +24,7 @@ public class EnemyDeadState : EnemyState
    
     public override void OnAnimationExitEvent()
     {
-        EnemySMManager.Enemy.Dead();
+        EnemySMManager._enemy.Dead();
     }
    
     

@@ -11,6 +11,7 @@ public class EnemyAttackState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        EnemySMManager._enemy.EnemyVisual.PlayAttackAnim();
     }
 
     public override void Exit()
@@ -18,19 +19,16 @@ public class EnemyAttackState : EnemyState
         base.Exit();
     }
 
-    public override void OnAnimationEnterEvent()
-    {
-        
-    }
+  
 
     public override void OnAnimationTransitionEvent()
     {
-        EnemySMManager.Enemy.EnemyAttack.Attack(EnemySMManager.Enemy.EnemyAttackCollider.DetectEnenmy());
+        EnemySMManager._enemy.EnemyAttack.Attack(EnemySMManager._enemy.EnemyAttackCollider.DetectEnenmy());
     }
 
     public override void OnAnimationExitEvent()
     {
-        if (EnemySMManager.Enemy.IsBlocked)
+        if (EnemySMManager._enemy.IsBlocked)
         {
             EnemySMManager.ChangeState(EnemySMManager.EnemyIdleState);
 
