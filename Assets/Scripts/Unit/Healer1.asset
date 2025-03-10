@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Healer1
   m_EditorClassIdentifier: 
   UnitID: 
+  UnitPrefab: {fileID: 0}
   Name: 
   Heath: 0
   Attack: 0
@@ -20,7 +21,6 @@ MonoBehaviour:
   Defense: 0
   Resistance: 0
   Block: 0
-  prefab: {fileID: 0}
   unitSprite: {fileID: 0}
   AttackRange: []
   type: 0
@@ -28,11 +28,10 @@ MonoBehaviour:
   RedeployTime: 0
   EnemyType:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   UnitTarget: 0
   TargetCount: 0
   DamageType: 0
   UnitClass: 0
   ClassBuff: {fileID: 0}
   unitBranch: 0
-  HealScale: 0

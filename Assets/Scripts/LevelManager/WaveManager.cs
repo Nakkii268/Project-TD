@@ -7,6 +7,7 @@ using UnityEngine;
 public class WaveManager : MonoBehaviour
 {
     [SerializeField] private LevelManager levelManager;
+    [SerializeField] private PreWavePath wavePath;
     [SerializeField] private MapSO m_MapSO;
     [SerializeField] private int currentWaveIndex;
     [SerializeField] private int nextWaveIndex;
@@ -27,17 +28,19 @@ public class WaveManager : MonoBehaviour
     {
         if (nextWaveIndex >= m_MapSO.Waves.Length) return;
 
+        if (Time.time - entryTime >= m_MapSO.Waves[nextWaveIndex].SpawnTime- 1f)
+        {
+
+            wavePath.VisualizePath(m_MapSO.Waves[currentWaveIndex].Path);
+
+        }
         if (Time.time - entryTime >= m_MapSO.Waves[nextWaveIndex].SpawnTime)
         {
-            Debug.Log("wave" + currentWaveIndex);
-            Debug.Log("Time" + (Time.time - entryTime));
 
             StartCoroutine(DelaySpawn(m_MapSO.Waves[currentWaveIndex]));
             nextWaveIndex++;
 
-
-
-        }
+       }
     }
     
     private void SpawnWave(Wave wave)

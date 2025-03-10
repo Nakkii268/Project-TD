@@ -155,6 +155,92 @@ MonoBehaviour:
     Modifiers: []
   CanBlock: 0
   Type: 0
+--- !u!1 &4623571318617768961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2492007272598517886}
+  - component: {fileID: 5729650303440177918}
+  - component: {fileID: 6289190300474218111}
+  m_Layer: 11
+  m_Name: AttackCollider (1)
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2492007272598517886
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4623571318617768961}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4898319608901733405}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5729650303440177918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4623571318617768961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18755afbbdccff84ea3481947b99e68c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy: {fileID: 2764147705095838820}
+  attackRange: 5
+  attackCollider: {fileID: 6289190300474218111}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+--- !u!58 &6289190300474218111
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4623571318617768961}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &6258046552785313668
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +253,7 @@ GameObject:
   - component: {fileID: 158298926301726645}
   - component: {fileID: 2153578280216753694}
   m_Layer: 11
-  m_Name: AttackCollider
+  m_Name: Collider
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -294,6 +380,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 558311838036833240}
+  - {fileID: 2492007272598517886}
   - {fileID: 312522091210845117}
   - {fileID: 8893878411189342362}
   m_Father: {fileID: 0}
@@ -314,11 +401,15 @@ MonoBehaviour:
   path: []
   pathIndex: 0
   isBlocked: 0
+  isWaveEnemy: 0
   isMoving: 0
+  _enemyVisual: {fileID: 0}
+  unit: {fileID: 0}
   stat: {fileID: 379334638667878214}
   enemyAttack: {fileID: 4973164531028807059}
   enemyAttackCollider: {fileID: 494680876015065313}
   statusEffectHolder: {fileID: 2321668008336166529}
+  Blocker: {fileID: 0}
 --- !u!114 &4973164531028807059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,7 +422,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3accb7d1e07407c40b95390d3cdfe59a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targets: []
+  targetsInRange: []
+  target: {fileID: 0}
 --- !u!114 &494680876015065313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,6 +438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemy: {fileID: 2764147705095838820}
   attackRange: 0
+  attackCollider: {fileID: 0}
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
