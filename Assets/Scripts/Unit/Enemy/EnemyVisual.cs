@@ -8,27 +8,27 @@ public class EnemyVisual : MonoBehaviour
     [SerializeField] private Animator animator;
     public void PlayIdleAnim()
     {
-        animator.Play("idle");
+        animator.Play("Idle");
     }
     public void PlayMoveAnim()
     {
-        animator.Play("moving");
+        animator.Play("Moving");
     }
     public void PlayAttackAnim()
     {
-        animator.Play("attack");
+        animator.Play("Attack");
     }
     public void PlayGetHitAnim()
     {
-        animator.Play("getHit");
+        animator.Play("GetHit");
     }
     public void PlayDeadAnim()
     {
-        animator.Play("dead");
+        animator.Play("Dead");
     }
     public void PlayDisableAnim()
     {
-        animator.Play("disable");
+        animator.Play("Disable");
     }
 
     public void OnAnimationEnterEvent()

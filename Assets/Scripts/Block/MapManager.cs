@@ -136,7 +136,7 @@ public class MapManager : MonoBehaviour
         {
             Vector2Int value = NameConvert(tileList[i].name);
             tiles[value.x, value.y] = tileList[i];
-            Debug.Log(tiles[value.x, value.y]);
+         //   Debug.Log(tiles[value.x, value.y]);
         }
     }
     //

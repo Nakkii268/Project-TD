@@ -26,12 +26,18 @@ public class WaveManager : MonoBehaviour
     }
     private void Update()
     {
+        
         if (nextWaveIndex >= m_MapSO.Waves.Length) return;
 
         if (Time.time - entryTime >= m_MapSO.Waves[nextWaveIndex].SpawnTime- 1f)
         {
+            if (!wavePath.isPathVisualize)
+            {
+                wavePath.isPathVisualize = true;
+                StartCoroutine(wavePath.VisualizePath(m_MapSO.Waves[currentWaveIndex].Path));
+            }
+            
 
-            wavePath.VisualizePath(m_MapSO.Waves[currentWaveIndex].Path);
 
         }
         if (Time.time - entryTime >= m_MapSO.Waves[nextWaveIndex].SpawnTime)
@@ -48,6 +54,7 @@ public class WaveManager : MonoBehaviour
         GameObject enemy = Instantiate(wave.EnemyUnit.UnitPrefab);
         Enemy enemyClass = enemy.GetComponent<Enemy>();
         enemyClass.SetPath(wave.Path);
+        enemyClass.SetUnit(wave.EnemyUnit);
         enemyClass.OnEnemyDead += EnemyClass_OnEnemyDead;
         enemy.transform.position = wave.SpawnPos;
         
@@ -78,7 +85,8 @@ public class WaveManager : MonoBehaviour
            
             yield return new WaitForSeconds(wave.SpawnDelay);
         }
-        Debug.Log("wave done");
+        
         currentWaveIndex++;
     }
+
 }

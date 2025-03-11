@@ -31,6 +31,7 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
 
     [SerializeField] private EnemyAttackCollider enemyAttackCollider;
     public EnemyAttackCollider EnemyAttackCollider {  get { return enemyAttackCollider; } }
+
     [SerializeField] private StatusEffectHolder statusEffectHolder;
     public StatusEffectHolder StatusEffectHolder { get {    return statusEffectHolder; } }
 
@@ -132,7 +133,10 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
     {
         path = p;
     }
-
+    public void SetUnit(EnemyUnit u)
+    {
+        unit = u;
+    }
     public void Dead()
     {
         Debug.Log("destroyed");

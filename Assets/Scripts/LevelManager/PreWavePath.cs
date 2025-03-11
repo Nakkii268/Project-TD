@@ -8,36 +8,47 @@ public class PreWavePath : MonoBehaviour
     [SerializeField] private Transform preWavePrefab;
     [SerializeField] private int pathIndex;
     [SerializeField] private float speed;
+    [SerializeField] public bool isPathVisualize;
 
     private void Start()
     {
         DeActivePrefab();
-    }
-
-    public void VisualizePath(Vector2[] path)
-    {
-        Vector3 target;
-        if (path.Length == 0) return;
-        target = new Vector3(path[pathIndex].x, path[pathIndex].y, preWavePrefab.position.z);
-
-        preWavePrefab.position = Vector3.MoveTowards(preWavePrefab.position,target ,speed * Time.deltaTime);
         
-        //move
-        if (Vector3.Distance(new Vector3(preWavePrefab.position.x, preWavePrefab.position.y, 0), new Vector3(target.x, target.y, 0)) < .3f)
-        {
-            if(pathIndex == 1) ActivePrefab();
-            if (pathIndex >= path.Length - 1)
-            {
-                DeActivePrefab();
-                return;
-            }
-            pathIndex++;
-            target = path[pathIndex];
-            Debug.Log(target);
-
-        }
-       
     }
+
+    public IEnumerator VisualizePath(Vector2[] path)
+    {
+        if (path.Length == 0) yield break; 
+
+       
+
+        while (pathIndex < path.Length) 
+        {
+            if(pathIndex>= 1) ActivePrefab();
+           
+            if (path[pathIndex].x == -99)
+            {
+                isPathVisualize = false;
+                DeActivePrefab();
+                yield break;
+            }
+
+            Vector3 target = new Vector3(path[pathIndex].x, path[pathIndex].y, preWavePrefab.position.z);
+
+            
+            while (Vector3.Distance(preWavePrefab.position, target) > 0.2f)
+            {
+                preWavePrefab.position = Vector3.MoveTowards(preWavePrefab.position, target, speed * Time.deltaTime);
+                yield return null; 
+            }
+
+            pathIndex++; 
+        }
+
+        isPathVisualize = false;
+        DeActivePrefab(); 
+    }
+
     private void ActivePrefab()
     {
        
@@ -46,7 +57,10 @@ public class PreWavePath : MonoBehaviour
     }
     private void DeActivePrefab()
     {
+        
+
         preWavePrefab.gameObject.SetActive(false);
+        pathIndex = 0;
 
     }
 }
