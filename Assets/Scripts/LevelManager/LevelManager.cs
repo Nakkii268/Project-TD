@@ -12,6 +12,8 @@ public class LevelManager : MonoBehaviour
     public MapManager MapManager { get {    return mapManager; } }
     [SerializeField] private InGameCharListUI charListUI;
     [SerializeField] private LevelDPManager levelDPManager;
+    [SerializeField] private LevelEndUI endUI;
+    public LevelEndUI EndUI { get { return endUI; } }
     [SerializeField] private int currentUnitIndex;
     [SerializeField] private int deloymentLimit;
     [SerializeField] private int currentDeloyment = 0;
@@ -27,7 +29,7 @@ public class LevelManager : MonoBehaviour
    
     public event EventHandler OnGamePause;
     public event EventHandler OnGameUnPause;
-    public event EventHandler<float> OnGameEnd;// win = 1; lose = 0; win but leaked =0.x
+    public event EventHandler<EndState> OnGameEnd;// win = 1; lose = 0; win but leaked =0.x
 
     public PointerClickHandle PointerClickHandler;
 
@@ -70,7 +72,7 @@ public class LevelManager : MonoBehaviour
    
     public void GameEnd()
     {
-        OnGameEnd?.Invoke(this, levelLifePointManager.GetGameEndLifePoint());
+        OnGameEnd?.Invoke(this, levelLifePointManager.GetGameEndState());
     }
 
     public void DisableComponent()

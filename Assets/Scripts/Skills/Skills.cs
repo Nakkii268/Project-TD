@@ -11,7 +11,7 @@ public class Skills : ScriptableObject
     public SkillTarget skillTarget;
     public bool TargetRequire;
     public Vector2[] SkillRange;
-    public virtual void SkillActivate(GameObject User,List<GameObject> target)
+    public virtual void SkillActivate(AllianceSkill User,List<GameObject> target)
     {
 
     }

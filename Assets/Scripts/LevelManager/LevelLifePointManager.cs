@@ -36,9 +36,14 @@ public class LevelLifePointManager : MonoBehaviour
         }
 
     }
-    public float GetGameEndLifePoint()
+    public EndState GetGameEndState()
     {
-        return LifePoint/MaxLifePoint;
+        switch (LifePoint / MaxLifePoint){
+            case 0: return EndState.Failed;
+            case 1: return EndState.Successed;
+            default: return EndState.NotComplete;
+        }
+        
     }
     private void SetLifePointText()
     {
@@ -46,4 +51,11 @@ public class LevelLifePointManager : MonoBehaviour
         reducedLifePointText.text = "-" + ReducedLifePoint.ToString();
 
     }
+}
+[Serializable]
+public enum EndState
+{
+    Successed,
+    Failed,
+    NotComplete
 }

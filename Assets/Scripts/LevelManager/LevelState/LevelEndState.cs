@@ -10,7 +10,7 @@ public class LevelEndState : LevelState
     public override void Enter()
     {
         base.Enter();
-        //show end banner base on stage result
+        LevelStateMachineManager._levelManager.EndUI.ActiveUI(endState);
     }
     public override void Exit()
     {

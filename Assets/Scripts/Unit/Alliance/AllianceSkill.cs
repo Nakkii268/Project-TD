@@ -55,7 +55,7 @@ public class AllianceSkill : MonoBehaviour
         }
         else if(OnUseSkill.skillType == SkillType.Passive)
         {
-            OnUseSkill.SkillActivate(alliance.gameObject, target);
+            OnUseSkill.SkillActivate(this, target);
             
             DisableSkillBtn();
 
@@ -87,7 +87,7 @@ public class AllianceSkill : MonoBehaviour
     {
         if (!IsFullSkillPoint()) return;
         if(OnUseSkill.TargetRequire && target==null) return;
-        OnUseSkill.SkillActivate(alliance.gameObject, target);
+        OnUseSkill.SkillActivate(this, target);
 
         curSkillPoint = 0;
 

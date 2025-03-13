@@ -6,20 +6,20 @@ public class PassiveSkills : Skills
 {
     public List<StatusEffect> effects;
 
-    public override void SkillActivate(GameObject User, List<GameObject> target)
+    public override void SkillActivate(AllianceSkill User, List<GameObject> target)
     {
         if (skillTarget == SkillTarget.Self)
         {
-            User.TryGetComponent<StatusEffectHolder>(out StatusEffectHolder effectHolder);
+            StatusEffectHolder effectHolder= User.GetComponentInParent<StatusEffectHolder>();
             for (int i = 0; i < effects.Count; i++)
             {
-                effectHolder.AddStatusEffect(User, effects[i]);
+                effectHolder.AddStatusEffect(User.gameObject, effects[i]);
             }
         }
         else
         {
-            foreach (GameObject tg in target) { 
-            tg.TryGetComponent<StatusEffectHolder>(out StatusEffectHolder effectHolder);
+            foreach (GameObject tg in target) {
+                StatusEffectHolder effectHolder= tg.GetComponentInParent<StatusEffectHolder>();
 
             for (int i = 0; i < effects.Count; i++)
             {

@@ -12,19 +12,42 @@ public class ComplexSkills : ActiveSkills
     public DamageType DamageType;
 
     public SkillSubTarget subTarget;
+    public float DamageDelayTime;
+    public float EffectDelayTime;
     //dmg to maintarget, effect to sub target
     //case:
     // dmg self, debuff enemy
     //buff self, dmg enemy
 
-    public override void SkillActivate(GameObject User, List<GameObject> target)
+    public override void SkillActivate(AllianceSkill User, List<GameObject> target)
     {
-
-        if(skillTarget == SkillTarget.Self && subTarget == SkillSubTarget.Enemy)
+        User.StartCoroutine(DelayStatus(User,target,EffectDelayTime));
+        User.StartCoroutine(DelayDamage(User, target, DamageDelayTime));
+       
+    }
+    private void DamageComponent(AllianceSkill User, List<GameObject> target)
+    {
+        if (skillTarget == SkillTarget.Self)
         {
             //dmg self
-            User.TryGetComponent<IDamageable>(out IDamageable dmgTarget);
-            dmgTarget.ReceiveDamaged(SkillDmg, DamageType);
+            User.GetComponentInParent<IDamageable>().ReceiveDamaged(SkillDmg, DamageType);
+            
+            
+        }
+
+        if (skillTarget == SkillTarget.Enemy )
+        {
+            //dmg target
+            foreach (GameObject tg in target)
+            {
+                tg.TryGetComponent<IDamageable>(out IDamageable dmgTarget);
+                dmgTarget.ReceiveDamaged(SkillDmg, DamageType);
+            }  
+        }
+    }
+    private void EffectComponent(AllianceSkill User, List<GameObject> target) {
+        if ( subTarget == SkillSubTarget.Enemy)
+        {
             //debuff target
             foreach (GameObject tg in target)
             {
@@ -37,22 +60,25 @@ public class ComplexSkills : ActiveSkills
             }
         }
 
-        if (skillTarget == SkillTarget.Enemy && subTarget == SkillSubTarget.Self)
+        if (subTarget == SkillSubTarget.Self)
         {
-            //dmg target
-            foreach (GameObject tg in target)
-            {
-                tg.TryGetComponent<IDamageable>(out IDamageable dmgTarget);
-                dmgTarget.ReceiveDamaged(SkillDmg, DamageType);
-            }
-
             //buff self
-            User.TryGetComponent<StatusEffectHolder>(out StatusEffectHolder effectHolder);
+            StatusEffectHolder holder = User.GetComponentInParent<StatusEffectHolder>();
 
             for (int i = 0; i < effects.Count; i++)
             {
-                effectHolder.AddStatusEffect(User, effects[i]);
+                holder.AddStatusEffect(User.gameObject, effects[i]);
             }
         }
+    }
+    private IEnumerator DelayDamage(AllianceSkill User, List<GameObject> target, float time)
+    {
+        yield return new WaitForSeconds(time);
+        DamageComponent(User, target);
+    }
+    private IEnumerator DelayStatus(AllianceSkill User, List<GameObject> target, float time)
+    {
+        yield return new WaitForSeconds(time);
+        EffectComponent(User, target);
     }
 }
