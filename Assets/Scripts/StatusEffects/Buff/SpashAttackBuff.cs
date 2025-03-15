@@ -11,7 +11,7 @@ public class SpashAttackBuff : OnHitStatusEffect
 
     public override void OnApply(GameObject holder, GameObject target)
     {
-        Alliance alliance = holder.GetComponent<Alliance>();
+        Alliance alliance = holder.GetComponentInParent<Alliance>();
         Vector2 targetPos = new Vector2(target.transform.position.x, target.transform.position.y);
         float dmg = alliance.Stat.Attack.Value * Scale;
         LayerMask layer = alliance.AllienceAttackCollider.GetEnemyLayer();

@@ -7,13 +7,11 @@ public class AttackHealAllianceBuff : StatusEffect
 {
     public override void OnApply(GameObject target)
     {
-        target.TryGetComponent<Alliance>(out Alliance ally);
-        ally.GetAllianceUnit().UnitTarget = UnitTarget.Alliance;
+        target.GetComponentInParent<Alliance>().GetAllianceUnit().UnitTarget = UnitTarget.Alliance;
       
     }
     public override void OnRemove(GameObject target)
     {
-        target.TryGetComponent<Alliance>(out Alliance ally);
-        ally.GetAllianceUnit().UnitTarget = UnitTarget.Enemy;
+        target.GetComponentInParent<Alliance>().GetAllianceUnit().UnitTarget = UnitTarget.Enemy;
     }
 }

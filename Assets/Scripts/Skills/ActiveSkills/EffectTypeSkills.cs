@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -7,41 +8,43 @@ using UnityEngine;
 
 public class EffectTypeSkills : ActiveSkills
 {
-    public List<StatusEffect> effects;
-    public float delayTime;
+    public List<EffectDelay> effects;
+   
 
     public override void SkillActivate(AllianceSkill User, List<GameObject> target)
     {
-        
-       User.StartCoroutine(DelayEffect(User, target,delayTime));
+        for (int i = 0; i < effects.Count; i++)
+        {
+            User.StartCoroutine(DelayEffect(User, target, effects[i].effect, effects[i].delayTime));
+        }
     }
-    private void EffectComponent(AllianceSkill User, List<GameObject> target)
+    private void EffectComponent(AllianceSkill User, List<GameObject> target, StatusEffect effect)
     {
         if (skillTarget == SkillTarget.Enemy)
         {
             foreach (GameObject tg in target)
             {
                 tg.TryGetComponent<StatusEffectHolder>(out StatusEffectHolder effectHolder);
-
-                for (int i = 0; i < effects.Count; i++)
-                {
-                    effectHolder.AddStatusEffect(tg, effects[i]);
-                }
+                effectHolder.AddStatusEffect(tg,effect);
+                
             }
         }
         else if (skillTarget == SkillTarget.Self)
         {
             StatusEffectHolder effectHolder = User.GetComponentInParent<StatusEffectHolder>();
-
-            for (int i = 0; i < effects.Count; i++)
-            {
-                effectHolder.AddStatusEffect(User.gameObject, effects[i]);
-            }
+            effectHolder.AddStatusEffect(User.gameObject, effect);
+            
         }
     }
-    private IEnumerator DelayEffect(AllianceSkill User, List<GameObject> target,float time)
+    private IEnumerator DelayEffect(AllianceSkill User, List<GameObject> target,StatusEffect effect,float time)
     {
         yield return new WaitForSeconds(time);
-        EffectComponent(User, target);
+        EffectComponent(User, target, effect);
     }
+}
+[Serializable]
+public class EffectDelay
+{
+    public StatusEffect effect;
+    public float delayTime;
 }

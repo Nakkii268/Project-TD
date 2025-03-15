@@ -17,13 +17,11 @@ public class AttackBuff : NormalStatusEffect
     
     public override void OnApply(GameObject target)
     {
-        target.TryGetComponent<Alliance>(out Alliance ally);
-        ally.Stat.Attack.AddingModifier(modifier); 
+        target.GetComponentInParent<Alliance>().Stat.Attack.AddingModifier(modifier); 
     }
     public override void OnRemove(GameObject target)
     {
-        target.TryGetComponent<Alliance>(out Alliance ally);
-        ally.Stat.Attack.RemovingModifier(modifier);
+        target.GetComponentInParent<Alliance>().Stat.Attack.RemovingModifier(modifier);
     }
 
     

@@ -8,13 +8,13 @@ public class Stun : NormalStatusEffect
 
     public override void OnApply( GameObject target)
     {
-        target.GetComponentInChildren<StatusEffectHolder>().GetDisableEffect();
+        target.GetComponentInParent<StatusEffectHolder>().GetDisableEffect();
 
 
     }
     public override void OnRemove(GameObject target)
     {
-        target.GetComponentInChildren<StatusEffectHolder>().RemoveDisableEffect();
+        target.GetComponentInParent<StatusEffectHolder>().RemoveDisableEffect();
 
     }
 
