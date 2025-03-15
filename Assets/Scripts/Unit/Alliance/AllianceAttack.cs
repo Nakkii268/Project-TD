@@ -74,12 +74,17 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
     {
         targets.Add(enemy); 
     }
-    public void RemoveTarget(GameObject enemy) 
+    public void RemoveTarget(GameObject enemy)
     {
         targets.Remove(enemy);
+        if(targets.Count == 0)
+        {
+            currentTarget = null;
+        }
     }
 
     protected List<GameObject> GetClosestTarget() {
+        if (targets.Count == 0) return null; 
         List<GameObject> toReturn = new();
         GameObject min = targets[0];
         for (int i = 1; i < targets.Count; i++) {
@@ -94,7 +99,9 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
     }
     protected GameObject GetMinHpTarget()//remind to change
     {
+        if (targets.Count == 0) return null;
        GameObject toReturn = new();
+
         GameObject min = targets[0];
         for (int i = 1; i < targets.Count; i++)
         {

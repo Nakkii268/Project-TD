@@ -25,4 +25,5 @@ MonoBehaviour:
   CanAttack: 1
   ActiveType: 1
   effects:
-  - {fileID: 11400000, guid: 6bb87a4870ecee04a958d35c5fb44a10, type: 2}
+  - effect: {fileID: 11400000, guid: f0787e38af17e05488ef854602385f5b, type: 2}
+    delayTime: 0
