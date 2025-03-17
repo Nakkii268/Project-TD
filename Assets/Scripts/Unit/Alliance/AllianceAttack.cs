@@ -116,6 +116,7 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
     }
     protected void GetTarget()
     {
+        Debug.Log("change");
         if(targetCount == TargetCount.Single)
         {
             if (Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Enemy)

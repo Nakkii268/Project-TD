@@ -11,7 +11,7 @@ public class AllianceSkillDuarationState : AllianceState, IState
     public override void Enter()
     {
         base.Enter();
-        //play anim
+        AllianceSMManager.Alliance.AllianceVisual.PlayIdleAnim();
     }
     public override void Exit()
     {
