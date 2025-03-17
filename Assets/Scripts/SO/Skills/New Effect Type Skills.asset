@@ -20,10 +20,10 @@ MonoBehaviour:
   TargetRequire: 0
   SkillRange: []
   ChargeType: 2
-  SkillDuration: 10
+  SkillDuration: 1
   SkillPoint: 10
   CanAttack: 1
-  ActiveType: 1
+  ActiveType: 0
   effects:
   - effect: {fileID: 11400000, guid: f0787e38af17e05488ef854602385f5b, type: 2}
     delayTime: 0

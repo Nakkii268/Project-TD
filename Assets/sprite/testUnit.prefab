@@ -1775,7 +1775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eab9ea8bf1202e448d49e6189cc12ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnUseSkill: {fileID: 11400000, guid: 7acfcc20f5a7e4547bce5adaba9fa208, type: 2}
+  OnUseSkill: {fileID: 11400000, guid: a5ddbc2b178714f46b40ef5e9642bdf4, type: 2}
   alliance: {fileID: 4489595423137854530}
   target:
   - {fileID: 0}

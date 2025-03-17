@@ -21,15 +21,13 @@ public class DamageTypeSkills : ActiveSkills
         {
             foreach (GameObject tg in target)
             {
-                tg.TryGetComponent<IDamageable>(out IDamageable dmgTarget);
-                dmgTarget.ReceiveDamaged(SkillDmg, DamageType);
+                tg.GetComponentInParent<IDamageable>().ReceiveDamaged(SkillDmg, DamageType);
             }
         }
         else if (skillTarget == SkillTarget.Self)
         {
 
-            User.TryGetComponent<IDamageable>(out IDamageable dmgTarget);
-            dmgTarget.ReceiveDamaged(SkillDmg, DamageType);
+            User.GetComponentInParent<IDamageable>().ReceiveDamaged(SkillDmg, DamageType);
         }
     }
 

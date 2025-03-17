@@ -17,8 +17,13 @@ MonoBehaviour:
   skillType: 0
   skillEffect: 0
   skillTarget: 2
+  TargetRequire: 1
+  SkillRange: []
   ChargeType: 2
-  SkillDuration: 10
+  SkillDuration: 2
   SkillPoint: 10
-  SkillDmg: 1000
+  CanAttack: 0
+  ActiveType: 0
+  SkillDmg: 10000
   DamageType: 0
+  delayTime: 1

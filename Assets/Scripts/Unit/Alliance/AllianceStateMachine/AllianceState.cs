@@ -13,7 +13,7 @@ public class AllianceState : IState
     public virtual void Enter()
     {
         AddCallBack();
-        Debug.Log(AllianceSMManager.currentState);
+       
     }
 
     public virtual void Exit()

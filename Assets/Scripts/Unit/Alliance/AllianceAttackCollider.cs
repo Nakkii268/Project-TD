@@ -37,6 +37,7 @@ public class AllianceAttackCollider : MonoBehaviour
                 if (collision.gameObject.CompareTag("Enemy"))
                 {
                     OnTargetIn?.Invoke(this, collision.gameObject);
+                Debug.Log("-------In");
 
                 }
             }
@@ -63,9 +64,12 @@ public class AllianceAttackCollider : MonoBehaviour
                 if (collision.gameObject.CompareTag("Enemy"))
                 {
                     OnTargetOut?.Invoke(this, collision.gameObject);
+                Debug.Log("-------out");
 
-                }
-            }else if(Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Alliance)
+
+            }
+        }
+        else if(Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Alliance)
             {
                 if (collision.gameObject.CompareTag("Alliance"))
                 {
@@ -131,7 +135,7 @@ public class AllianceAttackCollider : MonoBehaviour
             sumX += point.x;
             sumY += point.y;
         }
-        Debug.Log("x"+ sumX / range.Count + "   y"+ sumY / range.Count);
+       // Debug.Log("x"+ sumX / range.Count + "   y"+ sumY / range.Count);
         return new Vector2(sumX / range.Count, sumY / range.Count);
     }
     private List<Vector2> RemoveDup(List<Vector2> range)
@@ -153,12 +157,12 @@ public class AllianceAttackCollider : MonoBehaviour
         foreach (var point in pointCount) { 
             if(point.Value >= 4)
             {
-                Debug.LogWarning(point.Key + "---" + point.Value);
+               
                 continue;
             }
             else
             {
-                Debug.Log(point.Key + "---" + point.Value);
+                
 
                 uniquePointsSet.Add(point.Key);
             }

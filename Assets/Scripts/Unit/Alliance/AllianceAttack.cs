@@ -12,6 +12,7 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
    
     [SerializeField] protected List<GameObject> targets;
     [SerializeField] protected List<GameObject> currentTarget;
+    public List<GameObject> CurrentTarget { get { return currentTarget; } }
 
     [SerializeField] protected TargetCount targetCount;
     [SerializeField] protected DamageType damageType;
@@ -39,6 +40,10 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
         {
             RemoveTarget(e);
             GetTarget();
+        }
+        else
+        {
+            RemoveTarget(e);
         }
         if (!IsHaveTarget()) //interupt attack if target out when attack already perform but still not dmg target yet (or may be already dmg)
         {
@@ -116,7 +121,7 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
     }
     protected void GetTarget()
     {
-        Debug.Log("change");
+        
         if(targetCount == TargetCount.Single)
         {
             if (Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Enemy)
@@ -154,7 +159,7 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
         
         yield return new WaitForSeconds(AttackSpeed);
         attackReady = true;
-        Debug.Log("ready");
+        
     }
 
     
