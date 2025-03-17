@@ -20,6 +20,8 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private LevelLifePointManager levelLifePointManager;
     [SerializeField] private WaveManager waveManager;
+    [SerializeField] private ParticleManager _particleManager;
+    public ParticleManager ParticleManager { get { return _particleManager; } }
     [SerializeField] private LevelStateMachineManager levelStateMachineManager;
     [SerializeField] private Transform LevelInfoUI;
     public LevelStateMachineManager LevelStateMachineManager { get { return levelStateMachineManager; } }
