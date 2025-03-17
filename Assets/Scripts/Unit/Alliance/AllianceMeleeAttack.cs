@@ -22,7 +22,7 @@ public class AllianceMeleeAttack : AllianceAttack
         {
             foreach (GameObject tg in currentTarget)
             {
-                tg.GetComponentInParent<IDamageable>().ReceiveDamaged(allyAttack, damageType);
+                tg.GetComponentInParent<IDamageable>().ReceiveDamaged(alliance.Stat.Attack.Value, damageType);
             }
 
         }
@@ -32,7 +32,7 @@ public class AllianceMeleeAttack : AllianceAttack
             
             foreach (GameObject tg in currentTarget)
             {
-                tg.GetComponentInParent<IHealable>().Heal(allyAttack);
+                tg.GetComponentInParent<IHealable>().Heal(alliance.Stat.Attack.Value);
             }
 
         }

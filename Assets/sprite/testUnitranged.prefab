@@ -337,6 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85225e0fb54c4ee4687edf2ba40d122a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPointerIn: 0
   canvas: {fileID: 5405620427960610803}
   directionUI: {fileID: 3175541071624894239}
   moveUI: {fileID: 2179258222625244752}
@@ -851,7 +852,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alliance: {fileID: 4489595423137854530}
-  allyAttack: 0
   targets: []
   currentTarget: []
   targetCount: 0
@@ -1723,7 +1723,6 @@ MonoBehaviour:
   statusEffectHolder: {fileID: 6074738120762529015}
   UnitUICollider: {fileID: 7719200145361649708}
   charIndex: 0
-  testattack: 0
 --- !u!114 &6074738120762529015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1874,7 +1873,7 @@ GameObject:
   - component: {fileID: 7135950834507883752}
   - component: {fileID: 16494464212875821}
   - component: {fileID: 7795449935590479146}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: UnitCollider
   m_TagString: Alliance
   m_Icon: {fileID: 0}

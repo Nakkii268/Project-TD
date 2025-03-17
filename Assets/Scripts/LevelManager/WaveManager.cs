@@ -55,6 +55,7 @@ public class WaveManager : MonoBehaviour
         Enemy enemyClass = enemy.GetComponent<Enemy>();
         enemyClass.SetPath(wave.Path);
         enemyClass.SetUnit(wave.EnemyUnit);
+        enemyClass.isWaveEnemy = true;
         enemyClass.OnEnemyDead += EnemyClass_OnEnemyDead;
         enemy.transform.position = wave.SpawnPos;
         

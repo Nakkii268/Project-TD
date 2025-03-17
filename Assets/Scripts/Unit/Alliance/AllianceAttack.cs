@@ -9,7 +9,7 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
 {
     [SerializeField] protected Alliance alliance;
     public Alliance Alliance {  get { return alliance; } }
-    [SerializeField] protected float allyAttack;
+   
     [SerializeField] protected List<GameObject> targets;
     [SerializeField] protected List<GameObject> currentTarget;
 
@@ -28,7 +28,7 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
         alliance.AllienceAttackCollider.OnTargetOut += AllienceAttackCollider_OnEnemyOut;
         targetCount = alliance.GetAllianceUnit().TargetCount;
         damageType = alliance.GetAllianceUnit().DamageType;
-        allyAttack = alliance.Stat.Attack.Value;
+        
         attackReady = true;
         
     }
@@ -141,6 +141,8 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
 
         
     }
+
+    
 
     public void SetTargetCount(TargetCount tc)
     {
