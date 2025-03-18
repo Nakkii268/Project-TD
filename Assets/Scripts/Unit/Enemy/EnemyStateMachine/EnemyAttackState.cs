@@ -11,6 +11,7 @@ public class EnemyAttackState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        EnemySMManager._enemy.EnemyAttack.PerformAttack();
         EnemySMManager._enemy.EnemyVisual.PlayAttackAnim();
     }
 

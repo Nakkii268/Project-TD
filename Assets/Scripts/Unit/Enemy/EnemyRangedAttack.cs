@@ -7,7 +7,7 @@ public class EnemyRangedAttack : EnemyAttack
 {
     [SerializeField] private Sprite ProjectileSprite;
     [SerializeField] private Transform firePoint;
-    protected override void PerformAttack()
+    public override void PerformAttack()
     {
         base.PerformAttack();
 

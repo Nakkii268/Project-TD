@@ -48,10 +48,11 @@ public class EnemyAttack : MonoBehaviour, IAttackPerform
         }
     }
 
-    protected virtual void PerformAttack()
+    public virtual void PerformAttack()
     {
         OnAttackPerform?.Invoke(this,targetsInRange );
-        AttackCoolDown(m_Enemy.Stat.AttackInterval.Value);
+        attackReady = false;
+        StartCoroutine(AttackCoolDown(m_Enemy.Stat.AttackInterval.Value));
     }
     public virtual void Attack() { }
 

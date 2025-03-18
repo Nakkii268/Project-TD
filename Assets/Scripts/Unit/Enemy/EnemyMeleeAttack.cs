@@ -7,7 +7,7 @@ public class EnemyMeleeAttack : EnemyAttack
 {
 
 
-    protected override void PerformAttack()
+    public override void PerformAttack()
     {
         base.PerformAttack();
 
@@ -16,7 +16,7 @@ public class EnemyMeleeAttack : EnemyAttack
     public override void Attack()
     {
          target.GetComponentInParent<IDamageable>().ReceiveDamaged(m_Enemy.Stat.Attack.Value, damageType);
-        Debug.Log("hit");
+        
 
     }
 }
