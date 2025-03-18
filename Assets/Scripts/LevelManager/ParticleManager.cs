@@ -5,6 +5,7 @@ using UnityEngine;
 public class ParticleManager : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _particleSystem;
+    [SerializeField] private ParticleSystem hitParticle;
     
     public void SpawnParticle( GameObject target,float duration)
     {
@@ -12,6 +13,12 @@ public class ParticleManager : MonoBehaviour
         particle.Play();
         StartCoroutine(StopParticle(particle,duration));    
         
+    }
+    public void HitParticle(GameObject target)
+    {
+        Debug.Log("spawn");
+        ParticleSystem particle = Instantiate(hitParticle, target.transform.position, Quaternion.identity, target.transform);
+        particle.Play();
     }
     public IEnumerator StopParticle(ParticleSystem p,float duration)
     {

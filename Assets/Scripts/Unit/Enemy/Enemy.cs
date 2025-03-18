@@ -102,6 +102,8 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
             OnEnemyDead?.Invoke(this, new EnemyDeadArg(this.gameObject, isWaveEnemy));
             Debug.Log("dead");
         }
+        LevelManager.instance.ParticleManager.HitParticle(this.gameObject);
+
         OnHpChange?.Invoke(this, stat.currentHp / stat.MaxHp.Value);
     }
 

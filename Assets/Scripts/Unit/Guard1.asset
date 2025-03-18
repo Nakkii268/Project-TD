@@ -17,7 +17,7 @@ MonoBehaviour:
   Name: GuardTest
   Heath: 1000
   Attack: 200
-  AttackInterval: 1
+  AttackInterval: 100
   Defense: 10
   Resistance: 10
   Block: 2
