@@ -11,9 +11,6 @@ public class AllianceAttackState : AllianceState, IState
     public override void Enter()
     {
         base.Enter();
-
-
-        
         AllianceSMManager.Alliance.AllianceAttack.AttackPerform();
         AllianceSMManager.Alliance.AllianceVisual.PlayAttackAnim();
 

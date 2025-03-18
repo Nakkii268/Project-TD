@@ -31,7 +31,10 @@ public class EnemyIdleState : EnemyState
             EnemySMManager.ChangeState(EnemySMManager.EnemyMovingState); 
         }
         timeCounter += Time.deltaTime;
-        
+        if (EnemySMManager._enemy.EnemyAttack.CanPerformAttack())
+        {
+            EnemySMManager.ChangeState(EnemySMManager.EnemyAttackState);
+        }
     }
     
   

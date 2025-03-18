@@ -199,12 +199,15 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
             OnGetHit?.Invoke(this, EventArgs.Empty);
             
         }
-        if(allianceStat.currentHp < 0)
+
+        OnHpChange?.Invoke(this, allianceStat.currentHp / allianceStat.MaxHp.Value);
+
+        if (allianceStat.currentHp <= 0)
         {
             allianceStat.currentHp = 0;
             OnUnitDead?.Invoke(this, EventArgs.Empty);
+            
         }
-        OnHpChange?.Invoke(this, allianceStat.currentHp / allianceStat.MaxHp.Value);
 
     }
 
@@ -229,7 +232,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
     }
     public void Use() //test func
     {
-        Debug.Log(Stat.Attack.Value);
+        allianceVisual.PlayDeadAnim();
     }
 
     public float GetPercentHp()

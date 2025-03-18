@@ -24,6 +24,10 @@ public class EnemyMovingState : EnemyState
     public override void Update()
     {
         Move();
+        if (EnemySMManager._enemy.EnemyAttack.CanPerformAttack())
+        {
+            EnemySMManager.ChangeState(EnemySMManager.EnemyAttackState);
+        }
     }
    
     

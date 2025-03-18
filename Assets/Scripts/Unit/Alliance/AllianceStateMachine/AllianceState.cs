@@ -43,7 +43,7 @@ public class AllianceState : IState
 
     protected virtual void AddCallBack()
     {
-        AllianceSMManager.Alliance.OnGetHit += Alliance_OnGetHit;
+       
         AllianceSMManager.Alliance.AllianceSkill.OnSkillActive += AllianceSkill_OnSkillActive;
         AllianceSMManager.Alliance.OnUnitDead += Alliance_OnUnitDead;
         AllianceSMManager.Alliance.StatusEffectHolder.OnGetDisable += Alliance_OnGetDisable;
@@ -57,12 +57,13 @@ public class AllianceState : IState
 
     protected virtual void RemoveCallBack()
     {
-        AllianceSMManager.Alliance.OnGetHit -= Alliance_OnGetHit;
+        
         AllianceSMManager.Alliance.AllianceSkill.OnSkillActive -= AllianceSkill_OnSkillActive;
         AllianceSMManager.Alliance.OnUnitDead -= Alliance_OnUnitDead;
     }
     private void Alliance_OnUnitDead(object sender, System.EventArgs e)
     {
+        
         AllianceSMManager.ChangeState(AllianceSMManager.AllianceDeadState);
     }
 
@@ -74,9 +75,5 @@ public class AllianceState : IState
 
     
 
-    private void Alliance_OnGetHit(object sender, System.EventArgs e)
-    {
-        AllianceSMManager.ChangeState(AllianceSMManager.AllianceGetHitState);
-
-    }
+    
 }

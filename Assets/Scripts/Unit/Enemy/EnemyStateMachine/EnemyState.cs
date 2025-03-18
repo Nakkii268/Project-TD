@@ -45,7 +45,7 @@ public class EnemyState :  IState
     }
     protected virtual void AddCallBack()
     {
-        EnemySMManager._enemy.EnemyAttack.OnAttackPerform += EnemyAttack_OnAttackPerform;
+        
         EnemySMManager._enemy.OnEnemyDead += Enemy_OnEnemyDead;
         EnemySMManager._enemy.OnGetHit += Enemy_OnGetHit;
         EnemySMManager._enemy.StatusEffectHolder.OnGetDisable += StatusEffectHolder_OnGetDisable;
@@ -54,20 +54,14 @@ public class EnemyState :  IState
    
     protected virtual void RemoveCallBack()
     {
-        EnemySMManager._enemy.EnemyAttack.OnAttackPerform -= EnemyAttack_OnAttackPerform;
+        
 
         EnemySMManager._enemy.OnEnemyDead -= Enemy_OnEnemyDead;
         EnemySMManager._enemy.OnGetHit -= Enemy_OnGetHit;
         EnemySMManager._enemy.StatusEffectHolder.OnGetDisable -= StatusEffectHolder_OnGetDisable;
 
     }
-    private void EnemyAttack_OnAttackPerform(object sender, List<GameObject> e)
-    {
-        if (EnemySMManager._enemy.EnemyAttack.CanPerformAttack())
-        {
-            EnemySMManager.ChangeState(EnemySMManager.EnemyAttackState);
-        }
-    }
+ 
 
 
     private void StatusEffectHolder_OnGetDisable(object sender, System.EventArgs e)

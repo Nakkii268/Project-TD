@@ -9,14 +9,11 @@ public class AllianceDeadState : AllianceState
     }
     public override void Enter()
     {
-        base.Enter();
+        
         AllianceSMManager.Alliance.AllianceVisual.PlayDeadAnim();
     }
-    public override void Exit()
-    {
-        base.Exit();
-        
-    }
+
+
 
 
 

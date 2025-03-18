@@ -6,12 +6,12 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour, IAttackPerform
 {
     [SerializeField] protected Enemy m_Enemy;
-    protected bool attackReady;
+    [SerializeField] protected bool attackReady;
     public bool AttackReady { get { return attackReady; } } 
-    protected float attackRange;
+    [SerializeField] protected float attackRange;
     public float AttackRange { get { return attackRange; } }
-    protected float attackDmg;
-    protected DamageType damageType;
+
+    [SerializeField] protected DamageType damageType;
     public event EventHandler<List<GameObject>> OnAttackPerform;
     public  List<GameObject> targetsInRange;
     public GameObject target;
@@ -26,6 +26,10 @@ public class EnemyAttack : MonoBehaviour, IAttackPerform
 
     private void EnemyAttackCollider_OnTargetOut(object sender, GameObject e)
     {
+        if (target == e)
+        {
+            target = null;
+        }
         targetsInRange.Remove(e);
         target = GetTarget();
     }
@@ -61,11 +65,11 @@ public class EnemyAttack : MonoBehaviour, IAttackPerform
     }
     public bool CanPerformAttack()
     {
-        return attackReady;
+        return attackReady && targetsInRange.Count >0;
     }
     protected GameObject GetClosestTarget()
     {
-        
+        if (targetsInRange.Count == 0) return null;
         GameObject min = targetsInRange[0];
         for (int i = 1; i < targetsInRange.Count; i++)
         {
@@ -80,6 +84,7 @@ public class EnemyAttack : MonoBehaviour, IAttackPerform
     }
     private GameObject GetTarget()
     {
+        if (targetsInRange.Count == 0) return null;
         if (m_Enemy.IsBlocked)
         {
             return m_Enemy.Blocker;

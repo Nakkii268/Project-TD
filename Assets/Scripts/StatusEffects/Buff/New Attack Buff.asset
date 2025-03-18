@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 805fe088f239cb74c9e061487c536fdd, type: 3}
   m_Name: New Attack Buff
   m_EditorClassIdentifier: 
-  duration: 99
+  duration: 10
   Stackable: 1
+  SType: 0
   modifier:
-    Value: 20
+    Value: 2000
     ModType: 0
     Order: 0

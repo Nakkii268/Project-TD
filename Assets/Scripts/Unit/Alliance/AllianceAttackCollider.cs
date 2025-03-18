@@ -37,7 +37,7 @@ public class AllianceAttackCollider : MonoBehaviour
                 if (collision.gameObject.CompareTag("Enemy"))
                 {
                     OnTargetIn?.Invoke(this, collision.gameObject);
-                Debug.Log("-------In");
+                
 
                 }
             }
@@ -64,7 +64,7 @@ public class AllianceAttackCollider : MonoBehaviour
                 if (collision.gameObject.CompareTag("Enemy"))
                 {
                     OnTargetOut?.Invoke(this, collision.gameObject);
-                Debug.Log("-------out");
+                
 
 
             }
