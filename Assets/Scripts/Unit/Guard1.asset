@@ -15,9 +15,9 @@ MonoBehaviour:
   UnitID: 001
   UnitPrefab: {fileID: 6865232695306935221, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
   Name: GuardTest
-  Heath: 1000
-  Attack: 200
-  AttackInterval: 100
+  Heath: 100000
+  Attack: 20
+  AttackInterval: 1
   Defense: 10
   Resistance: 10
   Block: 2

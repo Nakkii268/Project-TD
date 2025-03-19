@@ -79,7 +79,5 @@ public enum BlockTag
 {
     Ground,
     HighGround,
-    BlueBox,
-    RedBox,
     None
 }

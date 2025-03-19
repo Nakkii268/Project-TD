@@ -36,7 +36,7 @@ public class AllianceBlock : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if ((enemyLayer.value & (1 << collision.gameObject.layer)) == 0) return;
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") && blockedEnemies.Contains(collision.gameObject))
         {
             collision.gameObject.GetComponentInParent<Enemy>().UnBlock(this.gameObject);
             blockedEnemies.Remove(collision.gameObject);
