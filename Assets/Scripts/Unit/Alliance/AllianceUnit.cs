@@ -19,8 +19,8 @@ public class AllianceUnit : Unit
     public TargetCount TargetCount;
     public DamageType DamageType;
     public string GetAllianceType() { return type.ToString(); }
-    public Class UnitClass;
-    public StatusEffect ClassBuff;
+    public CharacterClass UnitClass;
+    
 
     public virtual void ApplyClassBuff(GameObject unit) { }
 }

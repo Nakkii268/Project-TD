@@ -6,6 +6,7 @@ public class ParticleManager : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _particleSystem;
     [SerializeField] private ParticleSystem hitParticle;
+    [SerializeField] private ParticleSystem slashParticle;
     
     public void SpawnParticle( GameObject target,float duration)
     {
@@ -16,7 +17,13 @@ public class ParticleManager : MonoBehaviour
     }
     public void HitParticle(GameObject target)
     {
-        Debug.Log("spawn");
+        
+        ParticleSystem particle = Instantiate(hitParticle, target.transform.position, Quaternion.identity, target.transform);
+        particle.Play();
+    }
+    public void SlashParticle(GameObject target)
+    {
+        
         ParticleSystem particle = Instantiate(hitParticle, target.transform.position, Quaternion.identity, target.transform);
         particle.Play();
     }

@@ -27,7 +27,7 @@ public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEnd
         levelManager = LevelManager.instance;
         rectTransform = GetComponent<RectTransform>();
         UnitCostTxt.text = unit.UnitDp.ToString();
-        
+        ClassIcon.sprite = unit.UnitClass.ClassIcon;
     }
     
     public void OnBeginDrag(PointerEventData eventData)

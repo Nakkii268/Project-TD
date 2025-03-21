@@ -51,6 +51,7 @@ public class Projectile : MonoBehaviour
             target.GetComponentInParent<IHealable>().Heal(damaged);
             
         }
+        LevelManager.instance.ParticleManager.HitParticle(target);
     }
     private void MoveToTarget()
     {

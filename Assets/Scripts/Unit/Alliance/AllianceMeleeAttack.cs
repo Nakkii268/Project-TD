@@ -23,12 +23,14 @@ public class AllianceMeleeAttack : AllianceAttack
             foreach (GameObject tg in currentTarget)
             {
                 tg.GetComponentInParent<IDamageable>().ReceiveDamaged(alliance.Stat.Attack.Value, damageType);
+                LevelManager.instance.ParticleManager.SlashParticle(tg);
+
             }
 
         }
         else if (Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Alliance)
         {
-            AllianceHealerUnit healScale = (AllianceHealerUnit)alliance.GetAllianceUnit();
+           
             
             foreach (GameObject tg in currentTarget)
             {
@@ -36,7 +38,6 @@ public class AllianceMeleeAttack : AllianceAttack
             }
 
         }
-       
        
     }
 }
