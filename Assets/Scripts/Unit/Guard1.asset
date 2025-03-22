@@ -9,17 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d13eadea05d5cc84f8bb8c01eb01b038, type: 3}
+  m_Script: {fileID: 11500000, guid: fc067b9e32952bf429af293ab424d36e, type: 3}
   m_Name: Guard1
   m_EditorClassIdentifier: 
   UnitID: 001
   UnitPrefab: {fileID: 6865232695306935221, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
-  Name: GuardTest
-  Heath: 100000
-  Attack: 20
+  Name: 
+  Heath: 1000
+  Attack: 500
   AttackInterval: 1
-  Defense: 10
-  Resistance: 10
+  Defense: 23
+  Resistance: 45
   Block: 2
   unitSprite: {fileID: -1987341610, guid: ce316dec69b383242ae19e5c5b543d1a, type: 3}
   AttackRange:
@@ -29,9 +29,9 @@ MonoBehaviour:
   UnitDp: 10
   RedeployTime: 10
   EnemyType:
+    serializedVersion: 2
     m_Bits: 2048
   UnitTarget: 0
   TargetCount: 0
   DamageType: 0
   UnitClass: {fileID: 11400000, guid: 2b5cdf9233f6ca64399e23a72a1dfef2, type: 2}
-  unitBranch: 0

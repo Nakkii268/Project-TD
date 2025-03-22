@@ -10,7 +10,7 @@ public class LevelEndState : LevelState
     public override void Enter()
     {
         base.Enter();
-        LevelStateMachineManager._levelManager.EndUI.ActiveUI(endState);
+        LevelStateMachineManager._levelManager.EndUI.ActiveUI(LevelStateMachineManager.endState);
     }
     public override void Exit()
     {

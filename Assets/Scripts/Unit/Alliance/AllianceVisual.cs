@@ -12,7 +12,19 @@ public class AllianceVisual : MonoBehaviour
     //!!!! Need to handle visual direction when deploy
 
    
+    public void RotateToTarget(GameObject target)
+    {
+        Vector2 dir = target.transform.position - transform.position;
+        if (Vector2.SignedAngle(dir, new Vector2(-1, 0)) < Vector2.SignedAngle(dir, new Vector2(1, 0)) ){ 
+            transform.rotation = Quaternion.Euler(30, 180, 0);
 
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(-30, 0, 0);
+
+        }
+    }
     public void RotateToDirection(Vector2 direction)
     {
         if(direction == new Vector2(-1, 0))

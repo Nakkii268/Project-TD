@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,11 +7,11 @@ public class LevelStateMachineManager : StateMachineManager
     public LevelManager _levelManager;
     public LevelPrepareState LevelPrepareState { get; }
     public LevelGameState LevelGameState { get; }
-    public LevelPauseState  LevelPauseState { get; }
+    public LevelPauseState LevelPauseState { get; }
     public LevelEndState LevelEndState { get; }
     public float entryTime;
-    
-    public LevelStateMachineManager (LevelManager lm)
+    public EndState endState;
+    public LevelStateMachineManager(LevelManager lm)
     {
         _levelManager = lm;
         LevelPrepareState = new LevelPrepareState(this);
@@ -20,5 +20,5 @@ public class LevelStateMachineManager : StateMachineManager
         LevelEndState = new LevelEndState(this);
     }
 
-    
+
 }

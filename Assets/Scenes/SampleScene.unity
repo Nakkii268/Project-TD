@@ -1310,6 +1310,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlashVFX
       objectReference: {fileID: 0}
+    - target: {fileID: 5469795460759198322, guid: 64f77c75bb3a0f14cb97d36fbddf9455, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6403932802535398551, guid: 64f77c75bb3a0f14cb97d36fbddf9455, type: 3}
       propertyPath: lengthInSec
       value: 0.2
@@ -2536,7 +2540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPointerIn: 0
   levelManager: {fileID: 743700109}
-  unit: {fileID: 11400000, guid: 09f953e4b8d13af4a81885d37e04e516, type: 2}
+  unit: {fileID: 11400000, guid: f137a38c32ffca04da14660715ab3b01, type: 2}
   Prefab: {fileID: 608261475}
   toPrefab: {fileID: 6865232695306935221, guid: 25c51bdf62ab3964783a457aa28eb066, type: 3}
   indx: 1
@@ -3747,7 +3751,7 @@ MonoBehaviour:
   mapManager: {fileID: 1956044683}
   charListUI: {fileID: 1190951960}
   levelDPManager: {fileID: 1513984918}
-  endUI: {fileID: 0}
+  endUI: {fileID: 710191221}
   currentUnitIndex: 0
   deloymentLimit: 0
   currentDeloyment: 0
@@ -13175,7 +13179,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1442821506
 Transform:
   m_ObjectHideFlags: 0

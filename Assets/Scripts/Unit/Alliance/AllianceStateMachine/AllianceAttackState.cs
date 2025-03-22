@@ -56,6 +56,7 @@ public class AllianceAttackState : AllianceState, IState
             AllianceSMManager.ChangeState(AllianceSMManager.AllianceSkillDuarationState);
         }
         AllianceSMManager.ChangeState(AllianceSMManager.AllianceIdleState);
+        AllianceSMManager.Alliance.AllianceVisual.RotateToDirection(AllianceSMManager.Alliance.direction);
     }
 }
 

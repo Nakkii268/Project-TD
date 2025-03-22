@@ -17,7 +17,7 @@ public class AllianceMeleeAttack : AllianceAttack
 
     public override void Attack()
     {
-        
+        alliance.AllianceVisual.RotateToTarget(currentTarget[0]);
         if (Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Enemy)
         {
             foreach (GameObject tg in currentTarget)

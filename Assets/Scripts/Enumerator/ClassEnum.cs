@@ -8,7 +8,7 @@ public enum Class
     Guard,
     Defender,
     Healer,
-    Mage,
+    Caster,
     Sniper,
     Vanguard
 }
@@ -31,8 +31,7 @@ public enum HealerBranch
 public enum MageBranch
 {
     CoreCaster,
-    SpashCaster,
-    ChainCaster
+    SpashCaster
 }
 public enum SniperBranch
 {

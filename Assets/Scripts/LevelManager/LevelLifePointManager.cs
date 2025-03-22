@@ -19,6 +19,7 @@ public class LevelLifePointManager : MonoBehaviour
         levelManager = LevelManager.instance;
         LifePoint = 10;// get from map SO through levelmanager 
         ReducedLifePoint = 0;
+        MaxLifePoint = 10;
         SetLifePointText();
         reducedLifePointText.gameObject.SetActive(false);
         

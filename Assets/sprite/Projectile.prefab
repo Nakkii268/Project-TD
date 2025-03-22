@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2033686525427427824}
   - component: {fileID: 6673776937523137561}
-  - component: {fileID: 3100761932867680957}
+  - component: {fileID: 223458269522983993}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -50,10 +50,10 @@ MonoBehaviour:
   damageType: 0
   target: {fileID: 0}
   targetUnit: 0
-  Speed: 5
+  Speed: 10
   source: {fileID: 0}
   projectileVisual: {fileID: 767294114583250610}
---- !u!61 &3100761932867680957
+--- !u!61 &223458269522983993
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.011465192, y: -0.0044674724}
+  m_Offset: {x: 0.0039312243, y: 0.00000011920929}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -96,7 +96,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.31133318, y: 0.101122946}
+  m_Size: {x: 0.6461719, y: 0.32379603}
   m_EdgeRadius: 0
 --- !u!1 &2555748826771628979
 GameObject:
@@ -176,7 +176,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.6309129, y: 1}
+  m_Size: {x: 0.605, y: 2.505}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0

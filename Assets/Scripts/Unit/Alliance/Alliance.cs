@@ -8,7 +8,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
 {
     [SerializeField] private Vector2 unitPos;
     [SerializeField] private AllianceUnit unit;
-    [SerializeField] private Vector2 direction;
+    [SerializeField] public Vector2 direction {  get; private set; }
     [SerializeField] private bool isDeloyed;
 
 
@@ -67,7 +67,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         allianceDirection.OnDeloyed += AllianceDirection_OnDeloyed;
        
         LevelManager.instance.MapManager.OnClickOtherTarget += LevelManager_OnClickOtherTarget;
-
+        
     }
     private void Update()
     {

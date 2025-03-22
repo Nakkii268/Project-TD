@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelState : IState
 {
     protected LevelStateMachineManager LevelStateMachineManager;
-    protected EndState endState;
+    
     public LevelState (LevelStateMachineManager levelStateMachineManager)
     {
         LevelStateMachineManager = levelStateMachineManager;     
@@ -61,6 +61,6 @@ public class LevelState : IState
     private void LevelManager_OnGameEnd(object sender, EndState e)
     {
         LevelStateMachineManager.ChangeState(LevelStateMachineManager.LevelEndState);
-        endState = e;
+        LevelStateMachineManager.endState = e;
     }
 }

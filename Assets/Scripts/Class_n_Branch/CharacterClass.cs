@@ -7,4 +7,9 @@ public class CharacterClass : ScriptableObject
     public Class ClassName;
     public Sprite ClassIcon;
     public StatusEffect ClassPassive;
+
+    public virtual void ApplyBuff(GameObject target)
+    {
+
+    }
 }

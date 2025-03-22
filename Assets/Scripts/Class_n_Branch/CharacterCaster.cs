@@ -7,4 +7,6 @@ public class CharacterCaster : CharacterClass
 {
     public MageBranch SubClassName;
     public StatusEffect BranchPassive;
+
+    
 }
