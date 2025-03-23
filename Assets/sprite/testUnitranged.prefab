@@ -1707,7 +1707,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitPos: {x: 0, y: 0}
   unit: {fileID: 0}
-  direction: {x: 0, y: 0}
   isDeloyed: 0
   allianceVisual: {fileID: 8767271882798838977}
   allianceDirection: {fileID: 126782879211679013}
@@ -2206,8 +2205,16 @@ PrefabInstance:
       value: Visual
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 5056e37710b0a7548800a41ebad57a91, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -7552582706839291426, guid: 5056e37710b0a7548800a41ebad57a91, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -7552582706839291426, guid: 5056e37710b0a7548800a41ebad57a91, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 5056e37710b0a7548800a41ebad57a91, type: 3}
       propertyPath: m_LocalPosition.x
