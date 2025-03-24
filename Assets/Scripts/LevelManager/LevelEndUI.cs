@@ -18,14 +18,14 @@ public class LevelEndUI : MonoBehaviour
         {
             LevelWin.SetActive(true);
         }
-        else if (state == EndState.NotComplete)
+        else if (state == EndState.Failed)
         {
-            LevelWin.SetActive(true);
+            LevelLose.SetActive(true);
 
         }
         else
         {
-            LevelLose.SetActive(true);
+            LevelWin.SetActive(true);
         }
     }
 

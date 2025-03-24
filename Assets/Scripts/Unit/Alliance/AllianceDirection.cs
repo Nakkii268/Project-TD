@@ -69,8 +69,8 @@ public class AllianceDirection : PointerDetect, IBeginDragHandler, IEndDragHandl
             LevelManager.instance.GetLevelDPManager().ReduceDP(alliance.GetUnitCost());
             LevelManager.instance.GetLevelDPManager().DeploymentSlotOccp();
             alliance.UnitDeloy(direction);
+            LevelManager.instance.TimeNormal();
         }
-        
     }
 
    
@@ -150,6 +150,7 @@ public class AllianceDirection : PointerDetect, IBeginDragHandler, IEndDragHandl
         if (!isPointerIn)
         {
             alliance.Retreat(false);
+            LevelManager.instance.TimeNormal();
 
         }
     }

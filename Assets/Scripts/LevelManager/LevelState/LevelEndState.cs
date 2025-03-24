@@ -24,6 +24,7 @@ public class LevelEndState : LevelState
     {
         base.Update();
         //after few second, load to main sceen
+        //LevelStateMachineManager._levelManager.GameStop();
     }
     
 }

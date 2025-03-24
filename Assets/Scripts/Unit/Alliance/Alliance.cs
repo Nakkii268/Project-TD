@@ -157,6 +157,8 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         CameraManager.instance.SetCameraOriginRotation();
         
     }
+
+    //ui infomation
     public void UIShowOnForcus()
     {
         if (isDeloyed)
@@ -165,7 +167,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
             allianceInfo.gameObject.SetActive(true);
             LevelManager.instance.MapManager.HighLightBlockList(allianceAttackRange.AttackRange, 8);
             UnitUICollider.gameObject.SetActive(true);
-
+            LevelManager.instance.TimeSlow();
         }
     }
     public void UIHide()
@@ -174,9 +176,9 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         allianceDirection.gameObject.SetActive(false);
         LevelManager.instance.MapManager.UnHighLightBlockList(allianceAttackRange.AttackRange);
         UnitUICollider.gameObject.SetActive(false);
-
+        LevelManager.instance.TimeNormal();
     }
-
+    //
     public void ReceiveDamaged(float damage,DamageType type)
     {
         if(type == DamageType.MagicDamage)

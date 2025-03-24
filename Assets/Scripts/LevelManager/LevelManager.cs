@@ -90,6 +90,21 @@ public class LevelManager : MonoBehaviour
         LevelInfoUI.gameObject.SetActive(true );
     }
 
+    public void TimeSlow()
+    {
+        Debug.Log("slow");
+        Time.timeScale = .1f;
+    }
+    public void TimeNormal()
+    {
+        Debug.Log("nor");
+
+        Time.timeScale = 1f;
+    }
+    public void GameStop()
+    {
+        Time.timeScale = 0f;
+    }
     
 }
 

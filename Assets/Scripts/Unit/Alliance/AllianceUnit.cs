@@ -8,6 +8,7 @@ public class AllianceUnit : Unit
 {
 
     public Sprite unitSprite;
+    public Sprite unitPotrait;
     public List<Vector2> AttackRange;
 
     public AllianceType type;

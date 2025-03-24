@@ -15,7 +15,7 @@ public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEnd
     [SerializeField] private GameObject toPrefab;
     [SerializeField] private int indx;
     [SerializeField]private Canvas Canvas;
-
+    [SerializeField] private Image Potrait;
     [SerializeField] private RectTransform rectTransform;
     [SerializeField] private  CountDownUI countDownUI;
     [SerializeField] private TextMeshProUGUI UnitCostTxt;
@@ -28,6 +28,7 @@ public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEnd
         rectTransform = GetComponent<RectTransform>();
         UnitCostTxt.text = unit.UnitDp.ToString();
         ClassIcon.sprite = unit.UnitClass.ClassIcon;
+        Potrait.sprite = unit.unitPotrait;
     }
     
     public void OnBeginDrag(PointerEventData eventData)
@@ -40,7 +41,7 @@ public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEnd
         Prefab.GetComponent<Image>().sprite = unit.unitSprite;
         Prefab.GetComponent<RectTransform>().position = Input.mousePosition;
         Prefab.gameObject.SetActive(true);
-       
+        levelManager.TimeSlow();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -55,6 +56,7 @@ public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEnd
         {
             block.GetComponent<Block>().HighLightBlock(7);
         }
+        levelManager.TimeSlow();
 
     }
 
@@ -67,7 +69,7 @@ public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEnd
         {
             block.GetComponent<Block>().UnHighLightBlock();
         }
-       
+        
 
     }
     protected override void PointerClickHandler_OnPointerClick(object sender, EventArgs e)

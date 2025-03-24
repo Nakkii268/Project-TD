@@ -39,12 +39,28 @@ public class LevelLifePointManager : MonoBehaviour
     }
     public EndState GetGameEndState()
     {
-        switch (LifePoint / MaxLifePoint){
-            case 0: return EndState.Failed;
-            case 1: return EndState.Successed;
-            default: return EndState.NotComplete;
+        if ((LifePoint / MaxLifePoint)==1)
+        {
+            
+            return EndState.Successed;
+
         }
-        
+        else if((LifePoint / MaxLifePoint) == 0)
+        {
+           
+            return EndState.Failed;
+
+
+        }
+        else
+        {
+            
+
+            return EndState.NotComplete;
+
+        }
+
+
     }
     private void SetLifePointText()
     {

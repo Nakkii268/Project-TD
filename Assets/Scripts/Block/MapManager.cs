@@ -155,7 +155,11 @@ public class MapManager : MonoBehaviour
     //
     public void HanlderOnCharDrop(CharacterData data)
     {
-        if (currentSelect == -Vector2.one) return;
+        if (currentSelect == -Vector2.one)
+        {
+            levelManager.TimeNormal();
+            return;
+        }
         if (tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().IsDeloyable() && tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().GetBlockType() == data.unit.GetAllianceType())
         {
             tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().DeloyUnit(data.unit, data.character, data.charIndex);

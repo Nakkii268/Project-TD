@@ -60,7 +60,7 @@ public class LevelState : IState
     }
     private void LevelManager_OnGameEnd(object sender, EndState e)
     {
-        LevelStateMachineManager.ChangeState(LevelStateMachineManager.LevelEndState);
         LevelStateMachineManager.endState = e;
+        LevelStateMachineManager.ChangeState(LevelStateMachineManager.LevelEndState);
     }
 }
