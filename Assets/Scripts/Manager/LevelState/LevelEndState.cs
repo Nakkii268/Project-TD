@@ -23,8 +23,9 @@ public class LevelEndState : LevelState
     public override void Update()
     {
         base.Update();
-        //after few second, load to main sceen
-        //LevelStateMachineManager._levelManager.GameStop();
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            GameManager.Instance._sceneLoader.LoadMenu();
+        }
     }
     
 }

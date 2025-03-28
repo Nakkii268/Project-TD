@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Enemy : Character, IDamageable, IHealable, IHasHpBar
 {
-    [SerializeField] public float speed = 1f;
+  
 
 
     [SerializeField] private Vector2[] path;
@@ -53,7 +53,8 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
     {
 
         eStateMachine.ChangeState(eStateMachine.EnemyIdleState);
-        
+       
+
     }
 
     private void Update()
@@ -111,12 +112,12 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
     public void Blocked(GameObject blocker)
     {
         Blocker = blocker;
-        speed = 0;
+        //stat.Speed.Value = 0;
     }
     public void UnBlock(GameObject blocker)
     {
         Blocker=null;
-        speed  = stat.Speed.Value;
+        
     }
     public void DeadBtn()
     {

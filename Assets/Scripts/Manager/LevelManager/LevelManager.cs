@@ -105,6 +105,6 @@ public class LevelManager : MonoBehaviour
     {
         Time.timeScale = 0f;
     }
-    
+   
 }
 
