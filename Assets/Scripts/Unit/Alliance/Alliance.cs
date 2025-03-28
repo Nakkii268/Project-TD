@@ -54,7 +54,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
     public event EventHandler OnUnitRetreat;
     public event EventHandler<float> OnHpChange;
     public event EventHandler OnUnitDead;
-    
+    public event EventHandler OnDestroy;
 
     private void Awake()
     {
@@ -155,7 +155,8 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         block.UnitReTreat();
         
         CameraManager.instance.SetCameraOriginRotation();
-        
+
+
     }
 
     //ui infomation
@@ -241,6 +242,6 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
     {
         return Stat.currentHp / Stat.MaxHp.Value;
     }
-
     
+
 }

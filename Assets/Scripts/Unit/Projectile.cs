@@ -12,11 +12,14 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float Speed =5f;
     [SerializeField] private Transform source;
     [SerializeField] private SpriteRenderer projectileVisual;
-   
+
+
+
     private void Update()
     {
         MoveToTarget();
         RotateToTarget();
+        
     }
     public void SetInfomation(float dmg, DamageType type,UnitTarget ut, GameObject tg,Transform s,Sprite visual)
     {
@@ -55,7 +58,12 @@ public class Projectile : MonoBehaviour
     }
     private void MoveToTarget()
     {
+        if (!target)
+        {
+            gameObject.SetActive(false);
+        }
         transform.Translate(Vector2.right * Speed * Time.deltaTime);
+        
         
     }
     private void RotateToTarget()

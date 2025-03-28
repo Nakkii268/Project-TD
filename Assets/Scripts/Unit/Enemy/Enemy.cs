@@ -41,6 +41,8 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
     public event EventHandler<EnemyDeadArg> OnEnemyDead;
     public event EventHandler OnGetHit;
     public event EventHandler<float> OnHpChange;
+    public event EventHandler OnDestroy;
+
     public GameObject Blocker;
 
     private void Awake()
@@ -142,7 +144,6 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
     }
     public void Dead()
     {
-        Debug.Log("destroyed");
         Destroy(gameObject);
     }
     public float GetReductionValue(float def)
