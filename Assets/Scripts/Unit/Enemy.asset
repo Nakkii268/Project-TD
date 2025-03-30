@@ -21,7 +21,7 @@ MonoBehaviour:
   Defense: 1
   Resistance: 1
   Block: 0
-  Speed: 1
+  Speed: 0.5
   CanBlock: 1
   type: 0
   damageType: 0
