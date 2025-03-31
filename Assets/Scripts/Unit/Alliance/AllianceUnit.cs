@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class AllianceUnit : Unit
 {
-
+    public UnitRarity Rarity;
     public Sprite unitSprite;
     public Sprite unitPotrait;
     public List<Vector2> AttackRange;
