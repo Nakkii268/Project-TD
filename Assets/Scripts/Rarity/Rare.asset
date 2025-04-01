@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b10914f3da03843b8ebf4737b4a002, type: 3}
   m_Name: Rare
   m_EditorClassIdentifier: 
-  Star: 0
-  MaxLimitBreak: 0
-  LevelCap: 
+  Star: 4
+  MaxLimitBreak: 2
+  LevelCap: 320000004600000050000000

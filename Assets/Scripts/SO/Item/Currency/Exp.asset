@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81f7976dcc81854981e17d708f1529b, type: 3}
   m_Name: Exp
   m_EditorClassIdentifier: 
-  ItemID: 
-  ItemName: 
+  ItemID: E002
+  ItemName: Small Exp
   ItemSprite: {fileID: 0}
+  ValuePerUnit: 1000

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eebe90026540daa4e9774fdf8e355dbb, type: 3}
   m_Name: Caster_CoreCaster
   m_EditorClassIdentifier: 
-  ClassName: 0
+  ClassName: 3
   ClassIcon: {fileID: -255873570, guid: 9ddc3bcb707eead499484dc8ffabcb92, type: 3}
   ClassPassive: {fileID: 0}
+  ClassLevelUpData: {fileID: 0}
   SubClassName: 0
   BranchPassive: {fileID: 0}

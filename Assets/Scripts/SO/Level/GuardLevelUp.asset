@@ -16,12 +16,39 @@ MonoBehaviour:
   - LimitBreakLevel: 0
     StatBonus:
     - StatName: 0
-      StatModifier:
-        Value: 10
-        ModType: 0
-        Order: 0
+      StatModifier: 2
+    - StatName: 1
+      StatModifier: 10
+    - StatName: 2
+      StatModifier: 1
     CurrencyRequired:
     - Currency: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
       Value: 1000
     - Currency: {fileID: 11400000, guid: ebe72feb9446389428430436d888d572, type: 2}
       Value: 1000
+  - LimitBreakLevel: 1
+    StatBonus:
+    - StatName: 0
+      StatModifier: 2
+    - StatName: 1
+      StatModifier: 10
+    - StatName: 2
+      StatModifier: 1
+    CurrencyRequired:
+    - Currency: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
+      Value: 2000
+    - Currency: {fileID: 11400000, guid: ebe72feb9446389428430436d888d572, type: 2}
+      Value: 2500
+  - LimitBreakLevel: 2
+    StatBonus:
+    - StatName: 0
+      StatModifier: 3
+    - StatName: 1
+      StatModifier: 8
+    - StatName: 2
+      StatModifier: 1
+    CurrencyRequired:
+    - Currency: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
+      Value: 3000
+    - Currency: {fileID: 11400000, guid: ebe72feb9446389428430436d888d572, type: 2}
+      Value: 5000

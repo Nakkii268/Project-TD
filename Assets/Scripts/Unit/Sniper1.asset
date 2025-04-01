@@ -21,6 +21,7 @@ MonoBehaviour:
   Defense: 20
   Resistance: 20
   Block: 1
+  Rarity: {fileID: 11400000, guid: 92bae8c77200404419d66441ae73f356, type: 2}
   unitSprite: {fileID: -1987341610, guid: ce316dec69b383242ae19e5c5b543d1a, type: 3}
   unitPotrait: {fileID: 21300000, guid: bf67be445732c4e49901116f9109343f, type: 3}
   AttackRange:

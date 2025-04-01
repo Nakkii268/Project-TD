@@ -15,5 +15,6 @@ MonoBehaviour:
   ClassName: 5
   ClassIcon: {fileID: -285187760, guid: 9ddc3bcb707eead499484dc8ffabcb92, type: 3}
   ClassPassive: {fileID: 11400000, guid: a2378c8ed37ad834ea04b4d900fddf0b, type: 2}
+  ClassLevelUpData: {fileID: 11400000, guid: 5a2e2fb40bc794f4f9205189b728d93c, type: 2}
   SubClassName: 0
   BranchPassive: {fileID: 0}
