@@ -20,7 +20,10 @@ public class CharacterInfoUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI UnitAttack;
     [SerializeField] private TextMeshProUGUI UnitHp;
     [SerializeField] private TextMeshProUGUI UnitDef;
+    [SerializeField] private Transform LevelUpUI;
+    [SerializeField] private Transform LimitBreakUI;
 
+    
     private void Start()
     {
         PlayerPrefs.SetInt(unit.UnitID, 1);
@@ -59,9 +62,9 @@ public class CharacterInfoUI : MonoBehaviour
             PreviewStat(CurrentLimtBreak);
 
         });
+
         
-        
-      
+        UIManage();
 
     }
     private void PreviewStat(int lb)
@@ -113,6 +116,8 @@ public class CharacterInfoUI : MonoBehaviour
         //if not enough material then erorr ( test later)
         PlayerPrefs.SetInt(unit.UnitID, CurrentViewLevel);
         PreviewStat(CurrentLimtBreak);
+        UIManage();
+        
 
     }
     private void LimitBreak()
@@ -124,7 +129,7 @@ public class CharacterInfoUI : MonoBehaviour
         SetTargetLevel(1);
         PlayerPrefs.SetInt(unit.UnitID ,  1);
         PreviewStat(CurrentLimtBreak);
-
+        UIManage();
 
     }
     private bool LevelUpCheck(int lb)
@@ -134,5 +139,28 @@ public class CharacterInfoUI : MonoBehaviour
             return false;
         }
         return true;
+    }
+    private bool MaxLevelCheck(int lb)
+    {
+        if (GetCurrentLevel() == unit.Rarity.LevelCap[lb]) return true;
+        return false;
+        
+    }
+    private void UIManage()
+    {
+        if (MaxLevelCheck(CurrentLimtBreak) && CurrentLimtBreak != 2)
+        {
+
+            LevelUpUI.gameObject.SetActive(false);
+            LimitBreakUI.gameObject.SetActive(true);
+
+        }
+        else 
+        {
+
+            LevelUpUI.gameObject.SetActive(true);
+            LimitBreakUI.gameObject.SetActive(false);
+
+        }
     }
 }
