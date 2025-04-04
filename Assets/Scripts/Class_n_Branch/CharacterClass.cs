@@ -8,6 +8,7 @@ public class CharacterClass : ScriptableObject
     public Sprite ClassIcon;
     public StatusEffect ClassPassive;
     public LevelUpSO ClassLevelUpData;
+    public LimitBreakSO ClassLimitBreakpData;
     public virtual void ApplyBuff(GameObject target)
     {
 

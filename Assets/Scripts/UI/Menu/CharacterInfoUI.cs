@@ -22,7 +22,7 @@ public class CharacterInfoUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI UnitDef;
     [SerializeField] private Transform LevelUpUI;
     [SerializeField] private Transform LimitBreakUI;
-
+    [SerializeField] private PlayerData PlayerData;
     
     private void Start()
     {
@@ -113,6 +113,11 @@ public class CharacterInfoUI : MonoBehaviour
  
     private void LevelUp()
     {
+       /* if((PlayerData.Exp < unit.UnitClass.ClassLevelUpData.data[CurrentLimtBreak].CurrencyRequired[0].Value)
+            &&(PlayerData.Gold < unit.UnitClass.ClassLevelUpData.data[CurrentLimtBreak].CurrencyRequired[1].Value))
+        {
+            return;
+        }*/
         //if not enough material then erorr ( test later)
         PlayerPrefs.SetInt(unit.UnitID, CurrentViewLevel);
         PreviewStat(CurrentLimtBreak);
