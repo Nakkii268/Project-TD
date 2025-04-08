@@ -7,6 +7,8 @@ using UnityEngine;
 public class MapSO : ScriptableObject
 {
     public string MapName;
+    public Sprite MapIng;
+    public string StagePath;
     public Wave[] Waves;
     public int TotalEnemy;
     public int LifePoint;

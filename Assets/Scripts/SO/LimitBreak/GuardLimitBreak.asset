@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bad8e2fd637ec249bd62373b2f9fa41, type: 3}
   m_Name: GuardLimitBreak
   m_EditorClassIdentifier: 
+  data:
+  - ItemsRequired: []
+    BuffGain: []
+    GoldRequired: 1
