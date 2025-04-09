@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class StageUI : MonoBehaviour
 {
     [SerializeField] private List<MapSO> mapList;
-    [SerializeField] private List<StageSingleUI> stageBtnList;
+    public List<StageSingleUI> stageBtnList;
+    public RectTransform StageContainer;
 
 
     private void Start()

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: TestMap
   m_EditorClassIdentifier: 
   MapName: 
+  MapIng: {fileID: -353794294, guid: 586643aa6f13aa44299e0ffb6aed7c92, type: 3}
+  StagePath: Assets/Scenes/SampleScene.unity
   Waves:
   - SpawnTime: 5
     Path:

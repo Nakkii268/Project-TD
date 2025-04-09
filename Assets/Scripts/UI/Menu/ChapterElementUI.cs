@@ -9,12 +9,12 @@ public class ChapterElementUI : MonoBehaviour
   
     public ChapterSO ChapterSO;
     public Button btn;
-    public event EventHandler<string> OnChapterSelect;
+    public event EventHandler<ChapterSO> OnChapterSelect;
     private void Start()
     {
         btn.onClick.AddListener(() =>
         {
-            OnChapterSelect?.Invoke(this, ChapterSO.StageUIPath);
+            OnChapterSelect?.Invoke(this, ChapterSO);
         });
     }
 

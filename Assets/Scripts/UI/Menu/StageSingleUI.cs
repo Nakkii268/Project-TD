@@ -7,10 +7,7 @@ public class StageSingleUI : MonoBehaviour
 {
     [SerializeField] private Button btn;
     [SerializeField] private Image stageImg;
-    private void Start()
-    {
-        
-    }
+    
     public void Initialize(MapSO map)
     {
         stageImg.sprite = map.MapIng;

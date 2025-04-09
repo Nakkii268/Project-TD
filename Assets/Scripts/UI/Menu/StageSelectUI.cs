@@ -10,8 +10,10 @@ public class StageSelectUI : MonoBehaviour
     [SerializeField] private Button HomeBtn;
     [SerializeField] private Button ChapterExpandBtn;
     [SerializeField] private GameObject ChapterContainer;
-    [SerializeField] private GameObject StageList;
-    [SerializeField] private List<ChapterElementUI> ChapterList;
+    [SerializeField] private StageProgress stageProgress;
+    [SerializeField] public GameObject StageList;
+    [SerializeField] public List<ChapterElementUI> ChapterList;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -33,15 +35,23 @@ public class StageSelectUI : MonoBehaviour
         for(int i = 0; i < ChapterList.Count; i++)
         {
             ChapterList[i].OnChapterSelect += StageSelectUI_OnChapterSelect;
+            
         }
+        LoadStageList(stageProgress.LastStage.Chapter.StageUIPath);
+
+        stageProgress.DisableLockedChapter();
+
 
     }
 
- 
 
-    private void StageSelectUI_OnChapterSelect(object sender, string e)
+
+    private void StageSelectUI_OnChapterSelect(object sender, ChapterSO e)
     {
-       LoadStageList(e);
+       LoadStageList(e.StageUIPath);
+        stageProgress.DisableLockedStage(e.ChapterIndex);
+
+
     }
 
     public void LoadStageList(string path)
@@ -57,6 +67,8 @@ public class StageSelectUI : MonoBehaviour
             newStageList.transform.SetAsFirstSibling();
             Destroy(StageList);
             StageList = newStageList;
+            stageProgress.DisableLockedStage(stageProgress.LastStage.Chapter.ChapterIndex);
+
         }
     }
 }
