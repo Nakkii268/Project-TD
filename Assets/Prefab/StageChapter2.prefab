@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.6157718, b: 1, a: 1}
+  m_Color: {r: 0.9368038, g: 0, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1205,13 +1205,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784127faca731eb4a9aec045f085a661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapList: []
+  mapList:
+  - {fileID: 11400000, guid: 5c2b608457497d549a692b834376be1b, type: 2}
+  - {fileID: 11400000, guid: 5c2b608457497d549a692b834376be1b, type: 2}
+  - {fileID: 11400000, guid: 5c2b608457497d549a692b834376be1b, type: 2}
+  - {fileID: 11400000, guid: 5c2b608457497d549a692b834376be1b, type: 2}
+  - {fileID: 11400000, guid: 5c2b608457497d549a692b834376be1b, type: 2}
   stageBtnList:
   - {fileID: 8159906477871488175}
   - {fileID: 7705159952261273590}
   - {fileID: 4271229560918655556}
   - {fileID: 5156732586060954900}
   - {fileID: 2392422696742508484}
+  StageContainer: {fileID: 0}
 --- !u!1 &7383711127722863396
 GameObject:
   m_ObjectHideFlags: 0

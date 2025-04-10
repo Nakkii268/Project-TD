@@ -37,7 +37,7 @@ public class StageSelectUI : MonoBehaviour
             ChapterList[i].OnChapterSelect += StageSelectUI_OnChapterSelect;
             
         }
-        LoadStageList(stageProgress.LastStage.Chapter.StageUIPath);
+        LoadStageList(stageProgress.LastStage.Chapter);
 
         stageProgress.DisableLockedChapter();
 
@@ -48,27 +48,30 @@ public class StageSelectUI : MonoBehaviour
 
     private void StageSelectUI_OnChapterSelect(object sender, ChapterSO e)
     {
-       LoadStageList(e.StageUIPath);
-        stageProgress.DisableLockedStage(e.ChapterIndex);
+       LoadStageList(e);
+      
 
 
     }
 
-    public void LoadStageList(string path)
+    public void LoadStageList(ChapterSO chapter)
     {
-        Addressables.LoadAssetAsync<GameObject>(path).Completed += StageSelectUI_Completed;
-    }
-
-    private void StageSelectUI_Completed(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> obj)
-    {
-        if (obj.Status == UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Succeeded)
+        Addressables.LoadAssetAsync<GameObject>(chapter.StageUIPath).Completed += ((handler) =>
         {
-            GameObject newStageList = Instantiate(obj.Result, transform);
-            newStageList.transform.SetAsFirstSibling();
-            Destroy(StageList);
-            StageList = newStageList;
-            stageProgress.DisableLockedStage(stageProgress.LastStage.Chapter.ChapterIndex);
+            if (handler.Status == UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Succeeded)
+            {
+                GameObject newStageList = Instantiate(handler.Result, transform);
+                newStageList.transform.SetAsFirstSibling();
+                Destroy(StageList);
+                StageList = newStageList;
+                Debug.Log(StageList.name);
+                stageProgress.DisableLockedStage(chapter.ChapterIndex);
 
-        }
+
+            }
+        });
+        
     }
+
+  
 }
