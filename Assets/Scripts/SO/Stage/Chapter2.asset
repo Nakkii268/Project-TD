@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 182a46b006559b04887fa8790e241210, type: 3}
   m_Name: Chapter2
   m_EditorClassIdentifier: 
+  ChapterIndex: 1
   ChapterID: C002
   ChapterName: The not Begin
   StageUIPath: Assets/Prefab/StageChapter2.prefab

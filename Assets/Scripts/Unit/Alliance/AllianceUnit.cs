@@ -19,6 +19,14 @@ public class AllianceUnit : Unit
     public UnitTarget UnitTarget;
     public TargetCount TargetCount;
     public DamageType DamageType;
+
+    //change in runtime
+    #region ChangeInRunTime
+    [Range(0,2)]public int LimitBreak;
+    [Range(1,90)]public int Level;
+    //
+    #endregion
+
     public string GetAllianceType() { return type.ToString(); }
     public CharacterClass UnitClass;
     
