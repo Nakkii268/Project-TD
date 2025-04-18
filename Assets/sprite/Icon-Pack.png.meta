@@ -508,6 +508,237 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: AttackIcon
+      rect:
+        serializedVersion: 2
+        x: 2790
+        y: 2292
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 117911c7a38227640afb68006a394cba
+      internalID: 705382265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DefIcon
+      rect:
+        serializedVersion: 2
+        x: 3003
+        y: 2290
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9760ed8b1739b75419239f92f96f9ae5
+      internalID: -909804210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResIcon
+      rect:
+        serializedVersion: 2
+        x: 3220
+        y: 2289
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5072dd80b0bda240a979be311de425b
+      internalID: 1085904502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpIcon
+      rect:
+        serializedVersion: 2
+        x: 2780
+        y: 2067
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73f7ada76337fde4a996c918cdfbfe49
+      internalID: 525878075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ASIcon
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 2071
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 283109dcc1c8d5f4ca69767d78d01ac9
+      internalID: 10337661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlockIcon
+      rect:
+        serializedVersion: 2
+        x: 3224
+        y: 2067
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f11af572c3d4bfe418b2fb473cff40a9
+      internalID: 10735929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TimeIcon
+      rect:
+        serializedVersion: 2
+        x: 2783
+        y: 1854
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dc78f691f0ab0343aba3cdd22ac1ac0
+      internalID: -348997575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CostIcon
+      rect:
+        serializedVersion: 2
+        x: 3201
+        y: 1860
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5160554e77f9b0a4a87bb6de365574f5
+      internalID: -602111817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RareIcon
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 2255
+        width: 400
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 630509caaca44ff4fbecc242301391f5
+      internalID: 1533897244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LegendIcon
+      rect:
+        serializedVersion: 2
+        x: 977
+        y: 2277
+        width: 400
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1e817ba8a70ba94c91213cbedf00bfb
+      internalID: 558873427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EpicIcon
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 1916
+        width: 400
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d21e244db79978743b33fbb3fd59b2a1
+      internalID: -469476550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -519,6 +750,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      ASIcon: 10337661
+      AttackIcon: 705382265
+      BlockIcon: 10735929
+      CostIcon: -602111817
+      DefIcon: -909804210
+      EpicIcon: -469476550
+      HpIcon: 525878075
       Icon-Pack_0: 1425884550
       Icon-Pack_1: 1194156499
       Icon-Pack_10: -1498202539
@@ -538,6 +776,10 @@ TextureImporter:
       Icon-Pack_7: -1958532484
       Icon-Pack_8: -533482456
       Icon-Pack_9: -894900220
+      LegendIcon: 558873427
+      RareIcon: 1533897244
+      ResIcon: 1085904502
+      TimeIcon: -348997575
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

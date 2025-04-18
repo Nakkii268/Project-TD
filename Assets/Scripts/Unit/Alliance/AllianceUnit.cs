@@ -6,9 +6,13 @@ using UnityEngine;
 
 public class AllianceUnit : Unit
 {
+   
     public UnitRarity Rarity;
     public Sprite unitSprite;
     public Sprite unitPotrait;
+    public Sprite unitSplashArt;
+    public Sprite UnitRangeVisualized;
+
     public List<Vector2> AttackRange;
 
     public AllianceType type;
@@ -19,7 +23,6 @@ public class AllianceUnit : Unit
     public UnitTarget UnitTarget;
     public TargetCount TargetCount;
     public DamageType DamageType;
-
     //change in runtime
     #region ChangeInRunTime
     [Range(0,2)]public int LimitBreak;

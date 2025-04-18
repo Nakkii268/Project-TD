@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Rare
   m_EditorClassIdentifier: 
   Star: 4
-  MaxLimitBreak: 2
-  LevelCap: 320000004600000050000000
+  MaxLimitBreak: 1
+  LevelCap: 320000003c000000
+  RarityIcon: {fileID: 1533897244, guid: 8b127051ec22801428a87e39b4d2eb38, type: 3}

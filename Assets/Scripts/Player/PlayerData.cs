@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu()]
-public class PlayerData : ScriptableObject
+[Serializable]
+public class PlayerData 
 {
     public string PlayerID;
     public string PlayerName;
@@ -11,4 +12,5 @@ public class PlayerData : ScriptableObject
     public int Gold;
     public int Exp;
     public List<Item> Items;
+    public List<CharacterModifyData> OwnedCharacter;
 }

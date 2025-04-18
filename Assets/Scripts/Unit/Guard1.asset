@@ -14,16 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitID: 001
   UnitPrefab: {fileID: 6865232695306935221, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
-  Name: 
+  Name: Kana
   Heath: 1000
-  Attack: 500
+  Attack: 100000
   AttackInterval: 1
   Defense: 23
   Resistance: 45
   Block: 2
-  Rarity: {fileID: 11400000, guid: 1a94967ead12edc4badf802a5cbec34b, type: 2}
+  Rarity: {fileID: 11400000, guid: 0db3e1a0694614948ab0f03f88761004, type: 2}
   unitSprite: {fileID: -1987341610, guid: ce316dec69b383242ae19e5c5b543d1a, type: 3}
   unitPotrait: {fileID: 21300000, guid: 8eacd59ebb51f414db18de348c69d94c, type: 3}
+  unitSplashArt: {fileID: 21300000, guid: e418d8edc7b1eec409827ea0521b4a12, type: 3}
+  UnitRangeVisualized: {fileID: -1702954108, guid: 4ecd44054a5d7f54ca1dd8a09d2540dd, type: 3}
   AttackRange:
   - {x: 0, y: 0}
   - {x: -1, y: 0}
@@ -36,4 +38,6 @@ MonoBehaviour:
   UnitTarget: 0
   TargetCount: 0
   DamageType: 0
+  LimitBreak: 0
+  Level: 20
   UnitClass: {fileID: 11400000, guid: 2b5cdf9233f6ca64399e23a72a1dfef2, type: 2}

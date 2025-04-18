@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class CharacterInfoUI : MonoBehaviour
 {
     [SerializeField] private AllianceUnit unit;
+    [SerializeField] private AllianceUnit unit1;
     [SerializeField] private Button BackBtn;
     [SerializeField] private Button HomeBtn;
     
@@ -16,6 +17,8 @@ public class CharacterInfoUI : MonoBehaviour
     //init
     [SerializeField] private Button LevelUpBtn;
     [SerializeField] private Button LimitBreakBtn;
+    [SerializeField] private TextMeshProUGUI UnitName;
+
     [SerializeField] private TextMeshProUGUI UnitAttack;
     [SerializeField] private TextMeshProUGUI UnitHp;
     [SerializeField] private TextMeshProUGUI UnitDef;
@@ -23,11 +26,15 @@ public class CharacterInfoUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI UnitAS;
     [SerializeField] private TextMeshProUGUI UnitBlock;
     [SerializeField] private TextMeshProUGUI UnitRedeploy;
+    [SerializeField] private TextMeshProUGUI UnitCost;
     [SerializeField] private TextMeshProUGUI LevelText;
     [SerializeField] private TextMeshProUGUI LimitBreakText;
     [SerializeField] private UnitLevelUpUI LevelUpUI;
     [SerializeField] private UnitLimitBreakUI LimitBreakUI;
-    [SerializeField] private Image UnitSprite;
+    [SerializeField] private Image UnitSplashArt;
+    [SerializeField] private Image UnitRarityIcon;
+    [SerializeField] private Image AttackRangeVisualized;
+    [SerializeField] private Image UnitClassIcon;
     //
     [SerializeField] private PlayerData PlayerData;
 
@@ -35,6 +42,19 @@ public class CharacterInfoUI : MonoBehaviour
     public void Initialized(AllianceUnit allanceUnit)
     {
         unit = allanceUnit;
+        UnitName.text = unit.Name.ToString();
+        UnitAttack.text = unit.Attack.ToString();
+        UnitHp.text = unit.Heath.ToString();
+        UnitDef.text = unit.Defense.ToString();
+        UnitRes.text = unit.Resistance.ToString();
+        UnitAS.text = unit.AttackInterval.ToString();
+        UnitBlock.text = unit.Block.ToString();
+        UnitCost.text = unit.UnitDp.ToString();
+        UnitRedeploy.text = unit.RedeployTime.ToString();
+        UnitSplashArt.sprite = unit.unitSplashArt;
+        UnitRarityIcon.sprite = unit.Rarity.RarityIcon;
+        UnitClassIcon.sprite = unit.UnitClass.ClassIcon;
+        AttackRangeVisualized.sprite = unit.UnitRangeVisualized;
         
     }
     private void Start()
@@ -42,7 +62,7 @@ public class CharacterInfoUI : MonoBehaviour
         //PlayerPrefs.SetInt(unit.UnitID, 1);
        // PlayerPrefs.SetInt(unit.UnitID + "lb", 0);
         
-        SetLimtBreakText(GetCurrentLimitBreak());
+       /* SetLimtBreakText(GetCurrentLimitBreak());
         SetLevelText(GetCurrentLevel());
         BackBtn.onClick.AddListener(() =>
         {
@@ -63,8 +83,8 @@ public class CharacterInfoUI : MonoBehaviour
 
         });
        
-
-        
+        */
+        Initialized(unit1);
         
 
     }
