@@ -17,6 +17,7 @@ public class UnitLevelUpUI : MonoBehaviour
     [SerializeField] private AllianceUnit unit;
     [SerializeField] private TextMeshProUGUI TargetLevel;
     [SerializeField] private CharacterInfoUI characterInfo;
+    [SerializeField] private Image LevelUpProgress;
 
     public void Initialized(AllianceUnit allanceUnit)
     {
@@ -24,7 +25,7 @@ public class UnitLevelUpUI : MonoBehaviour
     }
     private void Start()
     {
-
+        UpdateLevelUpProgress(characterInfo.GetCurrentLevel() , unit.Rarity.LevelCap[CurrentLimtBreak]);
         IncreaseBtn.onClick.AddListener(() =>
         {
 
@@ -32,6 +33,8 @@ public class UnitLevelUpUI : MonoBehaviour
 
             SetTargetLevel(CurrentViewLevel + 1);
             characterInfo.PreviewStat(CurrentLimtBreak);
+            UpdateLevelUpProgress(CurrentViewLevel, unit.Rarity.LevelCap[CurrentLimtBreak]);
+
         });
         DecreaseBtn.onClick.AddListener(() =>
         {
@@ -40,6 +43,7 @@ public class UnitLevelUpUI : MonoBehaviour
 
             SetTargetLevel(CurrentViewLevel - 1);
             characterInfo.PreviewStat(CurrentLimtBreak);
+            UpdateLevelUpProgress(CurrentViewLevel ,unit.Rarity.LevelCap[CurrentLimtBreak]);
 
         });
     }
@@ -77,5 +81,12 @@ public class UnitLevelUpUI : MonoBehaviour
         if (characterInfo.GetCurrentLevel() == unit.Rarity.LevelCap[lb]) return true;
         return false;
 
+    }
+    
+    private void UpdateLevelUpProgress(int cur, int max)
+    {
+        float curf = cur;
+        float maxf = max;
+        LevelUpProgress.fillAmount = curf/maxf;
     }
 }
