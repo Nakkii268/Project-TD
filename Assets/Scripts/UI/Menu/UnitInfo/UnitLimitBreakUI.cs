@@ -22,7 +22,7 @@ public class UnitLimitBreakUI : MonoBehaviour
         SetTargetLimtBreak(CurrentLimtBreak + 1);
         //SetTargetLevel(1);
         PlayerPrefs.SetInt(unit.UnitID, 1);
-        characterInfo.PreviewStat(CurrentLimtBreak);
+        
 
 
     }

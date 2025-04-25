@@ -12,7 +12,7 @@ public class CharacterInfoUI : MonoBehaviour
     [SerializeField] private Button BackBtn;
     [SerializeField] private Button HomeBtn;
     
-    [SerializeField] private int CurrentViewLevel;
+    
     [SerializeField] private int CurrentLimtBreak;
     //init
     [SerializeField] private Button LevelUpBtn;
@@ -59,33 +59,25 @@ public class CharacterInfoUI : MonoBehaviour
     }
     private void Start()
     {
-        //PlayerPrefs.SetInt(unit.UnitID, 1);
-       // PlayerPrefs.SetInt(unit.UnitID + "lb", 0);
         
-       /* SetLimtBreakText(GetCurrentLimitBreak());
-        SetLevelText(GetCurrentLevel());
-        BackBtn.onClick.AddListener(() =>
-        {
-            Debug.Log("Back");
-        });
-        HomeBtn.onClick.AddListener(() => {
-            Debug.Log("home");
-        });
-        LevelUpBtn.onClick.AddListener(() =>
-        {
-            LevelUpUI.gameObject.SetActive(true);
-            LevelUpUI.Initialized(unit);
-        });
-        LimitBreakBtn.onClick.AddListener(() =>
-        {
-            LimitBreakUI.gameObject.SetActive(true);
-            LimitBreakUI.Initialized(unit);
-
-        });
-       
-        */
         Initialized(unit1);
-        
+        if (MaxLevelCheck(CurrentLimtBreak))
+        {
+            LevelUpBtn.interactable= false;
+        }
+        if (MaxLimitBreakCheck())
+        {
+            LimitBreakBtn.interactable= false;
+        }
+
+        LevelUpBtn.onClick.AddListener(() => { 
+
+            LevelUpUI.gameObject.SetActive(true); 
+        });
+        LimitBreakBtn.onClick.AddListener(() => { 
+
+            LimitBreakUI.gameObject.SetActive(true); 
+        });
 
     }
 
@@ -98,7 +90,8 @@ public class CharacterInfoUI : MonoBehaviour
        LevelText.text = v.ToString();
     }
 
-    public void PreviewStat(int lb)
+  
+    public void StatShow(int lb)
     {
         float currentAttack = 0;
         float currentHealth = 0;
@@ -109,22 +102,21 @@ public class CharacterInfoUI : MonoBehaviour
             for (int i = 0; i <= CurrentLimtBreak - 1; i++)
             {
                
-                currentAttack += (unit.UnitClass.ClassLevelUpData.data[i].StatBonus[0].StatModifier * (unit.Rarity.LevelCap[i] - 1));
+                currentAttack += (unit.UnitClass.ClassLevelUpData.data[i].StatBonus[0].StatModify * (unit.Rarity.LevelCap[i] - 1));
 
-                currentHealth += (unit.UnitClass.ClassLevelUpData.data[i].StatBonus[1].StatModifier * (unit.Rarity.LevelCap[i] - 1));
+                currentHealth += (unit.UnitClass.ClassLevelUpData.data[i].StatBonus[1].StatModify * (unit.Rarity.LevelCap[i] - 1));
 
-                currentDef += (unit.UnitClass.ClassLevelUpData.data[i].StatBonus[2].StatModifier * (unit.Rarity.LevelCap[i] - 1));
+                currentDef += (unit.UnitClass.ClassLevelUpData.data[i].StatBonus[2].StatModify * (unit.Rarity.LevelCap[i] - 1));
 
             }
         }
-        UnitAttack.text = (currentAttack + (unit.Attack + unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[0].StatModifier * GetCurrentLevel() - 1)).ToString()
-            + " +" + (unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[0].StatModifier * (CurrentViewLevel - GetCurrentLevel())).ToString();
+        UnitAttack.text = (currentAttack + (unit.Attack + unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[0].StatModify * GetCurrentLevel() - 1)).ToString();
+           
+        UnitHp.text = (currentHealth + (unit.Heath + unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[1].StatModify * GetCurrentLevel() - 1)).ToString();
 
-        UnitHp.text = (currentHealth + (unit.Heath + unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[1].StatModifier * GetCurrentLevel() - 1)).ToString() +
-            " +" + (unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[1].StatModifier * (CurrentViewLevel - GetCurrentLevel())).ToString();
 
-        UnitDef.text = (currentDef + (unit.Defense + unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[2].StatModifier * GetCurrentLevel() - 1)).ToString() +
-            "+ " + (unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[2].StatModifier * (CurrentViewLevel - GetCurrentLevel())).ToString();
+        UnitDef.text = (currentDef + (unit.Defense + unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[2].StatModify * GetCurrentLevel() - 1)).ToString();
+           
     }
     public int GetCurrentLevel()
     {
@@ -137,11 +129,22 @@ public class CharacterInfoUI : MonoBehaviour
         if (!PlayerPrefs.HasKey(unit.UnitID + "lb")) return 0;
         return PlayerPrefs.GetInt(unit.UnitID + "lb");
     }
-   
- 
- 
-  
-    
-    
-   
+
+
+    public bool MaxLevelCheck(int lb)
+    {
+        if (GetCurrentLevel() == unit.Rarity.LevelCap[lb]) return true;
+        return false;
+
+    }
+    public bool MaxLimitBreakCheck()
+    {
+        if(GetCurrentLimitBreak()>=unit.Rarity.MaxLimitBreak) return true;
+        return false;
+    }
+
+
+
+
+
 }

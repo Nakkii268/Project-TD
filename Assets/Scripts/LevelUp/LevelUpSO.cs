@@ -25,5 +25,5 @@ public class CurrencyRequired
 public class StatBonus
 {
     public StatName StatName;
-    public int StatModifier;
+    public int StatModify;
 }

@@ -9416,8 +9416,8 @@ RectTransform:
   m_Children:
   - {fileID: 2105240467}
   - {fileID: 1259202861}
-  - {fileID: 1327485982}
   - {fileID: 786198919}
+  - {fileID: 1327485982}
   - {fileID: 1559656652}
   - {fileID: 1020624974}
   - {fileID: 1003231494}
@@ -11549,7 +11549,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1327485982
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11596,7 +11596,6 @@ MonoBehaviour:
   unit1: {fileID: 11400000, guid: b18f85b780946e8409d3a4e0589a984a, type: 2}
   BackBtn: {fileID: 1909197953}
   HomeBtn: {fileID: 90431943}
-  CurrentViewLevel: 0
   CurrentLimtBreak: 0
   LevelUpBtn: {fileID: 1587985538}
   LimitBreakBtn: {fileID: 157651399}
@@ -13585,7 +13584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1559656652
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13630,6 +13629,8 @@ MonoBehaviour:
   UnitDef: {fileID: 578824314}
   CurrentViewLevel: 1
   CurrentLimtBreak: 0
+  BackBtn: {fileID: 0}
+  HomeBtn: {fileID: 0}
   LevelUpBtn: {fileID: 102933884}
   IncreaseBtn: {fileID: 323099652}
   DecreaseBtn: {fileID: 999052673}
