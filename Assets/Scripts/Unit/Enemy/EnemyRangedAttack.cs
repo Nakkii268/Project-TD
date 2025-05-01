@@ -19,7 +19,7 @@ public class EnemyRangedAttack : EnemyAttack
 
         projectile.transform.position = firePoint.position;
         projectile.gameObject.SetActive(true);
-        projectile.GetComponent<Projectile>().SetInfomation(m_Enemy.Stat.Attack.Value, damageType, m_Enemy.Unit.target, target, firePoint, ProjectileSprite);
+        projectile.GetComponent<Projectile>().SetInfomation(m_Enemy.Stat.Attack.Value, damageType, m_Enemy.Unit.target, target, firePoint, ProjectileSprite, m_Enemy.Unit.HitVfx);
 
     }
 

@@ -202,7 +202,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
             OnGetHit?.Invoke(this, EventArgs.Empty);
             
         }
-        LevelManager.instance.ParticleManager.HitParticle(this.gameObject);
+        
         OnHpChange?.Invoke(this, allianceStat.currentHp / allianceStat.MaxHp.Value);
 
         if (allianceStat.currentHp <= 0)

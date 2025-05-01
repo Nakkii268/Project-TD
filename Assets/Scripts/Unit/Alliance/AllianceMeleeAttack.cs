@@ -23,7 +23,8 @@ public class AllianceMeleeAttack : AllianceAttack
             foreach (GameObject tg in currentTarget)
             {
                 tg.GetComponentInParent<IDamageable>().ReceiveDamaged(alliance.Stat.Attack.Value, damageType);
-                LevelManager.instance.ParticleManager.SlashParticle(tg);
+                LevelManager.instance.ParticleManager.HitParticle(tg, alliance.GetAllianceUnit().HitVfx);
+
 
             }
 
@@ -38,6 +39,7 @@ public class AllianceMeleeAttack : AllianceAttack
             }
 
         }
-       
+        LevelManager.instance.ParticleManager.SlashParticle(this.gameObject, alliance.GetAllianceUnit().AttackVfx,vfxPos);
+
     }
 }

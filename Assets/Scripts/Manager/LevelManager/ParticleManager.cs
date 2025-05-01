@@ -15,16 +15,16 @@ public class ParticleManager : MonoBehaviour
         StartCoroutine(StopParticle(particle,duration));    
         
     }
-    public void HitParticle(GameObject target)
+    public void HitParticle(GameObject target,ParticleSystem p)
     {
         
-        ParticleSystem particle = Instantiate(hitParticle, target.transform.position, Quaternion.identity, target.transform);
+        ParticleSystem particle = Instantiate(p, target.transform.position, Quaternion.identity, target.transform);
         particle.Play();
     }
-    public void SlashParticle(GameObject target)
+    public void SlashParticle(GameObject target, ParticleSystem p,Transform pos)
     {
         
-        ParticleSystem particle = Instantiate(hitParticle, target.transform.position, Quaternion.identity, target.transform);
+        ParticleSystem particle = Instantiate(p, pos.position, Quaternion.identity, target.transform);
         particle.Play();
     }
     public IEnumerator StopParticle(ParticleSystem p,float duration)

@@ -29,7 +29,7 @@ public class AllianceRangedAttack : AllianceAttack
 
         projectile.transform.position = firePoint.position;
         projectile.gameObject.SetActive(true);
-        projectile.GetComponent<Projectile>().SetInfomation(alliance.Stat.Attack.Value, damageType, alliance.GetAllianceUnit().UnitTarget, currentTarget[0],firePoint,ProjectileVisual);
+        projectile.GetComponent<Projectile>().SetInfomation(alliance.Stat.Attack.Value, damageType, alliance.GetAllianceUnit().UnitTarget, currentTarget[0],firePoint,ProjectileVisual,alliance.GetAllianceUnit().HitVfx);
 
     }
 

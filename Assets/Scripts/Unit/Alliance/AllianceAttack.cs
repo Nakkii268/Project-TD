@@ -12,6 +12,7 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
    
     [SerializeField] protected List<GameObject> targets;
     [SerializeField] protected List<GameObject> currentTarget;
+    [SerializeField] protected Transform vfxPos;
     public List<GameObject> CurrentTarget { get { return currentTarget; } }
 
     [SerializeField] protected TargetCount targetCount;

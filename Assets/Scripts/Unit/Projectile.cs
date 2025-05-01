@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float Speed =5f;
     [SerializeField] private Transform source;
     [SerializeField] private SpriteRenderer projectileVisual;
+    [SerializeField] private ParticleSystem hitParticle;
 
 
 
@@ -21,7 +22,7 @@ public class Projectile : MonoBehaviour
         RotateToTarget();
         
     }
-    public void SetInfomation(float dmg, DamageType type,UnitTarget ut, GameObject tg,Transform s,Sprite visual)
+    public void SetInfomation(float dmg, DamageType type,UnitTarget ut, GameObject tg,Transform s,Sprite visual,ParticleSystem hit)
     {
         damaged = dmg;  
         damageType = type;
@@ -29,7 +30,7 @@ public class Projectile : MonoBehaviour
         target = tg;
         source = s;
         projectileVisual.sprite = visual;
-
+        hitParticle = hit;
         Debug.Log("success");
     }
 
@@ -54,7 +55,7 @@ public class Projectile : MonoBehaviour
             target.GetComponentInParent<IHealable>().Heal(damaged);
             
         }
-        LevelManager.instance.ParticleManager.HitParticle(target);
+        LevelManager.instance.ParticleManager.HitParticle(target,hitParticle);
     }
     private void MoveToTarget()
     {
