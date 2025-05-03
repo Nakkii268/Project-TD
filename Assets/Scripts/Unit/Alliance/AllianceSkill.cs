@@ -87,6 +87,7 @@ public class AllianceSkill : MonoBehaviour
     {
         if (!IsFullSkillPoint()) return;
         if(OnUseSkill.TargetRequire && target==null) return;
+
         OnUseSkill.SkillActivate(this, alliance.AllianceAttack.CurrentTarget);
 
         curSkillPoint = 0;
@@ -95,6 +96,14 @@ public class AllianceSkill : MonoBehaviour
 
         OnSkillActive?.Invoke(this, GetSkillDuration());
 
+        //vfx
+        if (OnUseSkill.SkillVFX != null) 
+        {
+            LevelManager.instance.ParticleManager.SkillParticle(this.gameObject, OnUseSkill.SkillVFX, this.transform, alliance.GetVFXQuaternion());
+           
+            
+            Debug.Log(alliance.direction);
+        }
         StartCoroutine(SkillActiveDurtation());
         DisableSkillBtn();
     }
@@ -159,4 +168,5 @@ public class AllianceSkill : MonoBehaviour
         OnSkillEnd?.Invoke(this, EventArgs.Empty);
         _isSkillDuration = false;
     }
+  
 }

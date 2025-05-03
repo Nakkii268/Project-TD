@@ -7,6 +7,7 @@ using UnityEngine;
 public class Alliance : Character, IDamageable, IHealable, IHasHpBar
 {
     [SerializeField] private Vector2 unitPos;
+    public Vector2 UnitPos { get; private set; }
     [SerializeField] private AllianceUnit unit;
     [SerializeField] public Vector2 direction {  get; private set; }
     [SerializeField] private bool isDeloyed;
@@ -35,7 +36,9 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
     public AllianceAttack AllianceAttack { get { return allianceAttack; } }
 
     [SerializeField] private AllianceBlock allianceBlock;
-    public AllianceBlock AllianceBlock { get {  return allianceBlock; } }   
+    public AllianceBlock AllianceBlock { get {  return allianceBlock; } }
+    
+    
 
     [SerializeField] private AllianceDirectionCircle directionCircle;
     [SerializeField] private AllianceHeathBar heathBar;
@@ -243,5 +246,26 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         return Stat.currentHp / Stat.MaxHp.Value;
     }
     
+    public Quaternion GetVFXQuaternion()
+    {
+        if (direction == new Vector2(-1, 0))
+        {
+            return Quaternion.Euler(0, 0, 0);
+
+        }
+        else if (direction == new Vector2(1, 0))
+        {
+            return Quaternion.Euler(0, 180, 0);
+        }
+        else if (direction == new Vector2(0, -1))
+        {
+            return Quaternion.Euler(0, 270, 0);
+        }
+        else if (direction == new Vector2(0, 1))
+        {
+            return Quaternion.Euler(0, 90, 0);
+        }
+        return Quaternion.Euler(0, 0, 0);
+    }
 
 }

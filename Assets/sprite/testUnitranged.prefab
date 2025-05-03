@@ -285,6 +285,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1593309621868237572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3495570368603762291}
+  - component: {fileID: 8197634388324689251}
+  m_Layer: 0
+  m_Name: VFXHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3495570368603762291
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593309621868237572}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7674573493055352995}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8197634388324689251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593309621868237572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9aea0bcc012bbe489838800bc2b2c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1595786809884368600
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,6 +898,7 @@ MonoBehaviour:
   alliance: {fileID: 4489595423137854530}
   targets: []
   currentTarget: []
+  vfxPos: {fileID: 8670232256405674928}
   targetCount: 0
   damageType: 0
   ProjectileVisual: {fileID: 654593747, guid: b23718bcca7e9244eab9fb4c5f98b011, type: 3}
@@ -1521,7 +1566,7 @@ MonoBehaviour:
   Alliance: {fileID: 4489595423137854530}
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 6144
   target: 0
 --- !u!1 &5158387285606531378
 GameObject:
@@ -1691,6 +1736,7 @@ Transform:
   - {fileID: 1700981332374570945}
   - {fileID: 7135950834507883752}
   - {fileID: 3822055281435156090}
+  - {fileID: 3495570368603762291}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4489595423137854530
@@ -1717,6 +1763,7 @@ MonoBehaviour:
   allianceSkill: {fileID: 185475534100180099}
   allianceAttack: {fileID: 7216825051784084565}
   allianceBlock: {fileID: 7795449935590479146}
+  _VFXHandler: {fileID: 8197634388324689251}
   directionCircle: {fileID: 2478142655504761343}
   heathBar: {fileID: 4409546998237681809}
   statusEffectHolder: {fileID: 6074738120762529015}
@@ -1781,7 +1828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eab9ea8bf1202e448d49e6189cc12ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnUseSkill: {fileID: 11400000, guid: 7acfcc20f5a7e4547bce5adaba9fa208, type: 2}
+  OnUseSkill: {fileID: 11400000, guid: 768fedc3b7c4dd242b11e5d117e32b55, type: 2}
   alliance: {fileID: 4489595423137854530}
   target:
   - {fileID: 0}

@@ -9,22 +9,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de73a28a331d10a48980bf0f74253b28, type: 3}
-  m_Name: New Damage Type Skills
+  m_Script: {fileID: 11500000, guid: 6d59801121cd93c4d98d6600ec60b621, type: 3}
+  m_Name: BladeWork
   m_EditorClassIdentifier: 
-  Name: supa dmg
-  Description: deal dmg
+  Name: Blade Work
+  Description: 
   skillType: 0
   skillEffect: 0
   skillTarget: 2
-  TargetRequire: 1
+  TargetRequire: 0
   SkillRange: []
-  SkillVFX: {fileID: 1442184012376203772, guid: 50a4e5f6312b13b4f97bd5d15fc13162, type: 3}
+  SkillVFX: {fileID: 5957420034109470107, guid: 69ccd7edcb9bcb34399fe458cad19dfd, type: 3}
   ChargeType: 2
-  SkillDuration: 2
+  SkillDuration: 1
   SkillPoint: 10
   CanAttack: 0
   ActiveType: 0
-  SkillDmgScale: 0
+  SkillDmgScale: 9999
   DamageType: 0
-  delayTime: 1
+  delayTime: 0.5
+  Range: {x: 3, y: 1}

@@ -14,7 +14,10 @@ public class ActiveSkills : Skills
         
     }
 
-    
+    public override void SkillActivate(AllianceSkill User)
+    {
+       
+    }
 }
 
 

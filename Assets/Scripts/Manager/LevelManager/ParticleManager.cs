@@ -27,6 +27,22 @@ public class ParticleManager : MonoBehaviour
         ParticleSystem particle = Instantiate(p, pos.position, Quaternion.identity, target.transform);
         particle.Play();
     }
+    public void SkillParticle(GameObject target, ParticleSystem p,Transform pos,Quaternion rotate)
+    {
+
+        ParticleSystem particle = Instantiate(p, pos.position, Quaternion.identity, target.transform);
+        Debug.Log(particle.transform.rotation.eulerAngles);
+        particle.transform.rotation = RotateVFX(particle.transform.rotation,rotate);
+        particle.Play();
+    }
+
+    public Quaternion RotateVFX(Quaternion startQuaternion, Quaternion dir)
+    {
+
+        
+        return startQuaternion*dir;
+
+    }
     public IEnumerator StopParticle(ParticleSystem p,float duration)
     {
         if(duration == 99)
