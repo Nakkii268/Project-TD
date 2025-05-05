@@ -22,7 +22,7 @@ TagManager:
   - AirEnemy
   - Alliance
   - PostProcess
-  - 
+  - Sprite
   - 
   - 
   - 
@@ -45,4 +45,7 @@ TagManager:
     locked: 0
   - name: Projectile
     uniqueID: 2232233277
+    locked: 0
+  - name: Sprite
+    uniqueID: 3794177621
     locked: 0
