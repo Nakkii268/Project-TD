@@ -31,7 +31,7 @@ public class Projectile : MonoBehaviour
         source = s;
         projectileVisual.sprite = visual;
         hitParticle = hit;
-        Debug.Log("success");
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)

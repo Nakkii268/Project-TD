@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class Skills : ScriptableObject
     public SkillTarget skillTarget;
     public bool TargetRequire;
     public Vector2[] SkillRange;
-    public ParticleSystem SkillVFX;
+    public VFXData SkillVFX;
     public virtual void SkillActivate(AllianceSkill User,List<GameObject> target)
     {
 
@@ -21,3 +22,4 @@ public class Skills : ScriptableObject
 
     }
 }
+

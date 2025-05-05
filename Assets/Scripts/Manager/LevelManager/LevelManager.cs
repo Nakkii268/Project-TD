@@ -92,12 +92,12 @@ public class LevelManager : MonoBehaviour
 
     public void TimeSlow()
     {
-        Debug.Log("slow");
+       // Debug.Log("slow");
         Time.timeScale = .1f;
     }
     public void TimeNormal()
     {
-        Debug.Log("nor");
+        //Debug.Log("nor");
 
         Time.timeScale = 1f;
     }

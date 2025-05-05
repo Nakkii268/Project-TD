@@ -7,7 +7,7 @@ using UnityEngine;
 public class Alliance : Character, IDamageable, IHealable, IHasHpBar
 {
     [SerializeField] private Vector2 unitPos;
-    public Vector2 UnitPos { get; private set; }
+    public Vector2 UnitPos { get { return unitPos; } }
     [SerializeField] private AllianceUnit unit;
     [SerializeField] public Vector2 direction {  get; private set; }
     [SerializeField] private bool isDeloyed;
@@ -267,5 +267,5 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         }
         return Quaternion.Euler(0, 0, 0);
     }
-
+   
 }

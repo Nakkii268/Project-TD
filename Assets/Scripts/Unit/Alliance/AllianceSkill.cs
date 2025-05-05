@@ -89,6 +89,7 @@ public class AllianceSkill : MonoBehaviour
         if(OnUseSkill.TargetRequire && target==null) return;
 
         OnUseSkill.SkillActivate(this, alliance.AllianceAttack.CurrentTarget);
+        OnUseSkill.SkillActivate(this);
 
         curSkillPoint = 0;
 
@@ -102,7 +103,7 @@ public class AllianceSkill : MonoBehaviour
             LevelManager.instance.ParticleManager.SkillParticle(this.gameObject, OnUseSkill.SkillVFX, this.transform, alliance.GetVFXQuaternion());
            
             
-            Debug.Log(alliance.direction);
+            //Debug.Log(alliance.direction);
         }
         StartCoroutine(SkillActiveDurtation());
         DisableSkillBtn();

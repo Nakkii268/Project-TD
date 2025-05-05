@@ -103,7 +103,7 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
         {
             stat.currentHp = 0;
             OnEnemyDead?.Invoke(this, new EnemyDeadArg(this.gameObject, isWaveEnemy));
-            Debug.Log("dead");
+            //Debug.Log("dead");
         }
         
 

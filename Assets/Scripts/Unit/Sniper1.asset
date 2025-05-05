@@ -15,8 +15,8 @@ MonoBehaviour:
   UnitID: 002
   UnitPrefab: {fileID: 6865232695306935221, guid: 25c51bdf62ab3964783a457aa28eb066, type: 3}
   Name: sniper1
-  Heath: 900
-  Attack: 600
+  Heath: 9000000
+  Attack: 10
   AttackInterval: 1
   Defense: 20
   Resistance: 20
