@@ -60,7 +60,7 @@ public class CharacterInfoUI : MonoBehaviour
     private void Start()
     {
         
-        Initialized(unit1);
+        //Initialized(unit1);
         if (MaxLevelCheck(CurrentLimtBreak))
         {
             LevelUpBtn.interactable= false;
