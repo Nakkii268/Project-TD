@@ -6,17 +6,27 @@ using UnityEngine.UI;
 public class UnitListUI : MonoBehaviour
 {
     [SerializeField] public CharacterInfoUI characterInfoUI;
-    [SerializeField] private List<Button> buttonList;
-    [SerializeField] private List<AllianceUnit> unitList;
+    [SerializeField] private Transform container;
+    [SerializeField] private List<AllianceUnit> unitList;//test
+    [SerializeField] private UnitListSingleUI singlePrefab;//test
+    [SerializeField] private List<UnitListSingleUI> SingleList;//test
+    [SerializeField] private ScrollRect scrollRect;
+    private void Initialized()
+    {
+        //get unitlist from player data ** temporarily using preset data
+        for(int i = 0;i < unitList.Count; i++)
+        {
+            UnitListSingleUI single = Instantiate(singlePrefab, container);
+            SingleList.Add(single);
+            single.Initialized(unitList[i]);
+        }
+        scrollRect.horizontalNormalizedPosition = 0;
+    }
     private void Start()
     {
-        for (int i = 0; i < buttonList.Count; i++)
-        {
-            buttonList[i].onClick.AddListener(() =>
-            {
-                characterInfoUI.Initialized(unitList[i]);
-            });
-           // buttonList[i].image = unitList[i].unitSprite.toi;
-        }
+        Initialized();
     }
+
+    //filter by tag ** maybe just skip** 
+    //sort by level
 }

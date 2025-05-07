@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -685,7 +685,7 @@ TextureImporter:
         width: 400
         height: 136
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -706,7 +706,7 @@ TextureImporter:
         width: 400
         height: 136
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -727,7 +727,7 @@ TextureImporter:
         width: 400
         height: 136
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -735,6 +735,69 @@ TextureImporter:
       bones: []
       spriteID: d21e244db79978743b33fbb3fd59b2a1
       internalID: -469476550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LB_2
+      rect:
+        serializedVersion: 2
+        x: 2281
+        y: 2330
+        width: 110
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82a7bcb51017af246a81309fcc8f7a3e
+      internalID: -785259909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LB_1
+      rect:
+        serializedVersion: 2
+        x: 2141
+        y: 2329
+        width: 110
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f606820caadf734a809d05cea483bc0
+      internalID: 703072128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LB_0
+      rect:
+        serializedVersion: 2
+        x: 2012
+        y: 2333
+        width: 110
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6ea6e0d85f64e3438594d2257c99c26
+      internalID: 1752952285
       vertices: []
       indices: 
       edges: []
@@ -776,6 +839,9 @@ TextureImporter:
       Icon-Pack_7: -1958532484
       Icon-Pack_8: -533482456
       Icon-Pack_9: -894900220
+      LB_0: 1752952285
+      LB_1: 703072128
+      LB_2: -785259909
       LegendIcon: 558873427
       RareIcon: 1533897244
       ResIcon: 1085904502

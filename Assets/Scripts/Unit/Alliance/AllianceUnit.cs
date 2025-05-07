@@ -10,6 +10,7 @@ public class AllianceUnit : Unit
     public UnitRarity Rarity;
     public Sprite unitSprite;
     public Sprite unitPotrait;
+    public Sprite unitUIPotrait;
     public Sprite unitSplashArt;
     public Sprite UnitRangeVisualized;
 
