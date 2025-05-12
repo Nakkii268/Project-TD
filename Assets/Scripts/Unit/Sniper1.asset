@@ -26,8 +26,9 @@ MonoBehaviour:
   Rarity: {fileID: 11400000, guid: 92bae8c77200404419d66441ae73f356, type: 2}
   unitSprite: {fileID: -1987341610, guid: ce316dec69b383242ae19e5c5b543d1a, type: 3}
   unitPotrait: {fileID: 21300000, guid: bf67be445732c4e49901116f9109343f, type: 3}
-  unitSplashArt: {fileID: 0}
-  UnitRangeVisualized: {fileID: 0}
+  unitUIPotrait: {fileID: 21300000, guid: 9d8fbc78b71786c43b1f67331410c229, type: 3}
+  unitSplashArt: {fileID: 21300000, guid: a300209f0b7c0ba47a5547df7e53bb1f, type: 3}
+  UnitRangeVisualized: {fileID: 1882743592, guid: 4ecd44054a5d7f54ca1dd8a09d2540dd, type: 3}
   AttackRange:
   - {x: 0, y: 0}
   - {x: 0, y: 1}

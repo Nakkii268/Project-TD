@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    public static GameManager Instance;
     [SerializeField] public SceneLoader _sceneLoader;
+    [SerializeField] public LimitBreakIcon limitBreakIcon;
     public string stagePath;
 
     private void Awake()

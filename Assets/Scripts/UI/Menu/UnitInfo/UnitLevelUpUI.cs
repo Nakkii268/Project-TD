@@ -33,14 +33,7 @@ public class UnitLevelUpUI : MonoBehaviour
     }
     private void Start()
     {
-        BackBtn.onClick.AddListener(() =>
-        {
-            gameObject.SetActive(false);
-        });
-        HomeBtn.onClick.AddListener(() => { 
-            gameObject.SetActive(false); 
-            //
-        });
+
         UpdateLevelUpProgress(characterInfo.GetCurrentLevel() , unit.Rarity.LevelCap[CurrentLimtBreak]);
         IncreaseBtn.onClick.AddListener(() =>
         {
@@ -62,6 +55,15 @@ public class UnitLevelUpUI : MonoBehaviour
             UpdateLevelUpProgress(CurrentViewLevel ,unit.Rarity.LevelCap[CurrentLimtBreak]);
 
         });
+
+
+        BackBtn.onClick.AddListener(CloseUI);
+        HomeBtn.onClick.AddListener(GoToHome);
+    }
+    private void OnDisable()
+    {
+        BackBtn.onClick.RemoveListener(CloseUI);
+        HomeBtn.onClick.RemoveListener(GoToHome);
     }
     private void LevelUp()
     {
@@ -138,5 +140,16 @@ public class UnitLevelUpUI : MonoBehaviour
 
         UnitDef.text = (currentDef + (unit.Defense + unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[2].StatModify * characterInfo.GetCurrentLevel() - 1)).ToString() +
             "+ " + (unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[2].StatModify * (CurrentViewLevel - characterInfo.GetCurrentLevel())).ToString();
+    }
+
+    public void CloseUI()
+    {
+        this.gameObject.SetActive(false);
+    }
+    public void GoToHome()
+    {
+        this.gameObject.SetActive(false);
+
+        MenuUIManager.Instance.gameObject.SetActive(true);
     }
 }
