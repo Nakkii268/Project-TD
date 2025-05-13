@@ -149,7 +149,7 @@ public class UnitLevelUpUI : MonoBehaviour
     public void GoToHome()
     {
         this.gameObject.SetActive(false);
+        MenuUIManager.Instance.ShowUI();
 
-        MenuUIManager.Instance.gameObject.SetActive(true);
     }
 }

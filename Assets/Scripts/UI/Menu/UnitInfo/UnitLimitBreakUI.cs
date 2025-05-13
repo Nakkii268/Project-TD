@@ -44,6 +44,7 @@ public class UnitLimitBreakUI : MonoBehaviour
     {
         this.gameObject.SetActive(false);
 
-        MenuUIManager.Instance.gameObject.SetActive(true);
+        MenuUIManager.Instance.ShowUI();
+
     }
 }

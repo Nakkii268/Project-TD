@@ -46,7 +46,8 @@ public class UnitListUI : MonoBehaviour
     {
         this.gameObject.SetActive(false);
 
-        MenuUIManager.Instance.gameObject.SetActive(true);
+        MenuUIManager.Instance.ShowUI();
+
     }
     //filter by tag ** maybe just skip** 
     //sort by level

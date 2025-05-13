@@ -47,10 +47,13 @@ public class MenuUIManager : MonoBehaviour
         Battle.onClick.AddListener(() =>
         {
             StageSelectUI.gameObject.SetActive(true);
+            HideUI();
+
         });
         Character.onClick.AddListener(() =>
         {
            _unitListUI.gameObject.SetActive(true);
+            HideUI();
         });
     }
     private void Initialized() {
@@ -59,5 +62,20 @@ public class MenuUIManager : MonoBehaviour
         _characterInfoUI.gameObject.SetActive(false);
         _levelUpUI.gameObject.SetActive(false);
         _limitBreakUI.gameObject.SetActive(false);
+    }
+    private void OnEnable()
+    {
+
+    }
+    public void HideUI()
+    {
+        this.transform.SetAsFirstSibling();
+
+
+    }
+    public void ShowUI()
+    {
+        this.transform.SetAsLastSibling();
+
     }
 }

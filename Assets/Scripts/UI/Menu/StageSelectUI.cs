@@ -83,7 +83,8 @@ public class StageSelectUI : MonoBehaviour
     {
         this.gameObject.SetActive(false);
 
-        MenuUIManager.Instance.gameObject.SetActive(true);
+        MenuUIManager.Instance.ShowUI();
+
     }
 
 }
