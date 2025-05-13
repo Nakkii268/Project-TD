@@ -32,18 +32,3 @@ public static class SaveLoadData
 
     
 }
-
-[Serializable]
-public class CharacterModifyData
-{
-    public string Id;
-    public int Level;
-    public int LimitBreak;
-    
-    public CharacterModifyData(string id, int level, int lb) { 
-        this.Id = id;
-        this.Level = level;
-        this.LimitBreak = lb;
-        
-    }
-}

@@ -17,13 +17,13 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 1b20eb8c93de0414b84b6da01179c9e7
   m_SerializeEntries:
-  - m_GUID: 5813ce2ba261bb841a074e50c19f5b72
-    m_Address: Assets/sprite/Capsule.prefab
+  - m_GUID: 121b887d0d2148a4c8bada112eabe68f
+    m_Address: Assets/Prefab/StageChapter2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5ca93962e92cb9a44b3f7c268ea46bc6
-    m_Address: Assets/Prefab/StageChapter2.prefab
+  - m_GUID: 5813ce2ba261bb841a074e50c19f5b72
+    m_Address: Assets/sprite/Capsule.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

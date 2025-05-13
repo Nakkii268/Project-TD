@@ -8,27 +8,30 @@ public class StageSelectUI : MonoBehaviour
 {
     [SerializeField] private Button BackBtn;
     [SerializeField] private Button HomeBtn;
+
     [SerializeField] private Button ChapterExpandBtn;
     [SerializeField] private GameObject ChapterContainer;
     [SerializeField] private StageProgress stageProgress;
     [SerializeField] public GameObject StageList;
     [SerializeField] public List<ChapterElementUI> ChapterList;
+    [SerializeField] private Image chapterExpandIcon;
    
     // Start is called before the first frame update
     void Start()
     {
-        BackBtn.onClick.AddListener(() =>
-        {
-            Debug.Log("back");
-        });
-        HomeBtn.onClick.AddListener(() =>
-        {
-            Debug.Log("home");
-            //do nothing
-        });
+        BackBtn.onClick.AddListener(CloseUI);
+        HomeBtn.onClick.AddListener(GoToHome);
         ChapterExpandBtn.onClick.AddListener(() =>
         {
-            Debug.Log("close");
+            if (!ChapterContainer.gameObject.activeInHierarchy)
+            {
+                chapterExpandIcon.transform.rotation = Quaternion.Euler(0f, 0f, 270f);
+            }
+            else
+            {
+                chapterExpandIcon.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+
+            }
 
             ChapterContainer.SetActive(!ChapterContainer.activeSelf);
         });
@@ -72,6 +75,15 @@ public class StageSelectUI : MonoBehaviour
         });
         
     }
+    public void CloseUI()
+    {
+        this.gameObject.SetActive(false);
+    }
+    public void GoToHome()
+    {
+        this.gameObject.SetActive(false);
 
-  
+        MenuUIManager.Instance.gameObject.SetActive(true);
+    }
+
 }
