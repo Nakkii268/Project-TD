@@ -4,43 +4,40 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UnitListSingleUI : MonoBehaviour
+public class LineUpSlot : MonoBehaviour
 {
-    [SerializeField] private AllianceUnit _unit;
+    [SerializeField] private AllianceUnit SlotUnit;
     [SerializeField] private Button _btn;
-    [SerializeField] private Button Removebtn;
-    [SerializeField] public UnitListUI _unitListUI;
+    [SerializeField] private Button RemoveBtn;
+    [SerializeField] public UnitSelectionUI _unitSelectionUI; // change to unitSelectionUI
     [SerializeField] private TextMeshProUGUI _levelText;
     [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private Image ClassIcon;
     [SerializeField] private Image RarityIcon;
     [SerializeField] private Image UIPotrait;
-    
-
+    [SerializeField] private Image NullPotrait;
     public void Initialized(AllianceUnit unit)
     {
-        
-        _unit = unit;
+        if (unit == null)
+        {
+            RemoveBtn.gameObject.SetActive(false);
+            NullPotrait.gameObject.SetActive(true);
+            return;
+        }
+        SlotUnit = unit;
         _nameText.text = unit.Name;
         _levelText.text = unit.Level.ToString();
         ClassIcon.sprite = unit.UnitClass.ClassIcon;
         RarityIcon.sprite = unit.Rarity.RarityIcon;
         UIPotrait.sprite = unit.unitUIPotrait;
-        
-
     }
-
     private void Start()
     {
-        
         _btn.onClick.AddListener(() =>
         {
-            _unitListUI.characterInfoUI.Initialized(_unit);
-            _unitListUI.characterInfoUI.gameObject.SetActive(true);
+
+            _unitSelectionUI.gameObject.SetActive(true);
         });
-        Removebtn.onClick.AddListener(() => { 
-            
-        });
-      
     }
 }
+
