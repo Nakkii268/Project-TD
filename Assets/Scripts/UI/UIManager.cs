@@ -28,7 +28,10 @@ public class UIManager : MonoBehaviour
     {
         T canvas = GetUI<T>();
         canvas.SetUp();
+        Debug.Log(canvas.gameObject.activeSelf);
         canvas.gameObject.SetActive(true);
+        Debug.Log(canvas.gameObject.activeSelf);
+        Debug.Log(canvas.GetType());
         return canvas as T;
     }
     public T OpenUI<T>(AllianceUnit unit) where T : UICanvas
@@ -74,7 +77,7 @@ public class UIManager : MonoBehaviour
     {
         foreach(var canvas in CanvasActives)
         {
-           
+            if (canvas.Key == typeof(MenuUI)) continue;  
             if(canvas.Value!= null && canvas.Value.gameObject.activeSelf)
             {
                 canvas.Value.Close(0);
@@ -84,9 +87,6 @@ public class UIManager : MonoBehaviour
     public void ToHomeMenu()
     {
         CloseAll();
-        Debug.Log("closedone");
-        OpenUI<MenuUI>();
-        Debug.Log("menu");
-
+      
     }
 }

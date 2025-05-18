@@ -34,47 +34,47 @@ public class UnitSelectionUI : UICanvas
     [SerializeField] private TextMeshProUGUI _name;
     [SerializeField] private Image _class;
     [SerializeField] private Image _range;
-    public event EventHandler<AllianceUnit> OnUnitConfirm;
+    public event EventHandler<LineUpSave> OnUnitConfirm;
     [SerializeField] private AllianceUnit _currentSelectUnit;
-    [SerializeField] private int _currentSelectIndex;
+    [SerializeField] private int _currentSelectIndex=-1;
 
     private void Start()
     {
 
         _backBtn.onClick.AddListener(() =>
         {
-            OnUnitConfirm?.Invoke(this, null);
+           
             UIManager.Instance.Close<UnitSelectionUI>(0);
         });
 
         _homeBtn.onClick.AddListener(() =>
         {
-            OnUnitConfirm?.Invoke(this, null);
+            
             UIManager.Instance.ToHomeMenu();
 
 
         });
         _confirmBtn.onClick.AddListener(() =>
         {
-            OnUnitConfirm?.Invoke(this, _currentSelectUnit);
+            OnUnitConfirm?.Invoke(this, new LineUpSave(_currentSelectIndex,_currentSelectUnit));
             UIManager.Instance.Close<UnitSelectionUI>(0);
 
         });
 
         _cancelBtn.onClick.AddListener(() =>
         {
-            OnUnitConfirm?.Invoke(this, _currentSelectUnit);
+            
             UIManager.Instance.Close<UnitSelectionUI>(0);
 
 
 
         });
     }
-    public override void SetUp()
+    public override void SetUp(AllianceUnit unit)
     {
-        Initialized();
+        Initialized(unit);
     }
-    private void Initialized()
+    private void Initialized(AllianceUnit unit)
     {
         for (int i = 0; i < _units.Count; i++)
         {
@@ -82,20 +82,28 @@ public class UnitSelectionUI : UICanvas
             UnitSelectionSingle single = Instantiate(prefab, container);
             single.OnUnitSelected += Single_OnUnitSelected;
             _singles.Add(single);
-            single.Initialized(_units[i], i);
+            single.Initialized(_units[i],i,unit);
             single.gameObject.SetActive(true);
             _child.Add(i, single);
 
-
         }
+        _currentSelectIndex = -1;
+    }
+    private void OnDisable()
+    {
+        Destroy(this.gameObject);
     }
 
-    private void Single_OnUnitSelected(object sender, UnitSelectArg e)
+    private void Single_OnUnitSelected(object sender, LineUpSave e)
     {
-        _child[_currentSelectIndex].UnSelected();
+        if(_currentSelectIndex != -1) {
+        
+            _child[_currentSelectIndex].UnSelected();
+        }
         UpdateInfomation(e.Unit);
         _currentSelectUnit = e.Unit;
         _currentSelectIndex = e.Index;
+        
         
 
     }

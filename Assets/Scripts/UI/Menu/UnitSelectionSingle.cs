@@ -9,8 +9,8 @@ public class UnitSelectionSingle : MonoBehaviour
 {
     [SerializeField] private AllianceUnit _unit;
     [SerializeField] private Button _btn;
-    [SerializeField] private int CurIndex;
-    
+
+    [SerializeField] private int Index;
     [SerializeField] private TextMeshProUGUI _levelText;
     [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private Image ClassIcon;
@@ -18,10 +18,11 @@ public class UnitSelectionSingle : MonoBehaviour
     [SerializeField] private Image UIPotrait;
     [SerializeField] private GameObject Selected;
 
-    public event EventHandler<UnitSelectArg> OnUnitSelected;
-    [SerializeField] private bool isSelected;
+    public event EventHandler<LineUpSave> OnUnitSelected;
+    [SerializeField] public bool isSelected;
+    [SerializeField] public bool isInteractable;
 
-    public void Initialized(AllianceUnit unit,int index)
+    public void Initialized(AllianceUnit unit,int i,AllianceUnit from=null)
     {
         
         _unit = unit;
@@ -30,9 +31,14 @@ public class UnitSelectionSingle : MonoBehaviour
         ClassIcon.sprite = unit.UnitClass.ClassIcon;
         RarityIcon.sprite = unit.Rarity.RarityIcon;
         UIPotrait.sprite = unit.unitUIPotrait;
-        CurIndex = index;
+        Index = i;
         Selected.SetActive(false);
-       
+        if (from == unit) { 
+            isSelected = true;
+            Selected.SetActive(true);
+            isInteractable = true;
+        }
+
 
     }
 
@@ -41,21 +47,30 @@ public class UnitSelectionSingle : MonoBehaviour
 
         _btn.onClick.AddListener(() =>
         {
-            if (!isSelected) {
-                isSelected = true;
-                OnUnitSelected?.Invoke(this, new UnitSelectArg(_unit,CurIndex));
+            
+            Debug.Log(isSelected);
+           if (!isSelected) {
+                isSelected = !isSelected;
                 Selected.SetActive(true);
+                OnUnitSelected?.Invoke(this, new LineUpSave(Index,_unit));
+               
+
             }
             else
             {
-                isSelected = false;
-                OnUnitSelected?.Invoke(this, new UnitSelectArg(null, -1));
-
+                isSelected = !isSelected;
                 Selected.SetActive(false);
+                OnUnitSelected?.Invoke(this, new LineUpSave(-1, _unit));
+                
 
             }
 
         });
+        if(UIManager.Instance.GetUI<LineUpUI>()._tempSquad.ContainsKey( _unit.UnitID) && !isInteractable)
+        {
+            _btn.interactable = false;
+            
+        }
         
     }
     public void UnSelected()
@@ -63,13 +78,6 @@ public class UnitSelectionSingle : MonoBehaviour
         isSelected=false;
         Selected.SetActive(false);
     }
+
 }
-public class UnitSelectArg
-{
-    public AllianceUnit Unit;
-    public int Index;
-    public UnitSelectArg(AllianceUnit unit, int index) { 
-        Unit = unit;
-        Index = index;
-    }
-}
+

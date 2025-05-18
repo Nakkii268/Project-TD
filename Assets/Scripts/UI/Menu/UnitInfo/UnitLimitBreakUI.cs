@@ -16,6 +16,18 @@ public class UnitLimitBreakUI : UICanvas
     {
         unit = allanceUnit;
     }
+
+    private void Start()
+    {
+        BackBtn.onClick.AddListener(() =>
+        {
+            UIManager.Instance.Close<UnitLimitBreakUI>(0);
+        });
+        HomeBtn.onClick.AddListener(() =>
+        {
+            UIManager.Instance.ToHomeMenu();
+        });
+    }
     public override void SetUp(AllianceUnit unit)
     {
         Initialized(unit);
@@ -29,14 +41,7 @@ public class UnitLimitBreakUI : UICanvas
         //SetTargetLevel(1);
         PlayerPrefs.SetInt(unit.UnitID, 1);
 
-        BackBtn.onClick.AddListener(() =>
-        {
-            UIManager.Instance.Close<UnitLimitBreakUI>(0);
-        });
-        HomeBtn.onClick.AddListener(() =>
-        {
-            UIManager.Instance.ToHomeMenu();
-        });
+        
 
 
     }

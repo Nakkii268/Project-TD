@@ -478,7 +478,7 @@ GameObject:
   - component: {fileID: 4618838853395008364}
   - component: {fileID: 2538951064750935431}
   m_Layer: 5
-  m_Name: MenuUIManager
+  m_Name: MenuUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -520,7 +520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Battle: {fileID: 2784597792051088115}
-  Squad: {fileID: 7830767377497904238}
+  LineUp: {fileID: 7830767377497904238}
   Character: {fileID: 8520285302944086374}
   Wish: {fileID: 3631056171195885903}
   Shop: {fileID: 3774047836245980606}

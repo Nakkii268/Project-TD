@@ -89,7 +89,7 @@ public class CharacterInfoUI : UICanvas
 
         BackBtn.onClick.AddListener(() =>
         {
-            UIManager.Instance.Close<StageSelectUI>(0);
+            UIManager.Instance.Close<CharacterInfoUI>(0);
         });
         HomeBtn.onClick.AddListener(() =>
         {

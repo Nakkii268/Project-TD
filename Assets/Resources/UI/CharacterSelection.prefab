@@ -1557,7 +1557,7 @@ MonoBehaviour:
   _class: {fileID: 2129685663759487177}
   _range: {fileID: 2196080675218013768}
   _currentSelectUnit: {fileID: 0}
-  _currentSelectIndex: 0
+  _currentSelectIndex: -1
 --- !u!223 &381540824172330288
 Canvas:
   m_ObjectHideFlags: 0

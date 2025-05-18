@@ -10,7 +10,7 @@ public class MenuUI : UICanvas
 
     [Header("Button")]
     [SerializeField] private Button Battle;
-    [SerializeField] private Button Squad;
+    [SerializeField] private Button LineUp;
     [SerializeField] private Button Character;
     [SerializeField] private Button Wish;
     [SerializeField] private Button Shop;
@@ -39,15 +39,18 @@ public class MenuUI : UICanvas
         {
             UIManager.Instance.OpenUI<StageSelectUI>();
             
-            Debug.Log("clicked");
+            
         });
         Character.onClick.AddListener(() =>
         {
            UIManager.Instance.OpenUI<UnitListUI>();
             
 
-            Debug.Log("clicked1");
+           
 
+        });
+        LineUp.onClick.AddListener(() => { 
+            UIManager.Instance.OpenUI<LineUpUI>();
         });
     }
     private void Initialized() {
