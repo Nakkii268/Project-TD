@@ -4,10 +4,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UnitLimitBreakUI : MonoBehaviour
+public class UnitLimitBreakUI : UICanvas
 {
     [SerializeField] private AllianceUnit unit;
-    [SerializeField] private CharacterInfoUI characterInfo;
+  
     [SerializeField] private int CurrentLimtBreak;
     [SerializeField] private TextMeshProUGUI LimitBreakText;
     [SerializeField] private Button BackBtn;
@@ -16,17 +16,27 @@ public class UnitLimitBreakUI : MonoBehaviour
     {
         unit = allanceUnit;
     }
+    public override void SetUp(AllianceUnit unit)
+    {
+        Initialized(unit);
+    }
     private void LimitBreak()
     {
-        if (characterInfo.GetCurrentLevel() < unit.Rarity.LevelCap[CurrentLimtBreak]) return;
+        if (GetCurrentLevel() < unit.Rarity.LevelCap[CurrentLimtBreak]) return;
         if (CurrentLimtBreak == 2) return;
         PlayerPrefs.SetInt(unit.UnitID + "lb", CurrentLimtBreak + 1);
         SetTargetLimtBreak(CurrentLimtBreak + 1);
         //SetTargetLevel(1);
         PlayerPrefs.SetInt(unit.UnitID, 1);
 
-        BackBtn.onClick.AddListener(CloseUI);
-        HomeBtn.onClick.AddListener(GoToHome);
+        BackBtn.onClick.AddListener(() =>
+        {
+            UIManager.Instance.Close<UnitLimitBreakUI>(0);
+        });
+        HomeBtn.onClick.AddListener(() =>
+        {
+            UIManager.Instance.ToHomeMenu();
+        });
 
 
     }
@@ -36,15 +46,21 @@ public class UnitLimitBreakUI : MonoBehaviour
         LimitBreakText.text = lb.ToString();
     }
 
-    public void CloseUI()
+    public int GetCurrentLevel()
     {
-        this.gameObject.SetActive(false);
+        if (!PlayerPrefs.HasKey(unit.UnitID)) return 1;
+        return PlayerPrefs.GetInt(unit.UnitID);
     }
-    public void GoToHome()
-    {
-        this.gameObject.SetActive(false);
 
-        MenuUIManager.Instance.ShowUI();
+    public int GetCurrentLimitBreak()
+    {
+        if (!PlayerPrefs.HasKey(unit.UnitID + "lb")) return 0;
+        return PlayerPrefs.GetInt(unit.UnitID + "lb");
+    }
+    public bool MaxLevelCheck(int lb)
+    {
+        if (GetCurrentLevel() == unit.Rarity.LevelCap[lb]) return true;
+        return false;
 
     }
 }

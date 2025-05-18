@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UnitListUI : MonoBehaviour
+public class UnitListUI : UICanvas
 {
-    [SerializeField] public CharacterInfoUI characterInfoUI;
+    
     [SerializeField] private Transform container;
     [SerializeField] private List<AllianceUnit> unitList;//test
     [SerializeField] private UnitListSingleUI singlePrefab;//test
@@ -24,31 +24,31 @@ public class UnitListUI : MonoBehaviour
             single.gameObject.SetActive(true);
         }
         scrollRect.horizontalNormalizedPosition = 0;
-        BackBtn.onClick.AddListener(CloseUI);
-        HomeBtn.onClick.AddListener(GoToHome);
-        characterInfoUI = MenuUIManager.Instance.CharacterInfoUI;
-    }
-    private void Start()
-    {
-        Initialized();
-        
+        BackBtn.onClick.AddListener(() =>
+        {
+            UIManager.Instance.Close<UnitListUI>(0);
+        });
+        HomeBtn.onClick.AddListener(() =>
+        {
+            UIManager.Instance.ToHomeMenu();
+        });
+
     }
     private void OnDisable()
     {
-        BackBtn.onClick.RemoveListener(CloseUI);
-        HomeBtn.onClick.RemoveListener(GoToHome);
+        for(int i = 0; i < container.childCount; i++)
+        {
+            Destroy(container.GetChild(i).gameObject);
+        }
+      
+        SingleList.Clear();
     }
-    public void CloseUI()
+    public override void SetUp()
     {
-        this.gameObject.SetActive(false);
-    }
-    public void GoToHome()
-    {
-        this.gameObject.SetActive(false);
-
-        MenuUIManager.Instance.ShowUI();
+        Initialized();
 
     }
+
     //filter by tag ** maybe just skip** 
     //sort by level
 }

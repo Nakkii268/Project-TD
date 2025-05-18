@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerInfomationUI : MonoBehaviour
+public class PlayerInfomationUI : MonoBehaviour //no need - delete
 {
     [SerializeField] private TextMeshProUGUI _playerLevel;
     [SerializeField] private TextMeshProUGUI _playerName;

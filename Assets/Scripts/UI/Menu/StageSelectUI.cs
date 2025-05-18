@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 
-public class StageSelectUI : MonoBehaviour
+public class StageSelectUI : UICanvas
 {
     [SerializeField] private Button BackBtn;
     [SerializeField] private Button HomeBtn;
@@ -19,8 +20,14 @@ public class StageSelectUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        BackBtn.onClick.AddListener(CloseUI);
-        HomeBtn.onClick.AddListener(GoToHome);
+        BackBtn.onClick.AddListener(() =>
+        {
+            UIManager.Instance.Close<StageSelectUI>(0);
+        });
+        HomeBtn.onClick.AddListener(() =>
+        {
+            UIManager.Instance.ToHomeMenu();
+        });
         ChapterExpandBtn.onClick.AddListener(() =>
         {
             if (!ChapterContainer.gameObject.activeInHierarchy)
@@ -35,19 +42,24 @@ public class StageSelectUI : MonoBehaviour
 
             ChapterContainer.SetActive(!ChapterContainer.activeSelf);
         });
-        for(int i = 0; i < ChapterList.Count; i++)
+       
+
+    }
+    public override void SetUp()
+    {
+        Initialized();
+    }
+    private void Initialized()
+    {
+        for (int i = 0; i < ChapterList.Count; i++)
         {
             ChapterList[i].OnChapterSelect += StageSelectUI_OnChapterSelect;
-            
+
         }
         LoadStageList(stageProgress.LastStage.Chapter);
 
         stageProgress.DisableLockedChapter();
-
-
     }
-
-
 
     private void StageSelectUI_OnChapterSelect(object sender, ChapterSO e)
     {
@@ -75,16 +87,6 @@ public class StageSelectUI : MonoBehaviour
         });
         
     }
-    public void CloseUI()
-    {
-        this.gameObject.SetActive(false);
-    }
-    public void GoToHome()
-    {
-        this.gameObject.SetActive(false);
-
-        MenuUIManager.Instance.ShowUI();
-
-    }
+   
 
 }

@@ -49,7 +49,7 @@ public class UnitSelectionSingle : MonoBehaviour
             else
             {
                 isSelected = false;
-                OnUnitSelected?.Invoke(this, new UnitSelectArg(null, CurIndex));
+                OnUnitSelected?.Invoke(this, new UnitSelectArg(null, -1));
 
                 Selected.SetActive(false);
 

@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterInfoUI : MonoBehaviour
+public class CharacterInfoUI : UICanvas
 {
     [SerializeField] private AllianceUnit unit;
     [SerializeField] private AllianceUnit unit1;
@@ -30,8 +30,7 @@ public class CharacterInfoUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI UnitRedeploy;
     [SerializeField] private TextMeshProUGUI UnitCost;
     [SerializeField] private TextMeshProUGUI LevelText;
-    [SerializeField] private UnitLevelUpUI LevelUpUI;
-    [SerializeField] private UnitLimitBreakUI LimitBreakUI;
+
     [SerializeField] private Image LimitBreakIcon;
     [SerializeField] private Image UnitSplashArt;
     [SerializeField] private Image UnitRarityIcon;
@@ -59,14 +58,17 @@ public class CharacterInfoUI : MonoBehaviour
         AttackRangeVisualized.sprite = allanceUnit.UnitRangeVisualized;
         SetLevelText(allanceUnit.Level);
         SetLimtBreakText(allanceUnit.LimitBreak);
-        LevelUpUI = MenuUIManager.Instance.LevelUpUI;
-        LimitBreakUI = MenuUIManager.Instance.LimitBreakUI;
+     
         
+    }
+    public override void SetUp(AllianceUnit unit)
+    {
+        Initialized(unit);
     }
     private void Start()
     {
         if (unit == null) return; //first time load, incase error happened
-        Initialized(unit1);
+        
         if (MaxLevelCheck(CurrentLimtBreak))
         {
             LevelUpBtn.interactable= false;
@@ -76,24 +78,26 @@ public class CharacterInfoUI : MonoBehaviour
             LimitBreakBtn.interactable= false;
         }
 
-        LevelUpBtn.onClick.AddListener(() => { 
-
-            LevelUpUI.gameObject.SetActive(true); 
+        LevelUpBtn.onClick.AddListener(() => {
+            UIManager.Instance.OpenUI<UnitLevelUpUI>(unit);
         });
-        LimitBreakBtn.onClick.AddListener(() => { 
+        LimitBreakBtn.onClick.AddListener(() => {
 
-            LimitBreakUI.gameObject.SetActive(true); 
+            UIManager.Instance.OpenUI<UnitLimitBreakUI>(unit);
+
         });
 
-        BackBtn.onClick.AddListener(CloseUI);
-        HomeBtn.onClick.AddListener(GoToHome);
+        BackBtn.onClick.AddListener(() =>
+        {
+            UIManager.Instance.Close<StageSelectUI>(0);
+        });
+        HomeBtn.onClick.AddListener(() =>
+        {
+            UIManager.Instance.ToHomeMenu();
+        });
     }
 
-    private void OnDisable()
-    {
-        BackBtn.onClick.RemoveListener(CloseUI);
-        HomeBtn.onClick.RemoveListener(GoToHome);
-    }
+   
     private void SetLimtBreakText(int v)
     {
        LimitBreakIcon.sprite = GameManager.Instance.limitBreakIcon.GetIcon(v);
@@ -157,16 +161,7 @@ public class CharacterInfoUI : MonoBehaviour
     }
 
 
-    public void CloseUI()
-    {
-        this.gameObject.SetActive(false);
-    }
-    public void GoToHome()
-    {
-        this.gameObject.SetActive(false);
-
-        MenuUIManager.Instance.ShowUI();
-    }
+ 
 
 
 }

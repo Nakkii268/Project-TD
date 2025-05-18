@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UnitLevelUpUI : MonoBehaviour
+public class UnitLevelUpUI : UICanvas
 {
     [SerializeField] private TextMeshProUGUI UnitAttack;
     [SerializeField] private TextMeshProUGUI UnitHp;
@@ -22,19 +22,23 @@ public class UnitLevelUpUI : MonoBehaviour
     //btn
     [SerializeField] private AllianceUnit unit;
     [SerializeField] private TextMeshProUGUI TargetLevel;
-    [SerializeField] private CharacterInfoUI characterInfo;
+    
     [SerializeField] private Image LevelUpProgress;
 
     public void Initialized(AllianceUnit allanceUnit)
     {
         unit = allanceUnit;
-        CurrentViewLevel = characterInfo.GetCurrentLevel();
-        CurrentLimtBreak = characterInfo.GetCurrentLimitBreak();
+        CurrentViewLevel = GetCurrentLevel();
+        CurrentLimtBreak =  GetCurrentLimitBreak();
+    }
+    public override void SetUp(AllianceUnit unit)
+    {
+        Initialized(unit);
     }
     private void Start()
     {
 
-        UpdateLevelUpProgress(characterInfo.GetCurrentLevel() , unit.Rarity.LevelCap[CurrentLimtBreak]);
+        UpdateLevelUpProgress(GetCurrentLevel(), unit.Rarity.LevelCap[CurrentLimtBreak]);
         IncreaseBtn.onClick.AddListener(() =>
         {
 
@@ -47,23 +51,24 @@ public class UnitLevelUpUI : MonoBehaviour
         });
         DecreaseBtn.onClick.AddListener(() =>
         {
-            if ((CurrentViewLevel <= characterInfo.GetCurrentLevel())) return;
+            if ((CurrentViewLevel <= GetCurrentLevel())) return;
 
 
             SetTargetLevel(CurrentViewLevel - 1);
             PreviewStat(CurrentLimtBreak);
-            UpdateLevelUpProgress(CurrentViewLevel ,unit.Rarity.LevelCap[CurrentLimtBreak]);
+            UpdateLevelUpProgress(CurrentViewLevel, unit.Rarity.LevelCap[CurrentLimtBreak]);
 
         });
 
 
-        BackBtn.onClick.AddListener(CloseUI);
-        HomeBtn.onClick.AddListener(GoToHome);
-    }
-    private void OnDisable()
-    {
-        BackBtn.onClick.RemoveListener(CloseUI);
-        HomeBtn.onClick.RemoveListener(GoToHome);
+        BackBtn.onClick.AddListener(() =>
+        {
+            UIManager.Instance.Close<UnitLevelUpUI>(0);
+        });
+        HomeBtn.onClick.AddListener(() =>
+        {
+            UIManager.Instance.ToHomeMenu();
+        });
     }
     private void LevelUp()
     {
@@ -88,7 +93,7 @@ public class UnitLevelUpUI : MonoBehaviour
     
     private bool LevelUpCheck(int lb)
     {
-        if ((CurrentViewLevel <= characterInfo.GetCurrentLevel()) || (CurrentViewLevel >= unit.Rarity.LevelCap[lb]))
+        if ((CurrentViewLevel <= GetCurrentLevel()) || (CurrentViewLevel >= unit.Rarity.LevelCap[lb]))
         {
             return false;
         }
@@ -105,7 +110,7 @@ public class UnitLevelUpUI : MonoBehaviour
 
     private void ButtonHandle()
     {
-        if (characterInfo.MaxLevelCheck(CurrentLimtBreak))
+        if (MaxLevelCheck(CurrentLimtBreak))
         {
             LevelUpBtn.interactable = false;
             IncreaseBtn.interactable = false;
@@ -132,24 +137,31 @@ public class UnitLevelUpUI : MonoBehaviour
 
             }
         }
-        UnitAttack.text = (currentAttack + (unit.Attack + unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[0].StatModify * characterInfo.GetCurrentLevel() - 1)).ToString()
-            + " +" + (unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[0].StatModify * (CurrentViewLevel - characterInfo.GetCurrentLevel())).ToString();
+        UnitAttack.text = (currentAttack + (unit.Attack + unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[0].StatModify * GetCurrentLevel() - 1)).ToString()
+            + " +" + (unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[0].StatModify * (CurrentViewLevel - GetCurrentLevel())).ToString();
 
-        UnitHp.text = (currentHealth + (unit.Heath + unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[1].StatModify * characterInfo.GetCurrentLevel() - 1)).ToString() +
-            " +" + (unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[1].StatModify * (CurrentViewLevel - characterInfo.GetCurrentLevel())).ToString();
+        UnitHp.text = (currentHealth + (unit.Heath + unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[1].StatModify * GetCurrentLevel() - 1)).ToString() +
+            " +" + (unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[1].StatModify * (CurrentViewLevel - GetCurrentLevel())).ToString();
 
-        UnitDef.text = (currentDef + (unit.Defense + unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[2].StatModify * characterInfo.GetCurrentLevel() - 1)).ToString() +
-            "+ " + (unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[2].StatModify * (CurrentViewLevel - characterInfo.GetCurrentLevel())).ToString();
+        UnitDef.text = (currentDef + (unit.Defense + unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[2].StatModify * GetCurrentLevel() - 1)).ToString() +
+            "+ " + (unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[2].StatModify * (CurrentViewLevel - GetCurrentLevel())).ToString();
     }
 
-    public void CloseUI()
+    public int GetCurrentLevel()
     {
-        this.gameObject.SetActive(false);
+        if (!PlayerPrefs.HasKey(unit.UnitID)) return 1;
+        return PlayerPrefs.GetInt(unit.UnitID);
     }
-    public void GoToHome()
+
+    public int GetCurrentLimitBreak()
     {
-        this.gameObject.SetActive(false);
-        MenuUIManager.Instance.ShowUI();
+        if (!PlayerPrefs.HasKey(unit.UnitID + "lb")) return 0;
+        return PlayerPrefs.GetInt(unit.UnitID + "lb");
+    }
+    public bool MaxLevelCheck(int lb)
+    {
+        if (GetCurrentLevel() == unit.Rarity.LevelCap[lb]) return true;
+        return false;
 
     }
 }

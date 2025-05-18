@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Rendering.UI;
 using UnityEngine.UI;
 
-public class UnitSelectionUI : MonoBehaviour
+public class UnitSelectionUI : UICanvas
 {
     [SerializeField] private  List<UnitSelectionSingle> _singles;
     private Dictionary<int,UnitSelectionSingle> _child = new Dictionary<int, UnitSelectionSingle>();
@@ -40,43 +40,54 @@ public class UnitSelectionUI : MonoBehaviour
 
     private void Start()
     {
+
+        _backBtn.onClick.AddListener(() =>
+        {
+            OnUnitConfirm?.Invoke(this, null);
+            UIManager.Instance.Close<UnitSelectionUI>(0);
+        });
+
+        _homeBtn.onClick.AddListener(() =>
+        {
+            OnUnitConfirm?.Invoke(this, null);
+            UIManager.Instance.ToHomeMenu();
+
+
+        });
+        _confirmBtn.onClick.AddListener(() =>
+        {
+            OnUnitConfirm?.Invoke(this, _currentSelectUnit);
+            UIManager.Instance.Close<UnitSelectionUI>(0);
+
+        });
+
+        _cancelBtn.onClick.AddListener(() =>
+        {
+            OnUnitConfirm?.Invoke(this, _currentSelectUnit);
+            UIManager.Instance.Close<UnitSelectionUI>(0);
+
+
+
+        });
+    }
+    public override void SetUp()
+    {
+        Initialized();
+    }
+    private void Initialized()
+    {
         for (int i = 0; i < _units.Count; i++)
         {
 
             UnitSelectionSingle single = Instantiate(prefab, container);
             single.OnUnitSelected += Single_OnUnitSelected;
             _singles.Add(single);
-            single.Initialized(_units[i],i);
+            single.Initialized(_units[i], i);
             single.gameObject.SetActive(true);
-            _child.Add(i,single);
-            Debug.Log(i);
+            _child.Add(i, single);
+
 
         }
-
-        _backBtn.onClick.AddListener(() =>
-        {
-            OnUnitConfirm?.Invoke(this, null);
-
-        });
-        
-        _backBtn.onClick.AddListener(() =>
-        {
-            OnUnitConfirm?.Invoke(this, null);
-
-        });
-        _confirmBtn.onClick.AddListener(() =>
-        {
-            OnUnitConfirm?.Invoke(this, _currentSelectUnit);
-            this.gameObject.SetActive(false);
-        });
-
-        _cancelBtn.onClick.AddListener(() =>
-        {
-            OnUnitConfirm?.Invoke(this, _currentSelectUnit);
-            this.gameObject.SetActive(false);
-
-
-        });
     }
 
     private void Single_OnUnitSelected(object sender, UnitSelectArg e)

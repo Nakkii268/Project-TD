@@ -8,7 +8,7 @@ public class UnitListSingleUI : MonoBehaviour
 {
     [SerializeField] private AllianceUnit _unit;
     [SerializeField] private Button _btn;
-    [SerializeField] private Button Removebtn;
+
     [SerializeField] public UnitListUI _unitListUI;
     [SerializeField] private TextMeshProUGUI _levelText;
     [SerializeField] private TextMeshProUGUI _nameText;
@@ -35,12 +35,9 @@ public class UnitListSingleUI : MonoBehaviour
         
         _btn.onClick.AddListener(() =>
         {
-            _unitListUI.characterInfoUI.Initialized(_unit);
-            _unitListUI.characterInfoUI.gameObject.SetActive(true);
+            UIManager.Instance.OpenUI<CharacterInfoUI>(_unit);
         });
-        Removebtn.onClick.AddListener(() => { 
-            
-        });
+     
       
     }
 }
