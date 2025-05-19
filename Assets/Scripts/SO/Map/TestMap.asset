@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d34d8dbbb732b47a68629a5ce22f58, type: 3}
   m_Name: TestMap
   m_EditorClassIdentifier: 
-  MapName: 
+  MapName: TUTORIAL
   MapIng: {fileID: -353794294, guid: 586643aa6f13aa44299e0ffb6aed7c92, type: 3}
   StagePath: Assets/Scenes/SampleScene.unity
   Waves:

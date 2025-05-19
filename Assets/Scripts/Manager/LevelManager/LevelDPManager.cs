@@ -16,6 +16,7 @@ public class LevelDPManager : MonoBehaviour
     [SerializeField] private Transform dpMaxUI;
     [SerializeField] private int deploymentLimit;
     [SerializeField] private int currentDeployment;
+    [SerializeField] private Image DPRegenBar;
 
     
     private void Start()
@@ -35,7 +36,11 @@ public class LevelDPManager : MonoBehaviour
              CurrentDp +=  DpRegenRate * Time.deltaTime;
             dptext.text = Mathf.FloorToInt(CurrentDp).ToString();
             dpMaxUI.gameObject.SetActive(false);
-
+            if (DPRegenBar.fillAmount >= 1)
+            {
+                DPRegenBar.fillAmount = 0;
+            }
+            DPRegenBar.fillAmount += DpRegenRate * Time.deltaTime; ;
         }
         else
         {
