@@ -52,6 +52,10 @@ public class MenuUI : UICanvas
         LineUp.onClick.AddListener(() => { 
             UIManager.Instance.OpenUI<LineUpUI>();
         });
+        Bag.onClick.AddListener(() =>
+        {
+            UIManager.Instance.OpenUI<LoseUI>();
+        });
     }
     private void Initialized() {
        //player name, level, progress

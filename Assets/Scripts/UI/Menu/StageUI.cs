@@ -8,11 +8,14 @@ public class StageUI : MonoBehaviour
     [SerializeField] private List<MapSO> mapList;
     public List<StageSingleUI> stageBtnList;
     public RectTransform StageContainer;
+    public ScrollRect StageContainerRect;
+    public Image bg;
 
 
     private void Start()
     {
         Initialized();
+        StageContainerRect.onValueChanged.AddListener(OnScrollChange);
     }
     private void Initialized()
     {
@@ -20,4 +23,17 @@ public class StageUI : MonoBehaviour
             stageBtnList[i].Initialize(mapList[i]);
         }
     }
+    private void OnScrollChange(Vector2 value)
+    {
+        if(value.x <= .5f)
+        {
+            bg.color = Color.white;
+        }
+        else
+        {
+            bg.color = Color.red;
+        }
+    }
+    
+  
 }

@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class StageSingleUI : MonoBehaviour
 {
     [SerializeField] private Button btn;
-    [SerializeField] private Image stageImg;
+    [SerializeField] private TextMeshProUGUI stageName;
     
     public void Initialize(MapSO map)
     {
-        stageImg.sprite = map.MapIng;
+        stageName.text = map.MapName;
         btn.onClick.AddListener(() =>
         {
             GameManager.Instance._sceneLoader.LoadStage(map.StagePath);
