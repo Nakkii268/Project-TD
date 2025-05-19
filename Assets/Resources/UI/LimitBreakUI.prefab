@@ -1525,8 +1525,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea10774a134d2f54a951fbf2f77719fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestroyOnClose: 1
   unit: {fileID: 0}
-  characterInfo: {fileID: 0}
   CurrentLimtBreak: 0
   LimitBreakText: {fileID: 1805420641754135230}
   BackBtn: {fileID: 3806323671285908656}

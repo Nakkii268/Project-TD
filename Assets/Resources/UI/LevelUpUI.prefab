@@ -2407,6 +2407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ee2df05bb5381a499368ca9e423743e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestroyOnClose: 1
   UnitAttack: {fileID: 8433991847648386203}
   UnitHp: {fileID: 59470409226614833}
   UnitDef: {fileID: 8191265268412140155}
@@ -2419,7 +2420,6 @@ MonoBehaviour:
   DecreaseBtn: {fileID: 8800794173112213969}
   unit: {fileID: 11400000, guid: b18f85b780946e8409d3a4e0589a984a, type: 2}
   TargetLevel: {fileID: 4228468327587993916}
-  characterInfo: {fileID: 0}
   LevelUpProgress: {fileID: 2033069597229148877}
 --- !u!223 &427620580382041725
 Canvas:

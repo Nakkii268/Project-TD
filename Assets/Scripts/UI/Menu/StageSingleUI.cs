@@ -14,6 +14,7 @@ public class StageSingleUI : MonoBehaviour
         btn.onClick.AddListener(() =>
         {
             GameManager.Instance._sceneLoader.LoadStage(map.StagePath);
+            UIManager.Instance.OpenUI<StageLoadingUI>(map.MapName);
         });
     }
 }

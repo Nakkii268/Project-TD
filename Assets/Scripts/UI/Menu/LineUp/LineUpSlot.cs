@@ -51,7 +51,7 @@ public class LineUpSlot : MonoBehaviour
         });
         RemoveBtn.onClick.AddListener(() =>
         {
-            OnUnitAssign?.Invoke(this, new LineUpSave(SlotIndex, SlotUnit));
+            OnUnitAssign?.Invoke(this, new LineUpSave(-1, SlotUnit));
             Initialized(null);
             SlotUnit = null;
 

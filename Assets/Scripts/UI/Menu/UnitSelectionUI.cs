@@ -69,6 +69,7 @@ public class UnitSelectionUI : UICanvas
 
 
         });
+        //ConfirmBtnHandle();
     }
     public override void SetUp(AllianceUnit unit)
     {
@@ -96,16 +97,29 @@ public class UnitSelectionUI : UICanvas
 
     private void Single_OnUnitSelected(object sender, LineUpSave e)
     {
-        if(_currentSelectIndex != -1) {
-        
+        if (_currentSelectIndex != -1)
+        {
+
             _child[_currentSelectIndex].UnSelected();
         }
         UpdateInfomation(e.Unit);
         _currentSelectUnit = e.Unit;
         _currentSelectIndex = e.Index;
-        
-        
+     
 
+    }
+
+    private void ConfirmBtnHandle()
+    {
+        if (_currentSelectIndex == -1)
+        {
+            _confirmBtn.interactable = false;
+        }
+        else
+        {
+            _confirmBtn.interactable = true;
+
+        }
     }
 
     private void UpdateInfomation(AllianceUnit e)

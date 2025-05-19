@@ -27,6 +27,8 @@ public class SceneLoader : MonoBehaviour
             if (handler.Status == AsyncOperationStatus.Succeeded)
             {
                 Debug.Log("loadCompleted");
+                UIManager.Instance.CloseAllUI();
+
             }
             else
             {

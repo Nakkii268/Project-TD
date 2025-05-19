@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
     private void Start()
     {
@@ -38,6 +39,14 @@ public class UIManager : MonoBehaviour
     {
         T canvas = GetUI<T>();
         canvas.SetUp(unit);
+        canvas.gameObject.SetActive(true);
+
+        return canvas as T;
+    }
+    public T OpenUI<T>(object para) where T : UICanvas
+    {
+        T canvas = GetUI<T>();
+        canvas.SetUp(para);
         canvas.gameObject.SetActive(true);
 
         return canvas as T;
@@ -73,7 +82,8 @@ public class UIManager : MonoBehaviour
     {
         return CanvasPrefabs[typeof(T)] as T;
     } 
-    public void CloseAll()
+    //close all ui, except menu
+    public void CloseToHome()
     {
         foreach(var canvas in CanvasActives)
         {
@@ -84,9 +94,21 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+    //close all ui, no exception
+    public void CloseAllUI()
+    {
+        foreach(var canvas in CanvasActives)
+        {
+             
+            if(canvas.Value!= null && canvas.Value.gameObject.activeSelf)
+            {
+                canvas.Value.Close(0);
+            }
+        }
+    }
     public void ToHomeMenu()
     {
-        CloseAll();
+        CloseToHome();
       
     }
 }

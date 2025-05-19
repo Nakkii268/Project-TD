@@ -20,19 +20,26 @@ public class LineUpUI : UICanvas
         
         _backBtn.onClick.AddListener(() =>
         {
+            _tempSquad.Clear();
+
             UIManager.Instance.Close<LineUpUI>(0);
         });
         _homeBtn.onClick.AddListener(() => {
-            UIManager.Instance.CloseAll();
+            _tempSquad.Clear();
+            UIManager.Instance.CloseToHome();
             UIManager.Instance.OpenUI<MenuUI>();
         });
         SaveBtn.onClick.AddListener(() => { 
             _playerSquad = _tempSquad.Values.ToList();
-            
+            _tempSquad = _playerSquad.ToDictionary(item => item.Unit.UnitID);
+
+
         });
         _tempSquad = _playerSquad.ToDictionary(item => item.Unit.UnitID);
+        
     }
 
+  
     public override void SetUp()
     {
         Initialized();
@@ -56,19 +63,23 @@ public class LineUpUI : UICanvas
 
     private void LineUpUI_OnUnitAssign(object sender, LineUpSave e)
     {
-        
+       
         if (_tempSquad.ContainsKey(e.Unit.UnitID))
         {
             if (e.Index == -1)
             {
                 _tempSquad.Remove(e.Unit.UnitID);
+                Debug.Log(_tempSquad.Count + "-------");
 
                 return;
             }
             _tempSquad[e.Unit.UnitID] = e;
+            Debug.Log(_tempSquad.Count + "-------");
             return;
         }
         _tempSquad.Add(e.Unit.UnitID, e);
+        Debug.Log(_tempSquad.Count + "-------");
+        
         
     }
 }

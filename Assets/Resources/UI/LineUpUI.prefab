@@ -2642,6 +2642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876b8e44113aec448b26f8c08114a92d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestroyOnClose: 1
   _slots:
   - {fileID: 4437635578048546480}
   - {fileID: 206872800313150148}
@@ -2658,7 +2659,6 @@ MonoBehaviour:
   _playerSquad:
   - Index: 3
     Unit: {fileID: 11400000, guid: b18f85b780946e8409d3a4e0589a984a, type: 2}
-  PlayerSquad: []
   _backBtn: {fileID: 4108171704673133223}
   _homeBtn: {fileID: 8110589198232421336}
   SaveBtn: {fileID: 1006478506331755231}
