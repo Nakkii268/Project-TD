@@ -97,13 +97,14 @@ public class LevelDPManager : MonoBehaviour
     }
     private IEnumerator DPRecover(int amount,float time)
     {
-        float timePerDP = time / amount;
-        int recovered = 0;
-        while (recovered < amount)
+        float elapseTime = 0;
+        
+        while (elapseTime < time)
         {
-            AddingDP(1);
-            recovered++;
-            yield return new WaitForSeconds(timePerDP);
+            float dp = (amount / time) * Time.deltaTime;
+            AddingDP(dp);
+            elapseTime += Time.deltaTime;
+            yield return null;
         }
     }
    

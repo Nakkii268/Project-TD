@@ -19,11 +19,15 @@ MonoBehaviour:
   skillTarget: 1
   TargetRequire: 0
   SkillRange: []
+  SkillVFX:
+    Particle: {fileID: 0}
+    Rotatable: 0
+    BaseRotation: {x: 0, y: 0, z: 0}
   ChargeType: 2
-  SkillDuration: 1
-  SkillPoint: 10
+  SkillDuration: 5
+  SkillPoint: 1
   CanAttack: 1
   ActiveType: 0
   effects:
-  - effect: {fileID: 11400000, guid: f0787e38af17e05488ef854602385f5b, type: 2}
+  - effect: {fileID: 11400000, guid: 76a31686cc8acd8418a8ff39b599d308, type: 2}
     delayTime: 0

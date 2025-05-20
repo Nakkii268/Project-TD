@@ -16,7 +16,7 @@ MonoBehaviour:
   UnitPrefab: {fileID: 7337458643970106659, guid: 5813ce2ba261bb841a074e50c19f5b72, type: 3}
   Name: "s\xE2s"
   Heath: 9998
-  Attack: 200
+  Attack: 2000
   AttackInterval: 1
   Defense: 1
   Resistance: 1
