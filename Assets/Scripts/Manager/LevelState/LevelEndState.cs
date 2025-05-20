@@ -10,7 +10,17 @@ public class LevelEndState : LevelState
     public override void Enter()
     {
         base.Enter();
-        LevelStateMachineManager._levelManager.EndUI.ActiveUI(LevelStateMachineManager.endState);
+        
+        if(LevelStateMachineManager.endState == EndState.Failed)
+        {
+            UIManager.Instance.OpenUI<LoseUI>();
+        }else if(LevelStateMachineManager.endState == EndState.Successed)
+        {
+            UIManager.Instance.OpenUI<WinUI>(true);
+        }else if(LevelStateMachineManager.endState == EndState.NotComplete)
+        {
+            UIManager.Instance.OpenUI<WinUI>(false);
+        }
     }
     public override void Exit()
     {

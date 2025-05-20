@@ -11,27 +11,24 @@ public class LevelLifePointManager : MonoBehaviour
     [SerializeField] private int MaxLifePoint;
 
     [SerializeField] private int ReducedLifePoint;
-
-    [SerializeField] private TextMeshProUGUI lifePointText;
-    [SerializeField] private TextMeshProUGUI reducedLifePointText;
-    void Start()
+    public event EventHandler<LifePointEvtArg> OnLifePointChange;
+ 
+    
+    public void Init()
     {
         levelManager = LevelManager.instance;
-        LifePoint = 10;// get from map SO through levelmanager 
+        MaxLifePoint = levelManager.Map.LifePoint;
         ReducedLifePoint = 0;
-        MaxLifePoint = 10;
-        SetLifePointText();
-        reducedLifePointText.gameObject.SetActive(false);
-        
-
+        LifePoint = MaxLifePoint;
+        OnLifePointChange?.Invoke(this, new LifePointEvtArg(LifePoint, ReducedLifePoint));
     }
-
     public void LifePointReduce()
     {
         LifePoint--;
         ReducedLifePoint++;
-        reducedLifePointText.gameObject.SetActive(true);
-        SetLifePointText();
+        OnLifePointChange?.Invoke(this, new LifePointEvtArg(LifePoint, ReducedLifePoint));
+
+      
         if (LifePoint <= 0) {
             levelManager.GameEnd();
         }
@@ -62,12 +59,7 @@ public class LevelLifePointManager : MonoBehaviour
 
 
     }
-    private void SetLifePointText()
-    {
-        lifePointText.text = LifePoint.ToString();
-        reducedLifePointText.text = "-" + ReducedLifePoint.ToString();
-
-    }
+   
 }
 [Serializable]
 public enum EndState
@@ -75,4 +67,16 @@ public enum EndState
     Successed,
     Failed,
     NotComplete
+}
+public class LifePointEvtArg
+{
+    public int Remain;
+    public int Reduced;
+   
+
+    public LifePointEvtArg(int lifePoint, int reducedLifePoint)
+    {
+        this.Remain = lifePoint;
+        this.Reduced = reducedLifePoint;
+    }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,42 +12,38 @@ public class LevelDPManager : MonoBehaviour
     [SerializeField] private int StartDp;
     [SerializeField] private int MaxDp;
     [SerializeField] private float DpRegenRate;
-    [SerializeField] private TextMeshProUGUI dptext;
-    [SerializeField] private TextMeshProUGUI dltext;
-    [SerializeField] private Transform dpMaxUI;
+  
+    
     [SerializeField] private int deploymentLimit;
     [SerializeField] private int currentDeployment;
-    [SerializeField] private Image DPRegenBar;
-
+    public event EventHandler<float> OnDpChange;
+    public event EventHandler<bool> OnDpReachMax;
+    public event EventHandler<int> OnDeploymentChange;
+    private bool isEnable;
     
-    private void Start()
+    public void Init()
     {
         levelManager = LevelManager.instance;
         CurrentDp = levelManager.Map.StartDeployPoint;
         DpRegenRate = levelManager.Map.DpRecoveryRate;
-        currentDeployment = levelManager.Map.DeployLimit ;
-        dptext.text = Mathf.FloorToInt(CurrentDp).ToString();
-        dltext.text = "Deployment Limit: "+ currentDeployment.ToString();
-
+        currentDeployment = levelManager.Map.DeployLimit;
+        OnDpChange?.Invoke(this, CurrentDp);
+        OnDeploymentChange?.Invoke(this, currentDeployment);
+        isEnable = true;
     }
-
     private void Update()
     {
-        if (CurrentDp < MaxDp) {
-             CurrentDp +=  DpRegenRate * Time.deltaTime;
-            dptext.text = Mathf.FloorToInt(CurrentDp).ToString();
-            dpMaxUI.gameObject.SetActive(false);
-            if (DPRegenBar.fillAmount >= 1)
-            {
-                DPRegenBar.fillAmount = 0;
-            }
-            DPRegenBar.fillAmount += DpRegenRate * Time.deltaTime; ;
-        }
-        else
+        if (!isEnable) return;
+        if (CurrentDp < MaxDp)
         {
-            dpMaxUI.gameObject.SetActive(true);
+            CurrentDp += DpRegenRate * Time.deltaTime;
+            OnDpChange?.Invoke(this, CurrentDp);
         }
-    }
+            
+          
+            
+        }
+       
     public float GetCurrentDp()
     {
         return CurrentDp;
@@ -58,7 +55,9 @@ public class LevelDPManager : MonoBehaviour
         if (CurrentDp > MaxDp)
         {
             CurrentDp = MaxDp;
+            OnDpReachMax?.Invoke(this, true);
         }
+        OnDpChange?.Invoke(this, CurrentDp);
     }
     public void ReduceDP(float amount)
     {
@@ -67,13 +66,18 @@ public class LevelDPManager : MonoBehaviour
         {
             CurrentDp = 0;
         }
+        OnDpReachMax?.Invoke(this, false);
+
+        OnDpChange?.Invoke(this, CurrentDp);
+
     }
     public void DeploymentSlotOccp()
     {
         if (currentDeployment >0)
         {
             currentDeployment--;
-            dltext.text = "Deployment Limit: " + currentDeployment.ToString();
+            OnDeploymentChange?.Invoke(this, currentDeployment);
+           
 
         }
     }
@@ -82,7 +86,8 @@ public class LevelDPManager : MonoBehaviour
         if (currentDeployment < deploymentLimit)
         {
             currentDeployment++;
-            dltext.text = "Deployment Limit: " + currentDeployment.ToString();
+            OnDeploymentChange?.Invoke(this, currentDeployment);
+
 
         }
     }

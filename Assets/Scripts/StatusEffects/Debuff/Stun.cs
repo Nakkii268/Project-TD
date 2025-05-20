@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "StatusEffect/Stun")]
+[CreateAssetMenu(menuName = "StatusEffect/Debuff/Stun")]
 public class Stun : NormalStatusEffect
 {
 

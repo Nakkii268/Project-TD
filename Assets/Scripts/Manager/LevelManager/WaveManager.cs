@@ -13,20 +13,25 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private int nextWaveIndex;
     [SerializeField] private float entryTime;
     [SerializeField] private int enemyCount;
-    [SerializeField] private TextMeshProUGUI enemyCountText;
-
+    private bool isEnable;
+    public event EventHandler<WaveEvtarg> OnEnemyChange;
     private void Start()
+    {
+        
+    }
+    public void Init()
     {
         currentWaveIndex = 0;
         nextWaveIndex = 0;
         entryTime = levelManager.LevelStateMachineManager.entryTime;
         m_MapSO = levelManager.Map;
         enemyCount = 0;
-        SetEnemyCountText(0);
+        OnEnemyChange?.Invoke(this, new WaveEvtarg(enemyCount, m_MapSO.TotalEnemy));
+        isEnable = true;
     }
     private void Update()
     {
-        
+        if (!isEnable) return;   
         if (nextWaveIndex >= m_MapSO.Waves.Length) return;
 
         if (Time.time - entryTime >= m_MapSO.Waves[nextWaveIndex].SpawnTime- 1f)
@@ -66,17 +71,15 @@ public class WaveManager : MonoBehaviour
         if (e.isWave)
         {
             enemyCount++;
-            SetEnemyCountText(enemyCount);
-            if(enemyCount == m_MapSO.TotalEnemy)
+            OnEnemyChange?.Invoke(this, new WaveEvtarg(enemyCount, m_MapSO.TotalEnemy));
+
+            if (enemyCount == m_MapSO.TotalEnemy)
             {
                 levelManager.GameEnd();
             }
         }
     }
-    private void SetEnemyCountText(int curr)
-    {
-        enemyCountText.text = curr.ToString() + " / " + m_MapSO.TotalEnemy.ToString();
-    }
+  
 
     private IEnumerator DelaySpawn( Wave wave)
     {
@@ -90,4 +93,14 @@ public class WaveManager : MonoBehaviour
         currentWaveIndex++;
     }
 
+}
+public class WaveEvtarg
+{
+    public int EnemyCount;
+    public int MaxEnemyCount;
+    public WaveEvtarg(int enemyCount, int maxEnemyCount)
+    {
+        EnemyCount = enemyCount;
+        MaxEnemyCount = maxEnemyCount;
+    }
 }

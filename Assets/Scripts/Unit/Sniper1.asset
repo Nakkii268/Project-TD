@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitID: 002
   UnitPrefab: {fileID: 6865232695306935221, guid: 25c51bdf62ab3964783a457aa28eb066, type: 3}
-  Name: sniper1
+  Name: Cellest
   Heath: 900000
   Attack: 10
   AttackInterval: 1
@@ -23,9 +23,9 @@ MonoBehaviour:
   Block: 1
   AttackVfx: {fileID: 1442184012376203772, guid: 50a4e5f6312b13b4f97bd5d15fc13162, type: 3}
   HitVfx: {fileID: 27400811220467730, guid: a026953b84f4b384b90d2ad2f6f68bfc, type: 3}
-  Rarity: {fileID: 11400000, guid: 92bae8c77200404419d66441ae73f356, type: 2}
+  Rarity: {fileID: 11400000, guid: 1a94967ead12edc4badf802a5cbec34b, type: 2}
   unitSprite: {fileID: -1987341610, guid: ce316dec69b383242ae19e5c5b543d1a, type: 3}
-  unitPotrait: {fileID: 21300000, guid: bf67be445732c4e49901116f9109343f, type: 3}
+  unitPotrait: {fileID: 21300000, guid: 1e7ca3929d549df499be943cb615c901, type: 3}
   unitUIPotrait: {fileID: 21300000, guid: 9d8fbc78b71786c43b1f67331410c229, type: 3}
   unitSplashArt: {fileID: 21300000, guid: a300209f0b7c0ba47a5547df7e53bb1f, type: 3}
   UnitRangeVisualized: {fileID: 1882743592, guid: 4ecd44054a5d7f54ca1dd8a09d2540dd, type: 3}

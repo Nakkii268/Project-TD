@@ -12,14 +12,15 @@ public class LevelManager : MonoBehaviour
     public MapManager MapManager { get {    return mapManager; } }
     [SerializeField] private InGameCharListUI charListUI;
     [SerializeField] private LevelDPManager levelDPManager;
-    [SerializeField] private LevelEndUI endUI;
-    public LevelEndUI EndUI { get { return endUI; } }
+    
     [SerializeField] private int currentUnitIndex;
     [SerializeField] private int deloymentLimit;
     [SerializeField] private int currentDeloyment = 0;
 
     [SerializeField] private LevelLifePointManager levelLifePointManager;
+    [SerializeField] public LevelLifePointManager LevelLifePointManager {  get { return levelLifePointManager; } }
     [SerializeField] private WaveManager waveManager;
+    [SerializeField] public WaveManager WaveManager{  get { return waveManager; } }
     [SerializeField] private ParticleManager _particleManager;
     public ParticleManager ParticleManager { get { return _particleManager; } }
     [SerializeField] private LevelStateMachineManager levelStateMachineManager;
@@ -40,7 +41,7 @@ public class LevelManager : MonoBehaviour
         instance = this;
         
         levelStateMachineManager = new LevelStateMachineManager(this);
-        DisableComponent();
+
      
        
        
@@ -77,17 +78,12 @@ public class LevelManager : MonoBehaviour
         OnGameEnd?.Invoke(this, levelLifePointManager.GetGameEndState());
     }
 
-    public void DisableComponent()
-    {
-        levelDPManager.gameObject.SetActive(false);
-        waveManager.gameObject.SetActive(false);
-        LevelInfoUI.gameObject.SetActive(false );
-    }
+   
     public void EnableComponent()
     {
-        levelDPManager.gameObject.SetActive(true);
-        waveManager.gameObject.SetActive(true);
-        LevelInfoUI.gameObject.SetActive(true );
+        levelDPManager.Init();
+        waveManager.Init();
+        levelLifePointManager.Init();
     }
 
     public void TimeSlow()

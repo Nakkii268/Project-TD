@@ -14,6 +14,7 @@ public class ScaleToFOV : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _camera = Camera.main;
         float scale = Mathf.Tan(Mathf.PI * BaseFOV  / 360)/ Mathf.Tan(_camera.fieldOfView * Mathf.PI / 360);
         
         gameObject.transform.localScale = scale * BaseScale;

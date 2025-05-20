@@ -69,16 +69,16 @@ public class LineUpUI : UICanvas
             if (e.Index == -1)
             {
                 _tempSquad.Remove(e.Unit.UnitID);
-                Debug.Log(_tempSquad.Count + "-------");
+              
 
                 return;
             }
             _tempSquad[e.Unit.UnitID] = e;
-            Debug.Log(_tempSquad.Count + "-------");
+            
             return;
         }
         _tempSquad.Add(e.Unit.UnitID, e);
-        Debug.Log(_tempSquad.Count + "-------");
+        
         
         
     }
