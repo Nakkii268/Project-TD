@@ -283,6 +283,22 @@ MonoBehaviour:
   _sceneLoader: {fileID: 386609036}
   limitBreakIcon: {fileID: 11400000, guid: e5fe7fbb3deffcb46b31ab601b06603d, type: 2}
   stagePath: Assets/Scenes/SampleScene.unity
+  testData:
+    PlayerID: 001
+    PlayerName: Nagi
+    Diamond: 10
+    Gold: 10000
+    Exp: 1000000
+    Items:
+    - Material: {fileID: 11400000, guid: b326332c006df1d4c841f9c180f2a44e, type: 2}
+      Quantity: 1000
+    OwnedCharacter:
+    - Id: 001
+      Level: 1
+      LimitBreak: 0
+    - Id: 002
+      Level: 1
+      LimitBreak: 0
 --- !u!1 &1066300989
 GameObject:
   m_ObjectHideFlags: 0

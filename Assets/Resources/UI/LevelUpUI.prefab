@@ -2416,11 +2416,15 @@ MonoBehaviour:
   BackBtn: {fileID: 5987504692060479364}
   HomeBtn: {fileID: 1501046289480175762}
   LevelUpBtn: {fileID: 1541484063186135571}
+  CancelBtn: {fileID: 7262746382098504051}
   IncreaseBtn: {fileID: 8227188724848314273}
   DecreaseBtn: {fileID: 8800794173112213969}
   unit: {fileID: 11400000, guid: b18f85b780946e8409d3a4e0589a984a, type: 2}
   TargetLevel: {fileID: 4228468327587993916}
   LevelUpProgress: {fileID: 2033069597229148877}
+  _atk: 0
+  _hp: 0
+  _def: 0
 --- !u!223 &427620580382041725
 Canvas:
   m_ObjectHideFlags: 0

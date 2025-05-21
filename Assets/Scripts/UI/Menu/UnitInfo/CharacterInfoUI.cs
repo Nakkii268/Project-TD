@@ -58,8 +58,15 @@ public class CharacterInfoUI : UICanvas
         AttackRangeVisualized.sprite = allanceUnit.UnitRangeVisualized;
         SetLevelText(allanceUnit.Level);
         SetLimtBreakText(allanceUnit.LimitBreak);
-     
-        
+        if (MaxLevelCheck(CurrentLimtBreak))
+        {
+            LevelUpBtn.interactable = false;
+        }
+        if (MaxLimitBreakCheck())
+        {
+            LimitBreakBtn.interactable = false;
+        }
+
     }
     public override void SetUp(AllianceUnit unit)
     {
@@ -69,17 +76,12 @@ public class CharacterInfoUI : UICanvas
     {
         if (unit == null) return; //first time load, incase error happened
         
-        if (MaxLevelCheck(CurrentLimtBreak))
-        {
-            LevelUpBtn.interactable= false;
-        }
-        if (MaxLimitBreakCheck())
-        {
-            LimitBreakBtn.interactable= false;
-        }
+       
 
         LevelUpBtn.onClick.AddListener(() => {
             UIManager.Instance.OpenUI<UnitLevelUpUI>(unit);
+           // unit.Level = 80;
+
         });
         LimitBreakBtn.onClick.AddListener(() => {
 

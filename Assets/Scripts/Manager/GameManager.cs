@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public SceneLoader _sceneLoader;
     [SerializeField] public LimitBreakIcon limitBreakIcon;
     public string stagePath;
-
+    public PlayerData testData;
     private void Awake()
     {
         Instance = this;

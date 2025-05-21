@@ -6,12 +6,19 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="LimitBreakData")]
 public class LimitBreakSO : ScriptableObject
 {
-    public List<LimitBreakData> data;   
-}
-[Serializable]
-public class LimitBreakData
-{
-    public List<Item> ItemsRequired;
+    public List<ItemsData> MaterialsRequired;
     public List<StatusEffect> BuffGain;
-    public int GoldRequired;
+}
+
+[Serializable]
+public class ItemsData
+{
+    public Item Material;
+    public int Quantity;
+
+    public ItemsData(Item material,int qtt)
+    {
+        Material = material; 
+        Quantity = qtt;
+    }
 }
