@@ -12,14 +12,9 @@ public class LevelUpData
 {
     public int LimitBreakLevel;
     public List<StatBonus> StatBonus;//per level
-    public List<CurrencyRequired> CurrencyRequired;//perlevel
+    public List<ItemsData> CurrencyRequired;//perlevel
 }
-[Serializable]
-public class CurrencyRequired
-{
-    public Currency Currency;
-    public int Value; //value each unit of currency
-}
+
 [Serializable]
 
 public class StatBonus

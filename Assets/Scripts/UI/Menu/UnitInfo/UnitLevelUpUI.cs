@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +13,7 @@ public class UnitLevelUpUI : UICanvas
     [SerializeField] private int CurrentViewLevel;
     [SerializeField] private int CurrentLimtBreak;
 
+    [SerializeField] private AllianceUnit unit;
     //btn
     [SerializeField] private Button BackBtn;
     [SerializeField] private Button HomeBtn;
@@ -21,13 +23,26 @@ public class UnitLevelUpUI : UICanvas
     [SerializeField] private Button DecreaseBtn;
 
     //btn
-    [SerializeField] private AllianceUnit unit;
     [SerializeField] private TextMeshProUGUI TargetLevel;
-    
+
+
     [SerializeField] private Image LevelUpProgress;
     [SerializeField] private float _atk;
     [SerializeField] private float _hp;
     [SerializeField] private float _def;
+
+    [SerializeField] private TextMeshProUGUI RequireGold;
+    [SerializeField] private TextMeshProUGUI RequireExp;
+    [SerializeField] private TextMeshProUGUI QttGold;
+    [SerializeField] private TextMeshProUGUI QttExp;
+   
+  
+    [SerializeField]readonly private string GoldID = "G01";
+    [SerializeField]readonly private string ExpID = "E02";
+
+    [SerializeField] private int Gold;
+    [SerializeField] private int Exp;
+
     public void Initialized(AllianceUnit allanceUnit)
     {
         unit = allanceUnit;
@@ -35,6 +50,8 @@ public class UnitLevelUpUI : UICanvas
         CurrentLimtBreak =  GetCurrentLimitBreak();
         SetTargetLevel(CurrentViewLevel);
         PreviewStat(CurrentLimtBreak);
+        UpdateRequireTxt(0, 0);
+        UpdateQttTxt(GameManager.Instance.testData.GetItem(GoldID).Quantity, GameManager.Instance.testData.GetItem(ExpID).Quantity);
     }
     public override void SetUp(AllianceUnit unit)
     {
@@ -52,6 +69,8 @@ public class UnitLevelUpUI : UICanvas
             SetTargetLevel(CurrentViewLevel + 1);
             PreviewStat(CurrentLimtBreak);
             UpdateLevelUpProgress(CurrentViewLevel, unit.Rarity.LevelCap[CurrentLimtBreak]);
+            CalRequireMaterial();
+            UpdateRequireTxt(Gold, Exp);
 
         });
         DecreaseBtn.onClick.AddListener(() =>
@@ -62,13 +81,21 @@ public class UnitLevelUpUI : UICanvas
             SetTargetLevel(CurrentViewLevel - 1);
             PreviewStat(CurrentLimtBreak);
             UpdateLevelUpProgress(CurrentViewLevel, unit.Rarity.LevelCap[CurrentLimtBreak]);
-
+            CalRequireMaterial();
+            UpdateRequireTxt(Gold, Exp);
         });
 
         LevelUpBtn.onClick.AddListener(() =>
         {
-            LevelUp();
-            Debug.Log(GetCurrentLevel());  
+            if (GameManager.Instance.testData.GetItem(GoldID).Quantity >= Gold && GameManager.Instance.testData.GetItem(ExpID).Quantity >= Exp)
+            {
+                LevelUp();
+                ConsumeMaterial();
+                UpdateQttTxt(GameManager.Instance.testData.GetItem(GoldID).Quantity, GameManager.Instance.testData.GetItem(ExpID).Quantity);
+                CalRequireMaterial();
+                UpdateRequireTxt(Gold, Exp);
+            }
+            return;
         });
         CancelBtn.onClick.AddListener(() =>{
             UIManager.Instance.Close<UnitLevelUpUI>(0);
@@ -89,15 +116,14 @@ public class UnitLevelUpUI : UICanvas
     /////////////currenly usin test data. change later /////////
     private void LevelUp()
     {
-        //if((GameManager.Instance.testData.Exp < unit.UnitClass.ClassLevelUpData.data[CurrentLimtBreak].CurrencyRequired[0].Value)
-          //   &&(GameManager.Instance.testData.Gold < unit.UnitClass.ClassLevelUpData.data[CurrentLimtBreak].CurrencyRequired[1].Value))
-        // {
+        if(true)
+         {
             unit.Level = CurrentViewLevel;
             unit.Attack = _atk;
             unit.Heath = _hp;
             unit.Defense = _def;
             // return;
-        // }
+        }
         //if not enough material then erorr ( test later)
        // PlayerPrefs.SetInt(unit.UnitID, CurrentViewLevel);
         PreviewStat(CurrentLimtBreak);
@@ -182,4 +208,26 @@ public class UnitLevelUpUI : UICanvas
         return false;
 
     }
+    private void CalRequireMaterial()
+    {
+        Gold=  unit.UnitClass.ClassLevelUpData.data[unit.LimitBreak].CurrencyRequired[0].Quantity * (CurrentViewLevel - unit.Level); //gold
+        Exp=  unit.UnitClass.ClassLevelUpData.data[unit.LimitBreak].CurrencyRequired[1].Quantity * (CurrentViewLevel - unit.Level); //exp
+    }
+    private void UpdateRequireTxt(int g, int e)
+    {
+        RequireGold.text ="/" + g.ToString();
+        RequireExp.text = "/" + e.ToString();
+    }
+    private void UpdateQttTxt(int g, int e)
+    {
+        QttGold.text = g.ToString();
+        QttExp.text = e.ToString();
+    }
+    private void ConsumeMaterial()
+    {
+        GameManager.Instance.testData.GetItem(GoldID).Quantity -= Gold;
+        GameManager.Instance.testData.GetItem(ExpID).Quantity -= Exp;
+
+    }
+  
 }
