@@ -13,8 +13,8 @@ public class MaterialRequiredSingle : MonoBehaviour
     public void Init(ItemsData require, int qtt)
     {
         ItemIcon.sprite = require.Material.ItemSprite;
-        ItemQttTxt.text = "/"+qtt.ToString();
-        ItemRqTxt.text = require.Quantity.ToString();
+        ItemQttTxt.text = qtt.ToString();
+        ItemRqTxt.text = "/" + require.Quantity.ToString();
         if (require.Quantity > qtt) {
             ItemQttTxt.color = Color.red;
         }

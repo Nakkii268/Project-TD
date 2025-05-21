@@ -15,7 +15,7 @@ public class CharacterInfoUI : UICanvas
     [SerializeField] private Button HomeBtn;
     
     
-    [SerializeField] private int CurrentLimtBreak;
+   
     //init
     [SerializeField] private Button LevelUpBtn;
     [SerializeField] private Button LimitBreakBtn;
@@ -58,14 +58,24 @@ public class CharacterInfoUI : UICanvas
         AttackRangeVisualized.sprite = allanceUnit.UnitRangeVisualized;
         SetLevelText(allanceUnit.Level);
         SetLimtBreakText(allanceUnit.LimitBreak);
-        if (MaxLevelCheck(CurrentLimtBreak))
+        if (IsMaxLevel(unit.LimitBreak))
         {
+            Debug.Log(IsMaxLevel(unit.LimitBreak));
+            Debug.Log(unit.LimitBreak);
+            Debug.Log(unit.Rarity.LevelCap[unit.LimitBreak]);
             LevelUpBtn.interactable = false;
         }
-        if (MaxLimitBreakCheck())
+        else
+        {
+            LevelUpBtn.interactable = true;
+
+        }
+        if (IsMaxLimitBreak())
         {
             LimitBreakBtn.interactable = false;
         }
+
+        Debug.Log("called-----");
 
     }
     public override void SetUp(AllianceUnit unit)
@@ -112,53 +122,31 @@ public class CharacterInfoUI : UICanvas
   
     public void StatShow(int lb)
     {
-        float currentAttack = 0;
-        float currentHealth = 0;
-        float currentDef = 0;
+        
 
-        if (CurrentLimtBreak > 0)
-        {
-            for (int i = 0; i <= CurrentLimtBreak - 1; i++)
-            {
-               
-                currentAttack += (unit.UnitClass.ClassLevelUpData.data[i].StatBonus[0].StatModify * (unit.Rarity.LevelCap[i] - 1));
-
-                currentHealth += (unit.UnitClass.ClassLevelUpData.data[i].StatBonus[1].StatModify * (unit.Rarity.LevelCap[i] - 1));
-
-                currentDef += (unit.UnitClass.ClassLevelUpData.data[i].StatBonus[2].StatModify * (unit.Rarity.LevelCap[i] - 1));
-
-            }
-        }
-        UnitAttack.text = (currentAttack + (unit.Attack + unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[0].StatModify * GetCurrentLevel() - 1)).ToString();
+       
+        UnitAttack.text = unit.Attack.ToString();
            
-        UnitHp.text = (currentHealth + (unit.Heath + unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[1].StatModify * GetCurrentLevel() - 1)).ToString();
+        UnitHp.text = unit.Heath.ToString();
 
 
-        UnitDef.text = (currentDef + (unit.Defense + unit.UnitClass.ClassLevelUpData.data[lb].StatBonus[2].StatModify * GetCurrentLevel() - 1)).ToString();
+        UnitDef.text = unit.Defense.ToString();
            
     }
-    public int GetCurrentLevel()
-    {
-        if (!PlayerPrefs.HasKey(unit.UnitID)) return 1;
-        return PlayerPrefs.GetInt(unit.UnitID);
-    }
-
-    public int GetCurrentLimitBreak()
-    {
-        if (!PlayerPrefs.HasKey(unit.UnitID + "lb")) return 0;
-        return PlayerPrefs.GetInt(unit.UnitID + "lb");
-    }
 
 
-    public bool MaxLevelCheck(int lb)
+ 
+
+
+    public bool IsMaxLevel(int lb)
     {
-        if (GetCurrentLevel() == unit.Rarity.LevelCap[lb]) return true;
+        if (unit.Level == unit.Rarity.LevelCap[lb]) return true;
         return false;
 
     }
-    public bool MaxLimitBreakCheck()
+    public bool IsMaxLimitBreak()
     {
-        if(GetCurrentLimitBreak()>=unit.Rarity.MaxLimitBreak) return true;
+        if(unit.LimitBreak >= unit.Rarity.MaxLimitBreak) return true;
         return false;
     }
 

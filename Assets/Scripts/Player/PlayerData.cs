@@ -9,9 +9,6 @@ public class PlayerData
 {
     public string PlayerID;
     public string PlayerName;
-    public int Diamond;
-    public int Gold;
-    public int Exp;
     public List<ItemsData> Items;
     public List<CharacterModifyData> OwnedCharacter;
    // public List<AllianceUnit> OwnedCharacterSO;
