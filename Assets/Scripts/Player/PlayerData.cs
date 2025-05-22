@@ -9,25 +9,11 @@ public class PlayerData
 {
     public string PlayerID;
     public string PlayerName;
-    public List<ItemsData> Items;
+    public List<SaveItemData> Items;
     public List<CharacterModifyData> OwnedCharacter;
-   // public List<AllianceUnit> OwnedCharacterSO;
-   public bool IsHaveItem(string id)
-    {
-       for(int i = 0; i<Items.Count; i++)
-        {
-            if (Items[i].Material.ItemID == id) return true;
-        }
-       return false;
-    }
-    public ItemsData GetItem(string id)
-    {
-        for (int i = 0; i < Items.Count; i++)
-        {
-            if (Items[i].Material.ItemID == id) return Items[i];
-        }
-        return null;
-    }
+    public Progress PlayerProgress;
+    public Progress LastCompleteStage;
+   
 }
 
 [Serializable]
@@ -44,4 +30,10 @@ public class CharacterModifyData
         this.LimitBreak = lb;
 
     }
+}
+[Serializable] 
+public class SaveItemData
+{
+    public string ItemId;
+    public int Quantity;
 }

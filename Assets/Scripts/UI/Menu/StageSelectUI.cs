@@ -56,7 +56,7 @@ public class StageSelectUI : UICanvas
             ChapterList[i].OnChapterSelect += StageSelectUI_OnChapterSelect;
 
         }
-        LoadStageList(stageProgress.LastStage.Chapter);
+        LoadStageList(GameManager.Instance._resourceManager.GetChapterById<ChapterSO>(stageProgress.LastStage.ChapterID));
 
         stageProgress.DisableLockedChapter();
     }

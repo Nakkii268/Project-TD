@@ -286,12 +286,13 @@ MonoBehaviour:
   testData:
     PlayerID: 001
     PlayerName: Nagi
-    Diamond: 10
-    Gold: 10000
-    Exp: 1000000
     Items:
     - Material: {fileID: 11400000, guid: b326332c006df1d4c841f9c180f2a44e, type: 2}
       Quantity: 1000
+    - Material: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
+      Quantity: 100000
+    - Material: {fileID: 11400000, guid: ebe72feb9446389428430436d888d572, type: 2}
+      Quantity: 2000
     OwnedCharacter:
     - Id: 001
       Level: 1
@@ -743,9 +744,6 @@ MonoBehaviour:
   playerData:
     PlayerID: 
     PlayerName: 
-    Diamond: 0
-    Gold: 0
-    Exp: 0
     Items: []
     OwnedCharacter: []
 --- !u!1 &6424000310752305

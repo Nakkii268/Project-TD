@@ -7,8 +7,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     [SerializeField] public SceneLoader _sceneLoader;
     [SerializeField] public LimitBreakIcon limitBreakIcon;
+    [SerializeField] public ResourceManager _resourceManager;
     public string stagePath;
-    public PlayerData testData;
+    public PlayerDataSO testData;
+    public Item test;
     private void Awake()
     {
         Instance = this;
@@ -17,6 +19,7 @@ public class GameManager : MonoBehaviour
     
     public void TestBtn()
     {
-        _sceneLoader.LoadStage(stagePath);
+        test = _resourceManager.GetItemById<Item>("G01");
+      
     }
 }

@@ -22,10 +22,10 @@ MonoBehaviour:
     - StatName: 2
       StatModify: 1
     CurrencyRequired:
-    - Currency: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
-      Value: 1000
-    - Currency: {fileID: 11400000, guid: ebe72feb9446389428430436d888d572, type: 2}
-      Value: 1000
+    - Material: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
+      Quantity: 1000
+    - Material: {fileID: 11400000, guid: ebe72feb9446389428430436d888d572, type: 2}
+      Quantity: 10
   - LimitBreakLevel: 1
     StatBonus:
     - StatName: 0
@@ -35,10 +35,10 @@ MonoBehaviour:
     - StatName: 2
       StatModify: 1
     CurrencyRequired:
-    - Currency: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
-      Value: 2000
-    - Currency: {fileID: 11400000, guid: ebe72feb9446389428430436d888d572, type: 2}
-      Value: 2500
+    - Material: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
+      Quantity: 1200
+    - Material: {fileID: 11400000, guid: ebe72feb9446389428430436d888d572, type: 2}
+      Quantity: 10
   - LimitBreakLevel: 2
     StatBonus:
     - StatName: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
     - StatName: 2
       StatModify: 2
     CurrencyRequired:
-    - Currency: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
-      Value: 3000
-    - Currency: {fileID: 11400000, guid: ebe72feb9446389428430436d888d572, type: 2}
-      Value: 5000
+    - Material: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
+      Quantity: 1500
+    - Material: {fileID: 11400000, guid: ebe72feb9446389428430436d888d572, type: 2}
+      Quantity: 15

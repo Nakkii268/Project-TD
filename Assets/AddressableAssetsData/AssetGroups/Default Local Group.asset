@@ -32,6 +32,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7d29bc015b2d302429e0e6b109fcdab6
+    m_Address: Assets/Scripts/SO/Stage/Chapter2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9916a5b1c19a29043ab9ab787a8892da
+    m_Address: Assets/Scripts/SO/Stage/Chapter1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9ddc3bcb707eead499484dc8ffabcb92
     m_Address: ClassIcon
     m_ReadOnly: 0

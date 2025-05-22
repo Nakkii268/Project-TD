@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d81f7976dcc81854981e17d708f1529b, type: 3}
-  m_Name: Gold
+  m_Script: {fileID: 11500000, guid: 5834b5087d578d24c926ce20cd31e6d6, type: 3}
+  m_Name: ScriptableObject_ContentUpdateGroupSchema
   m_EditorClassIdentifier: 
-  ItemID: G01
-  ItemName: Gold
-  ItemSprite: {fileID: -1498202539, guid: 8b127051ec22801428a87e39b4d2eb38, type: 3}
-  Tier: 1
+  m_Group: {fileID: 11400000, guid: f018cc7ce3071b640b3cc3108b350f50, type: 2}
+  m_StaticContent: 0

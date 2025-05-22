@@ -12,7 +12,7 @@ public class StageProgress : MonoBehaviour
     [SerializeField]private int MaxChapter;
     public void DisableLockedChapter()
     {
-        for (int i = CurrentProgress.Chapter.ChapterIndex+1; i <= MaxChapter-1; i++)
+        for (int i = GameManager.Instance._resourceManager.GetChapterById<ChapterSO>(CurrentProgress.ChapterID).ChapterIndex+1; i <= MaxChapter-1; i++)
         {
             _stageSelectUI.ChapterList[i].btn.interactable = false;
         }
@@ -22,7 +22,7 @@ public class StageProgress : MonoBehaviour
     public void DisableLockedStage(int selectedChapter)
     {
         Debug.Log("call");
-        if (selectedChapter < CurrentProgress.Chapter.ChapterIndex) return;
+        if (selectedChapter < GameManager.Instance._resourceManager.GetChapterById<ChapterSO>(CurrentProgress.ChapterID).ChapterIndex) return;
         Debug.Log("run");
         
         for (int i = CurrentProgress.Stage ; i <= _stageSelectUI.ChapterList[selectedChapter].ChapterSO.StageQuantity-1; i++)
@@ -39,6 +39,6 @@ public class StageProgress : MonoBehaviour
 [Serializable]
 public class Progress
 {
-    public ChapterSO Chapter;
+    public string ChapterID;
     public int Stage;
 }

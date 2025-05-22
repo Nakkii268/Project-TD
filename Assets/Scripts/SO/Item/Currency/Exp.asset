@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81f7976dcc81854981e17d708f1529b, type: 3}
   m_Name: Exp
   m_EditorClassIdentifier: 
-  ItemID: E002
+  ItemID: E02
   ItemName: Small Exp
-  ItemSprite: {fileID: 0}
-  ValuePerUnit: 1000
+  ItemSprite: {fileID: 573388067, guid: 8b127051ec22801428a87e39b4d2eb38, type: 3}
+  Tier: 1

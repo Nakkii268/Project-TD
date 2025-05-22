@@ -286,6 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6ed8351f561aae4196c789ba6d1e113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestroyOnClose: 0
   BackBtn: {fileID: 7579923396645106110}
   HomeBtn: {fileID: 8242964408929778255}
   ChapterExpandBtn: {fileID: 1224241762979075565}
@@ -309,10 +310,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentProgress:
-    Chapter: {fileID: 11400000, guid: 7d29bc015b2d302429e0e6b109fcdab6, type: 2}
+    ChapterID: C002
     Stage: 6
   LastStage:
-    Chapter: {fileID: 11400000, guid: 7d29bc015b2d302429e0e6b109fcdab6, type: 2}
+    ChapterID: C001
     Stage: 5
   _stageSelectUI: {fileID: 9020603444986128439}
   MaxChapter: 2

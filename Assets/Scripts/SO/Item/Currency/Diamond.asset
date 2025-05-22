@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81f7976dcc81854981e17d708f1529b, type: 3}
   m_Name: Diamond
   m_EditorClassIdentifier: 
-  ItemID: 
-  ItemName: 
-  ItemSprite: {fileID: 0}
-  Tier: 0
+  ItemID: D01
+  ItemName: Diamond
+  ItemSprite: {fileID: -894900220, guid: 8b127051ec22801428a87e39b4d2eb38, type: 3}
+  Tier: 5
