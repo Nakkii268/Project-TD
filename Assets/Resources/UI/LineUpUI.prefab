@@ -2656,9 +2656,7 @@ MonoBehaviour:
   - {fileID: 8424642104897626701}
   - {fileID: 5467675109933692292}
   - {fileID: 3641746372407377887}
-  _playerSquad:
-  - Index: 3
-    Unit: {fileID: 11400000, guid: b18f85b780946e8409d3a4e0589a984a, type: 2}
+  _playerSquad: []
   _backBtn: {fileID: 4108171704673133223}
   _homeBtn: {fileID: 8110589198232421336}
   SaveBtn: {fileID: 1006478506331755231}

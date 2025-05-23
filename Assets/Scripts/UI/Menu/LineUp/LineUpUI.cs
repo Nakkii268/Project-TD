@@ -46,6 +46,7 @@ public class LineUpUI : UICanvas
     }
     private void Initialized()
     {
+        _playerSquad = GameManager.Instance.testData.PlayerLineUp;
         for (int i = 0; i < _slots.Count; i++)
         {
             _slots[i].OnUnitAssign += LineUpUI_OnUnitAssign;

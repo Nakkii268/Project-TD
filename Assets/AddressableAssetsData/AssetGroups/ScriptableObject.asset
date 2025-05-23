@@ -12,11 +12,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
   m_Name: ScriptableObject
   m_EditorClassIdentifier: 
-  m_GroupName: Packed Assets
+  m_GroupName: ScriptableObject
   m_Data:
     m_SerializedData: []
   m_GUID: d1296400f66511a4f8064a5e399774dc
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 0ef788f9af53d6d4488a25689a5390ef
+    m_Address: Assets/Scripts/SO/Item/Currency/Diamond.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Item
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7d29bc015b2d302429e0e6b109fcdab6
+    m_Address: Assets/Scripts/SO/Stage/Chapter2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Chapter
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9916a5b1c19a29043ab9ab787a8892da
+    m_Address: Assets/Scripts/SO/Stage/Chapter1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Chapter
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b18f85b780946e8409d3a4e0589a984a
+    m_Address: Assets/Scripts/Unit/Guard1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Unit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b326332c006df1d4c841f9c180f2a44e
+    m_Address: Assets/Scripts/SO/Item/UpgradeItems/SmallRock.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Item
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c7081751eaabdef4f8b572425b2ea70d
+    m_Address: Assets/Scripts/SO/Item/Currency/Gold.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Item
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ebe72feb9446389428430436d888d572
+    m_Address: Assets/Scripts/SO/Item/Currency/Exp.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Item
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f137a38c32ffca04da14660715ab3b01
+    m_Address: Assets/Scripts/Unit/Sniper1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Unit
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 2cb0a1d49b51cff41930a3908d49be29, type: 2}
   m_SchemaSet:

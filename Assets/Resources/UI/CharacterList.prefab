@@ -53,9 +53,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04db1b20a905b547b2894edd02f1e14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestroyOnClose: 0
   container: {fileID: 2534800556765654703}
-  unitList:
-  - {fileID: 11400000, guid: b18f85b780946e8409d3a4e0589a984a, type: 2}
+  unitList: []
   singlePrefab: {fileID: 2809331578638044409, guid: 20499707aaee07c4088c0a89062f3202, type: 3}
   SingleList: []
   scrollRect: {fileID: 5390300164311065365}

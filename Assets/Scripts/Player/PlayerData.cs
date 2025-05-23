@@ -11,6 +11,7 @@ public class PlayerData
     public string PlayerName;
     public List<SaveItemData> Items;
     public List<CharacterModifyData> OwnedCharacter;
+    public List<LineUpData> LineUp;
     public Progress PlayerProgress;
     public Progress LastCompleteStage;
    
@@ -36,4 +37,10 @@ public class SaveItemData
 {
     public string ItemId;
     public int Quantity;
+}
+[Serializable] 
+public class LineUpData
+{
+    public int Index;
+    public string UnitId;
 }

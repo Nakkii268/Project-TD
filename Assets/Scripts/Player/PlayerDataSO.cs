@@ -8,10 +8,11 @@ public class PlayerDataSO : ScriptableObject
     public string PlayerName;
     public List<ItemsData> Items;
     public List<AllianceUnit> OwnedCharacter;
-    public Dictionary<int, AllianceUnit> PlayerLineUp;
+    public List<LineUpSave> PlayerLineUp;
     public Progress PlayerProgress;
     public Progress LastCompleteStage;
 
+   
     public bool IsHaveItem(string id)
     {
         for (int i = 0; i < Items.Count; i++)

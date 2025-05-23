@@ -166,6 +166,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc8c7734034bde419fc683769797d94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &534953647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 534953648}
+  - component: {fileID: 534953649}
+  m_Layer: 0
+  m_Name: Resourcemanager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &534953648
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534953647}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 723176849}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &534953649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534953647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f41914f4e6b8e9844b77da291b09901b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  test: {fileID: 0}
 --- !u!1 &623984891
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,13 +304,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 723176848}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.765132, y: 11.697405, z: 86.677025}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 386609035}
   - {fileID: 2005953832}
+  - {fileID: 534953648}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &723176850
@@ -282,24 +328,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneLoader: {fileID: 386609036}
   limitBreakIcon: {fileID: 11400000, guid: e5fe7fbb3deffcb46b31ab601b06603d, type: 2}
+  _resourceManager: {fileID: 534953649}
   stagePath: Assets/Scenes/SampleScene.unity
-  testData:
-    PlayerID: 001
-    PlayerName: Nagi
+  testData: {fileID: 11400000, guid: c641d677f62fdbc4982558a78b5c356b, type: 2}
+  Data:
+    PlayerID: 1001
+    PlayerName: niga
     Items:
-    - Material: {fileID: 11400000, guid: b326332c006df1d4c841f9c180f2a44e, type: 2}
+    - ItemId: G01
       Quantity: 1000
-    - Material: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
-      Quantity: 100000
-    - Material: {fileID: 11400000, guid: ebe72feb9446389428430436d888d572, type: 2}
-      Quantity: 2000
+    - ItemId: E01
+      Quantity: 1000
+    - ItemId: M001
+      Quantity: 10
     OwnedCharacter:
     - Id: 001
-      Level: 1
-      LimitBreak: 0
+      Level: 10
+      LimitBreak: 1
     - Id: 002
       Level: 1
       LimitBreak: 0
+    LineUp:
+    - Index: 0
+      Unit: {fileID: 11400000, guid: b18f85b780946e8409d3a4e0589a984a, type: 2}
+    - Index: 6
+      Unit: {fileID: 11400000, guid: f137a38c32ffca04da14660715ab3b01, type: 2}
+    PlayerProgress:
+      ChapterID: C001
+      Stage: 1
+    LastCompleteStage:
+      ChapterID: C001
+      Stage: 1
 --- !u!1 &1066300989
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,6 +805,13 @@ MonoBehaviour:
     PlayerName: 
     Items: []
     OwnedCharacter: []
+    LineUp: []
+    PlayerProgress:
+      ChapterID: 
+      Stage: 0
+    LastCompleteStage:
+      ChapterID: 
+      Stage: 0
 --- !u!1 &6424000310752305
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,16 +10,29 @@ public class GameManager : MonoBehaviour
     [SerializeField] public ResourceManager _resourceManager;
     public string stagePath;
     public PlayerDataSO testData;
-    public Item test;
+    public PlayerData Data;
+
     private void Awake()
     {
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
+       
+  
     }
-    
+    private void Start()
+    {
+        StartCoroutine(delay());
+    }
+
     public void TestBtn()
     {
-        test = _resourceManager.GetItemById<Item>("G01");
+        
       
+    }
+    IEnumerator delay()
+    {
+        yield return new WaitForSeconds(10);
+        SaveLoadData.ConvertToSO(testData, Data);
+
     }
 }
