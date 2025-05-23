@@ -31,21 +31,25 @@ public static class SaveLoadData
 
     public static void ConvertToSO(PlayerDataSO newData,PlayerData data)
     {
-        newData =new PlayerDataSO();
+        newData.ClearData();
         newData.PlayerID = data.PlayerID;
         newData.PlayerName = data.PlayerName;
         //item
         for (int i = 0; i < data.Items.Count; i++)
         {
             ItemsData it = new ItemsData(GameManager.Instance._resourceManager.GetItemById<Item>(data.Items[i].ItemId), data.Items[i].Quantity);
+           
             newData.Items.Add(it);
         }
         //unit
         for (int i = 0; i < data.OwnedCharacter.Count; i++)
         {
+            
             AllianceUnit un = GameManager.Instance._resourceManager.GetUnitById<AllianceUnit>(data.OwnedCharacter[i].Id);
             un.Level = data.OwnedCharacter[i].Level;
             un.LimitBreak = data.OwnedCharacter[i].LimitBreak;
+           
+            un.CalculateStat();
             newData.OwnedCharacter.Add(un);
         }
         newData.PlayerProgress = data.PlayerProgress;

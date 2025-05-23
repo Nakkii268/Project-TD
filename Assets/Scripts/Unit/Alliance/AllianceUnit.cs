@@ -35,8 +35,18 @@ public class AllianceUnit : Unit
     #endregion
 
     public string GetAllianceType() { return type.ToString(); }
-    
-    
+    public void CalculateStat()
+    {
+        for (int i = 0; i < LimitBreak; i++)
+        {
+            Attack += (Rarity.LevelCap[i] - 1) * UnitClass.ClassLevelUpData.data[i].StatBonus[0].StatModify ;
+            Heath += (Rarity.LevelCap[i] - 1) * UnitClass.ClassLevelUpData.data[i].StatBonus[1].StatModify ;
+            Defense += (Rarity.LevelCap[i] - 1) * UnitClass.ClassLevelUpData.data[i].StatBonus[2].StatModify;
+        }
+        Attack += UnitClass.ClassLevelUpData.data[LimitBreak].StatBonus[0].StatModify * (Level - 1);
+        Heath += UnitClass.ClassLevelUpData.data[LimitBreak].StatBonus[1].StatModify * (Level - 1);
+        Defense += UnitClass.ClassLevelUpData.data[LimitBreak].StatBonus[2].StatModify * (Level - 1);
+    }
 
     public virtual void ApplyClassBuff(GameObject unit) { }
 }

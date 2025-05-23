@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public ResourceManager _resourceManager;
     public string stagePath;
     public PlayerDataSO testData;
-    public PlayerData Data;
+
 
     private void Awake()
     {
@@ -18,6 +18,13 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
        
   
+    }
+    private void Update()
+    {
+       /* if (Input.GetKeyUp(KeyCode.Space))
+        {
+            TestBtn();
+        }*/
     }
     private void Start()
     {
@@ -31,7 +38,10 @@ public class GameManager : MonoBehaviour
 
     public void TestBtn()
     {
-        
+        PlayerDataSO newdata = ScriptableObject.CreateInstance<PlayerDataSO>();
+        Debug.Log(newdata.PlayerName);
+        newdata.PlayerName = "nanidesuka";
+        Debug.Log(newdata.PlayerName);
       
     }
 

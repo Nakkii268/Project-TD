@@ -12,7 +12,16 @@ public class PlayerDataSO : ScriptableObject
     public Progress PlayerProgress;
     public Progress LastCompleteStage;
 
-   
+   public void ClearData()
+    {
+        PlayerID = string.Empty;
+        PlayerName = string.Empty;  
+        Items.Clear();
+        OwnedCharacter.Clear();
+        PlayerLineUp.Clear();
+        PlayerProgress = new Progress();
+        LastCompleteStage = new Progress();
+    }
     public bool IsHaveItem(string id)
     {
         for (int i = 0; i < Items.Count; i++)

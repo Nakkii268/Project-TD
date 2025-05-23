@@ -354,6 +354,7 @@ GameObject:
   - component: {fileID: 424315458}
   - component: {fileID: 424315457}
   - component: {fileID: 424315456}
+  - component: {fileID: 424315459}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -435,6 +436,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &424315459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424315455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &534953647
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,6 +527,7 @@ MonoBehaviour:
   isItemDone: 0
   isUnitDone: 0
   isChapterDone: 0
+  isUIDone: 0
 --- !u!1 &723176848
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,7 +593,7 @@ MonoBehaviour:
     OwnedCharacter:
     - Id: 001
       Level: 10
-      LimitBreak: 1
+      LimitBreak: 2
     - Id: 002
       Level: 1
       LimitBreak: 0
@@ -691,7 +737,7 @@ GameObject:
   - component: {fileID: 2005953832}
   - component: {fileID: 2005953833}
   m_Layer: 0
-  m_Name: UnitDataManager
+  m_Name: PlayerDataManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -724,19 +770,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8782afd8b3d64b4bb301fbf8a81cc51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerDataSO: {fileID: 0}
+  _playerDataSO: {fileID: 11400000, guid: c641d677f62fdbc4982558a78b5c356b, type: 2}
   _playerData:
-    PlayerID: 
-    PlayerName: 
-    Items: []
-    OwnedCharacter: []
-    LineUp: []
+    PlayerID: 001112
+    PlayerName: nega
+    Items:
+    - ItemId: G01
+      Quantity: 100
+    - ItemId: E01
+      Quantity: 20
+    OwnedCharacter:
+    - Id: 001
+      Level: 1
+      LimitBreak: 2
+    - Id: 002
+      Level: 20
+      LimitBreak: 1
+    LineUp:
+    - Index: 0
+      UnitId: 001
     PlayerProgress:
-      ChapterID: 
-      Stage: 0
+      ChapterID: C01
+      Stage: 1
     LastCompleteStage:
-      ChapterID: 
-      Stage: 0
+      ChapterID: C01
+      Stage: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

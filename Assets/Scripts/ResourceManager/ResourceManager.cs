@@ -26,7 +26,7 @@ public class ResourceManager : MonoBehaviour
         LoadAllItem<Item>("Item");
         LoadAllUICanvas<UICanvas>("Hanibi");
     }
-    public void LoadAllUICanvas<T>(string label) where T : UICanvas
+    public  void LoadAllUICanvas<T>(string label) where T : UICanvas
     {
         
         Addressables.LoadAssetsAsync<GameObject>(label,null).Completed += handle =>
@@ -81,6 +81,7 @@ public class ResourceManager : MonoBehaviour
                 {
                     if (!UnitSOData.ContainsKey(unit.UnitID))
                     {
+                       
                         UnitSOData.Add(unit.UnitID , unit);
                        
 
@@ -153,8 +154,8 @@ public class ResourceManager : MonoBehaviour
     {
         if(isItemDone && isChapterDone && isUnitDone && isUIDone)
         {
-            OnLoadComplete?.Invoke(this, EventArgs.Empty);
             Debug.Log("Done!");
+            OnLoadComplete?.Invoke(this, EventArgs.Empty);
         }
     }
 }

@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
         for(int i = 0; i < prefabs.Count; i++)
         {
             CanvasPrefabs.Add(prefabs[i].GetType(), prefabs[i]);
-            Debug.Log(prefabs[i].GetType());
+            
         }
         OpenUI<MenuUI>();
     }
@@ -29,10 +29,8 @@ public class UIManager : MonoBehaviour
     {
         T canvas = GetUI<T>();
         canvas.SetUp();
-        Debug.Log(canvas.gameObject.activeSelf);
+       
         canvas.gameObject.SetActive(true);
-        Debug.Log(canvas.gameObject.activeSelf);
-        Debug.Log(canvas.GetType());
         return canvas as T;
     }
     public T OpenUI<T>(AllianceUnit unit) where T : UICanvas
