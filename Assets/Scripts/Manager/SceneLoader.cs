@@ -10,7 +10,7 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene("LoadingScene");
+       // SceneManager.LoadScene("LoadingScene");
         StartCoroutine(DelayLoadMenu());    
         SceneManager.LoadScene("TestMenu");
     }

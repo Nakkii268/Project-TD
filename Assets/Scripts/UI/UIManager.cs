@@ -17,8 +17,8 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         //load prefab from resources
-        UICanvas[] prefabs = Resources.LoadAll<UICanvas>("UI/");
-        for(int i = 0; i < prefabs.Length; i++)
+        List<UICanvas> prefabs = GameManager.Instance._resourceManager.GetUIPrefab();
+        for(int i = 0; i < prefabs.Count; i++)
         {
             CanvasPrefabs.Add(prefabs[i].GetType(), prefabs[i]);
             Debug.Log(prefabs[i].GetType());

@@ -21,7 +21,12 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        StartCoroutine(delay());
+        _resourceManager.OnLoadComplete += _resourceManager_OnLoadComplete;
+    }
+
+    private void _resourceManager_OnLoadComplete(object sender, System.EventArgs e)
+    {
+        _sceneLoader.LoadMenu();
     }
 
     public void TestBtn()
@@ -29,10 +34,5 @@ public class GameManager : MonoBehaviour
         
       
     }
-    IEnumerator delay()
-    {
-        yield return new WaitForSeconds(10);
-        SaveLoadData.ConvertToSO(testData, Data);
 
-    }
 }

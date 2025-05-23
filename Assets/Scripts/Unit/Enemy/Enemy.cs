@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime;
-using UnityEditor.ShaderGraph.Internal;
+
 using UnityEngine;
 
 public class Enemy : Character, IDamageable, IHealable, IHasHpBar

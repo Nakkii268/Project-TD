@@ -37,10 +37,20 @@ public class SaveItemData
 {
     public string ItemId;
     public int Quantity;
+    public SaveItemData(string itemId, int quantity)
+    {
+        ItemId = itemId;
+        Quantity = quantity;
+    }
 }
 [Serializable] 
 public class LineUpData
 {
     public int Index;
     public string UnitId;
+    public LineUpData(int index, string unitId)
+    {
+        Index = index;
+        UnitId = unitId;
+    }
 }

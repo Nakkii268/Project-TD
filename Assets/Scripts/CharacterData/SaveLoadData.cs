@@ -31,7 +31,7 @@ public static class SaveLoadData
 
     public static void ConvertToSO(PlayerDataSO newData,PlayerData data)
     {
-        
+        newData =new PlayerDataSO();
         newData.PlayerID = data.PlayerID;
         newData.PlayerName = data.PlayerName;
         //item
@@ -57,14 +57,34 @@ public static class SaveLoadData
         }
         
     }
-    public static void ConvertToS1O(PlayerDataSO newdata,PlayerData data)
+    public static void UpdateUnit(PlayerDataSO Data, PlayerData toOverwrite)
     {
-        
-        newdata.PlayerID = data.PlayerID;
-        newdata.PlayerName = data.PlayerName;
-        
+        toOverwrite.OwnedCharacter.Clear();
+        for (int i = 0; i < Data.OwnedCharacter.Count; i++)
+        {
+            CharacterModifyData cdata = new CharacterModifyData(Data.OwnedCharacter[i].UnitID, Data.OwnedCharacter[i].Level, Data.OwnedCharacter[i].LimitBreak);
+            toOverwrite.OwnedCharacter.Add(cdata);
+           
+        }
     }
-    
+    public static void UpdateItem(PlayerDataSO Data, PlayerData toOverwrite)
+    {
+        toOverwrite.Items.Clear();
+        for(int i = 0;i < Data.Items.Count; i++)
+        {
+            SaveItemData it = new SaveItemData(Data.Items[i].Material.ItemID, Data.Items[i].Quantity);
+            toOverwrite.Items.Add(it);  
+        }
+    }
+    public static void UpdateLineUp(PlayerDataSO Data, PlayerData toOverwrite)
+    {
+        toOverwrite.LineUp.Clear();
+        for(int i=0; i < Data.PlayerLineUp.Count; i++)
+        {
+            LineUpData lu = new(Data.PlayerLineUp[i].Index, Data.PlayerLineUp[i].Unit.UnitID);
+            toOverwrite.LineUp.Add(lu);
+        }
+    }
 
     
 }

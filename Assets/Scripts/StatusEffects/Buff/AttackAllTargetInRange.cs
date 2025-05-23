@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.WSA;
-using static UnityEngine.GraphicsBuffer;
+
 
 [CreateAssetMenu(menuName = "StatusEffect/AttackAllInRange")]
 public class AttackAllTargetInRange : NormalStatusEffect

@@ -1,23 +1,49 @@
-using System.Collections;
+using System;
+
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using static UnityEditor.Progress;
+
 
 public class ResourceManager : MonoBehaviour
 {
     private Dictionary<string,Item> ItemSOData = new Dictionary<string,Item>();
     private Dictionary<string,AllianceUnit> UnitSOData = new Dictionary<string,AllianceUnit>();
     private Dictionary<string,ChapterSO> ChapterSOData = new Dictionary<string,ChapterSO>();
-    [SerializeField] private ChapterSO test;
+    private List<UICanvas> UIPrefab = new List<UICanvas>();
+   
+    [SerializeField] private bool isItemDone;
+    [SerializeField] private bool isUnitDone;
+    [SerializeField] private bool isChapterDone;
+    [SerializeField] private bool isUIDone;
+    public event EventHandler OnLoadComplete;
     private void Start()
     {
         LoadAllChapter<ChapterSO>("Chapter");
-        LoadAllItem<Item>("Item");
         LoadAllUnit<AllianceUnit>("Unit");
+        LoadAllItem<Item>("Item");
+        LoadAllUICanvas<UICanvas>("Hanibi");
     }
-
+    public void LoadAllUICanvas<T>(string label) where T : UICanvas
+    {
+        
+        Addressables.LoadAssetsAsync<GameObject>(label,null).Completed += handle =>
+        {
+            if(handle.Status == AsyncOperationStatus.Succeeded)
+            {
+                foreach (var ui in handle.Result ) {
+                    
+                    UIPrefab.Add(ui.GetComponent<UICanvas>());
+                }
+                isUIDone = true;
+                AllSOLoaded();
+            }
+        };
+        
+    }
+    
     private void LoadAllItem<T>(string label) where T : Item
     {
         
@@ -31,10 +57,12 @@ public class ResourceManager : MonoBehaviour
                     if (!ItemSOData.ContainsKey(item.ItemID))
                     {
                         ItemSOData.Add(item.ItemID, item);
-                        Debug.Log(item);
+                       
 
                     }
                 }
+                isItemDone = true;
+                AllSOLoaded();
             }
             else
             {
@@ -54,10 +82,12 @@ public class ResourceManager : MonoBehaviour
                     if (!UnitSOData.ContainsKey(unit.UnitID))
                     {
                         UnitSOData.Add(unit.UnitID , unit);
-                        Debug.Log(unit);
+                       
 
                     }
                 }
+                isUnitDone = true;
+                AllSOLoaded();
             }
             else
             {
@@ -77,11 +107,12 @@ public class ResourceManager : MonoBehaviour
                     if (!ChapterSOData.ContainsKey(chap.ChapterID))
                     {
                         ChapterSOData.Add(chap.ChapterID, chap);
-                        Debug.Log(chap);
+                      
 
                     }
                 }
-                test = ChapterSOData["C001"];
+                isChapterDone = true;
+                AllSOLoaded();
             }
             else
             {
@@ -113,5 +144,17 @@ public class ResourceManager : MonoBehaviour
             return ChapterSOData[id] as T;
         }
         return null;
+    }
+    public List<UICanvas> GetUIPrefab()
+    {
+        return UIPrefab;
+    }
+    private void AllSOLoaded()
+    {
+        if(isItemDone && isChapterDone && isUnitDone && isUIDone)
+        {
+            OnLoadComplete?.Invoke(this, EventArgs.Empty);
+            Debug.Log("Done!");
+        }
     }
 }

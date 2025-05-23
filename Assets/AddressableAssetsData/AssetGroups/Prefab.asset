@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Prefab
+  m_EditorClassIdentifier: 
+  m_GroupName: Prefab
+  m_Data:
+    m_SerializedData: []
+  m_GUID: c5537a1d92bb800479dc4e07cb71dffb
+  m_SerializeEntries:
+  - m_GUID: 060a650132ff8284f97d72f205b3d58f
+    m_Address: Assets/PrefabResource/UI/LoseUI.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Hanibi
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0a9cbacb7b394784d87441c72e3fd872
+    m_Address: Assets/PrefabResource/UI/MenuUI.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Hanibi
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0c40cbbfa4892f54aa8d10b85d37f556
+    m_Address: Assets/PrefabResource/UI/LevelInfo.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Hanibi
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 700cb58d4fc985d41b4c310725cf9aac
+    m_Address: Assets/PrefabResource/UI/LevelUpUI.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Hanibi
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7c6d4ca8410ad5448aa294658a1e4c77
+    m_Address: Assets/PrefabResource/UI/LimitBreakUI.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Hanibi
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8c6189f9a6e388d48ae09a5a72765562
+    m_Address: Assets/PrefabResource/UI/StageLoadingUI.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Hanibi
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8e80b02024a147d48b0798df60d4281e
+    m_Address: Assets/PrefabResource/UI/LevelDp.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Hanibi
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a24bae1584d201f46a30d0317ce7601b
+    m_Address: Assets/PrefabResource/UI/CharacterInfoUI.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Hanibi
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c8ac00038533bdf448807fd6bd539b71
+    m_Address: Assets/PrefabResource/UI/CharacterList.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Hanibi
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: de735ab7b0685b24fa5ed72f89a4baf1
+    m_Address: Assets/PrefabResource/UI/LineUpUI.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Hanibi
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e901c5a837c321d4082ad2056c9edd47
+    m_Address: Assets/PrefabResource/UI/StageSelectUI.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Hanibi
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f8dd8149fc7bd9145bbe7c2e2ce3d826
+    m_Address: Assets/PrefabResource/UI/CharacterSelection.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Hanibi
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 2cb0a1d49b51cff41930a3908d49be29, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: afb4df78fc7ea9349a6a6640f5c2f982, type: 2}
+    - {fileID: 11400000, guid: 78677544f20452e4d98e536bf65c16d6, type: 2}

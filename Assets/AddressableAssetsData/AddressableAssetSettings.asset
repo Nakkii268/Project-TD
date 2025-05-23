@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 1b20eb8c93de0414b84b6da01179c9e7
   m_currentHash:
     serializedVersion: 2
-    Hash: fe2c61089621b5093a90e4fe1328f9fc
+    Hash: 52c85468b4943c628648508b3b968266
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -38,7 +38,7 @@ MonoBehaviour:
     m_Id: 
   m_RemoteCatalogLoadPath:
     m_Id: 
-  m_ContentStateBuildPathProfileVariableName: 
+  m_ContentStateBuildPathProfileVariableName: <default settings path>
   m_CustomContentStateBuildPath: 
   m_ContentStateBuildPath: 
   m_BuildAddressablesWithPlayerBuild: 0
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: 7cff28202cf597145b2edd0ecf3d457c, type: 2}
   - {fileID: 11400000, guid: c5aac0bbcd6e0a4459fc5bc0f2c8bcce, type: 2}
+  - {fileID: 11400000, guid: 5c9374ceaa1f6264aad5f1fa857917c2, type: 2}
   - {fileID: 11400000, guid: f018cc7ce3071b640b3cc3108b350f50, type: 2}
   - {fileID: 11400000, guid: 9e9659740fb1d654e8f634002dd0b223, type: 2}
   m_BuildSettings:
@@ -92,6 +93,7 @@ MonoBehaviour:
     - Chapter
     - Item
     - Unit
+    - Hanibi
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 0a43ad1cd731cfd4fbb2eec36ce2ad17, type: 2}
