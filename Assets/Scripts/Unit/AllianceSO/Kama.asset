@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc067b9e32952bf429af293ab424d36e, type: 3}
+  m_Name: Kama
+  m_EditorClassIdentifier: 
+  UnitID: 
+  UnitPrefab: {fileID: 0}
+  Name: 
+  Heath: 0
+  Attack: 0
+  AttackInterval: 0
+  Defense: 0
+  Resistance: 0
+  Block: 0
+  AttackVfx: {fileID: 0}
+  HitVfx: {fileID: 0}
+  Rarity: {fileID: 0}
+  unitSprite: {fileID: 0}
+  unitPotrait: {fileID: 0}
+  unitUIPotrait: {fileID: 0}
+  unitSplashArt: {fileID: 0}
+  UnitRangeVisualized: {fileID: 0}
+  AttackRange: []
+  type: 0
+  UnitDp: 0
+  RedeployTime: 0
+  EnemyType:
+    serializedVersion: 2
+    m_Bits: 0
+  UnitTarget: 0
+  TargetCount: 0
+  DamageType: 0
+  UnitClass: {fileID: 0}
+  LimitBreak: 0
+  Level: 1

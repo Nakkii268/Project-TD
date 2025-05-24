@@ -77,6 +77,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Hanibi
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e37e9da82371bed41a4ab9a8e400f81e
+    m_Address: Assets/PrefabResource/UI/WinUI.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Hanibi
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e901c5a837c321d4082ad2056c9edd47
     m_Address: Assets/PrefabResource/UI/StageSelectUI.prefab
     m_ReadOnly: 0

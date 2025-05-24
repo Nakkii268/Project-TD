@@ -1,5 +1,5 @@
 using System;
-
+using UnityEditor;
 using UnityEngine;
 
 public class Enemy : Character, IDamageable, IHealable, IHasHpBar
@@ -41,7 +41,7 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
     public event EventHandler OnDestroy;
 
     public GameObject Blocker;
-
+    [SerializeField] private StatModifier blockModifier = new StatModifier(0, StatModType.PercentAdd);
     private void Awake()
     {
         eStateMachine = new EnemySMManager(this);
@@ -111,12 +111,15 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
     public void Blocked(GameObject blocker)
     {
         Blocker = blocker;
-        //stat.Speed.Value = 0;
+        stat.Speed.AddingModifier(blockModifier);
+        Debug.Log(stat.Speed.Value);
     }
     public void UnBlock(GameObject blocker)
     {
         Blocker=null;
-        
+        stat.Speed.RemovingModifier(blockModifier);
+
+
     }
     public void DeadBtn()
     {

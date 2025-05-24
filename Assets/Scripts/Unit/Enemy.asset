@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitID: 1221
   UnitPrefab: {fileID: 7337458643970106659, guid: 5813ce2ba261bb841a074e50c19f5b72, type: 3}
-  Name: "s\xE2s"
-  Heath: 9998
-  Attack: 2000
+  Name: Cabbage Slime
+  Heath: 1000
+  Attack: 200
   AttackInterval: 1
   Defense: 1
   Resistance: 1
   Block: 0
-  AttackVfx: {fileID: 0}
-  HitVfx: {fileID: 0}
+  AttackVfx: {fileID: 1442184012376203772, guid: 50a4e5f6312b13b4f97bd5d15fc13162, type: 3}
+  HitVfx: {fileID: 27400811220467730, guid: a026953b84f4b384b90d2ad2f6f68bfc, type: 3}
   Speed: 0.5
   CanBlock: 1
   type: 0

@@ -59,6 +59,9 @@ public class MenuUI : UICanvas
     }
     private void Initialized() {
        //player name, level, progress
+       Gold.text =GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem("G01").ToString();
+       Diamond.text =GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem("D01").ToString();
+        PlayerName.text = GameManager.Instance._playerDataManager.PlayerDataSO.PlayerName;
     }
     public override void SetUp()
     {

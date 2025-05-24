@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class EnemyStat : UnitStat
 {
-   
-   
-    
     public float AttackRange;
     public Stat Speed;
     public bool CanBlock;

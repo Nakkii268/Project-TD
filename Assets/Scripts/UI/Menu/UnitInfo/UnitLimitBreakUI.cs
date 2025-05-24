@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 
 public class UnitLimitBreakUI : UICanvas
@@ -25,8 +26,8 @@ public class UnitLimitBreakUI : UICanvas
         {
             GameObject single = Instantiate(ItemRequiredPrefab, container);
             single.GetComponent<MaterialRequiredSingle>().
-                Init(unit.UnitClass.ClassLimitBreakpData.MaterialsRequired[i], 
-                GetItemQuantity(unit.UnitClass.ClassLimitBreakpData.MaterialsRequired[i].Material.ItemID));
+                Init(unit.UnitClass.ClassLimitBreakpData.MaterialsRequired[i],
+                GameManager.Instance.testData.IsHaveItem(unit.UnitClass.ClassLimitBreakpData.MaterialsRequired[i].Material.ItemID));
         }
         CurrentLimtBreak = unit.LimitBreak;
     }
@@ -81,7 +82,7 @@ public class UnitLimitBreakUI : UICanvas
         List<ItemsData> items = unit.UnitClass.ClassLimitBreakpData.MaterialsRequired;
         for (int i = 0;i< items.Count; i++)
         {
-            if (!GameManager.Instance.testData.IsHaveItem(items[i].Material.ItemID)) return false;
+            if (GameManager.Instance.testData.IsHaveItem(items[i].Material.ItemID)==0) return false;
             if (GameManager.Instance.testData.GetItem(items[i].Material.ItemID).Quantity >= items[i].Quantity) return true;
             return false;
             
@@ -89,11 +90,7 @@ public class UnitLimitBreakUI : UICanvas
         return false;
         
     }
-    private int GetItemQuantity(string itemID)
-    {
-        if (!GameManager.Instance.testData.IsHaveItem(itemID)) return 0;
-        return GameManager.Instance.testData.GetItem(itemID).Quantity;
-    }
+   
     private void SetTargetLimtBreak(int lb)
     {
         CurrentLimtBreak = lb;

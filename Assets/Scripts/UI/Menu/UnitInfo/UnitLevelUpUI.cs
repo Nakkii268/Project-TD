@@ -51,7 +51,7 @@ public class UnitLevelUpUI : UICanvas
         SetTargetLevel(CurrentViewLevel);
         PreviewStat(CurrentLimtBreak);
         UpdateRequireTxt(0, 0);
-        UpdateQttTxt(GameManager.Instance.testData.GetItem(GoldID).Quantity, GameManager.Instance.testData.GetItem(ExpID).Quantity);
+        UpdateQttTxt(GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(GoldID), GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(ExpID));
     }
     public override void SetUp(AllianceUnit unit)
     {
@@ -87,11 +87,12 @@ public class UnitLevelUpUI : UICanvas
 
         LevelUpBtn.onClick.AddListener(() =>
         {
-            if (GameManager.Instance.testData.GetItem(GoldID).Quantity >= Gold && GameManager.Instance.testData.GetItem(ExpID).Quantity >= Exp)
+            if (GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(GoldID) >= Gold && GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(ExpID) >= Exp)
             {
                 LevelUp();
                 ConsumeMaterial();
-                UpdateQttTxt(GameManager.Instance.testData.GetItem(GoldID).Quantity, GameManager.Instance.testData.GetItem(ExpID).Quantity);
+                UpdateQttTxt(GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(GoldID), 
+                    GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(ExpID));
                 CalRequireMaterial();
                 UpdateRequireTxt(Gold, Exp);
             }
@@ -212,6 +213,24 @@ public class UnitLevelUpUI : UICanvas
     {
         Gold=  unit.UnitClass.ClassLevelUpData.data[unit.LimitBreak].CurrencyRequired[0].Quantity * (CurrentViewLevel - unit.Level); //gold
         Exp=  unit.UnitClass.ClassLevelUpData.data[unit.LimitBreak].CurrencyRequired[1].Quantity * (CurrentViewLevel - unit.Level); //exp
+        if(GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(GoldID) < Gold )
+        {
+            QttGold.color = Color.red;
+        }
+        else
+        {
+            QttGold.color = Color.white;
+
+        }
+        if (GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(ExpID) < Exp)
+        {
+            QttExp.color = Color.red;
+
+        }
+        else
+        {
+            QttExp.color = Color.white;
+        }
     }
     private void UpdateRequireTxt(int g, int e)
     {
@@ -225,8 +244,8 @@ public class UnitLevelUpUI : UICanvas
     }
     private void ConsumeMaterial()
     {
-        GameManager.Instance.testData.GetItem(GoldID).Quantity -= Gold;
-        GameManager.Instance.testData.GetItem(ExpID).Quantity -= Exp;
+        GameManager.Instance._playerDataManager.PlayerDataSO.GetItem(GoldID).Quantity -= Gold;
+        GameManager.Instance._playerDataManager.PlayerDataSO.GetItem(ExpID).Quantity -= Exp;
 
     }
   

@@ -22,13 +22,13 @@ public class PlayerDataSO : ScriptableObject
         PlayerProgress = new Progress();
         LastCompleteStage = new Progress();
     }
-    public bool IsHaveItem(string id)
+    public int IsHaveItem(string id)
     {
         for (int i = 0; i < Items.Count; i++)
         {
-            if (Items[i].Material.ItemID == id) return true;
+            if (Items[i].Material.ItemID == id) return Items[i].Quantity;
         }
-        return false;
+        return 0;
     }
     public ItemsData GetItem(string id)
     {

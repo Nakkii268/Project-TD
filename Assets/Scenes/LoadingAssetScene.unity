@@ -578,36 +578,9 @@ MonoBehaviour:
   _sceneLoader: {fileID: 386609036}
   limitBreakIcon: {fileID: 11400000, guid: e5fe7fbb3deffcb46b31ab601b06603d, type: 2}
   _resourceManager: {fileID: 534953649}
+  _playerDataManager: {fileID: 2005953833}
   stagePath: Assets/Scenes/SampleScene.unity
   testData: {fileID: 11400000, guid: c641d677f62fdbc4982558a78b5c356b, type: 2}
-  Data:
-    PlayerID: 1001
-    PlayerName: niga
-    Items:
-    - ItemId: G01
-      Quantity: 1000
-    - ItemId: E01
-      Quantity: 1000
-    - ItemId: M001
-      Quantity: 10
-    OwnedCharacter:
-    - Id: 001
-      Level: 10
-      LimitBreak: 2
-    - Id: 002
-      Level: 1
-      LimitBreak: 0
-    LineUp:
-    - Index: 0
-      UnitId: 001
-    - Index: 6
-      UnitId: 002
-    PlayerProgress:
-      ChapterID: C001
-      Stage: 1
-    LastCompleteStage:
-      ChapterID: C001
-      Stage: 1
 --- !u!1 &812250169
 GameObject:
   m_ObjectHideFlags: 0

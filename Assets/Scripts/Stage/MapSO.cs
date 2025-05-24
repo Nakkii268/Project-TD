@@ -16,6 +16,7 @@ public class MapSO : ScriptableObject
     public int DeployLimit;
     //stamina cost
     //droped material
+    public List<ItemsData> DropItem;
 }
 [Serializable]
 public class Wave

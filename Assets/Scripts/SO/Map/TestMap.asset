@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d34d8dbbb732b47a68629a5ce22f58, type: 3}
   m_Name: TestMap
   m_EditorClassIdentifier: 
-  MapName: TUTORIAL
+  MapName: T-01
   StagePath: Assets/Scenes/SampleScene.unity
   Waves:
   - SpawnTime: 5
@@ -33,36 +33,17 @@ MonoBehaviour:
     EnemyQuantity: 5
     SpawnDelay: 2
     SpawnPos: {x: 0, y: 0, z: 0}
-  - SpawnTime: 10
-    Path:
-    - {x: 0, y: 0}
-    - {x: 1, y: 0}
-    - {x: 2, y: 0}
-    - {x: 3, y: 0}
-    - {x: -99, y: 99}
-    EnemyUnit: {fileID: 11400000, guid: cd67ce6d899f05a4c9e6c25c43ab52ee, type: 2}
-    EnemyQuantity: 5
-    SpawnDelay: 2
-    SpawnPos: {x: 0, y: 0, z: 0}
-  - SpawnTime: 25
-    Path:
-    - {x: 0, y: 0}
-    - {x: 1, y: 0}
-    - {x: 2, y: 0}
-    - {x: 3, y: 0}
-    - {x: 4, y: 0}
-    - {x: 5, y: 0}
-    - {x: 6, y: 0}
-    - {x: 6, y: 1}
-    - {x: 6, y: 2}
-    - {x: 6, y: 3}
-    - {x: -99, y: 99}
-    EnemyUnit: {fileID: 11400000, guid: cd67ce6d899f05a4c9e6c25c43ab52ee, type: 2}
-    EnemyQuantity: 10
-    SpawnDelay: 1.5
-    SpawnPos: {x: 0, y: 0, z: 0}
-  TotalEnemy: 20
-  LifePoint: 20
-  StartDeployPoint: 30
+  TotalEnemy: 5
+  LifePoint: 5
+  StartDeployPoint: 10
   DpRecoveryRate: 1
   DeployLimit: 2
+  DropItem:
+  - Material: {fileID: 11400000, guid: 0ef788f9af53d6d4488a25689a5390ef, type: 2}
+    Quantity: 30
+  - Material: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
+    Quantity: 5000
+  - Material: {fileID: 11400000, guid: ebe72feb9446389428430436d888d572, type: 2}
+    Quantity: 5000
+  - Material: {fileID: 11400000, guid: b326332c006df1d4c841f9c180f2a44e, type: 2}
+    Quantity: 1
