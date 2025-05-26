@@ -38,4 +38,14 @@ public class PlayerDataSO : ScriptableObject
         }
         return null;
     }
+
+    public List<AllianceUnit> GetLineUp()
+    {
+        List<AllianceUnit> units = new List<AllianceUnit>();
+        for(int i = 0;i < PlayerLineUp.Count; i++)
+        {
+            units.Add(PlayerLineUp[i].Unit);
+        }
+        return units;
+    }
 }

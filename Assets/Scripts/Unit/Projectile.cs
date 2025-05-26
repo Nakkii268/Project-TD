@@ -62,6 +62,7 @@ public class Projectile : MonoBehaviour
         if (!target)
         {
             gameObject.SetActive(false);
+            return;
         }
         transform.Translate(Vector2.right * Speed * Time.deltaTime);
         

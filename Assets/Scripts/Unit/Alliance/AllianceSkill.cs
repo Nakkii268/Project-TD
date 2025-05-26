@@ -22,7 +22,7 @@ public class AllianceSkill : MonoBehaviour
     public event EventHandler OnSkillEnd;
     private void Start()
     {
-        
+        OnUseSkill = alliance.GetAllianceUnit().UnitSkills[0];
         alliance.GetAllianceUnit().ApplyClassBuff(alliance.gameObject); //maybe adding status effect or passive idk
 
         if (OnUseSkill.skillType == SkillType.Active)

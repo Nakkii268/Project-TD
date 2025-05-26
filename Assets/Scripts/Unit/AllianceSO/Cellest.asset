@@ -15,10 +15,10 @@ MonoBehaviour:
   UnitID: 002
   UnitPrefab: {fileID: 6865232695306935221, guid: 25c51bdf62ab3964783a457aa28eb066, type: 3}
   Name: Cellest
-  Heath: 900000
-  Attack: 10
+  Heath: 901284
+  Attack: 320
   AttackInterval: 1
-  Defense: 20
+  Defense: 156
   Resistance: 20
   Block: 1
   AttackVfx: {fileID: 1442184012376203772, guid: 50a4e5f6312b13b4f97bd5d15fc13162, type: 3}
@@ -52,5 +52,7 @@ MonoBehaviour:
   TargetCount: 0
   DamageType: 0
   UnitClass: {fileID: 11400000, guid: 2d8ecc50b1fec574f91cfb3a3519f2cd, type: 2}
-  LimitBreak: 0
-  Level: 1
+  LimitBreak: 1
+  Level: 20
+  UnitSkills:
+  - {fileID: 11400000, guid: 768fedc3b7c4dd242b11e5d117e32b55, type: 2}

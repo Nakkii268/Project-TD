@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 1b20eb8c93de0414b84b6da01179c9e7
   m_currentHash:
     serializedVersion: 2
-    Hash: 52c85468b4943c628648508b3b968266
+    Hash: 8c3b49f177c24918077485b41094c27e
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -93,7 +93,7 @@ MonoBehaviour:
     - Chapter
     - Item
     - Unit
-    - Hanibi
+    - UIPrefab
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 0a43ad1cd731cfd4fbb2eec36ce2ad17, type: 2}

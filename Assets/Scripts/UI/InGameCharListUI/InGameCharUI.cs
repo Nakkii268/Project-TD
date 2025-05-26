@@ -10,10 +10,10 @@ public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEnd
     public event EventHandler OnCharSelect;
     public event EventHandler<CharacterData> OnCharDrop;
 
-    [SerializeField]private AllianceUnit unit;
-    [SerializeField] private GameObject Prefab;
+    [SerializeField]private AllianceUnit SlotUnit;
+    [SerializeField] private GameObject DragPrefab;
     [SerializeField] private GameObject toPrefab;
-    [SerializeField] private int indx;
+    [SerializeField] private int SlotIndex;
     [SerializeField]private Canvas Canvas;
     [SerializeField] private Image Potrait;
     [SerializeField] private RectTransform rectTransform;
@@ -26,33 +26,43 @@ public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEnd
         base.Start();
         levelManager = LevelManager.instance;
         rectTransform = GetComponent<RectTransform>();
-        UnitCostTxt.text = unit.UnitDp.ToString();
-        ClassIcon.sprite = unit.UnitClass.ClassIcon;
-        Potrait.sprite = unit.unitPotrait;
+        UnitCostTxt.text = SlotUnit.UnitDp.ToString();
+        ClassIcon.sprite = SlotUnit.UnitClass.ClassIcon;
+        Potrait.sprite = SlotUnit.unitPotrait;
+
     }
-    
+    public void Init(AllianceUnit unit, int inx) { 
+        SlotUnit = unit;
+        SlotIndex = inx;
+        Potrait.sprite = unit.unitPotrait;
+        ClassIcon.sprite = unit.UnitClass.ClassIcon;
+        UnitCostTxt.text = unit.UnitDp.ToString();
+
+        UIManager.Instance.OpenUI<MenuUI>();
+
+    }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if ((levelManager.GetLevelDPManager().GetCurrentDp() < unit.UnitDp) 
+        if ((levelManager.GetLevelDPManager().GetCurrentDp() < SlotUnit.UnitDp) 
             || !countDownUI.canDeloy 
             || !levelManager.GetLevelDPManager().ReachDeployLimit()) return;
 
         rectTransform.localPosition += new Vector3(0, .5f, 0);
-        Prefab.GetComponent<Image>().sprite = unit.unitSprite;
-        Prefab.GetComponent<RectTransform>().position = Input.mousePosition;
-        Prefab.gameObject.SetActive(true);
+        DragPrefab.GetComponent<Image>().sprite = SlotUnit.unitDragSprite;
+        DragPrefab.GetComponent<RectTransform>().position = Input.mousePosition;
+        DragPrefab.gameObject.SetActive(true);
         levelManager.TimeSlow();
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        if ((levelManager.GetLevelDPManager().GetCurrentDp() < unit.UnitDp) 
+        if ((levelManager.GetLevelDPManager().GetCurrentDp() < SlotUnit.UnitDp) 
             || !countDownUI.canDeloy 
             ||  !levelManager.GetLevelDPManager().ReachDeployLimit()) return;
 
-        Prefab.GetComponent<RectTransform>().anchoredPosition += eventData.delta/Canvas.scaleFactor;
+        DragPrefab.GetComponent<RectTransform>().anchoredPosition += eventData.delta/Canvas.scaleFactor;
         OnCharSelect?.Invoke(this,EventArgs.Empty);
-        foreach(var block in levelManager.MapManager.ValidBlock(unit.GetAllianceType()))
+        foreach(var block in levelManager.MapManager.ValidBlock(SlotUnit.GetAllianceType()))
         {
             block.GetComponent<Block>().HighLightBlock(7);
         }
@@ -62,14 +72,14 @@ public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Prefab.gameObject.SetActive(false);
+        DragPrefab.gameObject.SetActive(false);
         rectTransform.localScale = Vector3.one;
-        OnCharDrop?.Invoke(this, new CharacterData(toPrefab,unit,indx));
-        foreach (var block in levelManager.MapManager.ValidBlock(unit.GetAllianceType()))
+        OnCharDrop?.Invoke(this, new CharacterData(toPrefab,SlotUnit,SlotIndex));
+        foreach (var block in levelManager.MapManager.ValidBlock(SlotUnit.GetAllianceType()))
         {
             block.GetComponent<Block>().UnHighLightBlock();
         }
-        
+        levelManager.TimeNormal();
 
     }
     protected override void PointerClickHandler_OnPointerClick(object sender, EventArgs e)
@@ -92,7 +102,7 @@ public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEnd
     public void InitCountDown()
     {
         countDownUI.gameObject.SetActive(true);
-        countDownUI.Inittialize(unit.RedeployTime);
+        countDownUI.Inittialize(SlotUnit.RedeployTime);
     }
     protected override void OnDisable()
     {

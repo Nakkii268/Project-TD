@@ -8,7 +8,7 @@ public class AllianceUnit : Unit
 {
     [Header("Ally Info")]
     public UnitRarity Rarity;
-    public Sprite unitSprite;
+    public Sprite unitDragSprite;
     public Sprite unitPotrait;
     public Sprite unitUIPotrait;
     public Sprite unitSplashArt;
@@ -33,6 +33,8 @@ public class AllianceUnit : Unit
     [Range(1,90)]public int Level;
     //
     #endregion
+    [Header("Skill")]
+    public List<Skills> UnitSkills;
 
     public string GetAllianceType() { return type.ToString(); }
     public void CalculateStat()

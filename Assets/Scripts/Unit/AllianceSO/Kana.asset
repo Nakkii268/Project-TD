@@ -15,16 +15,16 @@ MonoBehaviour:
   UnitID: 001
   UnitPrefab: {fileID: 6865232695306935221, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
   Name: Kana
-  Heath: 5888
-  Attack: 1920
+  Heath: 25440
+  Attack: 3196
   AttackInterval: 1
-  Defense: 562
+  Defense: 2770
   Resistance: 45
   Block: 2
   AttackVfx: {fileID: 1442184012376203772, guid: 50a4e5f6312b13b4f97bd5d15fc13162, type: 3}
   HitVfx: {fileID: 27400811220467730, guid: a026953b84f4b384b90d2ad2f6f68bfc, type: 3}
   Rarity: {fileID: 11400000, guid: 0db3e1a0694614948ab0f03f88761004, type: 2}
-  unitSprite: {fileID: 21300000, guid: 36c59901895a9c34a89ed6e4b35149da, type: 3}
+  unitSprite: {fileID: 1693514579, guid: 36c59901895a9c34a89ed6e4b35149da, type: 3}
   unitPotrait: {fileID: 21300000, guid: 9c31e4f6fcabd064d8d66939e98c8c82, type: 3}
   unitUIPotrait: {fileID: 21300000, guid: c173fdf241598614aae0a80c53dd696d, type: 3}
   unitSplashArt: {fileID: 21300000, guid: e418d8edc7b1eec409827ea0521b4a12, type: 3}
@@ -44,3 +44,5 @@ MonoBehaviour:
   UnitClass: {fileID: 11400000, guid: 2b5cdf9233f6ca64399e23a72a1dfef2, type: 2}
   LimitBreak: 2
   Level: 1
+  UnitSkills:
+  - {fileID: 11400000, guid: a5ddbc2b178714f46b40ef5e9642bdf4, type: 2}

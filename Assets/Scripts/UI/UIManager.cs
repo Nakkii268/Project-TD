@@ -31,6 +31,7 @@ public class UIManager : MonoBehaviour
         canvas.SetUp();
        
         canvas.gameObject.SetActive(true);
+        Debug.Log("Open" +  canvas);
         return canvas as T;
     }
     public T OpenUI<T>(AllianceUnit unit) where T : UICanvas

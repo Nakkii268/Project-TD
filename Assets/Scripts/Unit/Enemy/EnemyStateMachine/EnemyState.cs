@@ -87,7 +87,7 @@ public class EnemyState :  IState
             EnemySMManager._enemy.transform.position = Vector3.MoveTowards(EnemySMManager._enemy.transform.position, target, EnemySMManager._enemy.Stat.Speed.Value * Time.deltaTime);
             CheckNextIndex();
             //move
-            if (Vector3.Distance(new Vector3(EnemySMManager._enemy.transform.position.x, EnemySMManager._enemy.transform.position.y, 0), new Vector3(target.x, target.y, 0)) < .3f)
+            if (Vector3.Distance(new Vector3(EnemySMManager._enemy.transform.position.x, EnemySMManager._enemy.transform.position.y, 0), new Vector3(target.x, target.y, 0)) < .1f)
             {
                 if (EnemySMManager._enemy.pathIndex >= EnemySMManager._enemy.Path.Length - 1) return;
                 EnemySMManager._enemy.pathIndex++;

@@ -9,7 +9,7 @@ public class ScaleToFOV : MonoBehaviour
     [SerializeField] private Camera _camera;
 
     
-    private float BaseFOV = 30;
+    private float BaseFOV = 25;
      private Vector3 BaseScale = new Vector3(2,2,2);    
     // Start is called before the first frame update
     void Start()

@@ -19,12 +19,15 @@ MonoBehaviour:
   skillTarget: 2
   TargetRequire: 1
   SkillRange: []
-  SkillVFX: {fileID: 1442184012376203772, guid: 50a4e5f6312b13b4f97bd5d15fc13162, type: 3}
+  SkillVFX:
+    Particle: {fileID: 7008703141135775361, guid: f2e4ab672f0a411408593e7fde0c3c6e, type: 3}
+    Rotatable: 0
+    BaseRotation: {x: 0, y: 0, z: 0}
   ChargeType: 2
   SkillDuration: 2
   SkillPoint: 10
   CanAttack: 0
   ActiveType: 0
-  SkillDmgScale: 0
+  SkillDmgScale: 9999999
   DamageType: 0
   delayTime: 1

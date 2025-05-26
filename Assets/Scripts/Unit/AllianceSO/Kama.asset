@@ -12,33 +12,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc067b9e32952bf429af293ab424d36e, type: 3}
   m_Name: Kama
   m_EditorClassIdentifier: 
-  UnitID: 
-  UnitPrefab: {fileID: 0}
-  Name: 
-  Heath: 0
-  Attack: 0
-  AttackInterval: 0
-  Defense: 0
-  Resistance: 0
-  Block: 0
+  UnitID: 003
+  UnitPrefab: {fileID: 6865232695306935221, guid: 949ca6295e5cf9349869dd6646cd177f, type: 3}
+  Name: kama
+  Heath: 1000
+  Attack: 1000
+  AttackInterval: 0.7
+  Defense: 10
+  Resistance: 10
+  Block: 1
   AttackVfx: {fileID: 0}
   HitVfx: {fileID: 0}
-  Rarity: {fileID: 0}
-  unitSprite: {fileID: 0}
-  unitPotrait: {fileID: 0}
-  unitUIPotrait: {fileID: 0}
-  unitSplashArt: {fileID: 0}
-  UnitRangeVisualized: {fileID: 0}
-  AttackRange: []
-  type: 0
-  UnitDp: 0
-  RedeployTime: 0
+  Rarity: {fileID: 11400000, guid: 0db3e1a0694614948ab0f03f88761004, type: 2}
+  unitSprite: {fileID: -255210442, guid: 678a0865b0bbfdd4d9a27005b7c8f5c2, type: 3}
+  unitPotrait: {fileID: 21300000, guid: e17a5fcf785a6ab48ae0b19f714be318, type: 3}
+  unitUIPotrait: {fileID: 21300000, guid: 55c97967a3f2c6544a59352105eb21f7, type: 3}
+  unitSplashArt: {fileID: 21300000, guid: 80be36606fe1ff049b4fcaf6f9724362, type: 3}
+  UnitRangeVisualized: {fileID: -1804195501, guid: 4ecd44054a5d7f54ca1dd8a09d2540dd, type: 3}
+  AttackRange:
+  - {x: 0, y: 0}
+  - {x: 0, y: 1}
+  - {x: 0, y: -1}
+  - {x: 1, y: 0}
+  - {x: 1, y: 1}
+  - {x: 1, y: -1}
+  - {x: -1, y: 0}
+  - {x: -1, y: 1}
+  - {x: -1, y: -1}
+  - {x: -2, y: 0}
+  - {x: -2, y: 1}
+  - {x: -2, y: -1}
+  type: 1
+  UnitDp: 15
+  RedeployTime: 20
   EnemyType:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 6144
   UnitTarget: 0
   TargetCount: 0
   DamageType: 0
-  UnitClass: {fileID: 0}
+  UnitClass: {fileID: 11400000, guid: 2d8ecc50b1fec574f91cfb3a3519f2cd, type: 2}
   LimitBreak: 0
   Level: 1
+  UnitSkills:
+  - {fileID: 11400000, guid: 7acfcc20f5a7e4547bce5adaba9fa208, type: 2}

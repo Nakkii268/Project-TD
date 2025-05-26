@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb41e6c6384780a4285ce35b5d502967, type: 3}
   m_Name: New Effect Type Skills
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Heal
   Description: 
   skillType: 0
   skillEffect: 1
@@ -20,7 +20,7 @@ MonoBehaviour:
   TargetRequire: 0
   SkillRange: []
   SkillVFX:
-    Particle: {fileID: 0}
+    Particle: {fileID: 7008703141135775361, guid: f2e4ab672f0a411408593e7fde0c3c6e, type: 3}
     Rotatable: 0
     BaseRotation: {x: 0, y: 0, z: 0}
   ChargeType: 2

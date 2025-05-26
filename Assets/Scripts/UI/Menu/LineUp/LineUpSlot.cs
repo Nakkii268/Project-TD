@@ -9,7 +9,7 @@ public class LineUpSlot : MonoBehaviour
 {
     [SerializeField] private AllianceUnit SlotUnit;
     [SerializeField] private Button _btn;
-    [SerializeField] private Button RemoveBtn;
+    
     [SerializeField] private int SlotIndex;
     [SerializeField] private TextMeshProUGUI _levelText;
     [SerializeField] private TextMeshProUGUI _nameText;
@@ -22,7 +22,7 @@ public class LineUpSlot : MonoBehaviour
     {
         if (unit == null)
         {
-            RemoveBtn.gameObject.SetActive(false);
+            
             NullPotrait.gameObject.SetActive(true);
             return;
         }
@@ -32,7 +32,7 @@ public class LineUpSlot : MonoBehaviour
         ClassIcon.sprite = unit.UnitClass.ClassIcon;
         RarityIcon.sprite = unit.Rarity.RarityIcon;
         UIPotrait.sprite = unit.unitUIPotrait;
-        RemoveBtn.gameObject.SetActive(true);
+    
         NullPotrait.gameObject.SetActive(false);
         
         
@@ -49,13 +49,7 @@ public class LineUpSlot : MonoBehaviour
             UIManager.Instance.GetUI<UnitSelectionUI>().OnUnitConfirm += LineUpSlot_OnUnitConfirm;
             
         });
-        RemoveBtn.onClick.AddListener(() =>
-        {
-            OnUnitAssign?.Invoke(this, new LineUpSave(-1, SlotUnit));
-            Initialized(null);
-            SlotUnit = null;
-
-        });
+        
     }
     
     private void LineUpSlot_OnUnitConfirm(object sender, LineUpSave e)

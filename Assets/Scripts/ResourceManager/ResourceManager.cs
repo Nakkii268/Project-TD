@@ -24,7 +24,7 @@ public class ResourceManager : MonoBehaviour
         LoadAllChapter<ChapterSO>("Chapter");
         LoadAllUnit<AllianceUnit>("Unit");
         LoadAllItem<Item>("Item");
-        LoadAllUICanvas<UICanvas>("Hanibi");
+        LoadAllUICanvas<UICanvas>("UIPrefab");
     }
     public  void LoadAllUICanvas<T>(string label) where T : UICanvas
     {

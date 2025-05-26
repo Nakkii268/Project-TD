@@ -21,13 +21,14 @@ public class SceneLoader : MonoBehaviour
     }
     private IEnumerator DelayLoadStage(string path)
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         Addressables.LoadSceneAsync(path).Completed += handler =>
         {
             if (handler.Status == AsyncOperationStatus.Succeeded)
             {
                 Debug.Log("loadCompleted");
                 UIManager.Instance.CloseAllUI();
+                UIManager.Instance.OpenUI<InGameUI>();
 
             }
             else
