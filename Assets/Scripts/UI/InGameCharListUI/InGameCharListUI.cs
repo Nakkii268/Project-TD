@@ -7,7 +7,7 @@ public class InGameCharListUI : MonoBehaviour
     public static InGameCharListUI Instance;
     [SerializeField] private GameObject prefab;
     [SerializeField] private List<InGameCharUI> charList = new List<InGameCharUI>();
-    [SerializeField] private LevelDPManager levelDPManager;
+    [SerializeField] private GameObject dragUnitSprite;
     [SerializeField] private int currentUnitDeloy;
     
 
@@ -23,7 +23,7 @@ public class InGameCharListUI : MonoBehaviour
         {
             GameObject unit = Instantiate(prefab.gameObject, this.transform);
             InGameCharUI single = unit.GetComponent<InGameCharUI>();
-            single.Init(unitlist[i],i);   
+            single.Init(unitlist[i],i,dragUnitSprite);   
             single.OnCharDrop += Single_OnCharDrop;
             single.OnCharSelect += Single_OnCharSelect;
             charList.Add(single);

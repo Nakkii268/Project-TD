@@ -29,12 +29,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - UIPrefab
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 39d434485ecc2cd47bc9c63d49d10343
-    m_Address: Assets/PrefabResource/UI/UnitDragSprite.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - UIPrefab
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 700cb58d4fc985d41b4c310725cf9aac
     m_Address: Assets/PrefabResource/UI/LevelUpUI.prefab
     m_ReadOnly: 0

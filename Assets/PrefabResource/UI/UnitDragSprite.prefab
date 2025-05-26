@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1685748573768509133}
   - component: {fileID: 8319940208162918018}
   - component: {fileID: 7243257926329273190}
-  - component: {fileID: 7113436259506203677}
   m_Layer: 5
   m_Name: UnitDragSprite
   m_TagString: Untagged
@@ -90,17 +89,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 0}
---- !u!114 &7113436259506203677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9129662174237965127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28ea9c10bc777344c9cfe025cb471cb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDestroyOnClose: 1
-  DragSprite: {fileID: 8319940208162918018}

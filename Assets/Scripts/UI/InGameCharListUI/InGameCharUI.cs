@@ -29,15 +29,15 @@ public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEnd
         UnitCostTxt.text = SlotUnit.UnitDp.ToString();
         ClassIcon.sprite = SlotUnit.UnitClass.ClassIcon;
         Potrait.sprite = SlotUnit.unitPotrait;
-
+        Canvas= UIManager.Instance.GetComponent<Canvas>();
     }
-    public void Init(AllianceUnit unit, int inx) { 
+    public void Init(AllianceUnit unit, int inx, GameObject drag) { 
         SlotUnit = unit;
         SlotIndex = inx;
         Potrait.sprite = unit.unitPotrait;
         ClassIcon.sprite = unit.UnitClass.ClassIcon;
         UnitCostTxt.text = unit.UnitDp.ToString();
-
+        DragPrefab = drag;
         UIManager.Instance.OpenUI<MenuUI>();
 
     }
