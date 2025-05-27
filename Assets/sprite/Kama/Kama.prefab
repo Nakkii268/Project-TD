@@ -1709,7 +1709,7 @@ MonoBehaviour:
   unitPos: {x: 0, y: 0}
   unit: {fileID: 0}
   isDeloyed: 0
-  allianceVisual: {fileID: 0}
+  allianceVisual: {fileID: 3781520570232126257}
   allianceDirection: {fileID: 126782879211679013}
   allianceAttackRange: {fileID: 7841855919330626395}
   allianceInfo: {fileID: 3250759801568450005}

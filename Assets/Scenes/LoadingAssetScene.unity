@@ -762,6 +762,10 @@ MonoBehaviour:
     LineUp:
     - Index: 0
       UnitId: 001
+    - Index: 1
+      UnitId: 002
+    - Index: 2
+      UnitId: 003
     PlayerProgress:
       ChapterID: C01
       Stage: 1

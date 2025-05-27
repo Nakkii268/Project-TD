@@ -21,8 +21,8 @@ MonoBehaviour:
   Defense: 10
   Resistance: 10
   Block: 1
-  AttackVfx: {fileID: 0}
-  HitVfx: {fileID: 0}
+  AttackVfx: {fileID: 1442184012376203772, guid: 50a4e5f6312b13b4f97bd5d15fc13162, type: 3}
+  HitVfx: {fileID: 27400811220467730, guid: a026953b84f4b384b90d2ad2f6f68bfc, type: 3}
   Rarity: {fileID: 11400000, guid: 0db3e1a0694614948ab0f03f88761004, type: 2}
   unitDragSprite: {fileID: -255210442, guid: 678a0865b0bbfdd4d9a27005b7c8f5c2, type: 3}
   unitPotrait: {fileID: 21300000, guid: e17a5fcf785a6ab48ae0b19f714be318, type: 3}
@@ -43,14 +43,14 @@ MonoBehaviour:
   - {x: -2, y: 1}
   - {x: -2, y: -1}
   type: 1
-  UnitDp: 15
+  UnitDp: 5
   RedeployTime: 20
   EnemyType:
     serializedVersion: 2
-    m_Bits: 6144
-  UnitTarget: 0
+    m_Bits: 8192
+  UnitTarget: 1
   TargetCount: 0
-  DamageType: 0
+  DamageType: 2
   UnitClass: {fileID: 11400000, guid: 2d8ecc50b1fec574f91cfb3a3519f2cd, type: 2}
   LimitBreak: 0
   Level: 1

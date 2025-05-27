@@ -18,6 +18,11 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
+        if (!target)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
         MoveToTarget();
         RotateToTarget();
         
@@ -59,11 +64,7 @@ public class Projectile : MonoBehaviour
     }
     private void MoveToTarget()
     {
-        if (!target)
-        {
-            gameObject.SetActive(false);
-            return;
-        }
+        
         transform.Translate(Vector2.right * Speed * Time.deltaTime);
         
         

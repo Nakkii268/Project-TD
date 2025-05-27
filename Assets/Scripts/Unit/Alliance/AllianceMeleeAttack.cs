@@ -17,10 +17,10 @@ public class AllianceMeleeAttack : AllianceAttack
 
     public override void Attack()
     {
-        alliance.AllianceVisual.RotateToTarget(currentTarget[0]);
+        alliance.AllianceVisual.RotateToTarget(GetTarget()[0]);
         if (Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Enemy)
         {
-            foreach (GameObject tg in currentTarget)
+            foreach (GameObject tg in GetTarget())
             {
                 tg.GetComponentInParent<IDamageable>().ReceiveDamaged(alliance.Stat.Attack.Value, damageType);
                 LevelManager.instance.ParticleManager.HitParticle(tg, alliance.GetAllianceUnit().HitVfx);
@@ -33,8 +33,9 @@ public class AllianceMeleeAttack : AllianceAttack
         {
            
             
-            foreach (GameObject tg in currentTarget)
+            foreach (GameObject tg in GetTarget())
             {
+                
                 tg.GetComponentInParent<IHealable>().Heal(alliance.Stat.Attack.Value);
             }
 

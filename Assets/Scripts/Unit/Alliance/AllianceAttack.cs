@@ -11,9 +11,9 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
     public Alliance Alliance {  get { return alliance; } }
    
     [SerializeField] protected List<GameObject> targets;
-    [SerializeField] protected List<GameObject> currentTarget;
+
     [SerializeField] protected Transform vfxPos;
-    public List<GameObject> CurrentTarget { get { return currentTarget; } }
+
 
     [SerializeField] protected TargetCount targetCount;
     [SerializeField] protected DamageType damageType;
@@ -37,10 +37,10 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
 
     private void AllienceAttackCollider_OnEnemyOut(object sender, GameObject e)
     {
-        if (currentTarget.Contains(e))
+        if (targets.Contains(e))
         {
             RemoveTarget(e);
-            GetTarget();
+            SortingTarget(targets,0,targets.Count-1);
         }
         else
         {
@@ -55,14 +55,15 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
     private void AllienceAttackCollider_OnEnemyIn(object sender, GameObject e)
     {
         AddTarget(e);
-        GetTarget();
-       
+        SortingTarget(targets, 0, targets.Count-1);
+
+
     }
 
     public virtual void AttackPerform()
     {
         
-        OnAttackPerform?.Invoke(this,currentTarget);
+        OnAttackPerform?.Invoke(this,GetTarget());
         attackReady = false;
         StartCoroutine(AttackCoolDown(alliance.Stat.AttackInterval.Value));
     }
@@ -70,6 +71,20 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
     public virtual void Attack() { }
     public bool IsHaveTarget()
     {
+        if (alliance.GetAllianceUnit().UnitTarget == UnitTarget.Alliance )
+        {
+            for (int i = 0; i < targetsInRange.Count; i++)
+            {
+                if (targetsInRange[i].GetComponentInParent<IHealable>().GetPercentHp() <= .99f)
+                {
+                    
+                    return true;
+                }
+            }
+            return false;
+
+        }
+
         return targetsInRange.Count > 0;
     }
     public bool CanPerformAttack()
@@ -83,73 +98,57 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
     public void RemoveTarget(GameObject enemy)
     {
         targets.Remove(enemy);
-        if(targets.Count == 0)
-        {
-            currentTarget = null;
-        }
+      
     }
 
-    protected List<GameObject> GetClosestTarget() {
-        if (targets.Count == 0) return null; 
-        List<GameObject> toReturn = new();
-        GameObject min = targets[0];
-        for (int i = 1; i < targets.Count; i++) {
-            if (Vector2.Distance(targets[i].transform.position,transform.position) < Vector2.Distance(min.transform.position, transform.position))
-            {
-                min = targets[i];
-            }
-        }
-        
-        toReturn.Add(min);  
-        return toReturn;
-    }
-    protected GameObject GetMinHpTarget()//remind to change
-    {
-        if (targets.Count == 0) return null;
-       GameObject toReturn = new();
-
-        GameObject min = targets[0];
-        for (int i = 1; i < targets.Count; i++)
-        {
-            if (targets[i].GetComponent<IHealable>().GetPercentHp() < min.GetComponent<IHealable>().GetPercentHp())
-            {
-                min = targets[i];
-            }
-            toReturn = min;
-        }
-        
-        return toReturn;
-    }
-    protected void GetTarget()
+   
+    
+    public List<GameObject> GetTarget()
     {
         
         if(targetCount == TargetCount.Single)
-        {
-            if (Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Enemy)
-            {
-                currentTarget= GetClosestTarget();
+        {   
+            
+            return new List<GameObject>() { targets[0] };
 
-
-            }
-            else if (Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Alliance)
-            {
-                //currentTarget= GetMinHpTarget(); 
-
-            }
         }
         else if(targetCount == TargetCount.Blocked)
         {
-            currentTarget = alliance.AllianceBlock.GetBlockedEnemy();
 
-        }else if(targetCount == TargetCount.AllInRange)
-        {
-            currentTarget= targets;
+            return alliance.AllianceBlock.GetBlockedEnemy();
+
         }
+        else if(targetCount == TargetCount.AllInRange)
+        {
+           
+            return targets;
+
+        }
+
+        return null;
 
         
     }
 
-    
+    public List<GameObject> GetMinHpTarget()
+    {
+        List<IHealable> targetHps = new List<IHealable>();
+        for (int i = 0; i < targets.Count; i++)
+        {
+            targetHps.Add(targets[i].GetComponentInParent<IHealable>());
+        }
+       
+        int minIndex = 0;
+        for (int i = 0; i < targetHps.Count; i++)
+        {
+            if (targetHps[i].GetPercentHp() < targetHps[minIndex].GetPercentHp())
+            {
+                
+                minIndex = i;
+            }
+        }
+        return new List<GameObject> { targets[minIndex] };
+    }
 
     public void SetTargetCount(TargetCount tc)
     {
@@ -163,8 +162,39 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
         
     }
 
-    
-    
+    private void SortingTarget(List<GameObject> tgs, int low, int hight)
+    {
+        List<IHealable> targetHps = new List<IHealable>();
+        for (int i = 0; i < tgs.Count; i++)
+        {
+            targetHps.Add(tgs[i].GetComponentInParent<IHealable>());
+        }
+        if(low < hight)
+        {
+            int pivotIndex = Partition(targetHps, low,hight);
+            SortingTarget(tgs,low,pivotIndex-1);
+            SortingTarget(tgs, pivotIndex+1, hight);
+        }
+
+    }
+    private int Partition(List<IHealable> tgs, int low, int hight)
+    {
+        
+        float pivot = tgs[hight].GetPercentHp();
+
+        int i = low - 1;
+        for (int j = low; j < hight; j++)
+        {
+            if (tgs[j].GetPercentHp() < pivot)
+            {
+                i++;
+                (tgs[j], tgs[i]) = (tgs[i], tgs[j]);
+            }
+        }
+        (tgs[i + 1], tgs[hight]) = (tgs[hight], tgs[i + 1]);
+        return i + 1;
+
+    }
 }
 public enum TargetCount
 {

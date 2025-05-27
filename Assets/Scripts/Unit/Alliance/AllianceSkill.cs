@@ -88,7 +88,7 @@ public class AllianceSkill : MonoBehaviour
         if (!IsFullSkillPoint()) return;
         if(OnUseSkill.TargetRequire && target==null) return;
 
-        OnUseSkill.SkillActivate(this, alliance.AllianceAttack.CurrentTarget);
+        OnUseSkill.SkillActivate(this, alliance.AllianceAttack.GetTarget());
         OnUseSkill.SkillActivate(this);
 
         curSkillPoint = 0;

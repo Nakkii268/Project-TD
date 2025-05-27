@@ -35,6 +35,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Chapter
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9d17516532e9e0c43b1cf03efdcb89c6
+    m_Address: Assets/Scripts/Unit/AllianceSO/Kama.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Unit
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b18f85b780946e8409d3a4e0589a984a
     m_Address: Assets/Scripts/Unit/Guard1.asset
     m_ReadOnly: 0

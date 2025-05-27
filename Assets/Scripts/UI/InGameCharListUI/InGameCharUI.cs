@@ -12,7 +12,7 @@ public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEnd
 
     [SerializeField]private AllianceUnit SlotUnit;
     [SerializeField] private GameObject DragPrefab;
-    [SerializeField] private GameObject toPrefab;
+    [SerializeField] private GameObject SpawnPrefab;
     [SerializeField] private int SlotIndex;
     [SerializeField]private Canvas Canvas;
     [SerializeField] private Image Potrait;
@@ -38,6 +38,7 @@ public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEnd
         ClassIcon.sprite = unit.UnitClass.ClassIcon;
         UnitCostTxt.text = unit.UnitDp.ToString();
         DragPrefab = drag;
+        SpawnPrefab = unit.UnitPrefab;
         UIManager.Instance.OpenUI<MenuUI>();
 
     }
@@ -74,7 +75,7 @@ public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEnd
     {
         DragPrefab.gameObject.SetActive(false);
         rectTransform.localScale = Vector3.one;
-        OnCharDrop?.Invoke(this, new CharacterData(toPrefab,SlotUnit,SlotIndex));
+        OnCharDrop?.Invoke(this, new CharacterData(SpawnPrefab,SlotUnit,SlotIndex));
         foreach (var block in levelManager.MapManager.ValidBlock(SlotUnit.GetAllianceType()))
         {
             block.GetComponent<Block>().UnHighLightBlock();
