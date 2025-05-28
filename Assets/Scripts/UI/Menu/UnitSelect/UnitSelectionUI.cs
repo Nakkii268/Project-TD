@@ -72,16 +72,22 @@ public class UnitSelectionUI : UICanvas
         });
         //ConfirmBtnHandle();
     }
-    public override void SetUp(AllianceUnit unit)
+    public override void SetUp(object t)
     {
-        Initialized(unit);
+        if(t is SlotData data)
+        {
+            Initialized(data.unit, data.index);
+        }
+        
     }
-    private void Initialized(AllianceUnit unit)
+    private void Initialized(AllianceUnit unit,int idx)
     {
+        _units = GameManager.Instance._playerDataManager.PlayerDataSO.OwnedCharacter;
+        //handle info part
         if (unit == null) { 
             NoInfoUI.gameObject.SetActive(true); 
         }
-
+        //handle select item part
         for (int i = 0; i < _units.Count; i++)
         {
 
@@ -93,7 +99,7 @@ public class UnitSelectionUI : UICanvas
             _child.Add(i, single);
 
         }
-        _currentSelectIndex = -1;
+        _currentSelectIndex = idx;
     }
     private void OnDisable()
     {
@@ -102,14 +108,16 @@ public class UnitSelectionUI : UICanvas
 
     private void Single_OnUnitSelected(object sender, LineUpSave e)
     {
-        if (_currentSelectIndex != -1)
+        if (_currentSelectUnit != null)
         {
 
             _child[_currentSelectIndex].UnSelected();
             
         }
-        if(e.Index == -1)
+        if(e.Unit == null)
         {
+            
+
             UpdateInfomation(null);
         }
         else

@@ -8,16 +8,16 @@ using UnityEngine.UI;
 public class LineUpUI : UICanvas
 {
     [SerializeField] private List<LineUpSlot> _slots;
-    [SerializeField] private List<LineUpSave> _playerSquad;
-    [SerializeField] public Dictionary<string,LineUpSave> _tempSquad = new Dictionary<string, LineUpSave>();
+    [SerializeField] private List<LineUpSave> _playerSquad= new List<LineUpSave>();
+    [SerializeField] public Dictionary<int,LineUpSave> _tempSquad = new Dictionary<int, LineUpSave>();
 
     [SerializeField] private Button _backBtn;
     [SerializeField] private Button _homeBtn;
-    [SerializeField] private Button SaveBtn;
+    
     private void Start()
     {
         //get player squad 
-        
+        Debug.Log(_tempSquad.Count);    
         _backBtn.onClick.AddListener(() =>
         {
             _tempSquad.Clear();
@@ -29,13 +29,8 @@ public class LineUpUI : UICanvas
             UIManager.Instance.CloseToHome();
             UIManager.Instance.OpenUI<MenuUI>();
         });
-        SaveBtn.onClick.AddListener(() => { 
-            _playerSquad = _tempSquad.Values.ToList();
-            _tempSquad = _playerSquad.ToDictionary(item => item.Unit.UnitID);
-
-
-        });
-        _tempSquad = _playerSquad.ToDictionary(item => item.Unit.UnitID);
+      
+        _tempSquad = _playerSquad.ToDictionary(item => item.Index);
         
     }
 
@@ -46,7 +41,7 @@ public class LineUpUI : UICanvas
     }
     private void Initialized()
     {
-        _playerSquad = GameManager.Instance.testData.PlayerLineUp;
+        _playerSquad = GameManager.Instance._playerDataManager.PlayerDataSO.PlayerLineUp;
         for (int i = 0; i < _slots.Count; i++)
         {
             _slots[i].OnUnitAssign += LineUpUI_OnUnitAssign;
@@ -65,20 +60,24 @@ public class LineUpUI : UICanvas
     private void LineUpUI_OnUnitAssign(object sender, LineUpSave e)
     {
        
-        if (_tempSquad.ContainsKey(e.Unit.UnitID))
+        if (_tempSquad.ContainsKey(e.Index))
         {
-            if (e.Index == -1)
+            if (e.Unit == null)
             {
-                _tempSquad.Remove(e.Unit.UnitID);
-              
+                _tempSquad.Remove(e.Index);
+                GameManager.Instance._playerDataManager.PlayerDataSO.UpdateLineUp(e.Unit, e.Index);
 
                 return;
             }
-            _tempSquad[e.Unit.UnitID] = e;
+            GameManager.Instance._playerDataManager.PlayerDataSO.UpdateLineUp(e.Unit, e.Index);
+
+            _tempSquad[e.Index] = e;
             
             return;
         }
-        _tempSquad.Add(e.Unit.UnitID, e);
+        GameManager.Instance._playerDataManager.PlayerDataSO.UpdateLineUp(e.Unit, e.Index);
+
+        _tempSquad.Add(e.Index, e);
         
         
         

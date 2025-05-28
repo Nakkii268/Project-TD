@@ -15,6 +15,7 @@ public class LineUpSlot : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private Image ClassIcon;
     [SerializeField] private Image RarityIcon;
+    [SerializeField] private Image limitBrrakIcon;
     [SerializeField] private Image UIPotrait;
     [SerializeField] private Image NullPotrait;
     public event EventHandler<LineUpSave> OnUnitAssign;
@@ -22,7 +23,7 @@ public class LineUpSlot : MonoBehaviour
     {
         if (unit == null)
         {
-            
+            SlotUnit = null;
             NullPotrait.gameObject.SetActive(true);
             return;
         }
@@ -32,7 +33,7 @@ public class LineUpSlot : MonoBehaviour
         ClassIcon.sprite = unit.UnitClass.ClassIcon;
         RarityIcon.sprite = unit.Rarity.RarityIcon;
         UIPotrait.sprite = unit.unitUIPotrait;
-    
+        limitBrrakIcon.sprite = GameManager.Instance.limitBreakIcon.GetIcon(unit.LimitBreak);
         NullPotrait.gameObject.SetActive(false);
         
         
@@ -45,7 +46,7 @@ public class LineUpSlot : MonoBehaviour
     {
         _btn.onClick.AddListener(() =>
         {
-            UIManager.Instance.OpenUI<UnitSelectionUI>(SlotUnit);
+            UIManager.Instance.OpenUI<UnitSelectionUI>(new SlotData(SlotUnit,SlotIndex));
             UIManager.Instance.GetUI<UnitSelectionUI>().OnUnitConfirm += LineUpSlot_OnUnitConfirm;
             
         });
@@ -57,7 +58,7 @@ public class LineUpSlot : MonoBehaviour
         if (e.Index == -1)
         {
             OnUnitAssign?.Invoke(this, new LineUpSave(-1, e.Unit));
-            Debug.Log(e.Unit);
+            
             Initialized(null);
             return;
 
@@ -67,4 +68,13 @@ public class LineUpSlot : MonoBehaviour
 
     }
 }
-
+public class SlotData
+{
+    public AllianceUnit unit;
+    public int index;
+    public SlotData(AllianceUnit unit, int index)
+    {
+        this.unit = unit;
+        this.index = index;
+    }
+}

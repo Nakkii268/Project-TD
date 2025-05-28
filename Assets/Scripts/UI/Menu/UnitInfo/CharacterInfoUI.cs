@@ -60,9 +60,7 @@ public class CharacterInfoUI : UICanvas
         SetLimtBreakText(allanceUnit.LimitBreak);
         if (IsMaxLevel(unit.LimitBreak))
         {
-            Debug.Log(IsMaxLevel(unit.LimitBreak));
-            Debug.Log(unit.LimitBreak);
-            Debug.Log(unit.Rarity.LevelCap[unit.LimitBreak]);
+           
             LevelUpBtn.interactable = false;
         }
         else

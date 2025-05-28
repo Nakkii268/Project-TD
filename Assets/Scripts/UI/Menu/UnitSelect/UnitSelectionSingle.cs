@@ -33,15 +33,23 @@ public class UnitSelectionSingle : MonoBehaviour
         UIPotrait.sprite = unit.unitUIPotrait;
         Index = i;
         Selected.SetActive(false);
-        if (from == unit) { 
+
+        if (from == unit)
+        {
             isSelected = true;
             Selected.SetActive(true);
             isInteractable = true;
             OnUnitSelected?.Invoke(this, new LineUpSave(i, unit));
 
         }
+        else
+        {
+            if (GameManager.Instance._playerDataManager.PlayerDataSO.IsLineUpContain(unit))
+            {
+                _btn.interactable = false;
+            }
 
-
+        }
     }
 
     private void Start()
@@ -50,7 +58,7 @@ public class UnitSelectionSingle : MonoBehaviour
         _btn.onClick.AddListener(() =>
         {
             
-            Debug.Log(isSelected);
+          
            if (!isSelected) {
                 isSelected = !isSelected;
                 Selected.SetActive(true);
@@ -62,17 +70,14 @@ public class UnitSelectionSingle : MonoBehaviour
             {
                 isSelected = !isSelected;
                 Selected.SetActive(false);
-                OnUnitSelected?.Invoke(this, new LineUpSave(-1, _unit));
+               
+                OnUnitSelected?.Invoke(this, new LineUpSave(Index, null));
                 
 
             }
 
         });
-        if(UIManager.Instance.GetUI<LineUpUI>()._tempSquad.ContainsKey( _unit.UnitID) && !isInteractable)
-        {
-            _btn.interactable = false;
-            
-        }
+       
         
     }
     public void UnSelected()

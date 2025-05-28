@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
-[CreateAssetMenu(menuName ="PlayerData")]
+[CreateAssetMenu(menuName = "PlayerData")]
 public class PlayerDataSO : ScriptableObject
 {
     public string PlayerID;
@@ -12,10 +13,10 @@ public class PlayerDataSO : ScriptableObject
     public Progress PlayerProgress;
     public Progress LastCompleteStage;
 
-   public void ClearData()
+    public void ClearData()
     {
         PlayerID = string.Empty;
-        PlayerName = string.Empty;  
+        PlayerName = string.Empty;
         Items.Clear();
         OwnedCharacter.Clear();
         PlayerLineUp.Clear();
@@ -42,10 +43,51 @@ public class PlayerDataSO : ScriptableObject
     public List<AllianceUnit> GetLineUp()
     {
         List<AllianceUnit> units = new List<AllianceUnit>();
-        for(int i = 0;i < PlayerLineUp.Count; i++)
+        for (int i = 0; i < PlayerLineUp.Count; i++)
         {
             units.Add(PlayerLineUp[i].Unit);
         }
         return units;
+    }
+    public void UpdateLineUp(AllianceUnit unit, int indx)
+    {
+        
+        //check if already have unit in this index:
+        //yes=remove/update
+        for (int i = 0; i < PlayerLineUp.Count; i++)
+        {
+            if (PlayerLineUp[i].Index == indx)
+            {
+                Debug.Log("that him!");
+                if (unit == null)
+                {
+                    Debug.Log("null case");
+                    PlayerLineUp.RemoveAt(i);
+                    return;
+                }
+                else
+                {
+                    Debug.LogWarning("add1");
+                    PlayerLineUp[i].Unit = unit;
+                    return;
+                }
+                
+            }
+            
+        }
+        //no = add if not null
+       if (unit != null)
+        {
+            Debug.LogWarning("add2");
+
+            PlayerLineUp.Add(new LineUpSave(indx, unit));
+            
+        }
+    }
+    public bool IsLineUpContain(AllianceUnit unit)
+    {
+        HashSet<AllianceUnit> lineup = new HashSet<AllianceUnit>(GetLineUp());
+        if(lineup.Contains(unit)) return true;
+        return false;
     }
 }
