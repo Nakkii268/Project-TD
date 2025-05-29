@@ -103,7 +103,7 @@ public class AllianceSkill : MonoBehaviour
             LevelManager.instance.ParticleManager.SkillParticle(this.gameObject, OnUseSkill.SkillVFX, this.transform, alliance.GetVFXQuaternion());
            
             
-            //Debug.Log(alliance.direction);
+            
         }
         StartCoroutine(SkillActiveDurtation());
         DisableSkillBtn();
@@ -165,9 +165,11 @@ public class AllianceSkill : MonoBehaviour
     {
         _isSkillDuration = true;
         ActiveSkills skill = (ActiveSkills)OnUseSkill;
+        DisableSkillBtn();
         yield return new WaitForSeconds(skill.SkillDuration);
         OnSkillEnd?.Invoke(this, EventArgs.Empty);
         _isSkillDuration = false;
+        
     }
   
 }

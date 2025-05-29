@@ -51,7 +51,7 @@ MonoBehaviour:
     - {x: 8, y: 4}
     - {x: 8, y: 5}
     - {x: -99, y: 99}
-    EnemyUnit: {fileID: 11400000, guid: cd67ce6d899f05a4c9e6c25c43ab52ee, type: 2}
+    EnemyUnit: {fileID: 11400000, guid: 54fe095d7aace1a449bcc57f58f5af35, type: 2}
     EnemyQuantity: 5
     SpawnDelay: 2
     SpawnPos: {x: 0, y: 0, z: 0}

@@ -2,37 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pooling : MonoBehaviour
+public class Pooling<T> where T : MonoBehaviour
 {
-    public GameObject Prefab;
-    public List<GameObject> Pool;
-    public int poolSize;
+    
+    public List<T> Pool;
+    
 
-    private void Start()
+   
+    public  Pooling(T prefab, int initSize)
     {
-        InitializePool();
-    }
-    public void InitializePool()
-    {
-        Pool = new List<GameObject>();
-        for (int i = 0; i < poolSize; i++)
+        Pool = new List<T>();
+        for (int i = 0; i < initSize; i++)
         {
-            GameObject obj = Instantiate(Prefab);
-            obj.SetActive(false);
+            T obj =GameObject.Instantiate(prefab);
+            obj.gameObject.SetActive(false);
             Pool.Add(obj);
         }
     }
 
-    public GameObject GetProjectile()
+    public T GetPooledObject()
     {
         
         for (int i = 0; i < Pool.Count; i++) {
 
-            if (!Pool[i].activeInHierarchy) { 
+            if (!Pool[i].gameObject.activeInHierarchy) { 
                 return Pool[i];
             }
         }
         return null;
     }
-
+    public void ReturnToPool(T obj)
+    {
+        obj.gameObject.SetActive(false);
+    }
 }

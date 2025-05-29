@@ -853,13 +853,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alliance: {fileID: 4489595423137854530}
   targets: []
-  currentTarget: []
   vfxPos: {fileID: 8670232256405674928}
   targetCount: 0
   damageType: 0
   ProjectileVisual: {fileID: 654593747, guid: f06cfe564242e7d4783211fd947edf04, type: 3}
-  EnhanceProjectile: {fileID: 2033686525427427824, guid: 6b55a28090dfe57488a0e127f8ab1e63, type: 3}
-  SpawnedEnhanceProjectile: {fileID: 0}
+  EnhanceProjectile: {fileID: 2033686525427427824, guid: 9eb32eb6c3e9b624b86140a27666c363, type: 3}
+  SpawnedEnhanceProjectile: {fileID: 2033686525427427824, guid: 9eb32eb6c3e9b624b86140a27666c363, type: 3}
   isEnhance: 0
   hitCount: 1
   firePoint: {fileID: 8670232256405674928}

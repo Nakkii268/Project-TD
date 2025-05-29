@@ -22,7 +22,10 @@ public class AllianceInfomation : MonoBehaviour, IPointerEnterHandler, IPointerE
             CameraManager.instance.SetCameraOriginRotation();
         });
         SkillActiveBtn.onClick.AddListener(() => {
-            Debug.Log("---Skill active---");
+            if (unit.AllianceSkill.OnUseSkill.TargetRequire && !unit.AllianceAttack.IsHaveTarget()) { 
+                unit.UIHide(); 
+                return; 
+            }
             unit.UIHide();
             CameraManager.instance.SetCameraOriginRotation();
 

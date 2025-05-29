@@ -28,19 +28,20 @@ public class AllianceRangedAttack : AllianceAttack
         {
             for (int i = 0; i < GetTarget().Count; i++)
             {
-                GameObject projectile = LevelManager.instance.projectilePool.GetProjectile();
+                AllianceProjectile projectile = LevelManager.instance.projectilePool.AllyPool.GetPooledObject();
                 alliance.AllianceVisual.RotateToTarget(GetTarget()[i]);
 
                 projectile.transform.position = firePoint.position;
                 projectile.gameObject.SetActive(true);
-                projectile.GetComponent<Projectile>().SetInfomation(alliance.Stat.Attack.Value, damageType, alliance.GetAllianceUnit().UnitTarget, GetTarget()[i], firePoint, ProjectileVisual, alliance.GetAllianceUnit().HitVfx);
+                projectile.SetInfomation(alliance.Stat.Attack.Value, damageType, alliance.GetAllianceUnit().UnitTarget, GetTarget()[i], firePoint, ProjectileVisual, alliance.GetAllianceUnit().HitVfx);
             }
         }
         else
         {
             for (int i = 0; i < GetMinHpTarget().Count; i++)
             {
-                GameObject projectile = LevelManager.instance.projectilePool.GetProjectile();
+                AllianceProjectile projectile = LevelManager.instance.projectilePool.AllyPool.GetPooledObject();
+
                 alliance.AllianceVisual.RotateToTarget(GetMinHpTarget()[i]);
 
                 projectile.transform.position = firePoint.position;

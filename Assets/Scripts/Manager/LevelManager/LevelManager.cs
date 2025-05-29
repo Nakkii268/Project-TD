@@ -27,8 +27,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Transform LevelInfoUI;
     public LevelStateMachineManager LevelStateMachineManager { get { return levelStateMachineManager; } }
 
-    [SerializeField] private Pooling _projectilePool;
-    public Pooling projectilePool { get { return _projectilePool; } }
+    [SerializeField] private ObjectPoolManager _poolManager;
+    public ObjectPoolManager projectilePool { get { return _poolManager; } }
    
     public event EventHandler OnGamePause;
     public event EventHandler OnGameUnPause;

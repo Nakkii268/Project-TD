@@ -17,13 +17,11 @@ public class EnemyAttackCollider : MonoBehaviour
     private void Start()
     {
         targetLayer = Enemy.Unit.targetlayer;
-        attackCollider.radius = attackRange;
+        attackCollider.radius = Enemy.Unit.AttackRange;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-
         if ((targetLayer.value & (1 << collision.gameObject.layer)) == 0) return;
 
 
@@ -42,8 +40,6 @@ public class EnemyAttackCollider : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D collision)
     {
-
-
         if ((targetLayer.value & (1 << collision.gameObject.layer)) == 0) return;
         
             if (collision.gameObject.CompareTag("Alliance"))
@@ -53,8 +49,9 @@ public class EnemyAttackCollider : MonoBehaviour
 
 
             }
-        
-        
-
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(transform.position, attackRange);
     }
 }

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0574366185e35eb498abd38a4dfd855c, type: 3}
+  m_Name: Slime
+  m_EditorClassIdentifier: 
+  UnitID: E01
+  UnitPrefab: {fileID: 7337458643970106659, guid: 5813ce2ba261bb841a074e50c19f5b72, type: 3}
+  Name: Cabbage Slime
+  Heath: 1000
+  Attack: 200
+  AttackInterval: 1
+  Defense: 1
+  Resistance: 1
+  Block: 0
+  AttackVfx: {fileID: 1442184012376203772, guid: 50a4e5f6312b13b4f97bd5d15fc13162, type: 3}
+  HitVfx: {fileID: 27400811220467730, guid: a026953b84f4b384b90d2ad2f6f68bfc, type: 3}
+  Speed: 0.5
+  CanBlock: 1
+  type: 0
+  damageType: 0
+  AttackRange: 1
+  target: 1
+  targetlayer:
+    serializedVersion: 2
+    m_Bits: 8192

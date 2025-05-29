@@ -15,12 +15,12 @@ public class EnemyRangedAttack : EnemyAttack
 
     public override void Attack()
     {
-        GameObject projectile = LevelManager.instance.projectilePool.GetProjectile();
+        EnemyProjectile projectile = LevelManager.instance.projectilePool.EnemyPool.GetPooledObject();
 
         projectile.transform.position = firePoint.position;
         projectile.gameObject.SetActive(true);
         projectile.GetComponent<Projectile>().SetInfomation(m_Enemy.Stat.Attack.Value, damageType, m_Enemy.Unit.target, target, firePoint, ProjectileSprite, m_Enemy.Unit.HitVfx);
 
     }
-
+    
 }

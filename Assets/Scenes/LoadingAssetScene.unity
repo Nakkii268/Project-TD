@@ -759,6 +759,9 @@ MonoBehaviour:
     - Id: 002
       Level: 20
       LimitBreak: 1
+    - Id: 003
+      Level: 20
+      LimitBreak: 1
     LineUp:
     - Index: 0
       UnitId: 001
