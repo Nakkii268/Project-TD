@@ -5,9 +5,6 @@ using UnityEngine;
 public class AllianceRangedAttack : AllianceAttack
 {
     [SerializeField] private Sprite ProjectileVisual;
-    
-    [SerializeField] private Transform EnhanceProjectile;
-    [SerializeField] private Transform SpawnedEnhanceProjectile;
     public bool isEnhance;
     [SerializeField] private int hitCount=1;
     [SerializeField] private Transform firePoint;

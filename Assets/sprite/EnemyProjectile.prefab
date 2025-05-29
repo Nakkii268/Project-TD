@@ -95,7 +95,7 @@ MonoBehaviour:
   damageType: 0
   target: {fileID: 0}
   targetUnit: 0
-  Speed: 5
+  Speed: 10
   source: {fileID: 0}
   projectileVisual: {fileID: 767294114583250610}
   hitParticle: {fileID: 0}
