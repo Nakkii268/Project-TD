@@ -142,7 +142,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         allianceAttackRange.SetAttackRange(dir);
         allienceAttackCollider.SetCollider(allianceAttackRange.AttackRange,unitPos);
         stateMachine.ChangeState(stateMachine.AllianceIdleState);
-
+        allianceVisual.SetSortingOrder(unitPos.y);
 
     }
     public void Retreat(bool isRetreat)

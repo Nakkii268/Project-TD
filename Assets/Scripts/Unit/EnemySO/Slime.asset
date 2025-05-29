@@ -15,8 +15,8 @@ MonoBehaviour:
   UnitID: E01
   UnitPrefab: {fileID: 7337458643970106659, guid: 5813ce2ba261bb841a074e50c19f5b72, type: 3}
   Name: Cabbage Slime
-  Heath: 1000
-  Attack: 200
+  Heath: 10000
+  Attack: 20000
   AttackInterval: 1
   Defense: 1
   Resistance: 1

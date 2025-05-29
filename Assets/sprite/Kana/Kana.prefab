@@ -928,7 +928,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alliance: {fileID: 4489595423137854530}
   targets: []
-  currentTarget: []
   vfxPos: {fileID: 1700981332374570945}
   targetCount: 0
   damageType: 0
@@ -2553,6 +2552,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 4213c96212278894ea88b1efb99cd784, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3727889947979456205}
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 4213c96212278894ea88b1efb99cd784, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5034920006067725007}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: 4213c96212278894ea88b1efb99cd784, type: 3}
 --- !u!4 &819045240146966327 stripped
 Transform:
@@ -2578,6 +2580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alliance: {fileID: 4489595423137854530}
   animator: {fileID: 3727889947979456205}
+  sortingGroup: {fileID: 5034920006067725007}
 --- !u!95 &3727889947979456205
 Animator:
   serializedVersion: 5
@@ -2599,3 +2602,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!210 &5034920006067725007
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987719775125794644}
+  m_Enabled: 1
+  m_SortingLayerID: -500789675
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_SortAtRoot: 0

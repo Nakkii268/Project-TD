@@ -51,7 +51,7 @@ MonoBehaviour:
   damageType: 0
   targetsInRange: []
   target: {fileID: 0}
-  ProjectileSprite: {fileID: 1382421308184118770, guid: 549c37161afac30459f4ac582ddc1c8d, type: 3}
+  ProjectileSprite: {fileID: 654593747, guid: da2e6f4d4dd05b047bca3c9c3ff1fc0e, type: 3}
   firePoint: {fileID: 49386698958603907}
 --- !u!1 &3291341586388431247
 GameObject:
@@ -833,6 +833,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 549c37161afac30459f4ac582ddc1c8d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6277622255413711151}
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 549c37161afac30459f4ac582ddc1c8d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4361395719577145643}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: 549c37161afac30459f4ac582ddc1c8d, type: 3}
 --- !u!1 &3174261989830347497 stripped
 GameObject:
@@ -853,6 +856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 2764147705095838820}
   animator: {fileID: 6277622255413711151}
+  sortingGroup: {fileID: 4361395719577145643}
 --- !u!95 &6277622255413711151
 Animator:
   serializedVersion: 5
@@ -874,6 +878,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!210 &4361395719577145643
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3174261989830347497}
+  m_Enabled: 1
+  m_SortingLayerID: -500789675
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!4 &4378949793240027786 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7552582706839291426, guid: 549c37161afac30459f4ac582ddc1c8d, type: 3}

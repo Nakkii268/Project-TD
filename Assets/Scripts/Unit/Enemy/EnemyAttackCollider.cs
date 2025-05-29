@@ -50,8 +50,5 @@ public class EnemyAttackCollider : MonoBehaviour
 
             }
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawSphere(transform.position, attackRange);
-    }
+    
 }

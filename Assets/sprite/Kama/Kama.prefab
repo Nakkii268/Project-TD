@@ -857,8 +857,6 @@ MonoBehaviour:
   targetCount: 0
   damageType: 0
   ProjectileVisual: {fileID: 654593747, guid: f06cfe564242e7d4783211fd947edf04, type: 3}
-  EnhanceProjectile: {fileID: 2033686525427427824, guid: 9eb32eb6c3e9b624b86140a27666c363, type: 3}
-  SpawnedEnhanceProjectile: {fileID: 2033686525427427824, guid: 9eb32eb6c3e9b624b86140a27666c363, type: 3}
   isEnhance: 0
   hitCount: 1
   firePoint: {fileID: 8670232256405674928}
@@ -2302,6 +2300,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 557b8c854a9e1be43810f394cd913b9c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 180930164463262993}
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 557b8c854a9e1be43810f394cd913b9c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 335248470709553728}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: 557b8c854a9e1be43810f394cd913b9c, type: 3}
 --- !u!1 &2829047936715117177 stripped
 GameObject:
@@ -2322,6 +2323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alliance: {fileID: 4489595423137854530}
   animator: {fileID: 180930164463262993}
+  sortingGroup: {fileID: 335248470709553728}
 --- !u!95 &180930164463262993
 Animator:
   serializedVersion: 5
@@ -2343,6 +2345,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!210 &335248470709553728
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2829047936715117177}
+  m_Enabled: 1
+  m_SortingLayerID: -500789675
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!4 &4002246277550017050 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7552582706839291426, guid: 557b8c854a9e1be43810f394cd913b9c, type: 3}

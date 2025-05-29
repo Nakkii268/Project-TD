@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class AllianceVisual : MonoBehaviour
 {
     [SerializeField] private Alliance alliance;
     [SerializeField] private Animator animator;
-
+    [SerializeField] private SortingGroup sortingGroup;
 
 
     //!!!! Need to handle visual direction when deploy
 
-   
+    public void SetSortingOrder(float value)
+    {
+        sortingGroup.sortingOrder = Mathf.RoundToInt(20 - value);
+    }
     public void RotateToTarget(GameObject target)
     {
         Vector2 dir = target.transform.position - transform.position;

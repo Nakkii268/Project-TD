@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class EnemyVisual : MonoBehaviour
 {
     [SerializeField] private Enemy enemy;
     [SerializeField] private Animator animator;
+    [SerializeField] private SortingGroup sortingGroup;
+
+    public void SetSortingOrder(float value)
+    {
+        sortingGroup.sortingOrder = Mathf.RoundToInt(20-value);
+    }
     public void PlayIdleAnim()
     {
         animator.Play("Idle");

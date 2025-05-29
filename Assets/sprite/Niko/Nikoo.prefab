@@ -2666,6 +2666,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 1793fdc113054f04d82473bd4aa2cb1c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8100296741922752027}
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 1793fdc113054f04d82473bd4aa2cb1c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8338423269317649809}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: 1793fdc113054f04d82473bd4aa2cb1c, type: 3}
 --- !u!1 &3326640516259185906 stripped
 GameObject:
@@ -2686,6 +2689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alliance: {fileID: 4489595423137854530}
   animator: {fileID: 8100296741922752027}
+  sortingGroup: {fileID: 8338423269317649809}
 --- !u!95 &8100296741922752027
 Animator:
   serializedVersion: 5
@@ -2707,6 +2711,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!210 &8338423269317649809
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3326640516259185906}
+  m_Enabled: 1
+  m_SortingLayerID: -500789675
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!4 &4531325154428869777 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7552582706839291426, guid: 1793fdc113054f04d82473bd4aa2cb1c, type: 3}

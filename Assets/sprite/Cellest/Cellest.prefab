@@ -857,8 +857,6 @@ MonoBehaviour:
   targetCount: 0
   damageType: 0
   ProjectileVisual: {fileID: 654593747, guid: b23718bcca7e9244eab9fb4c5f98b011, type: 3}
-  EnhanceProjectile: {fileID: 2033686525427427824, guid: 9eb32eb6c3e9b624b86140a27666c363, type: 3}
-  SpawnedEnhanceProjectile: {fileID: 2033686525427427824, guid: 9eb32eb6c3e9b624b86140a27666c363, type: 3}
   isEnhance: 0
   hitCount: 1
   firePoint: {fileID: 8670232256405674928}
@@ -2470,6 +2468,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 5056e37710b0a7548800a41ebad57a91, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8767271882798838977}
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 5056e37710b0a7548800a41ebad57a91, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6430455373844945932}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: 5056e37710b0a7548800a41ebad57a91, type: 3}
 --- !u!1 &7068773873509421645 stripped
 GameObject:
@@ -2511,6 +2512,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alliance: {fileID: 4489595423137854530}
   animator: {fileID: 8194191681682640292}
+  sortingGroup: {fileID: 6430455373844945932}
+--- !u!210 &6430455373844945932
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7068773873509421645}
+  m_Enabled: 1
+  m_SortingLayerID: -500789675
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!4 &8273479434613033518 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7552582706839291426, guid: 5056e37710b0a7548800a41ebad57a91, type: 3}

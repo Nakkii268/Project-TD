@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour, IAttackPerform
 {
     [SerializeField] protected Enemy m_Enemy;
-    [SerializeField] protected bool attackReady;
+    [SerializeField] protected bool attackReady=true;
     public bool AttackReady { get { return attackReady; } } 
     [SerializeField] protected float attackRange;
     public float AttackRange { get { return attackRange; } }
@@ -22,6 +22,7 @@ public class EnemyAttack : MonoBehaviour, IAttackPerform
         
         m_Enemy.EnemyAttackCollider.OnTargetIn += EnemyAttackCollider_OnTargetIn;
         m_Enemy.EnemyAttackCollider.OnTargetOut += EnemyAttackCollider_OnTargetOut;
+        attackReady = true;
     }
 
     private void EnemyAttackCollider_OnTargetOut(object sender, GameObject e)

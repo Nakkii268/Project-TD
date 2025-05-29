@@ -94,8 +94,9 @@ public class EnemyState :  IState
                 target = EnemySMManager._enemy.Path[EnemySMManager._enemy.pathIndex];
 
             }
-          //  Vector2 dir = (Vector2)target - new Vector2(EnemySMManager._enemy.transform.position.x, EnemySMManager._enemy.transform.position.y);
-        
+        EnemySMManager._enemy.EnemyVisual.SetSortingOrder(EnemySMManager._enemy.transform.position.y);
+        //  Vector2 dir = (Vector2)target - new Vector2(EnemySMManager._enemy.transform.position.x, EnemySMManager._enemy.transform.position.y);
+
     }
     private void CheckNextIndex()
     {

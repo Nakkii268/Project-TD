@@ -12,22 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc067b9e32952bf429af293ab424d36e, type: 3}
   m_Name: Rize
   m_EditorClassIdentifier: 
-  UnitID: 002
-  UnitPrefab: {fileID: 6865232695306935221, guid: 25c51bdf62ab3964783a457aa28eb066, type: 3}
-  Name: Cellest
+  UnitID: 005
+  UnitPrefab: {fileID: 6865232695306935221, guid: 5ec11a6667cead6468564f54ec559110, type: 3}
+  Name: Rize
   Heath: 911556
   Attack: 2800
   AttackInterval: 1
-  Defense: 1244
+  Defense: 20
   Resistance: 20
   Block: 1
   AttackVfx: {fileID: 1442184012376203772, guid: 50a4e5f6312b13b4f97bd5d15fc13162, type: 3}
   HitVfx: {fileID: 27400811220467730, guid: a026953b84f4b384b90d2ad2f6f68bfc, type: 3}
   Rarity: {fileID: 11400000, guid: 1a94967ead12edc4badf802a5cbec34b, type: 2}
-  unitDragSprite: {fileID: -1987341610, guid: ce316dec69b383242ae19e5c5b543d1a, type: 3}
-  unitPotrait: {fileID: 21300000, guid: 1e7ca3929d549df499be943cb615c901, type: 3}
-  unitUIPotrait: {fileID: 21300000, guid: 9d8fbc78b71786c43b1f67331410c229, type: 3}
-  unitSplashArt: {fileID: 21300000, guid: a300209f0b7c0ba47a5547df7e53bb1f, type: 3}
+  unitDragSprite: {fileID: 1742239285, guid: 7fb06415a5c40dc428d19af7ee0dd4bc, type: 3}
+  unitPotrait: {fileID: 21300000, guid: 5fb6c34de9f09334fa6d9d89b14b6cef, type: 3}
+  unitUIPotrait: {fileID: 21300000, guid: c29e8ee55fd70484ca17bc3119487baf, type: 3}
+  unitSplashArt: {fileID: 21300000, guid: eff9fa1aecada3e4794dd877b35944f5, type: 3}
   UnitRangeVisualized: {fileID: 1882743592, guid: 4ecd44054a5d7f54ca1dd8a09d2540dd, type: 3}
   AttackRange:
   - {x: 0, y: 0}
@@ -47,12 +47,12 @@ MonoBehaviour:
   RedeployTime: 10
   EnemyType:
     serializedVersion: 2
-    m_Bits: 6144
-  UnitTarget: 0
+    m_Bits: 8192
+  UnitTarget: 1
   TargetCount: 0
-  DamageType: 0
-  UnitClass: {fileID: 11400000, guid: 2d8ecc50b1fec574f91cfb3a3519f2cd, type: 2}
+  DamageType: 1
+  UnitClass: {fileID: 11400000, guid: 1d41cf147a608b64bbe443bfea66057a, type: 2}
   LimitBreak: 1
   Level: 20
   UnitSkills:
-  - {fileID: 11400000, guid: 768fedc3b7c4dd242b11e5d117e32b55, type: 2}
+  - {fileID: 11400000, guid: 7acfcc20f5a7e4547bce5adaba9fa208, type: 2}
