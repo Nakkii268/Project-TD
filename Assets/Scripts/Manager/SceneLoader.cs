@@ -13,6 +13,8 @@ public class SceneLoader : MonoBehaviour
        // SceneManager.LoadScene("LoadingScene");
         StartCoroutine(DelayLoadMenu());    
         SceneManager.LoadScene("TestMenu");
+        UIManager.Instance.OpenUI<MenuUI>();
+
     }
     public void LoadStage(string stagePath)
     {
@@ -39,7 +41,8 @@ public class SceneLoader : MonoBehaviour
     }
     private IEnumerator DelayLoadMenu()
     {
+        UIManager.Instance.CloseAllUI();
+        
         yield return new WaitForSeconds(1);
-
     }
 }

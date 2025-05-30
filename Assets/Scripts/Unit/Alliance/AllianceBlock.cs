@@ -5,7 +5,7 @@ using UnityEngine;
 public class AllianceBlock : MonoBehaviour
 {
     [SerializeField] private Alliance Alliance;
-    [SerializeField] private Collider2D BlockCollider;
+    [SerializeField] public Collider2D BlockCollider;
     [SerializeField] private LayerMask enemyLayer;
     public int BlockCount;
     public int MaxBlockCount;

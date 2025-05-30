@@ -11,7 +11,8 @@ public class LoseUI : UICanvas
     {
         exitBtn.onClick.AddListener(() =>
         {
-            UIManager.Instance.CloseAllUI();
+            GameManager.Instance._sceneLoader.LoadMenu();
+            
             UIManager.Instance.OpenUI<StageSelectUI>();
         });
         exitBtn.interactable = false;

@@ -16,7 +16,7 @@ MonoBehaviour:
   UnitPrefab: {fileID: 7337458643970106659, guid: a16fe75bfedd2634ead736b7fbc8119a, type: 3}
   Name: Scopi
   Heath: 10000
-  Attack: 1221
+  Attack: 682
   AttackInterval: 1
   Defense: 1
   Resistance: 1

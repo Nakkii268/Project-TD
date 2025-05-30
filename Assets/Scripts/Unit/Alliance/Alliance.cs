@@ -70,7 +70,8 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         allianceDirection.OnDeloyed += AllianceDirection_OnDeloyed;
        
         LevelManager.instance.MapManager.OnClickOtherTarget += LevelManager_OnClickOtherTarget;
-        
+        allianceBlock.BlockCollider.enabled = false;
+
     }
     private void Update()
     {
@@ -143,6 +144,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         allienceAttackCollider.SetCollider(allianceAttackRange.AttackRange,unitPos);
         stateMachine.ChangeState(stateMachine.AllianceIdleState);
         allianceVisual.SetSortingOrder(unitPos.y);
+        allianceBlock.BlockCollider.enabled = true;
 
     }
     public void Retreat(bool isRetreat)
