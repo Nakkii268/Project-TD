@@ -36,9 +36,8 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
     public EnemySMManager EnemySMManager { get { return eStateMachine; } }
 
     public event EventHandler<EnemyDeadArg> OnEnemyDead;
-    public event EventHandler OnGetHit;
     public event EventHandler<float> OnHpChange;
-    public event EventHandler OnDestroy;
+    public event EventHandler OnGetHit;
 
     public GameObject Blocker;
     [SerializeField] private StatModifier blockModifier = new StatModifier(0, StatModType.PercentAdd);
@@ -84,25 +83,28 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
         if (type == DamageType.MagicDamage)
         {
             stat.currentHp -= (damage - damage * (GetReductionValue(stat.Resistance.Value)));
+            OnGetHit?.Invoke(this,EventArgs.Empty);
         }
         else if (type == DamageType.PhysicDamage)
         {
             stat.currentHp -= (damage - damage * (GetReductionValue(stat.Defense.Value)));
+            OnGetHit?.Invoke(this, EventArgs.Empty);
 
 
         }
         else if (type == DamageType.TrueDamage)
         {
             stat.currentHp -= damage;
+            OnGetHit?.Invoke(this, EventArgs.Empty);
 
         }
         if (stat.currentHp < 0)
         {
             stat.currentHp = 0;
             OnEnemyDead?.Invoke(this, new EnemyDeadArg(this.gameObject, isWaveEnemy));
-            //Debug.Log("dead");
+
         }
-        
+
 
         OnHpChange?.Invoke(this, stat.currentHp / stat.MaxHp.Value);
     }
@@ -112,7 +114,7 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
     {
         Blocker = blocker;
         stat.Speed.AddingModifier(blockModifier);
-        Debug.Log(stat.Speed.Value);
+        
     }
     public void UnBlock(GameObject blocker)
     {
@@ -121,11 +123,7 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
 
 
     }
-    public void DeadBtn()
-    {
-        OnEnemyDead?.Invoke(this, new EnemyDeadArg(this.gameObject,isWaveEnemy));
-    }
-
+ 
     public float GetPercentHp()
     {
         return stat.currentHp / stat.MaxHp.Value;

@@ -13,7 +13,7 @@ public class BlueBox : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Enemy")){
             levelLifePointManager.LifePointReduce();
-            Destroy(collision.transform.parent.gameObject);
+            collision.GetComponent<IDamageable>().ReceiveDamaged(99999999,DamageType.TrueDamage);
         }
     }
 }

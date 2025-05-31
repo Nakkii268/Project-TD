@@ -31,6 +31,13 @@ public class AllianceInfomation : MonoBehaviour, IPointerEnterHandler, IPointerE
 
         });
     }
+    private void OnDisable()
+    {
+        if (gameObject.activeSelf)
+        {
+            LevelManager.instance.TimeNormal();
+        }
+    }
     public void OnPointerEnter(PointerEventData eventData)
     {
         isPointerIn = true;

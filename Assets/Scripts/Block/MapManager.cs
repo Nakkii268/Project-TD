@@ -11,7 +11,7 @@ public class MapManager : MonoBehaviour
     [SerializeField] private GameObject[,] tiles;
     [SerializeField] private Vector2Int currentSelect;
     [SerializeField] private CameraManager Camera;
-    public event EventHandler OnClickOtherTarget;
+    public event EventHandler<bool> OnClickOtherTarget;//true if it is another unit, false if not
     [SerializeField] private int currentUnitIndex;
     [SerializeField] private Quaternion cameraOriginRotate;
     [SerializeField] private Transform unitUI;
@@ -31,26 +31,25 @@ public class MapManager : MonoBehaviour
         {
             if (HandleRaycastOnUI()) return;
             HandleRaycast();
-            if (currentSelect == -Vector2.one) return;
-            if (!tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().IsHaveUnit())
+          
+            if ( currentSelect == -Vector2.one|| !tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().IsHaveUnit()  )
             {
 
-                OnClickOtherTarget?.Invoke(this, EventArgs.Empty);
+                OnClickOtherTarget?.Invoke(this, false);
                 return;
 
             }
             else
             {
 
-
                 Camera.CamLookat(tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().transform);
                 currentUnitIndex = tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().GetUnitDeloyed().GetUnitIndex();
-                OnClickOtherTarget?.Invoke(this, EventArgs.Empty);
+                OnClickOtherTarget?.Invoke(this, true);
                 tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().GetUnitDeloyed().UIShowOnForcus();
 
 
             }
-
+            
 
 
         }
@@ -85,6 +84,7 @@ public class MapManager : MonoBehaviour
         else
         {
             currentSelect = -Vector2Int.one;
+            
         }
 
 

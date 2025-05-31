@@ -6,7 +6,7 @@ public class AllianceRangedAttack : AllianceAttack
 {
     [SerializeField] private Sprite ProjectileVisual;
     public bool isEnhance;
-    [SerializeField] private int hitCount=1;
+    //[SerializeField] private int hitCount=1;
     [SerializeField] private Transform firePoint;
 
 

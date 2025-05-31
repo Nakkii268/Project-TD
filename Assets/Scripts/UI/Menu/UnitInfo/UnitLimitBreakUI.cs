@@ -84,7 +84,7 @@ public class UnitLimitBreakUI : UICanvas
         {
             if (GameManager.Instance.testData.IsHaveItem(items[i].Material.ItemID)==0) return false;
             if (GameManager.Instance.testData.GetItem(items[i].Material.ItemID).Quantity >= items[i].Quantity) return true;
-            return false;
+            
             
         }
         return false;

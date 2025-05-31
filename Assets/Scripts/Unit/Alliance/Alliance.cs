@@ -57,8 +57,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
     public event EventHandler OnUnitRetreat;
     public event EventHandler<float> OnHpChange;
     public event EventHandler OnUnitDead;
-    public event EventHandler OnDestroy;
-
+   
     private void Awake()
     {
         stateMachine = new AllianceSMManager(this);
@@ -78,7 +77,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         stateMachine.Update();
     }
    
-    private void LevelManager_OnClickOtherTarget(object sender, System.EventArgs e)
+    private void LevelManager_OnClickOtherTarget(object sender, bool e)
     {
         if (allianceInfo == null) return;
         if (!isDeloyed)
@@ -88,9 +87,12 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         if (!allianceInfo.gameObject.activeInHierarchy) return;
         
         if (allianceInfo.IsPointerIn()) return;
-        
-        
-        CameraManager.instance.SetCameraOriginRotation();
+
+        if (!e) // not other unit then set rotation back
+        {
+            CameraManager.instance.SetCameraOriginRotation();
+
+        }
         UIHide();
     }
 
@@ -160,7 +162,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         block.UnitReTreat();
         
         CameraManager.instance.SetCameraOriginRotation();
-
+        OnUnitRetreat?.Invoke(this, EventArgs.Empty);
 
     }
 

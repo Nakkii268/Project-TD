@@ -14,8 +14,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private LevelDPManager levelDPManager;
     
     [SerializeField] private int currentUnitIndex;
-    [SerializeField] private int deloymentLimit;
-    [SerializeField] private int currentDeloyment = 0;
+    
+    
 
     [SerializeField] private LevelLifePointManager levelLifePointManager;
     [SerializeField] public LevelLifePointManager LevelLifePointManager {  get { return levelLifePointManager; } }
