@@ -15,7 +15,7 @@ public class UnitListUI : UICanvas
     [SerializeField] public Button HomeBtn;
     private void Initialized()
     {
-        unitList = GameManager.Instance.testData.OwnedCharacter;
+        unitList = GameManager.Instance._playerDataManager.PlayerDataSO.OwnedCharacter;
         for(int i = 0;i < unitList.Count; i++)
         {
             UnitListSingleUI single = Instantiate(singlePrefab, container);

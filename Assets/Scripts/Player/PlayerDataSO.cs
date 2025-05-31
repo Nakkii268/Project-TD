@@ -11,7 +11,7 @@ public class PlayerDataSO : ScriptableObject
     public List<AllianceUnit> OwnedCharacter;
     public List<LineUpSave> PlayerLineUp;
     public Progress PlayerProgress;
-    public Progress LastCompleteStage;
+  
 
     public void ClearData()
     {
@@ -21,7 +21,7 @@ public class PlayerDataSO : ScriptableObject
         OwnedCharacter.Clear();
         PlayerLineUp.Clear();
         PlayerProgress = new Progress();
-        LastCompleteStage = new Progress();
+        
     }
     public int IsHaveItem(string id)
     {
@@ -58,16 +58,16 @@ public class PlayerDataSO : ScriptableObject
         {
             if (PlayerLineUp[i].Index == indx)
             {
-                Debug.Log("that him!");
+                
                 if (unit == null)
                 {
-                    Debug.Log("null case");
+                    
                     PlayerLineUp.RemoveAt(i);
                     return;
                 }
                 else
                 {
-                    Debug.LogWarning("add1");
+                    
                     PlayerLineUp[i].Unit = unit;
                     return;
                 }
@@ -78,7 +78,7 @@ public class PlayerDataSO : ScriptableObject
         //no = add if not null
        if (unit != null)
         {
-            Debug.LogWarning("add2");
+           
 
             PlayerLineUp.Add(new LineUpSave(indx, unit));
             

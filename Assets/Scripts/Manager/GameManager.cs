@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public LimitBreakIcon limitBreakIcon;
     [SerializeField] public ResourceManager _resourceManager;
     [SerializeField] public PlayerDataManager _playerDataManager;
-    public string stagePath;
-    public PlayerDataSO testData;
+
+
 
 
     private void Awake()

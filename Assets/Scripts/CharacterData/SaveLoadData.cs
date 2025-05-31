@@ -53,7 +53,7 @@ public static class SaveLoadData
             newData.OwnedCharacter.Add(un);
         }
         newData.PlayerProgress = data.PlayerProgress;
-        newData.LastCompleteStage = data.LastCompleteStage;
+        
         //line up
         for (int i = 0; i < data.LineUp.Count; i++)
         {

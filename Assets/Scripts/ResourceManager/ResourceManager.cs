@@ -11,7 +11,7 @@ public class ResourceManager : MonoBehaviour
 {
     private Dictionary<string,Item> ItemSOData = new Dictionary<string,Item>();
     private Dictionary<string,AllianceUnit> UnitSOData = new Dictionary<string,AllianceUnit>();
-    private Dictionary<string,ChapterSO> ChapterSOData = new Dictionary<string,ChapterSO>();
+    private Dictionary<int,ChapterSO> ChapterSOData = new Dictionary<int,ChapterSO>();
     private List<UICanvas> UIPrefab = new List<UICanvas>();
    
     [SerializeField] private bool isItemDone;
@@ -105,9 +105,9 @@ public class ResourceManager : MonoBehaviour
 
                 foreach (T chap in list)
                 {
-                    if (!ChapterSOData.ContainsKey(chap.ChapterID))
+                    if (!ChapterSOData.ContainsKey(chap.ChapterIndex))
                     {
-                        ChapterSOData.Add(chap.ChapterID, chap);
+                        ChapterSOData.Add(chap.ChapterIndex, chap);
                       
 
                     }
@@ -138,11 +138,11 @@ public class ResourceManager : MonoBehaviour
         }
         return null;
     }
-    public T GetChapterById<T>(string id) where T: ChapterSO
+    public T GetChapterByIndex<T>(int index) where T: ChapterSO
     {
-        if (ChapterSOData.ContainsKey(id))
+        if (ChapterSOData.ContainsKey(index))
         {
-            return ChapterSOData[id] as T;
+            return ChapterSOData[index] as T;
         }
         return null;
     }

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -9,14 +11,17 @@ public class StageSelectUI : UICanvas
 {
     [SerializeField] private Button BackBtn;
     [SerializeField] private Button HomeBtn;
-
-    [SerializeField] private Button ChapterExpandBtn;
-    [SerializeField] private GameObject ChapterContainer;
-    [SerializeField] private StageProgress stageProgress;
-    [SerializeField] public GameObject StageList;
-    [SerializeField] public List<ChapterElementUI> ChapterList;
-    [SerializeField] private Image chapterExpandIcon;
    
+    [SerializeField] public GameObject StageList;
+
+    [SerializeField] private Progress _playerProgress;
+    [SerializeField] private Progress _playerLastStage;
+    //chapter
+    [SerializeField] private int CurrentSelectChap;//index
+    [SerializeField] private Button PrevChapBtn;
+    [SerializeField] private Button NextChapBtn;
+    [SerializeField] private TextMeshProUGUI ChapterTxt;
+    [SerializeField] private Dictionary<int,ChapterSO> Chapters=new Dictionary<int,ChapterSO>();
     // Start is called before the first frame update
     void Start()
     {
@@ -28,21 +33,21 @@ public class StageSelectUI : UICanvas
         {
             UIManager.Instance.ToHomeMenu();
         });
-        ChapterExpandBtn.onClick.AddListener(() =>
+        PrevChapBtn.onClick.AddListener(() =>
         {
-            if (!ChapterContainer.gameObject.activeInHierarchy)
-            {
-                chapterExpandIcon.transform.rotation = Quaternion.Euler(0f, 0f, 270f);
-            }
-            else
-            {
-                chapterExpandIcon.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
-
-            }
-
-            ChapterContainer.SetActive(!ChapterContainer.activeSelf);
+            CurrentSelectChap--;
+            UpdateChapterTxt();
+            LoadStageList(CurrentSelectChap);
+            ButtonUpdate();
         });
-       
+        NextChapBtn.onClick.AddListener(() =>
+        {
+            CurrentSelectChap++;
+            UpdateChapterTxt();
+            LoadStageList(CurrentSelectChap);
+            ButtonUpdate();
+
+        });
 
     }
     public override void SetUp()
@@ -51,27 +56,22 @@ public class StageSelectUI : UICanvas
     }
     private void Initialized()
     {
-        for (int i = 0; i < ChapterList.Count; i++)
+        _playerProgress = GameManager.Instance._playerDataManager.PlayerDataSO.PlayerProgress;
+        CurrentSelectChap = _playerProgress.ChapterIndex;
+        for(int i = 0; i <= _playerProgress.ChapterIndex; i++)
         {
-            ChapterList[i].OnChapterSelect += StageSelectUI_OnChapterSelect;
-
+           Chapters.Add(i, GameManager.Instance._resourceManager.GetChapterByIndex<ChapterSO>(i));
         }
-        LoadStageList(GameManager.Instance._resourceManager.GetChapterById<ChapterSO>(stageProgress.LastStage.ChapterID));
+        LoadStageList(CurrentSelectChap);
 
-        stageProgress.DisableLockedChapter();
+       
     }
 
-    private void StageSelectUI_OnChapterSelect(object sender, ChapterSO e)
+   
+
+    public void LoadStageList(int cIndex)
     {
-       LoadStageList(e);
-      
-
-
-    }
-
-    public void LoadStageList(ChapterSO chapter)
-    {
-        Addressables.LoadAssetAsync<GameObject>(chapter.StageUIPath).Completed += ((handler) =>
+        Addressables.LoadAssetAsync<GameObject>(Chapters[cIndex].StageUIPath).Completed += ((handler) =>
         {
             if (handler.Status == UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Succeeded)
             {
@@ -80,7 +80,7 @@ public class StageSelectUI : UICanvas
                 Destroy(StageList);
                 StageList = newStageList;
                 Debug.Log(StageList.name);
-                stageProgress.DisableLockedStage(chapter.ChapterIndex);
+                DisableLockedStage(cIndex);
 
 
             }
@@ -89,4 +89,59 @@ public class StageSelectUI : UICanvas
     }
    
 
+    public void DisableLockedStage(int selectedChapter)
+    {
+        
+        if (selectedChapter < _playerProgress.ChapterIndex) return;
+        
+
+        for (int i = _playerProgress.Stage; i <= Chapters[selectedChapter].StageQuantity ; i++)
+        {
+            StageList.TryGetComponent(out StageUI stage);
+            stage.stageBtnList[i].gameObject.SetActive(false);
+            Debug.Log(stage.stageBtnList[i].gameObject.name);
+
+
+        }
+    }
+
+    private void UpdateChapterTxt()
+    {
+        ChapterTxt.text = "Chapter. " + (CurrentSelectChap + 1).ToString();
+    }
+    private void ButtonUpdate()
+    {
+        if(CurrentSelectChap == _playerProgress.ChapterIndex)
+        {
+            NextChapBtn.interactable = false;
+        }
+        else
+        {
+            NextChapBtn.interactable = true;
+
+        }
+        if (CurrentSelectChap == 0)
+        {
+            PrevChapBtn.interactable = false;
+        }
+        else
+        {
+            PrevChapBtn.interactable = true;
+
+        }
+    }
+}
+[Serializable]
+public class Progress
+{
+    public int ChapterIndex;
+    public string ChapterID;
+    public int Stage;
+    public Progress(int chapterIndex, string chapterID, int stage)
+    {
+        ChapterIndex = chapterIndex;
+        ChapterID = chapterID;
+        Stage = stage;
+    }
+    public Progress() { }
 }

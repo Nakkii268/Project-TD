@@ -501,8 +501,8 @@ MonoBehaviour:
   - {fileID: 4075483573230344}
   - {fileID: 1894553107568821017}
   StageContainer: {fileID: 1577845662776303871}
-  StageContainerRect: {fileID: 0}
-  bg: {fileID: 0}
+  StageContainerRect: {fileID: 7062094354905542347}
+  bg: {fileID: 5955912756761512986}
 --- !u!1 &2023182093305057245
 GameObject:
   m_ObjectHideFlags: 0
@@ -1693,8 +1693,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 1535.2299, y: -34.17401}
-  m_SizeDelta: {x: 3070.4792, y: 760.6761}
+  m_AnchoredPosition: {x: 1532.8217, y: -34.17401}
+  m_SizeDelta: {x: 3065.6428, y: 760.6761}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7062094354905542347
 MonoBehaviour:
