@@ -7,7 +7,7 @@ public class LevelStateMachineManager : StateMachineManager
     public LevelManager _levelManager;
     public LevelPrepareState LevelPrepareState { get; }
     public LevelGameState LevelGameState { get; }
-    public LevelPauseState LevelPauseState { get; }
+    
     public LevelEndState LevelEndState { get; }
     public float entryTime;
     public EndState endState;
@@ -16,7 +16,7 @@ public class LevelStateMachineManager : StateMachineManager
         _levelManager = lm;
         LevelPrepareState = new LevelPrepareState(this);
         LevelGameState = new LevelGameState(this);
-        LevelPauseState = new LevelPauseState(this);
+      
         LevelEndState = new LevelEndState(this);
     }
 

@@ -30,8 +30,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private ObjectPoolManager _poolManager;
     public ObjectPoolManager projectilePool { get { return _poolManager; } }
    
-    public event EventHandler OnGamePause;
-    public event EventHandler OnGameUnPause;
+    
     public event EventHandler<EndState> OnGameEnd;// win = 1; lose = 0; win but leaked =0.x
 
     public PointerClickHandle PointerClickHandler;
@@ -97,10 +96,7 @@ public class LevelManager : MonoBehaviour
 
         Time.timeScale = 1f;
     }
-    public void GameStop()
-    {
-        Time.timeScale = 0f;
-    }
+   
    
 }
 

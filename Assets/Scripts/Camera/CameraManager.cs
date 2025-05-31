@@ -19,7 +19,7 @@ public class CameraManager : MonoBehaviour
     }
     public void CamLookat(Transform target)
     {
-        Debug.Log("Called++++++++");
+        
 
         _camera.transform.LookAt(target);
     }

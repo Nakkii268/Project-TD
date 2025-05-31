@@ -41,7 +41,7 @@ public class LevelState : IState
     }
     protected virtual void AddCallBack()
     {
-        LevelStateMachineManager._levelManager.OnGamePause += LevelManager_OnGamePause;
+        
         LevelStateMachineManager._levelManager.OnGameEnd += LevelManager_OnGameEnd;
     }
 
@@ -49,15 +49,12 @@ public class LevelState : IState
 
     protected virtual void RemoveCallBack()
     {
-        LevelStateMachineManager._levelManager.OnGamePause -= LevelManager_OnGamePause;
+       
         LevelStateMachineManager._levelManager.OnGameEnd -= LevelManager_OnGameEnd;
 
     }
 
-    private void LevelManager_OnGamePause(object sender, System.EventArgs e)
-    {
-        LevelStateMachineManager.ChangeState(LevelStateMachineManager.LevelPauseState);
-    }
+   
     private void LevelManager_OnGameEnd(object sender, EndState e)
     {
         LevelStateMachineManager.endState = e;
