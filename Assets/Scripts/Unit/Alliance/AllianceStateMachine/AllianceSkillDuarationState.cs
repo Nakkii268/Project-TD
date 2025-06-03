@@ -19,7 +19,7 @@ public class AllianceSkillDuarationState : AllianceState, IState
     }
     public override void Update()
     {
-        if (!AllianceSMManager.Alliance.AllianceSkill.CanAttackInDuration) return;
+        if (!AllianceSMManager.Alliance.AllianceSkill.CanAttackInDuration && AllianceSMManager.Alliance.AllianceSkill.OnUseSkill.skillType==SkillType.Active) return;
         if (AllianceSMManager.Alliance.AllianceAttack.CanPerformAttack())
         {
             AllianceSMManager.ChangeState(AllianceSMManager.AllianceSkillAttackState);

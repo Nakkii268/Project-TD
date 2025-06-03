@@ -115,6 +115,7 @@ MonoBehaviour:
   Block:
     BaseStat: 0
     Modifiers: []
+  _enemy: {fileID: 2764147705095838820}
   AttackRange: 0
   Speed:
     BaseStat: 0

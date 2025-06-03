@@ -69,6 +69,7 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
     }
 
     public virtual void Attack() { }
+    public virtual void EnhanceAttack(float scaleUp,ParticleSystem vfx, ParticleSystem hitVfx) { }
     public bool IsHaveTarget()
     {
         if (alliance.GetAllianceUnit().UnitTarget == UnitTarget.Alliance )

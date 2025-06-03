@@ -39,6 +39,7 @@ public class AllianceSkill : MonoBehaviour
            
             DisableSkillBtn();
 
+            //charging
             if (skill.ChargeType == ChargeType.Defensive)
             {
                 alliance.OnGetHit += Alliance_OnGetHit; ;
@@ -51,12 +52,14 @@ public class AllianceSkill : MonoBehaviour
             {
                 InvokeRepeating("AutoRegenSkillPoint", 1f, 1f);
             }
+            //
+
             CanAttackInDuration = skill.CanAttack;
         }
         else if(OnUseSkill.skillType == SkillType.Passive)
         {
             OnUseSkill.SkillActivate(this, target);
-            
+           
             DisableSkillBtn();
 
 
@@ -97,14 +100,7 @@ public class AllianceSkill : MonoBehaviour
 
         OnSkillActive?.Invoke(this, GetSkillDuration());
 
-        //vfx
-        if (OnUseSkill.SkillVFX != null) 
-        {
-            LevelManager.instance.ParticleManager.SkillParticle(this.gameObject, OnUseSkill.SkillVFX, this.transform, alliance.GetVFXQuaternion());
-           
-            
-            
-        }
+       
         StartCoroutine(SkillActiveDurtation());
         DisableSkillBtn();
     }

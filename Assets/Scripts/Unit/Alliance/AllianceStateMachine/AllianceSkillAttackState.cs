@@ -45,7 +45,8 @@ public class AllianceSkillAttackState : AllianceState
     }
     public override void OnAnimationTransitionEvent()
     {
-        AllianceSMManager.Alliance.AllianceAttack.Attack();
+        AttackEnhanceSkills skill = (AttackEnhanceSkills)AllianceSMManager.Alliance.AllianceSkill.OnUseSkill;
+        AllianceSMManager.Alliance.AllianceAttack.EnhanceAttack(skill.ScaleUp,skill.AttackVFX,skill.HitVFX);
 
     }
 
@@ -54,6 +55,7 @@ public class AllianceSkillAttackState : AllianceState
         if (AllianceSMManager.Alliance.AllianceSkill.IsSkillDuration)
         {
             AllianceSMManager.ChangeState(AllianceSMManager.AllianceSkillDuarationState);
+            return;
         }
         AllianceSMManager.ChangeState(AllianceSMManager.AllianceIdleState);
         AllianceSMManager.Alliance.AllianceVisual.RotateToDirection(AllianceSMManager.Alliance.direction);

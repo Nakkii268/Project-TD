@@ -21,7 +21,7 @@ public class ParticleManager : MonoBehaviour
         ParticleSystem particle = Instantiate(p, target.transform.position, Quaternion.identity, target.transform);
         particle.Play();
     }
-    public void SlashParticle(GameObject target, ParticleSystem p,Transform pos)
+    public void AttackParticle(GameObject target, ParticleSystem p,Transform pos)
     {
         
         ParticleSystem particle = Instantiate(p, pos.position, Quaternion.identity, target.transform);
@@ -38,16 +38,7 @@ public class ParticleManager : MonoBehaviour
         particle.Play();
     }
 
-    public Vector3 RotateVFX(Vector3 startQuaternion, float dir)
-    {
-        Quaternion rotation = Quaternion.Euler(startQuaternion);
-        Debug.Log(startQuaternion.x + ", " + startQuaternion.y + ", " + startQuaternion.z + ", " + dir);
-        Vector3 newrotate = rotation.eulerAngles;
-        newrotate.x=dir;
-
-        return newrotate;
-
-    }
+ 
     public IEnumerator StopParticle(ParticleSystem p,float duration)
     {
         if(duration == 99)

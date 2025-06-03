@@ -19,7 +19,9 @@ public class AOEDamageSkills : DamageTypeSkills
    
     private void Damage(AllianceSkill User)
     {
-        float centerx=0;
+        LevelManager.instance.ParticleManager.SkillParticle(User.gameObject, SkillVFX, User.transform, User.alliance.GetVFXQuaternion());
+
+        float centerx =0;
         float centery = 0;
         if (IsAroundUser)
         {

@@ -40,7 +40,35 @@ public class AllianceMeleeAttack : AllianceAttack
             }
 
         }
-        LevelManager.instance.ParticleManager.SlashParticle(this.gameObject, alliance.GetAllianceUnit().AttackVfx,vfxPos);
+        LevelManager.instance.ParticleManager.AttackParticle(this.gameObject, alliance.GetAllianceUnit().AttackVfx,vfxPos);
 
+    }
+    public override void EnhanceAttack(float scaleUp,ParticleSystem vfx,ParticleSystem hitVfx)
+    {
+        Debug.Log("caleed");
+        alliance.AllianceVisual.RotateToTarget(GetTarget()[0]);
+        if (Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Enemy)
+        {
+            foreach (GameObject tg in GetTarget())
+            {
+                tg.GetComponentInParent<IDamageable>().ReceiveDamaged(alliance.Stat.Attack.Value * scaleUp, damageType);
+                LevelManager.instance.ParticleManager.HitParticle(tg,hitVfx);
+
+
+            }
+
+        }
+        else if (Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Alliance)
+        {
+
+
+            foreach (GameObject tg in GetTarget())
+            {
+
+                tg.GetComponentInParent<IHealable>().Heal(alliance.Stat.Attack.Value*scaleUp);
+            }
+
+        }
+        LevelManager.instance.ParticleManager.AttackParticle(this.gameObject, vfx, vfxPos);
     }
 }
