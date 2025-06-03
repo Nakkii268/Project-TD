@@ -49,7 +49,7 @@ public class PlayerDataSO : ScriptableObject
         }
         return units;
     }
-    public void UpdateLineUp(AllianceUnit unit, int indx)
+    public void UpdateLineUp(AllianceUnit unit, int indx,int skIndx)
     {
         
         //check if already have unit in this index:
@@ -58,32 +58,26 @@ public class PlayerDataSO : ScriptableObject
         {
             if (PlayerLineUp[i].Index == indx)
             {
-                
                 if (unit == null)
                 {
-                    
                     PlayerLineUp.RemoveAt(i);
                     return;
                 }
                 else
                 {
-                    
                     PlayerLineUp[i].Unit = unit;
                     return;
                 }
-                
             }
-            
         }
         //no = add if not null
        if (unit != null)
         {
-           
-
-            PlayerLineUp.Add(new LineUpSave(indx, unit));
-            
+            PlayerLineUp.Add(new LineUpSave(indx, unit,skIndx));
         }
+      
     }
+    
     public bool IsLineUpContain(AllianceUnit unit)
     {
         HashSet<AllianceUnit> lineup = new HashSet<AllianceUnit>(GetLineUp());

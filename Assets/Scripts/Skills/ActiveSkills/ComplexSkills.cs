@@ -19,7 +19,7 @@ public class ComplexSkills : ActiveSkills
     // dmg self, debuff enemy
     //buff self, dmg enemy
 
-    public override void SkillActivate(AllianceSkill User, List<GameObject> target)
+    public override void SkillActivate(AllianceSkill User, List<GameObject> target = null)
     {
         User.StartCoroutine(DelayStatus(User,target,EffectDelayTime));
         User.StartCoroutine(DelayDamage(User, target, DamageDelayTime));

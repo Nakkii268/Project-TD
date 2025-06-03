@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 060547d58ff96094e9d8ab3b5edbc0be, type: 3}
+  m_Name: SniperLevelUp
+  m_EditorClassIdentifier: 
+  data:
+  - LimitBreakLevel: 0
+    StatBonus:
+    - StatName: 0
+      StatModify: 2
+    - StatName: 1
+      StatModify: 10
+    - StatName: 2
+      StatModify: 1
+    CurrencyRequired:
+    - Material: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
+      Quantity: 1000
+    - Material: {fileID: 11400000, guid: ebe72feb9446389428430436d888d572, type: 2}
+      Quantity: 10
+  - LimitBreakLevel: 1
+    StatBonus:
+    - StatName: 0
+      StatModify: 3
+    - StatName: 1
+      StatModify: 8
+    - StatName: 2
+      StatModify: 1
+    CurrencyRequired:
+    - Material: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
+      Quantity: 1200
+    - Material: {fileID: 11400000, guid: ebe72feb9446389428430436d888d572, type: 2}
+      Quantity: 10
+  - LimitBreakLevel: 2
+    StatBonus:
+    - StatName: 0
+      StatModify: 4
+    - StatName: 1
+      StatModify: 8
+    - StatName: 2
+      StatModify: 2
+    CurrencyRequired:
+    - Material: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
+      Quantity: 1500
+    - Material: {fileID: 11400000, guid: ebe72feb9446389428430436d888d572, type: 2}
+      Quantity: 15

@@ -128,7 +128,8 @@ public class UnitLevelUpUI : UICanvas
         //if not enough material then erorr ( test later)
        // PlayerPrefs.SetInt(unit.UnitID, CurrentViewLevel);
         PreviewStat(CurrentLimtBreak);
-        
+
+        GameManager.Instance._playerDataManager.SaveUnit();
 
 
     }

@@ -11,7 +11,7 @@ public class AllianceSkillDuarationState : AllianceState, IState
     public override void Enter()
     {
         base.Enter();
-        AllianceSMManager.Alliance.AllianceVisual.PlayIdleAnim();
+        AllianceSMManager.Alliance.AllianceVisual.PlaySkill1Anim();
     }
     public override void Exit()
     {
@@ -22,7 +22,7 @@ public class AllianceSkillDuarationState : AllianceState, IState
         if (!AllianceSMManager.Alliance.AllianceSkill.CanAttackInDuration) return;
         if (AllianceSMManager.Alliance.AllianceAttack.CanPerformAttack())
         {
-            AllianceSMManager.ChangeState(AllianceSMManager.AllianceAttackState);
+            AllianceSMManager.ChangeState(AllianceSMManager.AllianceSkillAttackState);
         }
     }
 

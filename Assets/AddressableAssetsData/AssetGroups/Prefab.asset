@@ -29,6 +29,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - UIPrefab
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 466913f4f18642d45b488c875e1187d6
+    m_Address: Assets/PrefabResource/UI/GamePauseUI.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UIPrefab
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 700cb58d4fc985d41b4c310725cf9aac
     m_Address: Assets/PrefabResource/UI/LevelUpUI.prefab
     m_ReadOnly: 0

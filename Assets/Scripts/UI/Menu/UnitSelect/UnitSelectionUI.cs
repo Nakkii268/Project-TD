@@ -57,7 +57,7 @@ public class UnitSelectionUI : UICanvas
         });
         _confirmBtn.onClick.AddListener(() =>
         {
-            OnUnitConfirm?.Invoke(this, new LineUpSave(_currentSelectIndex,_currentSelectUnit));
+            OnUnitConfirm?.Invoke(this, new LineUpSave(_currentSelectIndex,_currentSelectUnit, 0));
             UIManager.Instance.Close<UnitSelectionUI>(0);
 
         });

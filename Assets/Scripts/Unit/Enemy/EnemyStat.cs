@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyStat : UnitStat
 {
+    public Enemy _enemy;
     public float AttackRange;
     public Stat Speed;
     public bool CanBlock;
@@ -19,7 +20,7 @@ public class EnemyStat : UnitStat
     {
         
        
-        EnemyUnit enemyUnit = (EnemyUnit)unit;
+        EnemyUnit enemyUnit =_enemy.Unit;
         MaxHp = new Stat(enemyUnit.Heath);
         Attack = new Stat(enemyUnit.Attack);
         AttackInterval = new Stat(enemyUnit.AttackInterval);

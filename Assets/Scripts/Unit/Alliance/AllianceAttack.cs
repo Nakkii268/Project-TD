@@ -107,9 +107,16 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
     {
         
         if(targetCount == TargetCount.Single)
-        {   
-            
-            return new List<GameObject>() { targets[0] };
+        {
+            if (IsHaveTarget())
+            {
+                return new List<GameObject>() { targets[0] };
+
+            }
+            else
+            {
+                return null;
+            }
 
         }
         else if(targetCount == TargetCount.Blocked)

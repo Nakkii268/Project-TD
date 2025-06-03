@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96d34d8dbbb732b47a68629a5ce22f58, type: 3}
-  m_Name: TestMap
+  m_Name: T-01
   m_EditorClassIdentifier: 
   MapName: T-01
   StagePath: Assets/Scenes/SampleScene.unity

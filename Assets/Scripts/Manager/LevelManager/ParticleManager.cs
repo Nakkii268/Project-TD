@@ -31,19 +31,21 @@ public class ParticleManager : MonoBehaviour
     {
 
         ParticleSystem particle = Instantiate(p.Particle, pos.position, Quaternion.identity, target.transform);
-        //Debug.Log(particle.transform.rotation.eulerAngles);
+        
         if (p.Rotatable) { 
-            particle.transform.rotation = RotateVFX(p.BaseRotation,rotate);  
+            particle.transform.rotation =rotate;  
         }
         particle.Play();
     }
 
-    public Quaternion RotateVFX(Vector3 startQuaternion, Quaternion dir)
+    public Vector3 RotateVFX(Vector3 startQuaternion, float dir)
     {
         Quaternion rotation = Quaternion.Euler(startQuaternion);
+        Debug.Log(startQuaternion.x + ", " + startQuaternion.y + ", " + startQuaternion.z + ", " + dir);
+        Vector3 newrotate = rotation.eulerAngles;
+        newrotate.x=dir;
 
-
-        return rotation *dir;
+        return newrotate;
 
     }
     public IEnumerator StopParticle(ParticleSystem p,float duration)

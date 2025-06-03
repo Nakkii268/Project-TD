@@ -6,6 +6,7 @@ using UnityEngine;
 public class Skills : ScriptableObject
 {
     public string Name;
+    public Sprite Icon;
     public string Description;
     public SkillType skillType;
     public SkillEffect skillEffect;
@@ -13,13 +14,10 @@ public class Skills : ScriptableObject
     public bool TargetRequire;
     public Vector2[] SkillRange;
     public VFXData SkillVFX;
-    public virtual void SkillActivate(AllianceSkill User,List<GameObject> target)
+    public virtual void SkillActivate(AllianceSkill User,List<GameObject> target=null)
     {
 
     }
-    public virtual void SkillActivate(AllianceSkill User)
-    {
-
-    }
+    
 }
 

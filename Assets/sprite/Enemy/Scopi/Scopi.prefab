@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d702b6fc49a4150478d3d4be2301e950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 11400000, guid: cd67ce6d899f05a4c9e6c25c43ab52ee, type: 2}
+  unit: {fileID: 11400000, guid: 54fe095d7aace1a449bcc57f58f5af35, type: 2}
   unitLevel: 0
   currentHp: 0
   MaxHp:
@@ -149,6 +149,7 @@ MonoBehaviour:
   Block:
     BaseStat: 0
     Modifiers: []
+  _enemy: {fileID: 2764147705095838820}
   AttackRange: 0
   Speed:
     BaseStat: 0

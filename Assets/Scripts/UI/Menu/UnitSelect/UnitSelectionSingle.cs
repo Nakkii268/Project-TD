@@ -39,7 +39,7 @@ public class UnitSelectionSingle : MonoBehaviour
             isSelected = true;
             Selected.SetActive(true);
             isInteractable = true;
-            OnUnitSelected?.Invoke(this, new LineUpSave(i, unit));
+            OnUnitSelected?.Invoke(this, new LineUpSave(i, unit,0));
 
         }
         else
@@ -62,7 +62,7 @@ public class UnitSelectionSingle : MonoBehaviour
            if (!isSelected) {
                 isSelected = !isSelected;
                 Selected.SetActive(true);
-                OnUnitSelected?.Invoke(this, new LineUpSave(Index,_unit));
+                OnUnitSelected?.Invoke(this, new LineUpSave(Index,_unit, 0));
                
 
             }
@@ -71,7 +71,7 @@ public class UnitSelectionSingle : MonoBehaviour
                 isSelected = !isSelected;
                 Selected.SetActive(false);
                
-                OnUnitSelected?.Invoke(this, new LineUpSave(Index, null));
+                OnUnitSelected?.Invoke(this, new LineUpSave(Index, null,0));
                 
 
             }

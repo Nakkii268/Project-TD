@@ -15,10 +15,10 @@ MonoBehaviour:
   UnitID: 001
   UnitPrefab: {fileID: 6865232695306935221, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
   Name: Kana
-  Heath: 33994
-  Attack: 5681
+  Heath: 35216
+  Attack: 6036
   AttackInterval: 1
-  Defense: 3736
+  Defense: 3874
   Resistance: 45
   Block: 2
   AttackVfx: {fileID: 1442184012376203772, guid: 50a4e5f6312b13b4f97bd5d15fc13162, type: 3}
@@ -45,4 +45,4 @@ MonoBehaviour:
   LimitBreak: 2
   Level: 1
   UnitSkills:
-  - {fileID: 11400000, guid: a5ddbc2b178714f46b40ef5e9642bdf4, type: 2}
+  - {fileID: 11400000, guid: c22c3285a053ca6458f9247647cfc384, type: 2}

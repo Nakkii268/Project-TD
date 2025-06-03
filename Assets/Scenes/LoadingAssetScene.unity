@@ -715,8 +715,6 @@ MonoBehaviour:
   limitBreakIcon: {fileID: 11400000, guid: e5fe7fbb3deffcb46b31ab601b06603d, type: 2}
   _resourceManager: {fileID: 534953649}
   _playerDataManager: {fileID: 2005953833}
-  stagePath: Assets/Scenes/SampleScene.unity
-  testData: {fileID: 11400000, guid: c641d677f62fdbc4982558a78b5c356b, type: 2}
 --- !u!1 &812250169
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,16 +996,17 @@ MonoBehaviour:
     LineUp:
     - Index: 0
       UnitId: 001
+      SkillIndex: 0
     - Index: 1
       UnitId: 002
+      SkillIndex: 0
     - Index: 2
       UnitId: 003
+      SkillIndex: 0
     PlayerProgress:
-      ChapterID: C01
-      Stage: 1
-    LastCompleteStage:
-      ChapterID: C01
-      Stage: 1
+      ChapterIndex: 1
+      ChapterID: C02
+      Stage: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

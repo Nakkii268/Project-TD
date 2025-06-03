@@ -11,7 +11,7 @@ public class EffectTypeSkills : ActiveSkills
     public List<EffectDelay> effects;
    
 
-    public override void SkillActivate(AllianceSkill User, List<GameObject> target)
+    public override void SkillActivate(AllianceSkill User, List<GameObject> target = null)
     {
         for (int i = 0; i < effects.Count; i++)
         {

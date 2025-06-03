@@ -48,9 +48,11 @@ public class LineUpData
 {
     public int Index;
     public string UnitId;
-    public LineUpData(int index, string unitId)
+    public int SkillIndex;
+    public LineUpData(int index, string unitId, int skillIndex)
     {
         Index = index;
         UnitId = unitId;
+        SkillIndex = skillIndex;
     }
 }

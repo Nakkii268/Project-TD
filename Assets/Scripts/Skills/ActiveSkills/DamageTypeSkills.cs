@@ -10,14 +10,11 @@ public class DamageTypeSkills : ActiveSkills
     public DamageType DamageType;
     public float delayTime;
 
-    public override void SkillActivate(AllianceSkill User, List<GameObject> target)
+    public override void SkillActivate(AllianceSkill User, List<GameObject> target=null)
     {
         User.StartCoroutine(DelayDamage(User,target,delayTime));    
     }
-    public override void SkillActivate(AllianceSkill User)
-    {
-        
-    }
+    
     private void Damage(AllianceSkill User, List<GameObject> target)
     {
         if (skillTarget == SkillTarget.Enemy)

@@ -6,9 +6,6 @@ using UnityEngine;
 
 public static class SaveLoadData 
 {
-   
-
-  
     public static PlayerData LoadCharacterData()
     {
        string savePath = Application.persistentDataPath + "/SaveLoadData.json";
@@ -57,38 +54,11 @@ public static class SaveLoadData
         //line up
         for (int i = 0; i < data.LineUp.Count; i++)
         {
-            newData.PlayerLineUp.Add(new LineUpSave(data.LineUp[i].Index,GameManager.Instance._resourceManager.GetUnitById<AllianceUnit>(data.LineUp[i].UnitId)));
+            newData.PlayerLineUp.Add(new LineUpSave(data.LineUp[i].Index, GameManager.Instance._resourceManager.GetUnitById<AllianceUnit>(data.LineUp[i].UnitId), data.LineUp[i].SkillIndex));
         }
         
     }
-    public static void UpdateUnit(PlayerDataSO Data, PlayerData toOverwrite)
-    {
-        toOverwrite.OwnedCharacter.Clear();
-        for (int i = 0; i < Data.OwnedCharacter.Count; i++)
-        {
-            CharacterModifyData cdata = new CharacterModifyData(Data.OwnedCharacter[i].UnitID, Data.OwnedCharacter[i].Level, Data.OwnedCharacter[i].LimitBreak);
-            toOverwrite.OwnedCharacter.Add(cdata);
-           
-        }
-    }
-    public static void UpdateItem(PlayerDataSO Data, PlayerData toOverwrite)
-    {
-        toOverwrite.Items.Clear();
-        for(int i = 0;i < Data.Items.Count; i++)
-        {
-            SaveItemData it = new SaveItemData(Data.Items[i].Material.ItemID, Data.Items[i].Quantity);
-            toOverwrite.Items.Add(it);  
-        }
-    }
-    public static void UpdateLineUp(PlayerDataSO Data, PlayerData toOverwrite)
-    {
-        toOverwrite.LineUp.Clear();
-        for(int i=0; i < Data.PlayerLineUp.Count; i++)
-        {
-            LineUpData lu = new(Data.PlayerLineUp[i].Index, Data.PlayerLineUp[i].Unit.UnitID);
-            toOverwrite.LineUp.Add(lu);
-        }
-    }
+  
 
-    
+
 }

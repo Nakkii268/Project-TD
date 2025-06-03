@@ -57,13 +57,13 @@ public class LineUpSlot : MonoBehaviour
     {
         if (e.Index == -1)
         {
-            OnUnitAssign?.Invoke(this, new LineUpSave(-1, e.Unit));
+            OnUnitAssign?.Invoke(this, new LineUpSave(-1, e.Unit,e.SkillIndex));
             
             Initialized(null);
             return;
 
         }
-        OnUnitAssign?.Invoke(this, new LineUpSave(SlotIndex, e.Unit));
+        OnUnitAssign?.Invoke(this, new LineUpSave(SlotIndex, e.Unit, e.SkillIndex));
         Initialized(e.Unit);
 
     }

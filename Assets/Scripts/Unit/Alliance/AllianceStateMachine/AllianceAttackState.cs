@@ -35,10 +35,7 @@ public class AllianceAttackState : AllianceState, IState
 
     private void Alliance_OnNoEnemy(object sender, System.EventArgs e)
     {
-        if (AllianceSMManager.Alliance.AllianceSkill.IsSkillDuration)
-        {
-            AllianceSMManager.ChangeState(AllianceSMManager.AllianceSkillDuarationState);
-        }
+        
         AllianceSMManager.ChangeState(AllianceSMManager.AllianceIdleState);
     }
 
@@ -51,10 +48,7 @@ public class AllianceAttackState : AllianceState, IState
 
     public override void OnAnimationExitEvent()
     {
-        if (AllianceSMManager.Alliance.AllianceSkill.IsSkillDuration)
-        {
-            AllianceSMManager.ChangeState(AllianceSMManager.AllianceSkillDuarationState);
-        }
+        
         AllianceSMManager.ChangeState(AllianceSMManager.AllianceIdleState);
         AllianceSMManager.Alliance.AllianceVisual.RotateToDirection(AllianceSMManager.Alliance.direction);
     }

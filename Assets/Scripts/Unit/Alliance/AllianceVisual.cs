@@ -10,8 +10,7 @@ public class AllianceVisual : MonoBehaviour
     [SerializeField] private SortingGroup sortingGroup;
 
 
-    //!!!! Need to handle visual direction when deploy
-
+  
     public void SetSortingOrder(float value)
     {
         sortingGroup.sortingOrder = Mathf.RoundToInt(20 - value);
@@ -40,7 +39,7 @@ public class AllianceVisual : MonoBehaviour
 
         }
     }
-    //for test}
+    
     public void PlayDefaultAnim()
     {
         animator.Play("default");
@@ -56,11 +55,8 @@ public class AllianceVisual : MonoBehaviour
         animator.Play("attack");
 
     }
+   
   
-    public void PlayGetHitkAnim()
-    {
-        animator.Play("gethit");
-    }
     public void PlayDisableAnim()
     {
         animator.Play("disable");
@@ -70,17 +66,18 @@ public class AllianceVisual : MonoBehaviour
         animator.Play("dead");
     }
 
-    // basicaly anim name will be charname + action eg: char1 idle
-    public void PlayAnimation(string name)
+    public void PlaySkill1Anim()
     {
-        animator.SetBool(name,true);    
+        animator.Play("skill1");
     }
-
-    public void StopAnimation(string name) 
-    { 
-        animator.SetBool(name ,false);
+    public void PlaySkill2Anim()
+    {
+        animator.Play("skill2");
     }
-
+    public void PlaySkill3Anim()
+    {
+        animator.Play("skill3");
+    }
     //
 
     public void AnimationEnterEvent()

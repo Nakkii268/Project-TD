@@ -9,15 +9,12 @@ public class ActiveSkills : Skills
     public float SkillPoint;
     public bool CanAttack;
     public SkillActiveType ActiveType;
-    public override void SkillActivate(AllianceSkill User, List<GameObject> target)
+    public override void SkillActivate(AllianceSkill User, List<GameObject> target = null)
     {
         
     }
 
-    public override void SkillActivate(AllianceSkill User)
-    {
-       
-    }
+    
 }
 
 

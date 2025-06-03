@@ -21,8 +21,8 @@ MonoBehaviour:
   Defense: 556
   Resistance: 10
   Block: 1
-  AttackVfx: {fileID: 1442184012376203772, guid: 50a4e5f6312b13b4f97bd5d15fc13162, type: 3}
-  HitVfx: {fileID: 27400811220467730, guid: a026953b84f4b384b90d2ad2f6f68bfc, type: 3}
+  AttackVfx: {fileID: 8281976299469518386, guid: b0cf4939cb2f871439abd5815194152a, type: 3}
+  HitVfx: {fileID: 1542761318735395630, guid: 1a6580c36fd2cf247a78c6bd54f9c71d, type: 3}
   Rarity: {fileID: 11400000, guid: 0db3e1a0694614948ab0f03f88761004, type: 2}
   unitDragSprite: {fileID: -255210442, guid: 678a0865b0bbfdd4d9a27005b7c8f5c2, type: 3}
   unitPotrait: {fileID: 21300000, guid: e17a5fcf785a6ab48ae0b19f714be318, type: 3}

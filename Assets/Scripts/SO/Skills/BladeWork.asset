@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d59801121cd93c4d98d6600ec60b621, type: 3}
   m_Name: BladeWork
   m_EditorClassIdentifier: 
-  Name: Blade Work
+  Name: LanceRain
+  Icon: {fileID: 21300000, guid: bba1d3a68c2917544b52fd40b2fc3804, type: 3}
   Description: 
   skillType: 0
   skillEffect: 0
@@ -22,12 +23,12 @@ MonoBehaviour:
   SkillVFX:
     Particle: {fileID: 5957420034109470107, guid: 69ccd7edcb9bcb34399fe458cad19dfd, type: 3}
     Rotatable: 1
-    BaseRotation: {x: -65, y: 0, z: 0}
+    BaseRotation: {x: -90, y: 90, z: -90}
   ChargeType: 2
-  SkillDuration: 1
+  SkillDuration: 0.5
   SkillPoint: 1
   CanAttack: 0
-  ActiveType: 0
+  ActiveType: 1
   SkillDmgScale: 9999
   DamageType: 0
   delayTime: 0.2
@@ -35,3 +36,4 @@ MonoBehaviour:
   TargetLayer:
     serializedVersion: 2
     m_Bits: 2048
+  IsAroundUser: 0

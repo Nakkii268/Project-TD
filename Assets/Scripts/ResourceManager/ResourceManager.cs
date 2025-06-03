@@ -154,7 +154,7 @@ public class ResourceManager : MonoBehaviour
     {
         if(isItemDone && isChapterDone && isUnitDone && isUIDone)
         {
-            Debug.Log("Done!");
+            
             OnLoadComplete?.Invoke(this, EventArgs.Empty);
         }
     }

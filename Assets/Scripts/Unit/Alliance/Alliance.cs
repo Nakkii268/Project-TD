@@ -254,22 +254,26 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
     {
         if (direction == new Vector2(-1, 0))
         {
-            return Quaternion.Euler(0, 0, 0);
+            return Quaternion.Euler(-90, 90, -90);
 
         }
         else if (direction == new Vector2(1, 0))
         {
-            return Quaternion.Euler(0, 180, 0);
+            return Quaternion.Euler(90, 90, -90);
+
         }
         else if (direction == new Vector2(0, -1))
         {
-            return Quaternion.Euler(0, 270, 0);
+            return Quaternion.Euler(180, 90, -90);
+
         }
         else if (direction == new Vector2(0, 1))
         {
-            return Quaternion.Euler(0, 90, 0);
+            return Quaternion.Euler(0, 90, -90);
+
         }
         return Quaternion.Euler(0, 0, 0);
+
     }
-   
+
 }

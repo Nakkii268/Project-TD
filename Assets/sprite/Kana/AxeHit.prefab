@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8307151427289574565}
   - component: {fileID: 27400811220467730}
   - component: {fileID: 4023947619418910993}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: AxeHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4853,9 +4853,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -500789675
+  m_SortingLayer: 2
+  m_SortingOrder: 20
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0

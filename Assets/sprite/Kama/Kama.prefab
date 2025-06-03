@@ -858,7 +858,6 @@ MonoBehaviour:
   damageType: 0
   ProjectileVisual: {fileID: 654593747, guid: f06cfe564242e7d4783211fd947edf04, type: 3}
   isEnhance: 0
-  hitCount: 1
   firePoint: {fileID: 8670232256405674928}
 --- !u!1 &2956980803203035853
 GameObject:
@@ -1761,7 +1760,7 @@ Transform:
   m_GameObject: {fileID: 7299307456705108564}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.007, y: 0.351, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

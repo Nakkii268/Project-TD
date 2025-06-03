@@ -10,27 +10,29 @@ public class AOEDamageSkills : DamageTypeSkills
 {
     public Vector2 Range;//width-height
     public LayerMask TargetLayer;
-    public override void SkillActivate(AllianceSkill User, List<GameObject> target)
-    {
-        
-    }
-    public override void SkillActivate(AllianceSkill User)
+    public bool IsAroundUser;
+    public override void SkillActivate(AllianceSkill User, List<GameObject> target = null)
     {
         User.StartCoroutine(DelayDamage(User, delayTime));
+
     }
+   
     private void Damage(AllianceSkill User)
     {
-       
-        float centerx = ((RangeSwap(User.alliance.direction).x / 2 + .5f) * User.alliance.direction).x + (User.alliance.UnitPos.x);
-        float centery = ((RangeSwap(User.alliance.direction).y / 2 + .5f) * User.alliance.direction).y + (User.alliance.UnitPos.y);
-        Debug.Log(User.alliance.UnitPos + "poss");
-        Debug.Log(User.alliance.direction + "dir");
-        Debug.Log(centerx + "centerXX");
-        Debug.Log(centery + "centerYY");
-        Debug.Log((Range.x/2+centerx) + "max");
-        Debug.Log((Range.x/2-centerx) + "max");
+        float centerx=0;
+        float centery = 0;
+        if (IsAroundUser)
+        {
+            centerx = User.alliance.UnitPos.x;
+            centery = User.alliance.UnitPos.y;
+        }
+        else
+        {
+            centerx = ((RangeSwap(User.alliance.direction).x / 2 + .5f) * User.alliance.direction).x + (User.alliance.UnitPos.x);
+            centery = ((RangeSwap(User.alliance.direction).y / 2 + .5f) * User.alliance.direction).y + (User.alliance.UnitPos.y);
+        }
         Collider2D[] hits = Physics2D.OverlapBoxAll(new Vector2(centerx,centery), RangeSwap(User.alliance.direction), 0,TargetLayer,-5,5);
-        Debug.Log(hits.Length);
+        
 
         for (int i = 0; i < hits.Length; i++)
         {
