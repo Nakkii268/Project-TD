@@ -15,10 +15,10 @@ MonoBehaviour:
   UnitID: 004
   UnitPrefab: {fileID: 6865232695306935221, guid: 48cec2d1e51de0a469d08fd400b8263b, type: 3}
   Name: Nikoo
-  Heath: 48815
-  Attack: 5681
+  Heath: 61429
+  Attack: 8656
   AttackInterval: 2
-  Defense: 60
+  Defense: 1386
   Resistance: 50
   Block: 2
   AttackVfx: {fileID: 1442184012376203772, guid: 50a4e5f6312b13b4f97bd5d15fc13162, type: 3}
@@ -43,6 +43,6 @@ MonoBehaviour:
   DamageType: 0
   UnitClass: {fileID: 11400000, guid: e1b5ddadcd857a34c98abeaafb60c5fe, type: 2}
   LimitBreak: 1
-  Level: 1
+  Level: 20
   UnitSkills:
-  - {fileID: 11400000, guid: a5ddbc2b178714f46b40ef5e9642bdf4, type: 2}
+  - {fileID: 11400000, guid: f3c989bc537df0341ac3e2bcf9070074, type: 2}

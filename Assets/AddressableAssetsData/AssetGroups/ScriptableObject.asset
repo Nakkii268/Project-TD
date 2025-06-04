@@ -23,6 +23,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Item
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6635e91f07512ed42bae3f7be1ac49b9
+    m_Address: Assets/Scripts/Unit/AllianceSO/Rize.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Unit
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7d29bc015b2d302429e0e6b109fcdab6
     m_Address: Assets/Scripts/SO/Stage/Chapter2.asset
     m_ReadOnly: 0
@@ -67,6 +73,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f137a38c32ffca04da14660715ab3b01
     m_Address: Assets/Scripts/Unit/Sniper1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Unit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fe3de76f2a360b24197367daf81acd53
+    m_Address: Assets/Scripts/Unit/AllianceSO/Nikoo.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - Unit

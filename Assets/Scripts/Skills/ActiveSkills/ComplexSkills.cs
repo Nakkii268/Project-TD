@@ -14,6 +14,7 @@ public class ComplexSkills : ActiveSkills
     public SkillSubTarget subTarget;
     public float DamageDelayTime;
     public float EffectDelayTime;
+    
     //dmg to maintarget, effect to sub target
     //case:
     // dmg self, debuff enemy
@@ -21,11 +22,14 @@ public class ComplexSkills : ActiveSkills
 
     public override void SkillActivate(AllianceSkill User, List<GameObject> target = null)
     {
+
+        LevelManager.instance.ParticleManager.SkillParticle(User.gameObject, SkillVFX, User.transform, User.alliance.GetVFXQuaternion());
+
         User.StartCoroutine(DelayStatus(User,target,EffectDelayTime));
         User.StartCoroutine(DelayDamage(User, target, DamageDelayTime));
        
     }
-    private void DamageComponent(AllianceSkill User, List<GameObject> target)
+    public virtual void DamageComponent(AllianceSkill User, List<GameObject> target)
     {
         if (skillTarget == SkillTarget.Self)
         {
@@ -34,18 +38,20 @@ public class ComplexSkills : ActiveSkills
             
             
         }
+       
 
         if (skillTarget == SkillTarget.Enemy )
         {
             //dmg target
             foreach (GameObject tg in target)
             {
-                tg.TryGetComponent<IDamageable>(out IDamageable dmgTarget);
-                dmgTarget.ReceiveDamaged(SkillDmg, DamageType);
+                tg.GetComponentInParent<IDamageable>().ReceiveDamaged(SkillDmg, DamageType);
+                
             }  
         }
     }
-    private void EffectComponent(AllianceSkill User, List<GameObject> target) {
+    public virtual void EffectComponent(AllianceSkill User, List<GameObject> target) 
+    {
         if ( subTarget == SkillSubTarget.Enemy)
         {
             //debuff target
@@ -71,12 +77,12 @@ public class ComplexSkills : ActiveSkills
             }
         }
     }
-    private IEnumerator DelayDamage(AllianceSkill User, List<GameObject> target, float time)
+    public IEnumerator DelayDamage(AllianceSkill User, List<GameObject> target, float time)
     {
         yield return new WaitForSeconds(time);
         DamageComponent(User, target);
     }
-    private IEnumerator DelayStatus(AllianceSkill User, List<GameObject> target, float time)
+    public IEnumerator DelayStatus(AllianceSkill User, List<GameObject> target, float time)
     {
         yield return new WaitForSeconds(time);
         EffectComponent(User, target);

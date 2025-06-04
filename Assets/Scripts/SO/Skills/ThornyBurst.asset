@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88cb6018610018f4c9a75df276ee5b3a, type: 3}
+  m_Name: ThornyBurst
+  m_EditorClassIdentifier: 
+  Name: 
+  Icon: {fileID: 0}
+  Description: 
+  skillType: 0
+  skillEffect: 2
+  skillTarget: 2
+  TargetRequire: 0
+  SkillRange: []
+  SkillVFX:
+    Particle: {fileID: 5665472214627883772, guid: 918beb050e77b37499b8c9b04d84b438, type: 3}
+    Rotatable: 1
+    BaseRotation: {x: -90, y: 90, z: -90}
+  ChargeType: 2
+  SkillDuration: 5
+  SkillPoint: 2
+  CanAttack: 0
+  ActiveType: 0
+  effects:
+  - {fileID: 11400000, guid: f0787e38af17e05488ef854602385f5b, type: 2}
+  SkillDmg: 9999999
+  DamageType: 0
+  subTarget: 0
+  DamageDelayTime: 4.9
+  EffectDelayTime: 0
+  Range: {x: 3, y: 3}
+  TargetLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  IsAroundUser: 1

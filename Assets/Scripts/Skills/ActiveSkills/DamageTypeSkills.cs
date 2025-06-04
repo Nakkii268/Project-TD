@@ -17,6 +17,8 @@ public class DamageTypeSkills : ActiveSkills
     
     private void Damage(AllianceSkill User, List<GameObject> target)
     {
+        LevelManager.instance.ParticleManager.SkillParticle(User.gameObject, SkillVFX, User.transform, User.alliance.GetVFXQuaternion());
+
         if (skillTarget == SkillTarget.Enemy)
         {
             foreach (GameObject tg in target)

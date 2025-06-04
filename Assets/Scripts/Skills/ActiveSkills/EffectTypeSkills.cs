@@ -20,6 +20,8 @@ public class EffectTypeSkills : ActiveSkills
     }
     private void EffectComponent(AllianceSkill User, List<GameObject> target, StatusEffect effect)
     {
+        LevelManager.instance.ParticleManager.SkillParticle(User.gameObject, SkillVFX, User.transform, User.alliance.GetVFXQuaternion());
+
         if (skillTarget == SkillTarget.Enemy)
         {
             foreach (GameObject tg in target)

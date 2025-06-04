@@ -32,7 +32,8 @@ public class ParticleManager : MonoBehaviour
 
         ParticleSystem particle = Instantiate(p.Particle, pos.position, Quaternion.identity, target.transform);
         
-        if (p.Rotatable) { 
+        if (p.Rotatable) {
+            Debug.LogWarning(rotate);
             particle.transform.rotation =rotate;  
         }
         particle.Play();

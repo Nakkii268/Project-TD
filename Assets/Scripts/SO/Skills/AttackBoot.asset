@@ -17,15 +17,20 @@ MonoBehaviour:
   Description: 
   skillType: 0
   skillEffect: 0
-  skillTarget: 0
+  skillTarget: 2
   TargetRequire: 0
   SkillRange: []
   SkillVFX:
-    Particle: {fileID: 0}
+    Particle: {fileID: 7008703141135775361, guid: f2e4ab672f0a411408593e7fde0c3c6e, type: 3}
     Rotatable: 0
     BaseRotation: {x: 0, y: 0, z: 0}
-  ScaleUp: 0
-  AttackVFX: {fileID: 0}
-  HitVFX: {fileID: 0}
+  ChargeType: 2
+  SkillDuration: 99
+  SkillPoint: 1
+  CanAttack: 1
+  ActiveType: 0
+  ScaleUp: 100
+  AttackVFX: {fileID: 5957420034109470107, guid: 69ccd7edcb9bcb34399fe458cad19dfd, type: 3}
+  HitVFX: {fileID: 8281976299469518386, guid: b0cf4939cb2f871439abd5815194152a, type: 3}
   BuffEffect: []
   DeBuffEffect: []

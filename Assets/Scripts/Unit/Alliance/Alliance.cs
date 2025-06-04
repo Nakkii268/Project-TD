@@ -254,6 +254,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
     {
         if (direction == new Vector2(-1, 0))
         {
+            Debug.Log("1");
             return Quaternion.Euler(-90, 90, -90);
 
         }
@@ -272,6 +273,8 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
             return Quaternion.Euler(0, 90, -90);
 
         }
+        Debug.Log("2");
+
         return Quaternion.Euler(0, 0, 0);
 
     }
