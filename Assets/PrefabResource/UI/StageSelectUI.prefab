@@ -505,7 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6ed8351f561aae4196c789ba6d1e113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDestroyOnClose: 0
+  isDestroyOnClose: 1
   BackBtn: {fileID: 3330662554655247900}
   HomeBtn: {fileID: 563076912699422272}
   StageList: {fileID: 0}

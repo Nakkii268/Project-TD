@@ -84,4 +84,16 @@ public class PlayerDataSO : ScriptableObject
         if(lineup.Contains(unit)) return true;
         return false;
     }
+    public void UpdateProgress()
+    {
+        if(PlayerProgress.Stage == (GameManager.Instance._resourceManager.GetChapterByIndex<ChapterSO>(PlayerProgress.ChapterIndex).StageQuantity-1))
+        {
+            PlayerProgress.ChapterIndex++;
+            PlayerProgress.Stage = 0;
+        }
+        else
+        {
+            PlayerProgress.Stage++;
+        }
+    }
 }

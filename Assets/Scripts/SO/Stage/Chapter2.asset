@@ -16,4 +16,4 @@ MonoBehaviour:
   ChapterID: C002
   ChapterName: The not Begin
   StageUIPath: Assets/Prefab/StageChapter2.prefab
-  StageQuantity: 5
+  StageQuantity: 4

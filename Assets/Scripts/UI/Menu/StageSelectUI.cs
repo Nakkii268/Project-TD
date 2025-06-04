@@ -95,7 +95,7 @@ public class StageSelectUI : UICanvas
         if (selectedChapter < _playerProgress.ChapterIndex) return;
         
 
-        for (int i = _playerProgress.Stage; i <= Chapters[selectedChapter].StageQuantity ; i++)
+        for (int i = _playerProgress.Stage+1; i <= Chapters[selectedChapter].StageQuantity-1 ; i++)
         {
             StageList.TryGetComponent(out StageUI stage);
             stage.stageBtnList[i].gameObject.SetActive(false);

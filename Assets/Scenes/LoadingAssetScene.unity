@@ -1010,9 +1010,9 @@ MonoBehaviour:
       UnitId: 004
       SkillIndex: 0
     PlayerProgress:
-      ChapterIndex: 1
-      ChapterID: C02
-      Stage: 2
+      ChapterIndex: 0
+      ChapterID: C01
+      Stage: 4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

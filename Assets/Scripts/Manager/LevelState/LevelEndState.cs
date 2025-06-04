@@ -17,25 +17,32 @@ public class LevelEndState : LevelState
         }else if(LevelStateMachineManager.endState == EndState.Successed)
         {
             UIManager.Instance.OpenUI<WinUI>(true);
-        }else if(LevelStateMachineManager.endState == EndState.NotComplete)
+            ProgressCheck();
+        }
+        else if(LevelStateMachineManager.endState == EndState.NotComplete)
         {
             UIManager.Instance.OpenUI<WinUI>(false);
+            ProgressCheck();
+
         }
     }
     public override void Exit()
     {
         base.Exit();
     }
-    public override void FixedUpdate()
+    
+    private void ProgressCheck()
     {
-        base.FixedUpdate();
-    }
-    public override void Update()
-    {
-        base.Update();
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            GameManager.Instance._sceneLoader.LoadMenu();
+        Debug.Log("++++++++++++++");
+        if(GameManager.Instance._playerDataManager.PlayerDataSO.PlayerProgress.ChapterIndex == LevelStateMachineManager._levelManager.Map.ChapterIndex)
+        {
+           if( GameManager.Instance._playerDataManager.PlayerDataSO.PlayerProgress.Stage == LevelStateMachineManager._levelManager.Map.StageIndex){
+                Debug.Log("-----------------");
+
+                GameManager.Instance._playerDataManager.PlayerDataSO.UpdateProgress();
+            }
         }
+       ;
     }
     
 }
