@@ -33,8 +33,12 @@ public class ParticleManager : MonoBehaviour
         ParticleSystem particle = Instantiate(p.Particle, pos.position, Quaternion.identity, target.transform);
         
         if (p.Rotatable) {
-            Debug.LogWarning(rotate);
-            particle.transform.rotation =rotate;  
+            
+            particle.transform.rotation =rotate;
+        }
+        else
+        {
+            particle.transform.rotation =Quaternion.Euler( p.BaseRotation);
         }
         particle.Play();
     }

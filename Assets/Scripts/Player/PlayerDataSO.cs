@@ -39,7 +39,25 @@ public class PlayerDataSO : ScriptableObject
         }
         return null;
     }
+    public int GetItemIndex(string id) {
+        
+        return 0;
+    }
+    public void AddItem(Item item, int quantity)
+    {
+        if (IsHaveItem(item.ItemID) != 0)
+        {
+            for (int i = 0; i < Items.Count; i++)
+            {
+                if (Items[i].Material.ItemID == item.ItemID) Items[i].Quantity+=quantity;
+            }
+        }
+        else
+        {
+            Items.Add(new ItemsData(item, quantity));
 
+        }
+    }
     public List<AllianceUnit> GetLineUp()
     {
         List<AllianceUnit> units = new List<AllianceUnit>();

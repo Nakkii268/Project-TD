@@ -22,7 +22,7 @@ MonoBehaviour:
   SkillRange: []
   SkillVFX:
     Particle: {fileID: 5665472214627883772, guid: 918beb050e77b37499b8c9b04d84b438, type: 3}
-    Rotatable: 1
+    Rotatable: 0
     BaseRotation: {x: -90, y: 90, z: -90}
   ChargeType: 2
   SkillDuration: 5

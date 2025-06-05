@@ -18,12 +18,14 @@ public class LevelEndState : LevelState
         {
             UIManager.Instance.OpenUI<WinUI>(true);
             ProgressCheck();
+            ItemDrop(LevelStateMachineManager._levelManager.Map);
+
         }
         else if(LevelStateMachineManager.endState == EndState.NotComplete)
         {
             UIManager.Instance.OpenUI<WinUI>(false);
             ProgressCheck();
-
+            ItemDrop(LevelStateMachineManager._levelManager.Map);
         }
     }
     public override void Exit()
@@ -33,16 +35,23 @@ public class LevelEndState : LevelState
     
     private void ProgressCheck()
     {
-        Debug.Log("++++++++++++++");
+        
         if(GameManager.Instance._playerDataManager.PlayerDataSO.PlayerProgress.ChapterIndex == LevelStateMachineManager._levelManager.Map.ChapterIndex)
         {
            if( GameManager.Instance._playerDataManager.PlayerDataSO.PlayerProgress.Stage == LevelStateMachineManager._levelManager.Map.StageIndex){
-                Debug.Log("-----------------");
+               
 
                 GameManager.Instance._playerDataManager.PlayerDataSO.UpdateProgress();
             }
         }
        ;
+    }
+    private void ItemDrop(MapSO map)
+    {
+        for (int i = 0; i < map.DropItem.Count; i++)
+        {
+            GameManager.Instance._playerDataManager.PlayerDataSO.AddItem(map.DropItem[i].Material, map.DropItem[i].Quantity);
+        }
     }
     
 }
