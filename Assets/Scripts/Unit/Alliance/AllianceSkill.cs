@@ -20,9 +20,10 @@ public class AllianceSkill : MonoBehaviour
     public event EventHandler<float> OnSpChange;
     public event EventHandler<float> OnSkillActive;
     public event EventHandler OnSkillEnd;
+    public int skillinde;
     private void Start()
     {
-        OnUseSkill = alliance.GetAllianceUnit().UnitSkills[0];
+        Debug.Log("start func");
         alliance.GetAllianceUnit().ApplyClassBuff(alliance.gameObject); //maybe adding status effect or passive idk
 
         if (OnUseSkill.skillType == SkillType.Active)
@@ -67,7 +68,13 @@ public class AllianceSkill : MonoBehaviour
         
 
     }
+    public void SetSkill(int index)
+    {
+        Debug.Log("initttt func");
 
+        OnUseSkill = alliance.GetAllianceUnit().UnitSkills[index];
+        skillinde = index;
+    }
     private void AllianceSkill_OnAttackPerform(object sender, List<GameObject> e)
     {
         SkillPointRecover(1);

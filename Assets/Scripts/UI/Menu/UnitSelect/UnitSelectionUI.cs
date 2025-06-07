@@ -28,7 +28,7 @@ public class UnitSelectionUI : UICanvas
     [SerializeField] private TextMeshProUGUI _blockTxt;
     [SerializeField] private TextMeshProUGUI _redeployTxt;
     [SerializeField] private TextMeshProUGUI _costTxt;
-
+   
     [Header("Info")]
 
     [SerializeField] private TextMeshProUGUI _name;
@@ -38,6 +38,10 @@ public class UnitSelectionUI : UICanvas
     [SerializeField] private AllianceUnit _currentSelectUnit;
     [SerializeField] private int _currentSelectIndex=-1;
     [SerializeField] private Transform NoInfoUI;
+    [Header("Skills")]
+    [SerializeField] private List<SkillUI> _skillUI;
+
+    [SerializeField] private int _currentSkillIndex = -1;
 
     private void Start()
     {
@@ -57,7 +61,7 @@ public class UnitSelectionUI : UICanvas
         });
         _confirmBtn.onClick.AddListener(() =>
         {
-            OnUnitConfirm?.Invoke(this, new LineUpSave(_currentSelectIndex,_currentSelectUnit, 0));
+            OnUnitConfirm?.Invoke(this, new LineUpSave(_currentSelectIndex,_currentSelectUnit, _currentSkillIndex));
             UIManager.Instance.Close<UnitSelectionUI>(0);
 
         });
@@ -70,7 +74,10 @@ public class UnitSelectionUI : UICanvas
 
 
         });
-        //ConfirmBtnHandle();
+        for (int i = 0; i < _skillUI.Count; i++)
+        {
+            _skillUI[i].OnSkillSelected += Skill_OnSkillSelected;
+        }
     }
     public override void SetUp(object t)
     {
@@ -131,7 +138,7 @@ public class UnitSelectionUI : UICanvas
 
     }
 
-  
+
 
     private void UpdateInfomation(AllianceUnit e)
     {
@@ -152,5 +159,15 @@ public class UnitSelectionUI : UICanvas
         _blockTxt.text = e.Block.ToString();
         _redeployTxt.text = e.RedeployTime.ToString();
         _costTxt.text = e.UnitDp.ToString();
+        for (int i = 0; i < e.UnitSkills.Count; i++)
+        {
+            _skillUI[i].Init(e.UnitSkills[i], i);
+            
+        }
+    }
+
+    private void Skill_OnSkillSelected(object sender, int e)
+    {
+        _currentSkillIndex = e;
     }
 }

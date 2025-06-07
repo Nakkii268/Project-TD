@@ -21,6 +21,7 @@ public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEnd
     [SerializeField] private TextMeshProUGUI UnitCostTxt;
     [SerializeField] private Image ClassIcon;
     [SerializeField] private bool isForcused;
+    [SerializeField] private int SkillIndex;
     protected override void Start()
     {
         base.Start();
@@ -31,7 +32,7 @@ public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEnd
         Potrait.sprite = SlotUnit.unitPotrait;
         Canvas= UIManager.Instance.GetComponent<Canvas>();
     }
-    public void Init(AllianceUnit unit, int inx, GameObject drag) { 
+    public void Init(AllianceUnit unit, int inx,int skillIndex, GameObject drag) { 
         SlotUnit = unit;
         SlotIndex = inx;
         Potrait.sprite = unit.unitPotrait;
@@ -39,6 +40,7 @@ public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEnd
         UnitCostTxt.text = unit.UnitDp.ToString();
         DragPrefab = drag;
         SpawnPrefab = unit.UnitPrefab;
+        SkillIndex =  skillIndex;
         UIManager.Instance.OpenUI<MenuUI>();
 
     }
@@ -75,7 +77,7 @@ public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEnd
     {
         DragPrefab.gameObject.SetActive(false);
         rectTransform.localScale = Vector3.one;
-        OnCharDrop?.Invoke(this, new CharacterData(SpawnPrefab,SlotUnit,SlotIndex));
+        OnCharDrop?.Invoke(this, new CharacterData(SpawnPrefab,SlotUnit,SlotIndex,SkillIndex));
         foreach (var block in levelManager.MapManager.ValidBlock(SlotUnit.GetAllianceType()))
         {
             block.GetComponent<Block>().UnHighLightBlock();
@@ -116,6 +118,6 @@ public class CharacterData
     
     public AllianceUnit unit;
     public int charIndex;
-
-    public CharacterData(GameObject c, AllianceUnit u,int index) { character = c;unit = u;charIndex = index; }   
+    public int skill;
+    public CharacterData(GameObject c, AllianceUnit u,int index,int s) { character = c;unit = u;charIndex = index;skill = s; }   
 }

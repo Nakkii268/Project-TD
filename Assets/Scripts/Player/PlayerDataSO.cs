@@ -39,10 +39,7 @@ public class PlayerDataSO : ScriptableObject
         }
         return null;
     }
-    public int GetItemIndex(string id) {
-        
-        return 0;
-    }
+    
     public void AddItem(Item item, int quantity)
     {
         if (IsHaveItem(item.ItemID) != 0)
@@ -58,7 +55,7 @@ public class PlayerDataSO : ScriptableObject
 
         }
     }
-    public List<AllianceUnit> GetLineUp()
+    public List<AllianceUnit> GetLineUpUnit()
     {
         List<AllianceUnit> units = new List<AllianceUnit>();
         for (int i = 0; i < PlayerLineUp.Count; i++)
@@ -66,6 +63,10 @@ public class PlayerDataSO : ScriptableObject
             units.Add(PlayerLineUp[i].Unit);
         }
         return units;
+    }
+    public List<LineUpSave> GetLineUp() 
+    {
+        return PlayerLineUp;
     }
     public void UpdateLineUp(AllianceUnit unit, int indx,int skIndx)
     {
@@ -98,7 +99,7 @@ public class PlayerDataSO : ScriptableObject
     
     public bool IsLineUpContain(AllianceUnit unit)
     {
-        HashSet<AllianceUnit> lineup = new HashSet<AllianceUnit>(GetLineUp());
+        HashSet<AllianceUnit> lineup = new HashSet<AllianceUnit>(GetLineUpUnit());
         if(lineup.Contains(unit)) return true;
         return false;
     }

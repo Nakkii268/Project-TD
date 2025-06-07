@@ -45,12 +45,12 @@ public class LineUpUI : UICanvas
         for (int i = 0; i < _slots.Count; i++)
         {
             _slots[i].OnUnitAssign += LineUpUI_OnUnitAssign;
-            _slots[i].Initialized(null);
+            _slots[i].Initialized(null,-1);
             _slots[i].IndexAssign(i);
         }
         for (int i = 0; i < _playerSquad.Count; i++)
         {
-            _slots[_playerSquad[i].Index].Initialized(_playerSquad[i].Unit);
+            _slots[_playerSquad[i].Index].Initialized(_playerSquad[i].Unit, _playerSquad[i].SkillIndex);
             
             
         }

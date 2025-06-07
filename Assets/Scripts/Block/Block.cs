@@ -26,7 +26,7 @@ public class Block : MonoBehaviour
     {
         return Deloyable;
     }
-    public void DeloyUnit(AllianceUnit u,GameObject g,int indx)
+    public void DeloyUnit(AllianceUnit u,GameObject g,int indx,int skill)
     {
         if (unit != null) return;
         unit = u;
@@ -35,7 +35,7 @@ public class Block : MonoBehaviour
         SpawnUnit(u,g,indx);
         UnHighLightBlock();
         unitDeloyed = GetComponentInChildren<Alliance>();
-        Debug.Log("deloyed");
+        unitDeloyed.AllianceSkill.SetSkill(skill);
         
     }
     public void UnitReTreat()

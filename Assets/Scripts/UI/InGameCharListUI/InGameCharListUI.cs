@@ -17,13 +17,13 @@ public class InGameCharListUI : MonoBehaviour
     }
     private void Start()
     {
-        List<AllianceUnit> unitlist = GameManager.Instance._playerDataManager.PlayerDataSO.GetLineUp();
+        List<LineUpSave> unitlist = GameManager.Instance._playerDataManager.PlayerDataSO.GetLineUp();
        
         for (int i = 0; i < unitlist.Count; i++)
         {
             GameObject unit = Instantiate(prefab.gameObject, this.transform);
             InGameCharUI single = unit.GetComponent<InGameCharUI>();
-            single.Init(unitlist[i],i,dragUnitSprite);   
+            single.Init(unitlist[i].Unit, i, unitlist[i].SkillIndex,dragUnitSprite);   
             single.OnCharDrop += Single_OnCharDrop;
             single.OnCharSelect += Single_OnCharSelect;
             charList.Add(single);

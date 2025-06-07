@@ -18,8 +18,9 @@ public class LineUpSlot : MonoBehaviour
     [SerializeField] private Image limitBrrakIcon;
     [SerializeField] private Image UIPotrait;
     [SerializeField] private Image NullPotrait;
+    [SerializeField] private Image SkillIcon;
     public event EventHandler<LineUpSave> OnUnitAssign;
-    public void Initialized(AllianceUnit unit)
+    public void Initialized(AllianceUnit unit,int skillIndex)
     {
         if (unit == null)
         {
@@ -33,6 +34,7 @@ public class LineUpSlot : MonoBehaviour
         ClassIcon.sprite = unit.UnitClass.ClassIcon;
         RarityIcon.sprite = unit.Rarity.RarityIcon;
         UIPotrait.sprite = unit.unitUIPotrait;
+        SkillIcon.sprite= unit.UnitSkills[skillIndex].Icon;///////
         limitBrrakIcon.sprite = GameManager.Instance.limitBreakIcon.GetIcon(unit.LimitBreak);
         NullPotrait.gameObject.SetActive(false);
         
@@ -59,12 +61,12 @@ public class LineUpSlot : MonoBehaviour
         {
             OnUnitAssign?.Invoke(this, new LineUpSave(-1, e.Unit,e.SkillIndex));
             
-            Initialized(null);
+            Initialized(null,-1);
             return;
 
         }
         OnUnitAssign?.Invoke(this, new LineUpSave(SlotIndex, e.Unit, e.SkillIndex));
-        Initialized(e.Unit);
+        Initialized(e.Unit,e.SkillIndex);
 
     }
 }

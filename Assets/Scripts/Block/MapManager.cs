@@ -162,7 +162,7 @@ public class MapManager : MonoBehaviour
         }
         if (tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().IsDeloyable() && tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().GetBlockType() == data.unit.GetAllianceType())
         {
-            tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().DeloyUnit(data.unit, data.character, data.charIndex);
+            tiles[currentSelect.x, currentSelect.y].GetComponent<Block>().DeloyUnit(data.unit, data.character, data.charIndex,data.skill);
 
 
         }
