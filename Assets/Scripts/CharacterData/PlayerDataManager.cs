@@ -8,7 +8,7 @@ public class PlayerDataManager : MonoBehaviour
 {
     [SerializeField]private PlayerDataSO _playerDataSO;
     public PlayerDataSO PlayerDataSO { get { return _playerDataSO; } }
-    [SerializeField]private PlayerData _playerData;
+    [SerializeField]public PlayerData _playerData;
     
 
 
@@ -19,7 +19,7 @@ public class PlayerDataManager : MonoBehaviour
 
     private void _resourceManager_OnLoadComplete(object sender, System.EventArgs e)
     {
-        //_playerData=SaveLoadData.LoadCharacterData();
+        _playerData=SaveLoadData.LoadCharacterData();
         SaveLoadData.ConvertToSO(_playerDataSO, _playerData);
 
     }
@@ -45,7 +45,7 @@ public class PlayerDataManager : MonoBehaviour
             _playerData.Items.Add(it);
             }
         SaveLoadData.SaveCharacterData(_playerData);
-
+        Debug.Log("DOne");
 
     }
     public void  SaveLineUp()

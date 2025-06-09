@@ -245,8 +245,8 @@ public class UnitLevelUpUI : UICanvas
     }
     private void ConsumeMaterial()
     {
-        GameManager.Instance._playerDataManager.PlayerDataSO.GetItem(GoldID).Quantity -= Gold;
-        GameManager.Instance._playerDataManager.PlayerDataSO.GetItem(ExpID).Quantity -= Exp;
+        GameManager.Instance._playerDataManager.PlayerDataSO.GetItemById(GoldID).Quantity -= Gold;
+        GameManager.Instance._playerDataManager.PlayerDataSO.GetItemById(ExpID).Quantity -= Exp;
 
     }
   

@@ -8,7 +8,8 @@ public static class SaveLoadData
 {
     public static PlayerData LoadCharacterData()
     {
-       string savePath = Application.persistentDataPath + "/SaveLoadData.json";
+       
+       string savePath =Application.persistentDataPath+"/data.json";
        
         if (File.Exists(savePath))
         {
@@ -16,14 +17,33 @@ public static class SaveLoadData
             PlayerData data = JsonUtility.FromJson<PlayerData>(json);
             return data;
         }
-        return null;
+      
+        return LoadDefaultValue();
+        
+        
+    }
+    public  static PlayerData  LoadDefaultValue()
+    {
+       
+        PlayerData defaultData = new();
+        defaultData.PlayerID = "001";
+        defaultData.PlayerName ="Player"+defaultData.PlayerID;
+        defaultData.Items = new();
+        defaultData.LineUp =new();
+        defaultData.OwnedCharacter = new List<CharacterModifyData>() { 
+            new CharacterModifyData("001", 1, 0)
+
+        };
+        defaultData.PlayerProgress = new Progress(0,"C001",0);
+        return defaultData;
     }
     public static void SaveCharacterData(PlayerData data)
     {
-        string savePath = Application.persistentDataPath + "/SaveLoadData.json";
+        string savePath = Application.persistentDataPath+ "/data.json";
+
 
         string json = JsonUtility.ToJson(data);
-        File.WriteAllText(json, savePath);
+        File.WriteAllText(savePath, json);
     }
 
     public static void ConvertToSO(PlayerDataSO newData,PlayerData data)

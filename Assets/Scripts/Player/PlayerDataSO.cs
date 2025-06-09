@@ -31,7 +31,7 @@ public class PlayerDataSO : ScriptableObject
         }
         return 0;
     }
-    public ItemsData GetItem(string id)
+    public ItemsData GetItemById(string id)
     {
         for (int i = 0; i < Items.Count; i++)
         {

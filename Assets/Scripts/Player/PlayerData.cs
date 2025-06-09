@@ -14,7 +14,7 @@ public class PlayerData
     public List<LineUpData> LineUp;
     public Progress PlayerProgress;
 
-   
+    public PlayerData() { }
 }
 
 [Serializable]

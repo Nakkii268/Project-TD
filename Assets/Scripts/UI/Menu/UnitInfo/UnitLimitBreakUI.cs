@@ -83,7 +83,7 @@ public class UnitLimitBreakUI : UICanvas
         for (int i = 0;i< items.Count; i++)
         {
             if (GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(items[i].Material.ItemID)==0) return false;
-            if (GameManager.Instance._playerDataManager.PlayerDataSO.GetItem(items[i].Material.ItemID).Quantity >= items[i].Quantity) return true;
+            if (GameManager.Instance._playerDataManager.PlayerDataSO.GetItemById(items[i].Material.ItemID).Quantity >= items[i].Quantity) return true;
             
             
         }
@@ -121,7 +121,7 @@ public class UnitLimitBreakUI : UICanvas
         for (int i = 0; i < items.Count; i++)
         {
 
-            GameManager.Instance._playerDataManager.PlayerDataSO.GetItem(items[i].Material.ItemID).Quantity -= items[i].Quantity;
+            GameManager.Instance._playerDataManager.PlayerDataSO.GetItemById(items[i].Material.ItemID).Quantity -= items[i].Quantity;
             
         }
     }

@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public LimitBreakIcon limitBreakIcon;
     [SerializeField] public ResourceManager _resourceManager;
     [SerializeField] public PlayerDataManager _playerDataManager;
-
+    public Item item;
 
 
 
@@ -22,10 +22,10 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-       /* if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             TestBtn();
-        }*/
+        }
     }
     private void Start()
     {
@@ -39,11 +39,8 @@ public class GameManager : MonoBehaviour
 
     public void TestBtn()
     {
-        PlayerDataSO newdata = ScriptableObject.CreateInstance<PlayerDataSO>();
-        Debug.Log(newdata.PlayerName);
-        newdata.PlayerName = "nanidesuka";
-        Debug.Log(newdata.PlayerName);
-      
+        _playerDataManager.PlayerDataSO.AddItem(item, 10000);
+        _playerDataManager.SaveItem();
     }
 
 }
