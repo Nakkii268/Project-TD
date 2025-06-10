@@ -15,6 +15,7 @@ public class UnitListUI : UICanvas
     [SerializeField] public Button HomeBtn;
     private void Initialized()
     {
+        ClearChild();
         unitList = GameManager.Instance._playerDataManager.PlayerDataSO.OwnedCharacter;
         for(int i = 0;i < unitList.Count; i++)
         {
@@ -62,7 +63,13 @@ public class UnitListUI : UICanvas
         Initialized();
 
     }
-
+    private void ClearChild()
+    {
+        for(int i = 0;i< container.childCount; i++)
+        {
+            Destroy(container.GetChild(i).gameObject);
+        }
+    }
     //filter by tag ** maybe just skip** 
     //sort by level
 }

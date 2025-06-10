@@ -17,6 +17,12 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: c5537a1d92bb800479dc4e07cb71dffb
   m_SerializeEntries:
+  - m_GUID: 05656ee2256cb6140bbd330332e5d1ae
+    m_Address: Assets/PrefabResource/UI/BannerPopUp.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UIPrefab
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 060a650132ff8284f97d72f205b3d58f
     m_Address: Assets/PrefabResource/UI/LoseUI.prefab
     m_ReadOnly: 0
@@ -67,6 +73,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c8ac00038533bdf448807fd6bd539b71
     m_Address: Assets/PrefabResource/UI/CharacterList.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UIPrefab
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d5a29845d0a2a914a963111cec3df194
+    m_Address: Assets/PrefabResource/UI/InvetoryUI.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - UIPrefab

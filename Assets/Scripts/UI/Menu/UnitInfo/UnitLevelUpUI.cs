@@ -22,9 +22,9 @@ public class UnitLevelUpUI : UICanvas
     [SerializeField] private Button IncreaseBtn;
     [SerializeField] private Button DecreaseBtn;
 
-    //btn
+    
     [SerializeField] private TextMeshProUGUI TargetLevel;
-
+  
 
     [SerializeField] private Image LevelUpProgress;
     [SerializeField] private float _atk;
@@ -38,7 +38,9 @@ public class UnitLevelUpUI : UICanvas
    
   
     [SerializeField]readonly private string GoldID = "G01";
-    [SerializeField]readonly private string ExpID = "E02";
+    [SerializeField]readonly private string ExpID = "E01";
+    [SerializeField]readonly private string SuccessTxt = "Level up successfully !!";
+    [SerializeField]readonly private string FailTxt = "Not enough material !!";
 
     [SerializeField] private int Gold;
     [SerializeField] private int Exp;
@@ -87,16 +89,7 @@ public class UnitLevelUpUI : UICanvas
 
         LevelUpBtn.onClick.AddListener(() =>
         {
-            if (GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(GoldID) >= Gold && GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(ExpID) >= Exp)
-            {
-                LevelUp();
-                ConsumeMaterial();
-                UpdateQttTxt(GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(GoldID), 
-                    GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(ExpID));
-                CalRequireMaterial();
-                UpdateRequireTxt(Gold, Exp);
-            }
-            return;
+            LevelUpBtnHanlde();
         });
         CancelBtn.onClick.AddListener(() =>{
             UIManager.Instance.Close<UnitLevelUpUI>(0);
@@ -114,18 +107,44 @@ public class UnitLevelUpUI : UICanvas
         });
     }
 
+    private void LevelUpBtnHanlde()
+    {
+        if ((CurrentViewLevel <= GetCurrentLevel())) return;
+
+        if (RequireCheck())
+        {
+            LevelUp();
+            ConsumeMaterial();
+            UpdateQttTxt(GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(GoldID),
+                GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(ExpID));
+            CalRequireMaterial();
+            UpdateRequireTxt(Gold, Exp);
+            UIManager.Instance.OpenUI<BannerPopup>(SuccessTxt);
+        }
+        else
+        {
+            SetTargetLevel(GetCurrentLevel());
+            CalRequireMaterial();
+            PreviewStat(CurrentLimtBreak);
+            UpdateRequireTxt(Gold, Exp);
+
+            UIManager.Instance.OpenUI<BannerPopup>(FailTxt);
+
+        }
+       
+    }
+
     /////////////currenly usin test data. change later /////////
     private void LevelUp()
     {
-        if(true)
-         {
+        
             unit.Level = CurrentViewLevel;
             unit.Attack = _atk;
             unit.Heath = _hp;
             unit.Defense = _def;
-            // return;
-        }
-        //if not enough material then erorr ( test later)
+            
+        
+       
        
         PreviewStat(CurrentLimtBreak);
 
@@ -249,5 +268,8 @@ public class UnitLevelUpUI : UICanvas
         GameManager.Instance._playerDataManager.PlayerDataSO.GetItemById(ExpID).Quantity -= Exp;
 
     }
-  
+    private bool RequireCheck()
+    {
+        return GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(GoldID) >= Gold && GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(ExpID) >= Exp;
+    }
 }

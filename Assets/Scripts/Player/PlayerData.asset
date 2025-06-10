@@ -12,22 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b115a01ba924d4c91f68a81e12b8bd, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  PlayerID: 001112
-  PlayerName: nega
+  PlayerID: 001
+  PlayerName: Player001
   Items:
   - Material: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
-    Quantity: 100
+    Quantity: 10
   - Material: {fileID: 11400000, guid: ebe72feb9446389428430436d888d572, type: 2}
-    Quantity: 20
+    Quantity: 269870
   OwnedCharacter:
   - {fileID: 11400000, guid: b18f85b780946e8409d3a4e0589a984a, type: 2}
-  - {fileID: 11400000, guid: f137a38c32ffca04da14660715ab3b01, type: 2}
   PlayerLineUp:
   - Index: 0
     Unit: {fileID: 11400000, guid: b18f85b780946e8409d3a4e0589a984a, type: 2}
+    SkillIndex: -1
   PlayerProgress:
-    ChapterID: C01
-    Stage: 1
-  LastCompleteStage:
-    ChapterID: C01
-    Stage: 1
+    ChapterIndex: 0
+    ChapterID: C001
+    Stage: 0
