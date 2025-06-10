@@ -12,6 +12,19 @@ public class ItemSlot : MonoBehaviour
     public void Init(ItemsData item)
     {
         ItemSprite.sprite = item.Material.ItemSprite;
-        QuantityTxt.text = item.Quantity.ToString();
+        QuantityTxt.text = ShortenQuantity(item.Quantity);
+    }
+    private string ShortenQuantity(int qtt)
+    {
+        if (qtt >= 10000 && qtt < 1000000)
+        {
+            return (qtt / 10000).ToString() + "K";
+        }
+        else if (qtt >= 1000000)
+        {
+            return (qtt / 1000000).ToString() + "M";
+
+        }
+        return qtt.ToString();
     }
 }

@@ -44,7 +44,7 @@ public class LevelEndState : LevelState
                 GameManager.Instance._playerDataManager.PlayerDataSO.UpdateProgress();
             }
         }
-       ;
+       
     }
     private void ItemDrop(MapSO map)
     {
@@ -52,6 +52,8 @@ public class LevelEndState : LevelState
         {
             GameManager.Instance._playerDataManager.PlayerDataSO.AddItem(map.DropItem[i].Material, map.DropItem[i].Quantity);
         }
+        GameManager.Instance._playerDataManager.SaveItem();
+        
     }
     
 }

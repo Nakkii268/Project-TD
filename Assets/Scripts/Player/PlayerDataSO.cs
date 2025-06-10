@@ -55,6 +55,25 @@ public class PlayerDataSO : ScriptableObject
 
         }
     }
+    public void RemoveItem(Item item, int quantity)
+    {
+        if (IsHaveItem(item.ItemID) != 0 )
+        {
+            for (int i = 0; i < Items.Count; i++)
+            {
+                if (Items[i].Material.ItemID == item.ItemID && Items[i].Quantity >= quantity) Items[i].Quantity-=quantity;
+                if(Items[i].Quantity == 0)
+                {
+                    Items.Remove(Items[i]);
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("Some thing went wrong with item");
+
+        }
+    }
     public List<AllianceUnit> GetLineUpUnit()
     {
         List<AllianceUnit> units = new List<AllianceUnit>();

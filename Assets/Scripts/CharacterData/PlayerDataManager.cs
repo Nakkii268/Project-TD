@@ -9,8 +9,8 @@ public class PlayerDataManager : MonoBehaviour
     [SerializeField]private PlayerDataSO _playerDataSO;
     public PlayerDataSO PlayerDataSO { get { return _playerDataSO; } }
     [SerializeField]public PlayerData _playerData;
-    
 
+    public event EventHandler OnDataChange;
 
     private void Awake()
     {
@@ -32,6 +32,8 @@ public class PlayerDataManager : MonoBehaviour
             _playerData.OwnedCharacter.Add(cdata);
 
         }
+        OnDataChange?.Invoke(this, EventArgs.Empty);
+
         SaveLoadData.SaveCharacterData(_playerData);
 
     }
@@ -44,8 +46,9 @@ public class PlayerDataManager : MonoBehaviour
                 SaveItemData it = new SaveItemData(_playerDataSO.Items[i].Material.ItemID, _playerDataSO.Items[i].Quantity);
             _playerData.Items.Add(it);
             }
+            OnDataChange?.Invoke(this, EventArgs.Empty);
         SaveLoadData.SaveCharacterData(_playerData);
-        Debug.Log("DOne");
+     
 
     }
     public void  SaveLineUp()
@@ -57,6 +60,8 @@ public class PlayerDataManager : MonoBehaviour
             LineUpData lu = new(_playerDataSO.PlayerLineUp[i].Index, _playerDataSO.PlayerLineUp[i].Unit.UnitID, _playerDataSO.PlayerLineUp[i].SkillIndex);
             _playerData.LineUp.Add(lu);
         }
+        OnDataChange?.Invoke(this, EventArgs.Empty);
+
         SaveLoadData.SaveCharacterData(_playerData);
 
 

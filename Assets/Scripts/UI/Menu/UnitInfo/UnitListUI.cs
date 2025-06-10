@@ -24,6 +24,11 @@ public class UnitListUI : UICanvas
             single.gameObject.SetActive(true);
         }
         scrollRect.horizontalNormalizedPosition = 0;
+      
+    }
+    private void Start()
+    {
+        GameManager.Instance._playerDataManager.OnDataChange += _playerDataManager_OnDataChange;
         BackBtn.onClick.AddListener(() =>
         {
             UIManager.Instance.Close<UnitListUI>(0);
@@ -34,6 +39,13 @@ public class UnitListUI : UICanvas
         });
 
     }
+
+    private void _playerDataManager_OnDataChange(object sender, System.EventArgs e)
+    {
+        Initialized();
+    }
+
+    
     private void OnDisable()
     {
         for(int i = 0; i < container.childCount; i++)
@@ -42,6 +54,8 @@ public class UnitListUI : UICanvas
         }
       
         SingleList.Clear();
+        GameManager.Instance._playerDataManager.OnDataChange -= _playerDataManager_OnDataChange;
+
     }
     public override void SetUp()
     {
