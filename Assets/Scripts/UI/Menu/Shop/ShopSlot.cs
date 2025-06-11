@@ -1,0 +1,52 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class ShopSlot : MonoBehaviour
+{
+    private ShopSlotData slotData;
+    [SerializeField] private Button _btn;
+    [SerializeField] private Image ItemSprite;
+    [SerializeField] private TextMeshProUGUI ItemPrice;
+    [SerializeField] private TextMeshProUGUI AvailableQtt;
+    [SerializeField] private TextMeshProUGUI MaxQtt;
+    private string BuySuccessTxt = "Successfully buy";
+    private string BuyFailedTxt = "Not enought currrency";
+    public void Init(ShopSlotData data)
+    {
+        slotData = data;
+        ItemSprite.sprite = data.Item.ItemSprite;
+        ItemPrice.text = data.Price.ToString();
+        AvailableQtt.text = data.AvailableQtt.ToString();
+        MaxQtt.text = data.MaxQtt.ToString();
+        BuyBtnHandle();
+    }
+    private void Start()
+    {
+        _btn.onClick.AddListener(() =>
+        {
+            if (GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(slotData.Currency.ItemID) >= slotData.Price)
+            {
+                GameManager.Instance._playerDataManager.PlayerDataSO.AddItem(slotData.Item, slotData.Quantity);
+                GameManager.Instance._playerDataManager.PlayerDataSO.RemoveItem(slotData.Currency, slotData.Price);
+                slotData.AvailableQtt--;
+                UIManager.Instance.OpenUI<BannerPopup>(BuySuccessTxt);
+                BuyBtnHandle();
+                GameManager.Instance._playerDataManager.SaveItem();
+            }
+            else
+            {
+                UIManager.Instance.OpenUI<BannerPopup>(BuyFailedTxt);
+
+            }
+        });
+    }
+    private void BuyBtnHandle()
+    {
+        if (slotData.AvailableQtt <= 0) { 
+            _btn.interactable = false;
+        }
+    }
+}
