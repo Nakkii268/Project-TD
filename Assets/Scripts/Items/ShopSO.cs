@@ -30,3 +30,14 @@ public class ShopSlotData
     public int Price;
     public int Quantity;
 }
+[Serializable]
+public class ShopItemSave
+{
+    public string ItemID;
+    public int Available;
+    public ShopItemSave(string ItemID, int Available)
+    {
+        this.ItemID = ItemID;
+        this.Available = Available;
+    }
+}

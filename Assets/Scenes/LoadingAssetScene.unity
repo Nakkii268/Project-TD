@@ -783,7 +783,7 @@ MonoBehaviour:
   limitBreakIcon: {fileID: 11400000, guid: e5fe7fbb3deffcb46b31ab601b06603d, type: 2}
   _resourceManager: {fileID: 534953649}
   _playerDataManager: {fileID: 2005953833}
-  item: {fileID: 11400000, guid: ebe72feb9446389428430436d888d572, type: 2}
+  item: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
 --- !u!1 &812250169
 GameObject:
   m_ObjectHideFlags: 0
@@ -1082,6 +1082,7 @@ MonoBehaviour:
       ChapterIndex: 0
       ChapterID: C01
       Stage: 4
+    ShopItemsData: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

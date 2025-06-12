@@ -6,21 +6,26 @@ using UnityEngine.UI;
 
 public class ShopSlot : MonoBehaviour
 {
-    private ShopSlotData slotData;
+    [SerializeField] private ShopSlotData slotData;
     [SerializeField] private Button _btn;
     [SerializeField] private Image ItemSprite;
     [SerializeField] private TextMeshProUGUI ItemPrice;
     [SerializeField] private TextMeshProUGUI AvailableQtt;
-    [SerializeField] private TextMeshProUGUI MaxQtt;
+    [SerializeField] private TextMeshProUGUI QuantityTxt;
+    [SerializeField] private Transform OutofStockUI;
     private string BuySuccessTxt = "Successfully buy";
     private string BuyFailedTxt = "Not enought currrency";
+
+
+   
+
     public void Init(ShopSlotData data)
     {
         slotData = data;
         ItemSprite.sprite = data.Item.ItemSprite;
         ItemPrice.text = data.Price.ToString();
-        AvailableQtt.text = data.AvailableQtt.ToString();
-        MaxQtt.text = data.MaxQtt.ToString();
+        AvailableQtt.text = data.AvailableQtt.ToString()+"/"+data.MaxQtt.ToString();
+        QuantityTxt.text = data.MaxQtt.ToString();
         BuyBtnHandle();
     }
     private void Start()
@@ -32,6 +37,7 @@ public class ShopSlot : MonoBehaviour
                 GameManager.Instance._playerDataManager.PlayerDataSO.AddItem(slotData.Item, slotData.Quantity);
                 GameManager.Instance._playerDataManager.PlayerDataSO.RemoveItem(slotData.Currency, slotData.Price);
                 slotData.AvailableQtt--;
+                UpdateAvailabelTxt();
                 UIManager.Instance.OpenUI<BannerPopup>(BuySuccessTxt);
                 BuyBtnHandle();
                 GameManager.Instance._playerDataManager.SaveItem();
@@ -47,6 +53,12 @@ public class ShopSlot : MonoBehaviour
     {
         if (slotData.AvailableQtt <= 0) { 
             _btn.interactable = false;
+            OutofStockUI.gameObject.SetActive(true);
         }
+    }
+    private void UpdateAvailabelTxt()
+    {
+        AvailableQtt.text = slotData.AvailableQtt.ToString() + "/" + slotData.MaxQtt.ToString();
+
     }
 }

@@ -56,7 +56,10 @@ public class MenuUI : UICanvas
         {
             UIManager.Instance.OpenUI<InventoryUI>();
         });
-
+        Shop.onClick.AddListener(() =>
+        {
+            UIManager.Instance.OpenUI<ShopUI>();
+        });
     }
     private void OnDisable()
     {

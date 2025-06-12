@@ -59,6 +59,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - UIPrefab
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 83dd41b032308264f9e63cd0b6bc2c73
+    m_Address: Assets/PrefabResource/UI/ShopUI.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UIPrefab
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8c6189f9a6e388d48ae09a5a72765562
     m_Address: Assets/PrefabResource/UI/StageLoadingUI.prefab
     m_ReadOnly: 0

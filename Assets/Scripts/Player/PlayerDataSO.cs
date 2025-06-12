@@ -11,7 +11,7 @@ public class PlayerDataSO : ScriptableObject
     public List<AllianceUnit> OwnedCharacter;
     public List<LineUpSave> PlayerLineUp;
     public Progress PlayerProgress;
-  
+    public List<ShopItemSave> ShopItemsData;
 
     public void ClearData()
     {

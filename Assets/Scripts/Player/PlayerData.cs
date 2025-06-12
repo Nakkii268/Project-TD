@@ -13,7 +13,7 @@ public class PlayerData
     public List<CharacterModifyData> OwnedCharacter;
     public List<LineUpData> LineUp;
     public Progress PlayerProgress;
-
+    public List<ShopItemSave> ShopItemsData;
     public PlayerData() { }
 }
 
