@@ -50,7 +50,7 @@ public class LevelEndState : LevelState
     {
         for (int i = 0; i < map.DropItem.Count; i++)
         {
-            GameManager.Instance._playerDataManager.PlayerDataSO.AddItem(map.DropItem[i].Material, map.DropItem[i].Quantity);
+            GameManager.Instance._playerDataManager.PlayerDataSO.AddItem(map.DropItem[i].Item, map.DropItem[i].Quantity);
         }
         GameManager.Instance._playerDataManager.SaveItem();
         

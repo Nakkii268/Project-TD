@@ -10,6 +10,7 @@ public class ShopSlot : MonoBehaviour
     [SerializeField] private Button _btn;
     [SerializeField] private Image ItemSprite;
     [SerializeField] private TextMeshProUGUI ItemPrice;
+    [SerializeField] private TextMeshProUGUI ItemName;
     [SerializeField] private TextMeshProUGUI AvailableQtt;
     [SerializeField] private TextMeshProUGUI QuantityTxt;
     [SerializeField] private Transform OutofStockUI;
@@ -26,6 +27,7 @@ public class ShopSlot : MonoBehaviour
         ItemPrice.text = data.Price.ToString();
         AvailableQtt.text = data.AvailableQtt.ToString()+"/"+data.MaxQtt.ToString();
         QuantityTxt.text = data.MaxQtt.ToString();
+        ItemName.text = data.Item.ItemName;
         BuyBtnHandle();
     }
     private void Start()

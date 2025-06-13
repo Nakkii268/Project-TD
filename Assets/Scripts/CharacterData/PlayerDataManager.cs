@@ -43,7 +43,7 @@ public class PlayerDataManager : MonoBehaviour
         _playerData.Items.Clear();
             for (int i = 0; i < _playerDataSO.Items.Count; i++)
             {
-                SaveItemData it = new SaveItemData(_playerDataSO.Items[i].Material.ItemID, _playerDataSO.Items[i].Quantity);
+                SaveItemData it = new SaveItemData(_playerDataSO.Items[i].Item.ItemID, _playerDataSO.Items[i].Quantity);
             _playerData.Items.Add(it);
             }
             OnDataChange?.Invoke(this, EventArgs.Empty);

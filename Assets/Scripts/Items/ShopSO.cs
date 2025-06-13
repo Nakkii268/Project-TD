@@ -23,6 +23,7 @@ public class ShopSO : ScriptableObject
 [Serializable]
 public class ShopSlotData
 {
+    public ShopCategory Category;
     public Item Item;
     public int MaxQtt;
     public int AvailableQtt;
@@ -40,4 +41,10 @@ public class ShopItemSave
         this.ItemID = ItemID;
         this.Available = Available;
     }
+}
+[Serializable]
+public enum ShopCategory
+{
+    CharacterShop,
+    MatetialShop
 }

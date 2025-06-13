@@ -15,17 +15,26 @@ MonoBehaviour:
   PlayerID: 001
   PlayerName: Player001
   Items:
-  - Material: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
-    Quantity: 10
-  - Material: {fileID: 11400000, guid: ebe72feb9446389428430436d888d572, type: 2}
+  - Item: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
+    Quantity: 2010
+  - Item: {fileID: 11400000, guid: ebe72feb9446389428430436d888d572, type: 2}
     Quantity: 269870
+  - Item: {fileID: 11400000, guid: b326332c006df1d4c841f9c180f2a44e, type: 2}
+    Quantity: 103
+  - Item: {fileID: 11400000, guid: 7c157a22f4886d64b9a94f585bb0c3d8, type: 2}
+    Quantity: 1
   OwnedCharacter:
   - {fileID: 11400000, guid: b18f85b780946e8409d3a4e0589a984a, type: 2}
+  - {fileID: 11400000, guid: f137a38c32ffca04da14660715ab3b01, type: 2}
   PlayerLineUp:
   - Index: 0
     Unit: {fileID: 11400000, guid: b18f85b780946e8409d3a4e0589a984a, type: 2}
+    SkillIndex: -1
+  - Index: 2
+    Unit: {fileID: 11400000, guid: f137a38c32ffca04da14660715ab3b01, type: 2}
     SkillIndex: -1
   PlayerProgress:
     ChapterIndex: 0
     ChapterID: C001
     Stage: 0
+  ShopItemsData: []

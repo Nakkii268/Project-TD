@@ -13,34 +13,46 @@ MonoBehaviour:
   m_Name: ItemShopSO
   m_EditorClassIdentifier: 
   Slots:
-  - Item: {fileID: 11400000, guid: b326332c006df1d4c841f9c180f2a44e, type: 2}
+  - Category: 1
+    Item: {fileID: 11400000, guid: b326332c006df1d4c841f9c180f2a44e, type: 2}
     MaxQtt: 1
     AvailableQtt: 0
     Currency: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
     Price: 2000
     Quantity: 2
-  - Item: {fileID: 11400000, guid: b326332c006df1d4c841f9c180f2a44e, type: 2}
+  - Category: 1
+    Item: {fileID: 11400000, guid: b326332c006df1d4c841f9c180f2a44e, type: 2}
     MaxQtt: 99
     AvailableQtt: 91
     Currency: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
     Price: 3000
     Quantity: 3
-  - Item: {fileID: 11400000, guid: b326332c006df1d4c841f9c180f2a44e, type: 2}
+  - Category: 1
+    Item: {fileID: 11400000, guid: b326332c006df1d4c841f9c180f2a44e, type: 2}
     MaxQtt: 99
     AvailableQtt: 89
     Currency: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
     Price: 5000
     Quantity: 5
-  - Item: {fileID: 11400000, guid: b326332c006df1d4c841f9c180f2a44e, type: 2}
+  - Category: 0
+    Item: {fileID: 11400000, guid: b326332c006df1d4c841f9c180f2a44e, type: 2}
     MaxQtt: 99
     AvailableQtt: 99
     Currency: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
     Price: 10000
     Quantity: 11
-  - Item: {fileID: 11400000, guid: b326332c006df1d4c841f9c180f2a44e, type: 2}
+  - Category: 0
+    Item: {fileID: 11400000, guid: 7c157a22f4886d64b9a94f585bb0c3d8, type: 2}
+    MaxQtt: 99
+    AvailableQtt: 94
+    Currency: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
+    Price: 20000
+    Quantity: 1
+  - Category: 0
+    Item: {fileID: 11400000, guid: b326332c006df1d4c841f9c180f2a44e, type: 2}
     MaxQtt: 99
     AvailableQtt: 98
     Currency: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
     Price: 20000
-    Quantity: 25
+    Quantity: 50
   Renewable: 0

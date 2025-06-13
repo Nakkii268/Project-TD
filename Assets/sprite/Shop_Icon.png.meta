@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6e34059b8d4e0e04c87b7bdb72ac9888
+guid: 660530a6360d75f42ba95cab70aef087
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: White_0
+      name: Shop_Icon_Char
       rect:
         serializedVersion: 2
-        x: 362
-        y: 1542
-        width: 1589
-        height: 1065
+        x: 14
+        y: 143
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34842ce80207c8c4587b6324c9f12e5b
-      internalID: 381378842
+      spriteID: f6d147d5e4879414b826b8b696056607
+      internalID: -820864525
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Trans_1
+      name: Shop_Icon_Mat
       rect:
         serializedVersion: 2
-        x: 2669
-        y: 1654
-        width: 1576
-        height: 911
+        x: 142
+        y: 142
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,50 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65b30c2385b9a0d49bed8d47c4270ea0
-      internalID: 1109633863
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Trans_0
-      rect:
-        serializedVersion: 2
-        x: 338
-        y: 289
-        width: 1643
-        height: 1094
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 913b811682256454ebc35edef7bc8d49
-      internalID: 61694004
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: White_1
-      rect:
-        serializedVersion: 2
-        x: 2687
-        y: 672
-        width: 1565
-        height: 709
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 74999cd31640b064eb0fb05374cb8037
-      internalID: 1185172827
+      spriteID: 1cd64d2397ae170458932cf82d0ddc1e
+      internalID: -471251201
       vertices: []
       indices: 
       edges: []
@@ -196,7 +154,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 7dd75e13e9f0be045895413e7e402856
+    spriteID: 4431a08e157772b408cb3af494e9f9b2
     internalID: 0
     vertices: []
     indices: 
@@ -204,10 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Trans_0: 61694004
-      Trans_1: 1109633863
-      White_0: 381378842
-      White_1: 1185172827
+      Shop_Icon_Char: -820864525
+      Shop_Icon_Mat: -471251201
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

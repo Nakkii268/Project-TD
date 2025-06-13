@@ -7,11 +7,21 @@ using UnityEngine.UI;
 public class ItemSlot : MonoBehaviour
 {
     [SerializeField] private Button _btn;
+    [SerializeField] private Item SlotItem;
     [SerializeField] private Image ItemSprite;
     [SerializeField] private TextMeshProUGUI QuantityTxt;
+    private void Start()
+    {
+        _btn.onClick.AddListener(() =>
+        {
+            ConsumableItem cItem = (ConsumableItem)SlotItem;
+            cItem.OnUse();
+        });
+    }
     public void Init(ItemsData item)
     {
-        ItemSprite.sprite = item.Material.ItemSprite;
+        SlotItem = item.Item;
+        ItemSprite.sprite = item.Item.ItemSprite;
         QuantityTxt.text = ShortenQuantity(item.Quantity);
     }
     private string ShortenQuantity(int qtt)

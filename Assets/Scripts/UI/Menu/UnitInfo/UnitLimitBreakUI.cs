@@ -27,7 +27,7 @@ public class UnitLimitBreakUI : UICanvas
             GameObject single = Instantiate(ItemRequiredPrefab, container);
             single.GetComponent<MaterialRequiredSingle>().
                 Init(unit.UnitClass.ClassLimitBreakpData.MaterialsRequired[i],
-                GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(unit.UnitClass.ClassLimitBreakpData.MaterialsRequired[i].Material.ItemID));
+                GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(unit.UnitClass.ClassLimitBreakpData.MaterialsRequired[i].Item.ItemID));
         }
         CurrentLimtBreak = unit.LimitBreak;
     }
@@ -83,8 +83,8 @@ public class UnitLimitBreakUI : UICanvas
         List<ItemsData> items = unit.UnitClass.ClassLimitBreakpData.MaterialsRequired;
         for (int i = 0;i< items.Count; i++)
         {
-            if (GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(items[i].Material.ItemID)==0) return false;
-            if (GameManager.Instance._playerDataManager.PlayerDataSO.GetItemById(items[i].Material.ItemID).Quantity >= items[i].Quantity) return true;
+            if (GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(items[i].Item.ItemID)==0) return false;
+            if (GameManager.Instance._playerDataManager.PlayerDataSO.GetItemById(items[i].Item.ItemID).Quantity >= items[i].Quantity) return true;
             
             
         }
@@ -122,7 +122,7 @@ public class UnitLimitBreakUI : UICanvas
         for (int i = 0; i < items.Count; i++)
         {
 
-            GameManager.Instance._playerDataManager.PlayerDataSO.GetItemById(items[i].Material.ItemID).Quantity -= items[i].Quantity;
+            GameManager.Instance._playerDataManager.PlayerDataSO.GetItemById(items[i].Item.ItemID).Quantity -= items[i].Quantity;
             
         }
     }

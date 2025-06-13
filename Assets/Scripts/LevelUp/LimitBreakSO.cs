@@ -13,12 +13,12 @@ public class LimitBreakSO : ScriptableObject
 [Serializable]
 public class ItemsData
 {
-    public Item Material;
+    public Item Item;
     public int Quantity;
 
     public ItemsData(Item material,int qtt)
     {
-        Material = material; 
+        Item = material; 
         Quantity = qtt;
     }
 }

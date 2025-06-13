@@ -23,11 +23,13 @@ public class PlayerDataSO : ScriptableObject
         PlayerProgress = new Progress();
         
     }
+
+    //handle with item-begin
     public int IsHaveItem(string id)
     {
         for (int i = 0; i < Items.Count; i++)
         {
-            if (Items[i].Material.ItemID == id) return Items[i].Quantity;
+            if (Items[i].Item.ItemID == id) return Items[i].Quantity;
         }
         return 0;
     }
@@ -35,18 +37,18 @@ public class PlayerDataSO : ScriptableObject
     {
         for (int i = 0; i < Items.Count; i++)
         {
-            if (Items[i].Material.ItemID == id) return Items[i];
+            if (Items[i].Item.ItemID == id) return Items[i];
         }
         return null;
     }
-    
+   
     public void AddItem(Item item, int quantity)
     {
         if (IsHaveItem(item.ItemID) != 0)
         {
             for (int i = 0; i < Items.Count; i++)
             {
-                if (Items[i].Material.ItemID == item.ItemID) Items[i].Quantity+=quantity;
+                if (Items[i].Item.ItemID == item.ItemID) Items[i].Quantity+=quantity;
             }
         }
         else
@@ -61,7 +63,7 @@ public class PlayerDataSO : ScriptableObject
         {
             for (int i = 0; i < Items.Count; i++)
             {
-                if (Items[i].Material.ItemID == item.ItemID && Items[i].Quantity >= quantity) Items[i].Quantity-=quantity;
+                if (Items[i].Item.ItemID == item.ItemID && Items[i].Quantity >= quantity) Items[i].Quantity-=quantity;
                 if(Items[i].Quantity == 0)
                 {
                     Items.Remove(Items[i]);
@@ -74,6 +76,9 @@ public class PlayerDataSO : ScriptableObject
 
         }
     }
+    //handle with item-end
+
+    //handle line up
     public List<AllianceUnit> GetLineUpUnit()
     {
         List<AllianceUnit> units = new List<AllianceUnit>();
@@ -122,6 +127,8 @@ public class PlayerDataSO : ScriptableObject
         if(lineup.Contains(unit)) return true;
         return false;
     }
+
+    //handle progress
     public void UpdateProgress()
     {
         if(PlayerProgress.Stage == (GameManager.Instance._resourceManager.GetChapterByIndex<ChapterSO>(PlayerProgress.ChapterIndex).StageQuantity-1))
@@ -133,5 +140,16 @@ public class PlayerDataSO : ScriptableObject
         {
             PlayerProgress.Stage++;
         }
+    }
+
+    //handle unit
+    public bool AddUnit(AllianceUnit unit)
+    {
+        for (int i = 0; i < OwnedCharacter.Count; i++)
+        {
+            if (unit.UnitID == OwnedCharacter[i].UnitID) return false;
+        }
+        OwnedCharacter.Add(unit);
+        return true;    
     }
 }
