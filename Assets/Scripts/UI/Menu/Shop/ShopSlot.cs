@@ -9,6 +9,7 @@ public class ShopSlot : MonoBehaviour
     [SerializeField] private ShopSlotData slotData;
     [SerializeField] private Button _btn;
     [SerializeField] private Image ItemSprite;
+    [SerializeField] private Image CurrencySprite;
     [SerializeField] private TextMeshProUGUI ItemPrice;
     [SerializeField] private TextMeshProUGUI ItemName;
     [SerializeField] private TextMeshProUGUI AvailableQtt;
@@ -28,6 +29,7 @@ public class ShopSlot : MonoBehaviour
         AvailableQtt.text = data.AvailableQtt.ToString()+"/"+data.MaxQtt.ToString();
         QuantityTxt.text = data.MaxQtt.ToString();
         ItemName.text = data.Item.ItemName;
+        CurrencySprite.sprite = data.Currency.ItemSprite;
         BuyBtnHandle();
     }
     private void Start()

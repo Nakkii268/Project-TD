@@ -20,7 +20,8 @@ public class ShopUI : UICanvas
     [SerializeField] private Button CharBtn;
     [SerializeField] private Button MaterialBtn;
     [SerializeField] private int CurrentTabIndex=0;
-  
+    //btn active
+    [SerializeField] private List<GameObject> _tabBtnActive;
 
     //player currency
     [SerializeField] private TextMeshProUGUI PlayerGold;
@@ -53,6 +54,8 @@ public class ShopUI : UICanvas
             CurrentTabIndex = 1;
             Initialized(1);
         });
+        CategoryBtnHandle(0);
+
     }
 
     private void _playerDataManager_OnDataChange(object sender, System.EventArgs e)
@@ -113,7 +116,20 @@ public class ShopUI : UICanvas
     }
     private void CategoryBtnHandle(int index)
     {
-        
+        for (int i = 0; i < _tabBtnActive.Count; i++)
+        {
+            if (i == index)
+            {
+                _tabBtnActive[i].SetActive(true);
+                
+            }
+            else
+            {
+                _tabBtnActive[i].SetActive(false);
+                
+
+            }
+        }
     }
 }
 [Serializable]
