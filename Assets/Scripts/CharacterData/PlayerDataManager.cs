@@ -63,7 +63,7 @@ public class PlayerDataManager : MonoBehaviour
         OnDataChange?.Invoke(this, EventArgs.Empty);
 
         SaveLoadData.SaveCharacterData(_playerData);
-
+        Debug.Log("lineup SAVED");
 
     }
    

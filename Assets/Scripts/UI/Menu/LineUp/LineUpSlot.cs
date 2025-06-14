@@ -11,6 +11,7 @@ public class LineUpSlot : MonoBehaviour
     [SerializeField] private Button _btn;
     
     [SerializeField] private int SlotIndex;
+    [SerializeField] private int SkillIndex;
     [SerializeField] private TextMeshProUGUI _levelText;
     [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private Image ClassIcon;
@@ -29,6 +30,7 @@ public class LineUpSlot : MonoBehaviour
             return;
         }
         SlotUnit = unit;
+        SkillIndex = skillIndex;
         _nameText.text = unit.Name;
         _levelText.text = unit.Level.ToString();
         ClassIcon.sprite = unit.UnitClass.ClassIcon;
@@ -48,7 +50,7 @@ public class LineUpSlot : MonoBehaviour
     {
         _btn.onClick.AddListener(() =>
         {
-            UIManager.Instance.OpenUI<UnitSelectionUI>(new SlotData(SlotUnit,SlotIndex));
+            UIManager.Instance.OpenUI<UnitSelectionUI>(new SlotData(SlotUnit,SlotIndex, SkillIndex));
             UIManager.Instance.GetUI<UnitSelectionUI>().OnUnitConfirm += LineUpSlot_OnUnitConfirm;
             
         });
@@ -57,6 +59,7 @@ public class LineUpSlot : MonoBehaviour
     
     private void LineUpSlot_OnUnitConfirm(object sender, LineUpSave e)
     {
+        Debug.Log("unit confirm");
         if (e.Index == -1)
         {
             OnUnitAssign?.Invoke(this, new LineUpSave(-1, e.Unit,e.SkillIndex));
@@ -74,9 +77,11 @@ public class SlotData
 {
     public AllianceUnit unit;
     public int index;
-    public SlotData(AllianceUnit unit, int index)
+    public int skillIndex;
+    public SlotData(AllianceUnit unit, int index,int skillIndex)
     {
         this.unit = unit;
         this.index = index;
+        this.skillIndex = skillIndex;
     }
 }

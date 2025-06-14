@@ -10,7 +10,8 @@ public class UnitSelectionSingle : MonoBehaviour
     [SerializeField] private AllianceUnit _unit;
     [SerializeField] private Button _btn;
 
-    [SerializeField] private int Index;
+    [SerializeField] private int SlotIndex;
+    [SerializeField] private int UnitIndex;
     [SerializeField] private TextMeshProUGUI _levelText;
     [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private Image ClassIcon;
@@ -18,11 +19,11 @@ public class UnitSelectionSingle : MonoBehaviour
     [SerializeField] private Image UIPotrait;
     [SerializeField] private GameObject Selected;
 
-    public event EventHandler<LineUpSave> OnUnitSelected;
+    public event EventHandler<UnitSelectData> OnUnitSelected;
     [SerializeField] public bool isSelected;
-    [SerializeField] public bool isInteractable;
+  
 
-    public void Initialized(AllianceUnit unit,int i,AllianceUnit from=null)
+    public void Initialized(AllianceUnit unit,int index,int slotIndex,AllianceUnit from=null)
     {
         
         _unit = unit;
@@ -31,15 +32,16 @@ public class UnitSelectionSingle : MonoBehaviour
         ClassIcon.sprite = unit.UnitClass.ClassIcon;
         RarityIcon.sprite = unit.Rarity.RarityIcon;
         UIPotrait.sprite = unit.unitUIPotrait;
-        Index = i;
+        this.SlotIndex = slotIndex;
+        UnitIndex =index;
         Selected.SetActive(false);
 
         if (from == unit)
         {
             isSelected = true;
             Selected.SetActive(true);
-            isInteractable = true;
-            OnUnitSelected?.Invoke(this, new LineUpSave(i, unit,0));
+            
+            OnUnitSelected?.Invoke(this, new UnitSelectData(UnitIndex,slotIndex, unit,0));
 
         }
         else
@@ -62,7 +64,7 @@ public class UnitSelectionSingle : MonoBehaviour
            if (!isSelected) {
                 isSelected = !isSelected;
                 Selected.SetActive(true);
-                OnUnitSelected?.Invoke(this, new LineUpSave(Index,_unit, 0));
+                OnUnitSelected?.Invoke(this, new UnitSelectData(UnitIndex,SlotIndex,_unit, 0));
                
 
             }
@@ -71,11 +73,11 @@ public class UnitSelectionSingle : MonoBehaviour
                 isSelected = !isSelected;
                 Selected.SetActive(false);
                
-                OnUnitSelected?.Invoke(this, new LineUpSave(Index, null,0));
+                OnUnitSelected?.Invoke(this, new UnitSelectData(UnitIndex,SlotIndex, null,0));
                 
 
             }
-
+            Debug.Log(_unit.Name);
         });
        
         
@@ -88,3 +90,11 @@ public class UnitSelectionSingle : MonoBehaviour
 
 }
 
+public class UnitSelectData
+{
+    public int Index;
+    public AllianceUnit Unit;
+    public int SkillIndex;
+    public int SlotIndex;
+    public UnitSelectData(int i,int slot, AllianceUnit u, int si) => (Index,SlotIndex, Unit, SkillIndex) = (i, slot, u, si);
+}

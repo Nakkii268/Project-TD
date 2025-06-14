@@ -37,6 +37,7 @@ public class UnitSelectionUI : UICanvas
     public event EventHandler<LineUpSave> OnUnitConfirm;
     [SerializeField] private AllianceUnit _currentSelectUnit;
     [SerializeField] private int _currentSelectIndex=-1;
+
     [SerializeField] private Transform NoInfoUI;
     [Header("Skills")]
     [SerializeField] private List<SkillUI> _skillUI;
@@ -83,11 +84,11 @@ public class UnitSelectionUI : UICanvas
     {
         if(t is SlotData data)
         {
-            Initialized(data.unit, data.index);
+            Initialized(data.unit, data.index,data.skillIndex);
         }
         
     }
-    private void Initialized(AllianceUnit unit,int idx)
+    private void Initialized(AllianceUnit unit,int idx,int skillIndex)
     {
         _units = GameManager.Instance._playerDataManager.PlayerDataSO.OwnedCharacter;
         //handle info part
@@ -101,19 +102,24 @@ public class UnitSelectionUI : UICanvas
             UnitSelectionSingle single = Instantiate(prefab, container);
             single.OnUnitSelected += Single_OnUnitSelected;
             _singles.Add(single);
-            single.Initialized(_units[i],i,unit);
+            single.Initialized(_units[i],i,idx,unit);
             single.gameObject.SetActive(true);
             _child.Add(i, single);
+           
+            HandleSkillUI(skillIndex);
+            if (unit == _units[i])
+            {
+                _currentSelectIndex = i;
 
+            }
         }
-        _currentSelectIndex = idx;
     }
     private void OnDisable()
     {
         Destroy(this.gameObject);
     }
 
-    private void Single_OnUnitSelected(object sender, LineUpSave e)
+    private void Single_OnUnitSelected(object sender, UnitSelectData e)
     {
         if (_currentSelectUnit != null)
         {
@@ -129,6 +135,7 @@ public class UnitSelectionUI : UICanvas
         }
         else
         {
+            _currentSkillIndex = 0;
             UpdateInfomation(e.Unit);
 
         }
@@ -161,13 +168,38 @@ public class UnitSelectionUI : UICanvas
         _costTxt.text = e.UnitDp.ToString();
         for (int i = 0; i < e.UnitSkills.Count; i++)
         {
-            _skillUI[i].Init(e.UnitSkills[i], i);
-            
+            if (_currentSkillIndex == i)
+            {
+                _skillUI[i].Init(e.UnitSkills[i], i,true);
+            }
+            else
+            {
+                _skillUI[i].Init(e.UnitSkills[i], i, false);
+
+            }
         }
+        
     }
 
     private void Skill_OnSkillSelected(object sender, int e)
     {
+        HandleSkillUI(e);
+         
+    }
+    private void HandleSkillUI(int e)
+    {
         _currentSkillIndex = e;
+        for (int i = 0; i < _skillUI.Count; i++)
+        {
+            if (i == e)
+            {
+                _skillUI[i].SkillSelected();
+            }
+            else
+            {
+                _skillUI[i].SkillDeSelected();
+
+            }
+        }
     }
 }

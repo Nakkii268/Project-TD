@@ -94,7 +94,8 @@ public class PlayerDataSO : ScriptableObject
     }
     public void UpdateLineUp(AllianceUnit unit, int indx,int skIndx)
     {
-        
+
+        Debug.Log(skIndx);
         //check if already have unit in this index:
         //yes=remove/update
         for (int i = 0; i < PlayerLineUp.Count; i++)
