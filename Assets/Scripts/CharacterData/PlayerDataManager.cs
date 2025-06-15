@@ -37,6 +37,14 @@ public class PlayerDataManager : MonoBehaviour
         SaveLoadData.SaveCharacterData(_playerData);
 
     }
+    public void SaveProgress()
+    {
+       
+       // _playerData.PlayerProgress.Clear();
+        _playerData.PlayerProgress = _playerDataSO.PlayerProgress;
+        SaveLoadData.SaveCharacterData(_playerData);
+
+    }
     public void  SaveItem()
     {
 

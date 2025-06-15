@@ -74,6 +74,7 @@ public class LevelManager : MonoBehaviour
    
     public void GameEnd()
     {
+        Debug.Log(levelLifePointManager.GetGameEndState());
         OnGameEnd?.Invoke(this, levelLifePointManager.GetGameEndState());
     }
 

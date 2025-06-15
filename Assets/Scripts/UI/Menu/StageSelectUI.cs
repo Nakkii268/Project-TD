@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,16 +13,16 @@ public class StageSelectUI : UICanvas
     [SerializeField] private Button BackBtn;
     [SerializeField] private Button HomeBtn;
    
-    [SerializeField] public GameObject StageList;
+    [SerializeField] public StageUI StageList;
 
-    [SerializeField] private Progress _playerProgress;
-    [SerializeField] private Progress _playerLastStage;
+    [SerializeField] private List<Progress> _playerProgress;
+   
     //chapter
     [SerializeField] private int CurrentSelectChap;//index
     [SerializeField] private Button PrevChapBtn;
     [SerializeField] private Button NextChapBtn;
     [SerializeField] private TextMeshProUGUI ChapterTxt;
-    [SerializeField] private Dictionary<int,ChapterSO> Chapters=new Dictionary<int,ChapterSO>();
+    [SerializeField] public Dictionary<int,ChapterSO> Chapters=new Dictionary<int,ChapterSO>();
     // Start is called before the first frame update
     void Start()
     {
@@ -42,11 +43,13 @@ public class StageSelectUI : UICanvas
         });
         NextChapBtn.onClick.AddListener(() =>
         {
-            CurrentSelectChap++;
-            UpdateChapterTxt();
-            LoadStageList(CurrentSelectChap);
-            ButtonUpdate();
-
+            if (_playerProgress[CurrentSelectChap].StageList.Count == Chapters[CurrentSelectChap].StageQuantity)
+            {
+                CurrentSelectChap++;
+                UpdateChapterTxt();
+                LoadStageList(CurrentSelectChap);
+                ButtonUpdate();
+            }
         });
 
     }
@@ -57,8 +60,8 @@ public class StageSelectUI : UICanvas
     private void Initialized()
     {
         _playerProgress = GameManager.Instance._playerDataManager.PlayerDataSO.PlayerProgress;
-        CurrentSelectChap = _playerProgress.ChapterIndex;
-        for(int i = 0; i <= _playerProgress.ChapterIndex; i++)
+        CurrentSelectChap =_playerProgress.Count -1 ;
+        for(int i = 0; i <= _playerProgress.Count+1; i++)
         {
            Chapters.Add(i, GameManager.Instance._resourceManager.GetChapterByIndex<ChapterSO>(i));
         }
@@ -77,10 +80,13 @@ public class StageSelectUI : UICanvas
             {
                 GameObject newStageList = Instantiate(handler.Result, transform);
                 newStageList.transform.SetAsFirstSibling();
-                Destroy(StageList);
-                StageList = newStageList;
-                Debug.Log(StageList.name);
-                DisableLockedStage(cIndex);
+                if (StageList != null)
+                {
+                    Destroy(StageList.gameObject);
+                }
+                StageUI stageUI = newStageList.GetComponent<StageUI>();
+                StageList = stageUI;
+                stageUI.Initialized();
 
 
             }
@@ -89,21 +95,7 @@ public class StageSelectUI : UICanvas
     }
    
 
-    public void DisableLockedStage(int selectedChapter)
-    {
-        
-        if (selectedChapter < _playerProgress.ChapterIndex) return;
-        
-
-        for (int i = _playerProgress.Stage+1; i <= Chapters[selectedChapter].StageQuantity-1 ; i++)
-        {
-            StageList.TryGetComponent(out StageUI stage);
-            stage.stageBtnList[i].gameObject.SetActive(false);
-            Debug.Log(stage.stageBtnList[i].gameObject.name);
-
-
-        }
-    }
+    
 
     private void UpdateChapterTxt()
     {
@@ -111,7 +103,7 @@ public class StageSelectUI : UICanvas
     }
     private void ButtonUpdate()
     {
-        if(CurrentSelectChap == _playerProgress.ChapterIndex)
+        if(CurrentSelectChap == _playerProgress.Count-1)
         {
             NextChapBtn.interactable = false;
         }
@@ -135,13 +127,30 @@ public class StageSelectUI : UICanvas
 public class Progress
 {
     public int ChapterIndex;
-    public string ChapterID;
-    public int Stage;
-    public Progress(int chapterIndex, string chapterID, int stage)
+    
+    public List<StageData> StageList;
+    public Progress(int chapterIndex)
     {
         ChapterIndex = chapterIndex;
-        ChapterID = chapterID;
-        Stage = stage;
+        
+        StageList = new List<StageData>();
     }
-    public Progress() { }
+    public Progress() {
+        ChapterIndex = 0;
+        StageList = new List<StageData>() ;
+    }
+}
+[Serializable]
+public class StageData
+{
+    
+    public int Stage;
+    public int Rating;
+    public StageData(int stage, int rating)
+    {
+       
+        Stage = stage;
+        Rating = rating;
+    }
+    
 }

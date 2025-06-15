@@ -5,35 +5,71 @@ using UnityEngine.UI;
 
 public class StageUI : MonoBehaviour
 {
+    [SerializeField] private int ChapterIndex;
     [SerializeField] private List<MapSO> mapList;
     public List<StageSingleUI> stageBtnList;
     public RectTransform StageContainer;
     public ScrollRect StageContainerRect;
     public Image bg;
+    [SerializeField] private List<Progress> playerProgress;
+   
 
 
-    private void Start()
+    public void Initialized()
     {
-        Initialized();
-        StageContainerRect.onValueChanged.AddListener(OnScrollChange);
-    }
-    private void Initialized()
-    {
-        for (int i = 0; i < stageBtnList.Count; i++) {
-            stageBtnList[i].Initialize(mapList[i]);
-        }
-    }
-    private void OnScrollChange(Vector2 value)
-    {
-        if(value.x <= .5f)
+        playerProgress = GameManager.Instance._playerDataManager.PlayerDataSO.PlayerProgress;
+        if (GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveChapter(ChapterIndex))
         {
-            bg.color = Color.white;
+            //show rating
+            for (int i = 0; i < stageBtnList.Count; i++)
+            {
+                if (i < playerProgress[ChapterIndex].StageList.Count)
+                {
+                    stageBtnList[i].Initialize(mapList[i], playerProgress[ChapterIndex].StageList[i].Rating);
+                }
+                else
+                {
+                    stageBtnList[i].Initialize(mapList[i], 0);
+
+                }
+            }
         }
         else
         {
-            bg.color = Color.red;
+            for (int i = 0; i < stageBtnList.Count; i++)
+            {
+               
+                  stageBtnList[i].Initialize(mapList[i], 0);
+                  DisableLockedStage(ChapterIndex);
+                
+            }
+        }
+
+        
+    }
+
+    public void DisableLockedStage(int currentChapter)
+    {
+
+        if (currentChapter < playerProgress.Count - 1) return;
+        if(currentChapter > playerProgress.Count-1)
+        {
+            for(int i = 1; i < stageBtnList.Count; i++)
+            {
+                stageBtnList[i].gameObject.SetActive(false);
+
+            }
+            return;
+        }
+
+        for (int i = playerProgress[currentChapter].StageList.Count; i < stageBtnList.Count; i++)
+        {
+            
+            stageBtnList[i].gameObject.SetActive(false);
+           
+
+
         }
     }
-    
-  
+
 }

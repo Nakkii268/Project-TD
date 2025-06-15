@@ -26,7 +26,7 @@ public class StageInfoUI : UICanvas
         ReduceLifePointTxt(e.Reduced);
     }
 
-    private void ReduceLifePointTxt(int value)
+    private void ReduceLifePointTxt(float value)
     {
         if (value == 0)
         {

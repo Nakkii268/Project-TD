@@ -7,7 +7,7 @@ using UnityEngine;
 public class LevelLifePointManager : MonoBehaviour
 {
     [SerializeField] private LevelManager levelManager;
-    [SerializeField] private int LifePoint;
+    [SerializeField] private float LifePoint;
     [SerializeField] private int MaxLifePoint;
 
     [SerializeField] private int ReducedLifePoint;
@@ -42,10 +42,10 @@ public class LevelLifePointManager : MonoBehaviour
             return EndState.Successed;
 
         }
-        else if((LifePoint / MaxLifePoint) == 0)
+        else if(0< (LifePoint / MaxLifePoint) && (LifePoint / MaxLifePoint) <1)
         {
            
-            return EndState.Failed;
+            return EndState.NotComplete;
 
 
         }
@@ -53,7 +53,7 @@ public class LevelLifePointManager : MonoBehaviour
         {
             
 
-            return EndState.NotComplete;
+            return EndState.Failed;
 
         }
 
@@ -64,17 +64,17 @@ public class LevelLifePointManager : MonoBehaviour
 [Serializable]
 public enum EndState
 {
-    Successed,
+    NotComplete,
     Failed,
-    NotComplete
+    Successed
 }
 public class LifePointEvtArg
 {
-    public int Remain;
-    public int Reduced;
+    public float Remain;
+    public float Reduced;
    
 
-    public LifePointEvtArg(int lifePoint, int reducedLifePoint)
+    public LifePointEvtArg(float lifePoint, float reducedLifePoint)
     {
         this.Remain = lifePoint;
         this.Reduced = reducedLifePoint;

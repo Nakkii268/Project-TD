@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 [CreateAssetMenu(menuName = "PlayerData")]
@@ -10,7 +11,7 @@ public class PlayerDataSO : ScriptableObject
     public List<ItemsData> Items;
     public List<AllianceUnit> OwnedCharacter;
     public List<LineUpSave> PlayerLineUp;
-    public Progress PlayerProgress;
+    public List<Progress> PlayerProgress;
     public List<ShopItemSave> ShopItemsData;
 
     public void ClearData()
@@ -20,7 +21,7 @@ public class PlayerDataSO : ScriptableObject
         Items.Clear();
         OwnedCharacter.Clear();
         PlayerLineUp.Clear();
-        PlayerProgress = new Progress();
+        PlayerProgress = new List<Progress>();
         
     }
 
@@ -130,19 +131,42 @@ public class PlayerDataSO : ScriptableObject
     }
 
     //handle progress
-    public void UpdateProgress()
+    public void UpdateProgress(MapSO stage,int rating)
     {
-        if(PlayerProgress.Stage == (GameManager.Instance._resourceManager.GetChapterByIndex<ChapterSO>(PlayerProgress.ChapterIndex).StageQuantity-1))
+        
+        for (int i = 0; i < PlayerProgress.Count; i++) //loop through progress
         {
-            PlayerProgress.ChapterIndex++;
-            PlayerProgress.Stage = 0;
-        }
-        else
-        {
-            PlayerProgress.Stage++;
-        }
-    }
+            if(stage.ChapterIndex == PlayerProgress[i].ChapterIndex) //if already have chapter - loop the stage list
+            {
+                for(int j = 0; j < PlayerProgress[i].StageList.Count; j++)
+                {
+                    if(stage.StageIndex == PlayerProgress[i].StageList[j].Stage) // if already passed the stage- check rating
+                    {
+                        if(PlayerProgress[i].StageList[j].Rating < rating)//better rating -> update rating
+                        {
+                            PlayerProgress[i].StageList[j].Rating = rating;
+                        }
+                        return;
+                    }
+                }
+                PlayerProgress[i].StageList.Add(new StageData(stage.StageIndex,rating)); // dont have/ the new stage -> add stage and rating
+                return;
+            }
 
+        }
+        //dont have/ new chapter -> add new progress and add stage to it
+        Progress newProgress = new Progress(stage.ChapterIndex); 
+        newProgress.StageList.Add(new StageData(stage.StageIndex, rating));
+        PlayerProgress.Add(newProgress);
+    }
+    public bool IsHaveChapter(int chapter)
+    {
+        for (int i = 0; i < PlayerProgress.Count; i++)
+        {
+            if (PlayerProgress[i].ChapterIndex == chapter) return true;
+        }
+        return false;
+    }
     //handle unit
     public bool AddUnit(AllianceUnit unit)
     {

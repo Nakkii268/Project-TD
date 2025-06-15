@@ -17,14 +17,18 @@ public class LevelEndState : LevelState
         }else if(LevelStateMachineManager.endState == EndState.Successed)
         {
             UIManager.Instance.OpenUI<WinUI>(true);
-            ProgressCheck();
+            GameManager.Instance._playerDataManager.PlayerDataSO.UpdateProgress(LevelStateMachineManager._levelManager.Map, (int)LevelStateMachineManager.endState);
+            GameManager.Instance._playerDataManager.SaveProgress();
             ItemDrop(LevelStateMachineManager._levelManager.Map);
+            Debug.Log("run2222");
 
         }
         else if(LevelStateMachineManager.endState == EndState.NotComplete)
         {
             UIManager.Instance.OpenUI<WinUI>(false);
-            ProgressCheck();
+            GameManager.Instance._playerDataManager.PlayerDataSO.UpdateProgress(LevelStateMachineManager._levelManager.Map, (int)LevelStateMachineManager.endState);
+            GameManager.Instance._playerDataManager.SaveProgress();
+            Debug.Log("run1");
             ItemDrop(LevelStateMachineManager._levelManager.Map);
         }
     }
@@ -33,19 +37,7 @@ public class LevelEndState : LevelState
         base.Exit();
     }
     
-    private void ProgressCheck()
-    {
-        
-        if(GameManager.Instance._playerDataManager.PlayerDataSO.PlayerProgress.ChapterIndex == LevelStateMachineManager._levelManager.Map.ChapterIndex)
-        {
-           if( GameManager.Instance._playerDataManager.PlayerDataSO.PlayerProgress.Stage == LevelStateMachineManager._levelManager.Map.StageIndex){
-               
-
-                GameManager.Instance._playerDataManager.PlayerDataSO.UpdateProgress();
-            }
-        }
-       
-    }
+ 
     private void ItemDrop(MapSO map)
     {
         for (int i = 0; i < map.DropItem.Count; i++)

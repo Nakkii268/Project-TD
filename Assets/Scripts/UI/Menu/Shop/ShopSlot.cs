@@ -27,7 +27,7 @@ public class ShopSlot : MonoBehaviour
         ItemSprite.sprite = data.Item.ItemSprite;
         ItemPrice.text = data.Price.ToString();
         AvailableQtt.text = data.AvailableQtt.ToString()+"/"+data.MaxQtt.ToString();
-        QuantityTxt.text = data.MaxQtt.ToString();
+        QuantityTxt.text = data.Quantity.ToString();
         ItemName.text = data.Item.ItemName;
         CurrencySprite.sprite = data.Currency.ItemSprite;
         BuyBtnHandle();

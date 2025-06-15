@@ -6,8 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="MapSO")]
 public class MapSO : ScriptableObject
 {
-    public int StageIndex;
     public int ChapterIndex;
+    public int StageIndex;
     public string MapName;
     public string StagePath;
     public Wave[] Waves;

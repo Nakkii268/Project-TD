@@ -34,7 +34,7 @@ public static class SaveLoadData
             new CharacterModifyData("001", 1, 0)
 
         };
-        defaultData.PlayerProgress = new Progress(0,"C001",0);
+        defaultData.PlayerProgress = new List<Progress>() { new Progress()};
         return defaultData;
     }
     public static void SaveCharacterData(PlayerData data)
