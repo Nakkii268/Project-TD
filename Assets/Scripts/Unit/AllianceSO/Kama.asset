@@ -56,3 +56,4 @@ MonoBehaviour:
   Level: 20
   UnitSkills:
   - {fileID: 11400000, guid: 7acfcc20f5a7e4547bce5adaba9fa208, type: 2}
+  - {fileID: 11400000, guid: 7acfcc20f5a7e4547bce5adaba9fa208, type: 2}

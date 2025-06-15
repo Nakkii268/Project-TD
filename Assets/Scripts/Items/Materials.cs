@@ -5,6 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="Item/Materials")]
 public class Materials : Item
 {
-    public string Description;
 }
 

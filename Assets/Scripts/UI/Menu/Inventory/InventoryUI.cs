@@ -16,6 +16,8 @@ public class InventoryUI : UICanvas
     [SerializeField] private Button ShowAll;//show all item
     [SerializeField] private Button ShowMaterial;//show item with material tag
     [SerializeField] private Button ShowConsume;//show item with consumabl tag
+    [SerializeField] private Button ShowCurrency;//show item with consumabl tag
+    [SerializeField] private List<GameObject> CategoryBtnActive; //index of category +1
 
     private void Start()
     {
@@ -27,9 +29,22 @@ public class InventoryUI : UICanvas
         {
             UIManager.Instance.ToHomeMenu();
         });
-        ShowAll.onClick.AddListener(() => { });
-        ShowMaterial.onClick.AddListener(() => { });
-        ShowConsume.onClick.AddListener(() => { });
+        ShowAll.onClick.AddListener(() => {
+            UpdateItem(-1);
+
+        });
+        ShowMaterial.onClick.AddListener(() => {
+            UpdateItem(2);
+
+        });
+        ShowConsume.onClick.AddListener(() => {
+            UpdateItem(1);
+
+        });
+        ShowCurrency.onClick.AddListener(() => {
+            UpdateItem(0);
+
+        });
         GameManager.Instance._playerDataManager.OnDataChange += _playerDataManager_OnDataChange;
     }
     private void OnDisable()
@@ -39,7 +54,7 @@ public class InventoryUI : UICanvas
     }
     private void _playerDataManager_OnDataChange(object sender, System.EventArgs e)
     {
-        UpdateItem();
+        UpdateItem(-1);
     }
 
     public override void SetUp()
@@ -49,12 +64,7 @@ public class InventoryUI : UICanvas
     private void Initialized()
     {
         Items = GameManager.Instance._playerDataManager.PlayerDataSO.Items;
-        for(int i = 0; i < Items.Count; i++)
-        {
-            ItemSlot item = Instantiate(Prefab, Container);
-            item.Init(Items[i]);    
-            itemSlotList.Add(item);
-        }
+        UpdateItem(-1);
     }
     private void ClearItems()
     {
@@ -64,15 +74,34 @@ public class InventoryUI : UICanvas
         }
         
     }
-    private void UpdateItem()
+    private void UpdateItem(int category) //-1 =all, 0=cur, 1=con,2 =mat
     {
         ClearItems();
         Items = GameManager.Instance._playerDataManager.PlayerDataSO.Items;
         for (int i = 0; i < Items.Count; i++)
         {
-            ItemSlot item = Instantiate(Prefab, Container);
-            item.Init(Items[i]);
-            itemSlotList.Add(item);
+            
+            if ((int)Items[i].Item.Category == category|| category==-1)
+            {
+                ItemSlot item = Instantiate(Prefab, Container);
+                item.Init(Items[i]);
+                itemSlotList.Add(item);
+            }
+        }
+        HandleCategoryBtn(category);
+    }
+    private void HandleCategoryBtn(int category)
+    {
+        for(int i = 0;i< CategoryBtnActive.Count; i++)
+        {
+            if (i == category + 1)
+            {
+                CategoryBtnActive[i].SetActive(true);
+            }
+            else
+            {
+                CategoryBtnActive[i].SetActive(false);
+            }
         }
     }
 }
