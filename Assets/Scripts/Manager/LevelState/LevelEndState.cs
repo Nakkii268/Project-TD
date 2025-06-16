@@ -20,7 +20,7 @@ public class LevelEndState : LevelState
             GameManager.Instance._playerDataManager.PlayerDataSO.UpdateProgress(LevelStateMachineManager._levelManager.Map, (int)LevelStateMachineManager.endState);
             GameManager.Instance._playerDataManager.SaveProgress();
             ItemDrop(LevelStateMachineManager._levelManager.Map);
-            Debug.Log("run2222");
+            
 
         }
         else if(LevelStateMachineManager.endState == EndState.NotComplete)
@@ -28,7 +28,7 @@ public class LevelEndState : LevelState
             UIManager.Instance.OpenUI<WinUI>(false);
             GameManager.Instance._playerDataManager.PlayerDataSO.UpdateProgress(LevelStateMachineManager._levelManager.Map, (int)LevelStateMachineManager.endState);
             GameManager.Instance._playerDataManager.SaveProgress();
-            Debug.Log("run1");
+            
             ItemDrop(LevelStateMachineManager._levelManager.Map);
         }
     }

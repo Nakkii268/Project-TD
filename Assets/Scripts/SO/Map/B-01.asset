@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d34d8dbbb732b47a68629a5ce22f58, type: 3}
   m_Name: B-01
   m_EditorClassIdentifier: 
-  MapName: T-01
-  StagePath: Assets/Scenes/SampleScene.unity
+  ChapterIndex: 1
+  StageIndex: 0
+  MapName: B-01
+  StagePath: Assets/Scenes/StageScene/B-01.unity
   Waves:
   - SpawnTime: 5
     Path:
@@ -60,12 +62,4 @@ MonoBehaviour:
   StartDeployPoint: 20
   DpRecoveryRate: 1
   DeployLimit: 3
-  DropItem:
-  - Material: {fileID: 11400000, guid: 0ef788f9af53d6d4488a25689a5390ef, type: 2}
-    Quantity: 30
-  - Material: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
-    Quantity: 5000
-  - Material: {fileID: 11400000, guid: ebe72feb9446389428430436d888d572, type: 2}
-    Quantity: 5000
-  - Material: {fileID: 11400000, guid: b326332c006df1d4c841f9c180f2a44e, type: 2}
-    Quantity: 1
+  DropItem: []

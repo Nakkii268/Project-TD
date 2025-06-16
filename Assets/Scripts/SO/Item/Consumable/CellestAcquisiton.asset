@@ -15,5 +15,6 @@ MonoBehaviour:
   ItemID: CA01
   ItemName: Cellest acquisition
   ItemSprite: {fileID: 1222539166, guid: 8b127051ec22801428a87e39b4d2eb38, type: 3}
-  Tier: 0
+  Description: 
+  Category: 1
   UnitAcquire: {fileID: 11400000, guid: f137a38c32ffca04da14660715ab3b01, type: 2}

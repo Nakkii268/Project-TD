@@ -64,9 +64,9 @@ public class LevelLifePointManager : MonoBehaviour
 [Serializable]
 public enum EndState
 {
-    NotComplete,
-    Failed,
-    Successed
+    Failed=0,
+    NotComplete=1,
+    Successed=2
 }
 public class LifePointEvtArg
 {

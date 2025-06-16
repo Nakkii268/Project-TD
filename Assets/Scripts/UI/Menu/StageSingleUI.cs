@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,17 +7,18 @@ using UnityEngine.UI;
 
 public class StageSingleUI : MonoBehaviour
 {
-    [SerializeField] private Button btn;
+    
+    [SerializeField] public Button btn;
     [SerializeField] private TextMeshProUGUI stageName;
     [SerializeField] private Image stageRating;
-    
+    public event EventHandler<MapSO> OnStageSelect;
+
     public void Initialize(MapSO map,int rating)
     {
         stageName.text = map.MapName;
         btn.onClick.AddListener(() =>
         {
-            GameManager.Instance._sceneLoader.LoadStage(map.StagePath);
-            UIManager.Instance.OpenUI<StageLoadingUI>(map.MapName);
+            OnStageSelect?.Invoke(this, map);
         });
         switch (rating)
         {

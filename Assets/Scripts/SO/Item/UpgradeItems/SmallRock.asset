@@ -15,5 +15,5 @@ MonoBehaviour:
   ItemID: M001
   ItemName: Small rock
   ItemSprite: {fileID: 1701106190, guid: 27e6c3a689d277e42a1f3ae4c5dcd92f, type: 3}
-  Tier: 0
-  Description: Just a small rock
+  Description: 
+  Category: 2

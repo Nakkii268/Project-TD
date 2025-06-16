@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,6 @@ public class StageUI : MonoBehaviour
     public ScrollRect StageContainerRect;
     public Image bg;
     [SerializeField] private List<Progress> playerProgress;
-   
 
 
     public void Initialized()
@@ -33,6 +33,8 @@ public class StageUI : MonoBehaviour
 
                 }
             }
+            
+
         }
         else
         {
@@ -40,31 +42,35 @@ public class StageUI : MonoBehaviour
             {
                
                   stageBtnList[i].Initialize(mapList[i], 0);
-                  DisableLockedStage(ChapterIndex);
+               
                 
             }
         }
+                  DisableLockedStage(ChapterIndex);
 
+       
         
     }
 
     public void DisableLockedStage(int currentChapter)
     {
-
+        //unlock all
         if (currentChapter < playerProgress.Count - 1) return;
+        //unlock first stage
         if(currentChapter > playerProgress.Count-1)
         {
             for(int i = 1; i < stageBtnList.Count; i++)
             {
                 stageBtnList[i].gameObject.SetActive(false);
+                Debug.Log(i);
 
             }
             return;
         }
-
-        for (int i = playerProgress[currentChapter].StageList.Count; i < stageBtnList.Count; i++)
+        //unlock the rest
+        for (int i = playerProgress[currentChapter].StageList.Count+1; i < stageBtnList.Count; i++)
         {
-            
+            Debug.Log(i);
             stageBtnList[i].gameObject.SetActive(false);
            
 

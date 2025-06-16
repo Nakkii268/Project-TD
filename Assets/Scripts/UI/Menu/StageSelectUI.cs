@@ -16,7 +16,7 @@ public class StageSelectUI : UICanvas
     [SerializeField] public StageUI StageList;
 
     [SerializeField] private List<Progress> _playerProgress;
-   
+    [SerializeField] private StageInfomationUI _stageInfo;
     //chapter
     [SerializeField] private int CurrentSelectChap;//index
     [SerializeField] private Button PrevChapBtn;
@@ -66,7 +66,6 @@ public class StageSelectUI : UICanvas
            Chapters.Add(i, GameManager.Instance._resourceManager.GetChapterByIndex<ChapterSO>(i));
         }
         LoadStageList(CurrentSelectChap);
-
        
     }
 
@@ -87,15 +86,25 @@ public class StageSelectUI : UICanvas
                 StageUI stageUI = newStageList.GetComponent<StageUI>();
                 StageList = stageUI;
                 stageUI.Initialized();
+                for (int i = 0; i < stageUI.stageBtnList.Count; i++)
+                {
+                    stageUI.stageBtnList[i].OnStageSelect += StageSelectUI_OnStageSelect;
+                }
 
 
             }
         });
         
     }
-   
 
-    
+    private void StageSelectUI_OnStageSelect(object sender, MapSO e)
+    {
+        _stageInfo.gameObject.SetActive(true);
+        _stageInfo.Init(e);
+
+    }
+
+  
 
     private void UpdateChapterTxt()
     {

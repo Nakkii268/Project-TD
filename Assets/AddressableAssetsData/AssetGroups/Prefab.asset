@@ -71,6 +71,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - UIPrefab
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 944656b0eb794ca4482c0225bce05d25
+    m_Address: Assets/PrefabResource/UI/PreBattleLineUpUI.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UIPrefab
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a24bae1584d201f46a30d0317ce7601b
     m_Address: Assets/PrefabResource/UI/CharacterInfoUI.prefab
     m_ReadOnly: 0
