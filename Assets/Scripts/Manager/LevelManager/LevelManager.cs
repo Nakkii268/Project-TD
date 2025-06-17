@@ -33,7 +33,6 @@ public class LevelManager : MonoBehaviour
     
     public event EventHandler<EndState> OnGameEnd;// win = 1; lose = 0; win but leaked =0.x
 
-    public PointerClickHandle PointerClickHandler;
 
     private void Awake()
     {

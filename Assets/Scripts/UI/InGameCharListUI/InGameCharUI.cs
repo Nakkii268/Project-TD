@@ -22,15 +22,19 @@ public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEnd
     [SerializeField] private Image ClassIcon;
     [SerializeField] private bool isForcused;
     [SerializeField] private int SkillIndex;
-    protected override void Start()
+    protected  void Start()
     {
-        base.Start();
+        
         levelManager = LevelManager.instance;
         rectTransform = GetComponent<RectTransform>();
         UnitCostTxt.text = SlotUnit.UnitDp.ToString();
         ClassIcon.sprite = SlotUnit.UnitClass.ClassIcon;
         Potrait.sprite = SlotUnit.unitPotrait;
         Canvas= UIManager.Instance.GetComponent<Canvas>();
+    }
+    protected override void OnEnable()
+    {
+        base.OnEnable();
     }
     public void Init(AllianceUnit unit, int inx,int skillIndex, GameObject drag) { 
         SlotUnit = unit;

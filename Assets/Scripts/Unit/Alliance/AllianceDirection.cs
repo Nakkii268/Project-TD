@@ -17,14 +17,18 @@ public class AllianceDirection : PointerDetect, IBeginDragHandler, IEndDragHandl
     
     public event EventHandler<Vector2> OnDeloyed;
     [SerializeField]private Vector3 offset = new Vector3(0,-.7f,0);
-    protected override void Start()
+    protected void Start()
     {
-        base.Start();
+        
         cam = CameraManager.instance;
         retreatBtn.onClick.AddListener(() => {
             alliance.Retreat(false);
           
         });
+    }
+    protected override void OnEnable()
+    {
+        base.OnEnable();
     }
     public void OnBeginDrag(PointerEventData eventData)
     {

@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public PlayerDataManager _playerDataManager;
     public Item item;
 
+    public PointerClickHandle PointerClickHandler;
 
 
     private void Awake()

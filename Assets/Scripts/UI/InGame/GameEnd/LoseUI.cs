@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WinUI : UICanvas
+public class LoseUI : UICanvas
 {
     [SerializeField] private Button exitBtn;
+    [SerializeField] private TextMeshProUGUI stageName;
 
     public override void SetUp(object t)
     {
-        if ( t is bool comp) {
-            Initialized(comp);
+        if (t is MapData map)
+        {
+            Initialized(map);
         }
     }
     private void Start()
@@ -18,22 +22,21 @@ public class WinUI : UICanvas
         exitBtn.onClick.AddListener(() =>
         {
             GameManager.Instance._sceneLoader.LoadMenu();
-
+            
             UIManager.Instance.OpenUI<StageSelectUI>();
         });
         exitBtn.interactable = false;
         StartCoroutine(EnableExitBtn());
     }
+    private void Initialized(MapData mapData)
+    {
+        stageName.text = mapData.Map.MapName;
+       
+    }
 
-    private IEnumerator EnableExitBtn()
+private IEnumerator EnableExitBtn()
     {
         yield return new WaitForSeconds(1);
-        exitBtn.interactable = true;
-    }
-
-    private void Initialized(bool full)
-    {
-        //if true = fully complete
-        //false = not fully complete
-    }
-}
+        exitBtn.interactable = true;    
+    } 
+ }

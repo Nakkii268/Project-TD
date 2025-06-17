@@ -302,10 +302,10 @@ TextureImporter:
       name: Diamond
       rect:
         serializedVersion: 2
-        x: 560
-        y: 48
-        width: 217
-        height: 344
+        x: 497
+        y: 29
+        width: 354
+        height: 388
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -323,10 +323,10 @@ TextureImporter:
       name: GoldCoin
       rect:
         serializedVersion: 2
-        x: 72
-        y: 77
-        width: 295
-        height: 295
+        x: 32
+        y: 31
+        width: 380
+        height: 380
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

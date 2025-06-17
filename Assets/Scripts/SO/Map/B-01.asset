@@ -62,4 +62,6 @@ MonoBehaviour:
   StartDeployPoint: 20
   DpRecoveryRate: 1
   DeployLimit: 3
-  DropItem: []
+  DropItem:
+  - Item: {fileID: 11400000, guid: ebe72feb9446389428430436d888d572, type: 2}
+    Quantity: 1

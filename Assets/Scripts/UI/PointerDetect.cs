@@ -8,13 +8,13 @@ public class PointerDetect : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 {
     public bool isPointerIn;
   
-    protected virtual void Start()
+    protected virtual void OnEnable()
     {
-        LevelManager.instance.PointerClickHandler.OnPointerClick += PointerClickHandler_OnPointerClick;
+        GameManager.Instance.PointerClickHandler.OnPointerClick += PointerClickHandler_OnPointerClick;
     }
     protected virtual void OnDisable()
     {
-        LevelManager.instance.PointerClickHandler.OnPointerClick -= PointerClickHandler_OnPointerClick;
+        GameManager.Instance.PointerClickHandler.OnPointerClick -= PointerClickHandler_OnPointerClick;
 
     }
     protected virtual void PointerClickHandler_OnPointerClick(object sender, System.EventArgs e)

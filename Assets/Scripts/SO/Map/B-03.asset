@@ -15,7 +15,7 @@ MonoBehaviour:
   ChapterIndex: 1
   StageIndex: 2
   MapName: B-03
-  StagePath: Assets/Scenes/SampleScene.unity
+  StagePath: Assets/Scenes/StageScene/B-03.unity
   Waves:
   - SpawnTime: 5
     Path:
@@ -37,37 +37,11 @@ MonoBehaviour:
     EnemyQuantity: 5
     SpawnDelay: 2
     SpawnPos: {x: 0, y: 0, z: 0}
-  - SpawnTime: 20
-    Path:
-    - {x: 0, y: 0}
-    - {x: 1, y: 0}
-    - {x: 1, y: 2}
-    - {x: 1, y: 3}
-    - {x: 1, y: 4}
-    - {x: 2, y: 4}
-    - {x: 3, y: 4}
-    - {x: 4, y: 4}
-    - {x: 5, y: 4}
-    - {x: 6, y: 4}
-    - {x: 7, y: 4}
-    - {x: 8, y: 4}
-    - {x: 8, y: 5}
-    - {x: -99, y: 99}
-    EnemyUnit: {fileID: 11400000, guid: 54fe095d7aace1a449bcc57f58f5af35, type: 2}
-    EnemyQuantity: 5
-    SpawnDelay: 2
-    SpawnPos: {x: 0, y: 0, z: 0}
-  TotalEnemy: 10
+  TotalEnemy: 5
   LifePoint: 5
   StartDeployPoint: 20
   DpRecoveryRate: 1
   DeployLimit: 3
   DropItem:
-  - Item: {fileID: 0}
+  - Item: {fileID: 11400000, guid: 0ef788f9af53d6d4488a25689a5390ef, type: 2}
     Quantity: 30
-  - Item: {fileID: 0}
-    Quantity: 5000
-  - Item: {fileID: 0}
-    Quantity: 5000
-  - Item: {fileID: 0}
-    Quantity: 1
