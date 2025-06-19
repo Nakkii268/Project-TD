@@ -9,8 +9,11 @@ public class BannerPopup : UICanvas
     [SerializeField] private float closeTime;
     public override void SetUp(object t)
     {
-        string ct = t as string;
-        Init(ct);
+        if (t != null)
+        {
+            string ct = t as string;
+            Init(ct);
+        }
     }
     private void Init(string text)
     {

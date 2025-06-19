@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 
@@ -29,8 +30,8 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private ObjectPoolManager _poolManager;
     public ObjectPoolManager projectilePool { get { return _poolManager; } }
-   
-    
+
+
     public event EventHandler<EndState> OnGameEnd;// win = 1; lose = 0; win but leaked =0.x
 
 
@@ -73,7 +74,7 @@ public class LevelManager : MonoBehaviour
    
     public void GameEnd()
     {
-        Debug.Log(levelLifePointManager.GetGameEndState());
+        
         OnGameEnd?.Invoke(this, levelLifePointManager.GetGameEndState());
     }
 
@@ -87,16 +88,22 @@ public class LevelManager : MonoBehaviour
 
     public void TimeSlow()
     {
-       // Debug.Log("slow");
+    
         Time.timeScale = .1f;
     }
     public void TimeNormal()
     {
-        //Debug.Log("nor");
-
+     
         Time.timeScale = 1f;
     }
-   
+    public void DelayTime(float delay)
+    {
+        StartCoroutine(Delay(delay));
+    }
+   public IEnumerator Delay(float time)
+   {
+        yield return new WaitForSeconds(time);
+   }
    
 }
 

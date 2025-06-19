@@ -96,7 +96,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 8f1c7032af336ee48b108e2398cd1f49, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: e6532e7c67df28e4da65e56f4a90e5ad, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 739ac65b1dde3cf4ea16d25a05772dc1, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -2321,7 +2321,6 @@ MonoBehaviour:
   _particleManager: {fileID: 336357013}
   LevelInfoUI: {fileID: 0}
   _poolManager: {fileID: 1730591525}
-  PointerClickHandler: {fileID: 1978487410}
 --- !u!1001 &762681304
 PrefabInstance:
   m_ObjectHideFlags: 0

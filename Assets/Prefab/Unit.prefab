@@ -752,6 +752,7 @@ MonoBehaviour:
   ClassIcon: {fileID: 9019890700350532599}
   RarityIcon: {fileID: 6501488927360297108}
   UIPotrait: {fileID: 5896334353366619244}
+  LBIcon: {fileID: 8912906787633264882}
 --- !u!114 &4798555101185149324
 MonoBehaviour:
   m_ObjectHideFlags: 0

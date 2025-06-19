@@ -247,8 +247,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.053131, y: 3.1350398, z: 0.34842184}
-  m_Center: {x: -0.76962817, y: 0.84218967, z: 0.16059317}
+  m_Size: {x: 2.8999825, y: 2.5332031, z: 0.34842184}
+  m_Center: {x: -0.90885276, y: 0.673537, z: 0.16059317}
 --- !u!1 &1453957803755249262
 GameObject:
   m_ObjectHideFlags: 0
@@ -1859,6 +1859,7 @@ MonoBehaviour:
   SkillActiveBtn: {fileID: 7944637011915187758}
   _isSkillDuration: 0
   CanAttackInDuration: 0
+  skillinde: 0
 --- !u!1 &7575087738944473143
 GameObject:
   m_ObjectHideFlags: 0

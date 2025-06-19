@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be397e581a7d06141b002592f6912c3d, type: 3}
   m_Name: AttackBoot
   m_EditorClassIdentifier: 
-  Name: 
-  Icon: {fileID: 0}
+  Name: Attack boot
+  Icon: {fileID: 21300000, guid: f1be1c0c152104f48a057cfdddf167b9, type: 3}
   Description: 
   skillType: 0
   skillEffect: 0

@@ -42,8 +42,8 @@ MonoBehaviour:
   TargetCount: 0
   DamageType: 0
   UnitClass: {fileID: 11400000, guid: e1b5ddadcd857a34c98abeaafb60c5fe, type: 2}
-  LimitBreak: 1
-  Level: 20
+  LimitBreak: 0
+  Level: 1
   UnitSkills:
-  - {fileID: 11400000, guid: f3c989bc537df0341ac3e2bcf9070074, type: 2}
+  - {fileID: 11400000, guid: 7acfcc20f5a7e4547bce5adaba9fa208, type: 2}
   - {fileID: 11400000, guid: f3c989bc537df0341ac3e2bcf9070074, type: 2}

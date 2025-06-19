@@ -20,7 +20,7 @@ public class AllianceSkill : MonoBehaviour
     public event EventHandler<float> OnSpChange;
     public event EventHandler<float> OnSkillActive;
     public event EventHandler OnSkillEnd;
-    public int skillinde;
+    public int skillindex;
     private void Start()
     {
         
@@ -73,7 +73,7 @@ public class AllianceSkill : MonoBehaviour
         
 
         OnUseSkill = alliance.GetAllianceUnit().UnitSkills[index];
-        skillinde = index;
+        skillindex = index;
     }
     private void AllianceSkill_OnAttackPerform(object sender, List<GameObject> e)
     {

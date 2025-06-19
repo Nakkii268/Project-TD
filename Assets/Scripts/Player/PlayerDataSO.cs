@@ -111,6 +111,7 @@ public class PlayerDataSO : ScriptableObject
                 else
                 {
                     PlayerLineUp[i].Unit = unit;
+                    PlayerLineUp[i].SkillIndex = skIndx;
                     return;
                 }
             }

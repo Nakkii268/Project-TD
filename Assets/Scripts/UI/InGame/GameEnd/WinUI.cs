@@ -22,6 +22,7 @@ public class WinUI : UICanvas
     {
         exitBtn.onClick.AddListener(() =>
         {
+            Time.timeScale = 1.0f;
             GameManager.Instance._sceneLoader.LoadMenu();
 
             UIManager.Instance.OpenUI<StageSelectUI>();

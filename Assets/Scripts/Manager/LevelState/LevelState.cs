@@ -13,6 +13,7 @@ public class LevelState : IState
     public virtual void Enter()
     {
         AddCallBack();
+        Debug.Log(this);
     }
 
     public virtual void Exit()

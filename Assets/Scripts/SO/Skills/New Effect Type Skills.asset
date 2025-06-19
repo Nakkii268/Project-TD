@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: New Effect Type Skills
   m_EditorClassIdentifier: 
   Name: Heal
+  Icon: {fileID: 21300000, guid: f1be1c0c152104f48a057cfdddf167b9, type: 3}
   Description: 
   skillType: 0
   skillEffect: 1

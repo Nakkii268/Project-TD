@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: GuardLimitBreak
   m_EditorClassIdentifier: 
   MaterialsRequired:
-  - Material: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
-    Quantity: 100
-  - Material: {fileID: 11400000, guid: b326332c006df1d4c841f9c180f2a44e, type: 2}
-    Quantity: 2
+  - Item: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
+    Quantity: 10000
+  - Item: {fileID: 11400000, guid: b326332c006df1d4c841f9c180f2a44e, type: 2}
+    Quantity: 5
+  - Item: {fileID: 11400000, guid: 3f4174acf5d319648877279990524795, type: 2}
+    Quantity: 5
   BuffGain:
   - {fileID: 11400000, guid: f0787e38af17e05488ef854602385f5b, type: 2}

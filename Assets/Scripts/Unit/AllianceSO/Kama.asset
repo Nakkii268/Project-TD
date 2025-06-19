@@ -15,10 +15,10 @@ MonoBehaviour:
   UnitID: 003
   UnitPrefab: {fileID: 6865232695306935221, guid: 949ca6295e5cf9349869dd6646cd177f, type: 3}
   Name: kama
-  Heath: 6194
-  Attack: 2225
+  Heath: 18066
+  Attack: 5025
   AttackInterval: 0.7
-  Defense: 556
+  Defense: 1804
   Resistance: 10
   Block: 1
   AttackVfx: {fileID: 8281976299469518386, guid: b0cf4939cb2f871439abd5815194152a, type: 3}
@@ -56,4 +56,4 @@ MonoBehaviour:
   Level: 20
   UnitSkills:
   - {fileID: 11400000, guid: 7acfcc20f5a7e4547bce5adaba9fa208, type: 2}
-  - {fileID: 11400000, guid: 7acfcc20f5a7e4547bce5adaba9fa208, type: 2}
+  - {fileID: 11400000, guid: a758dcc58c44dbd4c8647c62d9ed96bf, type: 2}

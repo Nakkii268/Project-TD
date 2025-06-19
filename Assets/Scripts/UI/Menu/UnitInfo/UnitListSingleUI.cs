@@ -15,6 +15,7 @@ public class UnitListSingleUI : MonoBehaviour
     [SerializeField] private Image ClassIcon;
     [SerializeField] private Image RarityIcon;
     [SerializeField] private Image UIPotrait;
+    [SerializeField] private Image LBIcon;
     
 
     public void Initialized(AllianceUnit unit)
@@ -26,7 +27,7 @@ public class UnitListSingleUI : MonoBehaviour
         ClassIcon.sprite = unit.UnitClass.ClassIcon;
         RarityIcon.sprite = unit.Rarity.RarityIcon;
         UIPotrait.sprite = unit.unitUIPotrait;
-        
+        LBIcon.sprite = GameManager.Instance.limitBreakIcon.GetIcon(unit.LimitBreak);
 
     }
 

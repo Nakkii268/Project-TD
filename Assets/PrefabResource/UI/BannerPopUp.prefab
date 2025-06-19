@@ -325,6 +325,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d852c7435363d3b4589d96468ead74a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDestroyOnClose: 0
+  isDestroyOnClose: 1
   content: {fileID: 2370396786484773687}
   closeTime: 2

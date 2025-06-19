@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88cb6018610018f4c9a75df276ee5b3a, type: 3}
   m_Name: ThornyBurst
   m_EditorClassIdentifier: 
-  Name: 
-  Icon: {fileID: 0}
+  Name: thorny burst
+  Icon: {fileID: 21300000, guid: f978bfd350c040a45bbba2be52b15236, type: 3}
   Description: 
   skillType: 0
   skillEffect: 2

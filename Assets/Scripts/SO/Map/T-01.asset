@@ -12,14 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d34d8dbbb732b47a68629a5ce22f58, type: 3}
   m_Name: T-01
   m_EditorClassIdentifier: 
-  StageIndex: 0
   ChapterIndex: 0
+  StageIndex: 0
   MapName: T-01
   StagePath: Assets/Scenes/StageScene/T-01.unity
   Waves:
   - SpawnTime: 5
     Path:
-    - {x: 0, y: 0}
     - {x: 1, y: 0}
     - {x: 1, y: 1}
     - {x: 2, y: 1}
@@ -28,19 +27,21 @@ MonoBehaviour:
     - {x: 5, y: 1}
     - {x: 6, y: 1}
     - {x: 6, y: 2}
-    - {x: 7, y: 2}
+    - {x: 6, y: 3}
     - {x: 7, y: 3}
-    - {x: 7, y: 5}
+    - {x: 8, y: 3}
+    - {x: 8, y: 4}
     - {x: 8, y: 5}
+    - {x: 8, y: 6}
     - {x: -99, y: 99}
     EnemyUnit: {fileID: 11400000, guid: cd67ce6d899f05a4c9e6c25c43ab52ee, type: 2}
-    EnemyQuantity: 5
-    SpawnDelay: 2
-    SpawnPos: {x: 0, y: 0, z: 0}
+    EnemyQuantity: 10
+    SpawnDelay: 1
+    SpawnPos: {x: 1, y: 0, z: 0}
   - SpawnTime: 20
     Path:
-    - {x: 0, y: 0}
     - {x: 1, y: 0}
+    - {x: 1, y: 1}
     - {x: 1, y: 2}
     - {x: 1, y: 3}
     - {x: 1, y: 4}
@@ -52,16 +53,17 @@ MonoBehaviour:
     - {x: 7, y: 4}
     - {x: 8, y: 4}
     - {x: 8, y: 5}
+    - {x: 8, y: 6}
     - {x: -99, y: 99}
     EnemyUnit: {fileID: 11400000, guid: 54fe095d7aace1a449bcc57f58f5af35, type: 2}
     EnemyQuantity: 5
-    SpawnDelay: 2
-    SpawnPos: {x: 0, y: 0, z: 0}
-  TotalEnemy: 10
+    SpawnDelay: 1
+    SpawnPos: {x: 1, y: 0, z: 0}
+  TotalEnemy: 15
   LifePoint: 5
-  StartDeployPoint: 20
+  StartDeployPoint: 15
   DpRecoveryRate: 1
-  DeployLimit: 3
+  DeployLimit: 4
   DropItem:
   - Item: {fileID: 11400000, guid: 0ef788f9af53d6d4488a25689a5390ef, type: 2}
     Quantity: 30

@@ -23,5 +23,18 @@ public class MaterialRequiredSingle : MonoBehaviour
             ItemQttTxt.color = Color.white;
         }
     }
+    public void InitLevelReq(int req,int level)
+    {
+        ItemQttTxt.text = level.ToString();
+        ItemRqTxt.text = "/" + req.ToString();
+        if (req > level)
+        {
+            ItemQttTxt.color = Color.red;
+        }
+        else
+        {
+            ItemQttTxt.color = Color.white;
+        }
+    }
 
 }

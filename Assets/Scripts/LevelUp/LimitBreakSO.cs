@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="LimitBreakData")]
 public class LimitBreakSO : ScriptableObject
 {
+   
     public List<ItemsData> MaterialsRequired;
     public List<StatusEffect> BuffGain;
 }

@@ -35,9 +35,11 @@ public class LevelEndState : LevelState
     public override void Exit()
     {
         base.Exit();
+   
+
     }
-    
- 
+
+
     private void ItemDrop(MapSO map)
     {
         for (int i = 0; i < map.DropItem.Count; i++)

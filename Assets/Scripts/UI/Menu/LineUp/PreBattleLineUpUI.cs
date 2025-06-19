@@ -23,7 +23,7 @@ public class PreBattleLineUpUI : UICanvas
         {
             _tempSquad.Clear();
 
-            UIManager.Instance.Close<LineUpUI>(0);
+            UIManager.Instance.Close<PreBattleLineUpUI>(0);
         });
         _homeBtn.onClick.AddListener(() => {
             _tempSquad.Clear();

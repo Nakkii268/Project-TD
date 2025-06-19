@@ -22,6 +22,15 @@ public class UnitLimitBreakUI : UICanvas
     public void Initialized(AllianceUnit allanceUnit)
     {
         unit = allanceUnit;
+
+        //level req
+        GameObject levelReq = Instantiate(ItemRequiredPrefab, container);
+        levelReq.GetComponent<MaterialRequiredSingle>().
+            InitLevelReq(unit.Rarity.LevelCap[unit.LimitBreak], unit.Level);
+
+        //
+
+        //item req
         for (int i = 0; i < unit.UnitClass.ClassLimitBreakpData.MaterialsRequired.Count; i++)
         {
             GameObject single = Instantiate(ItemRequiredPrefab, container);
@@ -29,6 +38,8 @@ public class UnitLimitBreakUI : UICanvas
                 Init(unit.UnitClass.ClassLimitBreakpData.MaterialsRequired[i],
                 GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(unit.UnitClass.ClassLimitBreakpData.MaterialsRequired[i].Item.ItemID));
         }
+
+        
         CurrentLimtBreak = unit.LimitBreak;
     }
 
@@ -80,6 +91,7 @@ public class UnitLimitBreakUI : UICanvas
     }
     private bool RequiredCheck()
     {
+        if(unit.Level > unit.Rarity.LevelCap[unit.LimitBreak]) return false;
         List<ItemsData> items = unit.UnitClass.ClassLimitBreakpData.MaterialsRequired;
         for (int i = 0;i< items.Count; i++)
         {
@@ -98,23 +110,14 @@ public class UnitLimitBreakUI : UICanvas
         LimitBreakText.text = lb.ToString();
     }
 
-    public int GetCurrentLevel()
-    {
-        if (!PlayerPrefs.HasKey(unit.UnitID)) return 1;
-        return PlayerPrefs.GetInt(unit.UnitID);
-    }
+  
 
     public int GetCurrentLimitBreak()
     {
         if (!PlayerPrefs.HasKey(unit.UnitID + "lb")) return 0;
         return PlayerPrefs.GetInt(unit.UnitID + "lb");
     }
-    public bool MaxLevelCheck(int lb)
-    {
-        if (GetCurrentLevel() == unit.Rarity.LevelCap[lb]) return true;
-        return false;
-
-    }
+ 
 
     private void ConsumeMaterial()
     {

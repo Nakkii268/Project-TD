@@ -36,9 +36,9 @@ public class LineUpSlot : MonoBehaviour
         ClassIcon.sprite = unit.UnitClass.ClassIcon;
         RarityIcon.sprite = unit.Rarity.RarityIcon;
         UIPotrait.sprite = unit.unitUIPotrait;
-        //SkillIcon.sprite= unit.UnitSkills[skillIndex].Icon;///////
         limitBrrakIcon.sprite = GameManager.Instance.limitBreakIcon.GetIcon(unit.LimitBreak);
         NullPotrait.gameObject.SetActive(false);
+        SkillIcon.sprite= unit.UnitSkills[skillIndex].Icon;
         
         
     }
@@ -69,6 +69,7 @@ public class LineUpSlot : MonoBehaviour
 
         }
         OnUnitAssign?.Invoke(this, new LineUpSave(SlotIndex, e.Unit, e.SkillIndex));
+        Debug.Log(e.SkillIndex);
         Initialized(e.Unit,e.SkillIndex);
 
     }

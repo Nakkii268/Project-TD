@@ -15,16 +15,7 @@ public class UnitListUI : UICanvas
     [SerializeField] public Button HomeBtn;
     private void Initialized()
     {
-        ClearChild();
-        unitList = GameManager.Instance._playerDataManager.PlayerDataSO.OwnedCharacter;
-        for(int i = 0;i < unitList.Count; i++)
-        {
-            UnitListSingleUI single = Instantiate(singlePrefab, container);
-            SingleList.Add(single);
-            single.Initialized(unitList[i]);
-            single.gameObject.SetActive(true);
-        }
-        scrollRect.horizontalNormalizedPosition = 0;
+       UpdateUI();
       
     }
     private void Start()
@@ -40,10 +31,23 @@ public class UnitListUI : UICanvas
         });
 
     }
+    private void UpdateUI()
+    {
+        ClearChild();
+        unitList = GameManager.Instance._playerDataManager.PlayerDataSO.OwnedCharacter;
+        for (int i = 0; i < unitList.Count; i++)
+        {
+            UnitListSingleUI single = Instantiate(singlePrefab, container);
+            SingleList.Add(single);
+            single.Initialized(unitList[i]);
+            single.gameObject.SetActive(true);
+        }
+        scrollRect.horizontalNormalizedPosition = 0;
+    } 
 
     private void _playerDataManager_OnDataChange(object sender, System.EventArgs e)
     {
-        Initialized();
+        UpdateUI();
     }
 
     

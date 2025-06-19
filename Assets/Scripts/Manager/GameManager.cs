@@ -40,8 +40,8 @@ public class GameManager : MonoBehaviour
 
     public void TestBtn()
     {
-       // _playerDataManager.PlayerDataSO.AddItem(item, 10000);
-        //_playerDataManager.SaveItem();
+        _playerDataManager.PlayerDataSO.AddItem(item, 10000);
+        _playerDataManager.SaveItem();
         
     }
 
