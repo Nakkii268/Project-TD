@@ -12,6 +12,7 @@ public class PauseUI : UICanvas
     {
         ExitBtn.onClick.AddListener(() =>
         {
+            Time.timeScale = 1;
             GameManager.Instance._sceneLoader.LoadMenu();
         });
         ResumeBtn.onClick.AddListener(() =>

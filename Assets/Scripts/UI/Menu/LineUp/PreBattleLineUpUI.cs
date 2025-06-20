@@ -33,7 +33,7 @@ public class PreBattleLineUpUI : UICanvas
         _battleBtn.onClick.AddListener(() =>
         {
             GameManager.Instance._sceneLoader.LoadStage(map.StagePath);
-            UIManager.Instance.OpenUI<StageLoadingUI>(map.MapID);
+            UIManager.Instance.OpenUI<StageLoadingUI>(map);
         });
 
         _tempSquad = _playerSquad.ToDictionary(item => item.Index);

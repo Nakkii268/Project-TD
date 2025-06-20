@@ -15,7 +15,7 @@ MonoBehaviour:
   ChapterIndex: 0
   StageIndex: 0
   MapID: T-01
-  MapName: 
+  MapName: Journey Begin
   StagePath: Assets/Scenes/StageScene/T-01.unity
   Waves:
   - SpawnTime: 5

@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class StageLoadingUI : UICanvas
 {
+    [SerializeField] private TextMeshProUGUI stageID;
     [SerializeField] private TextMeshProUGUI stageName;
 
 
@@ -16,9 +17,10 @@ public class StageLoadingUI : UICanvas
 
     private void Initialized(object s)
     {
-        if(s is string txt)
+        if(s is MapSO map)
         {
-            stageName.text = txt;
+            stageName.text = map.MapName;
+            stageID.text = map.MapID;
         }
         
     }

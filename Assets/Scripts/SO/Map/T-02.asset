@@ -15,7 +15,7 @@ MonoBehaviour:
   ChapterIndex: 0
   StageIndex: 1
   MapID: T-02
-  MapName: 
+  MapName: Trouble Maker
   StagePath: Assets/Scenes/StageScene/T-02.unity
   Waves:
   - SpawnTime: 5
