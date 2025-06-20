@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour
             return;
         }
         MoveToTarget();
-        RotateToTarget();
+        RotateToTarget(target);
         
     }
     public virtual void SetInfomation(float dmg, DamageType type,UnitTarget ut, GameObject tg,Transform s,Sprite visual,ParticleSystem hit)
@@ -51,7 +51,7 @@ public class Projectile : MonoBehaviour
         
         
     }
-    protected virtual void RotateToTarget()
+    protected virtual void RotateToTarget(GameObject target)
     {
        Vector2 dir = target.transform.position - source.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;

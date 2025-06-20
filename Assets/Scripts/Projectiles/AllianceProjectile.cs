@@ -51,9 +51,9 @@ public class AllianceProjectile : Projectile
 
 
     }
-    protected override void RotateToTarget()
+    protected override void RotateToTarget(GameObject target)
     {
-        base.RotateToTarget();
+        base.RotateToTarget(target);
 
 
     }

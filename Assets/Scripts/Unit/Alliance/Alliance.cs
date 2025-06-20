@@ -69,7 +69,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         allianceDirection.OnDeloyed += AllianceDirection_OnDeloyed;
        
         LevelManager.instance.MapManager.OnClickOtherTarget += LevelManager_OnClickOtherTarget;
-        allianceBlock.BlockCollider.enabled = false;
+        DisableComponents();
 
     }
     private void Update()
@@ -102,7 +102,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         isDeloyed = true;
         direction = e;
         UnitUICollider.gameObject.SetActive(false);
-        directionCircle.gameObject.SetActive(true);
+        EnableComponents();
         directionCircle.Initialize(e);
         InGameCharListUI.Instance.HideDeloyedUnitUI(charIndex);
 
@@ -240,10 +240,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         return def / 100;
 
     }
-    public void Use() //test func
-    {
-        allianceVisual.PlayDeadAnim();
-    }
+
 
     public float GetPercentHp()
     {
@@ -254,7 +251,7 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
     {
         if (direction == new Vector2(-1, 0))
         {
-            Debug.Log("1");
+          
             return Quaternion.Euler(-90, 90, -90);
 
         }
@@ -273,10 +270,27 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
             return Quaternion.Euler(0, 90, -90);
 
         }
-        Debug.Log("2");
+        
 
         return Quaternion.Euler(0, 0, 0);
 
     }
 
+    private void DisableComponents()
+    {
+        allianceSkill.gameObject.SetActive(false);
+        allianceAttack.gameObject.SetActive(false);
+        allianceBlock.gameObject.SetActive(false);
+        directionCircle.gameObject.SetActive(false);
+        statusEffectHolder.enabled = false;
+    }
+    private void EnableComponents()
+    {
+        allianceSkill.gameObject.SetActive(true);
+        allianceAttack.gameObject.SetActive(true);
+        allianceBlock.gameObject.SetActive(true);
+        directionCircle.gameObject.SetActive(true);
+        statusEffectHolder.enabled = true;
+
+    }
 }

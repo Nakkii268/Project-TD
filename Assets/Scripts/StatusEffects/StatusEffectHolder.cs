@@ -18,6 +18,7 @@ public class StatusEffectHolder : MonoBehaviour
         holder.GetComponentInChildren<IAttackPerform>().OnAttackPerform += AttackPerformer_OnAttackPerform;
         
     }
+    
 
     private void AttackPerformer_OnAttackPerform(object sender, List<GameObject> e)
     {
