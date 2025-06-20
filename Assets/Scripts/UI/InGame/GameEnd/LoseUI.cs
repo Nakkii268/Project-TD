@@ -30,7 +30,7 @@ public class LoseUI : UICanvas
     }
     private void Initialized(MapData mapData)
     {
-        stageName.text = mapData.Map.MapName;
+        stageName.text = mapData.Map.MapID;
        
     }
 

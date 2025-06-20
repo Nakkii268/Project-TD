@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ChapterIndex: 1
   StageIndex: 2
-  MapName: B-03
+  MapID: B-03
+  MapName: 
   StagePath: Assets/Scenes/StageScene/B-03.unity
   Waves:
   - SpawnTime: 5

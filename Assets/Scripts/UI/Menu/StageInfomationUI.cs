@@ -10,15 +10,26 @@ public class StageInfomationUI : PointerDetect
     
     [SerializeField] private Button PrepareBtn;
     [SerializeField] private TextMeshProUGUI StageName;
+    [SerializeField] private TextMeshProUGUI StageID;
+    [SerializeField] private Transform DropPreviewContainer;
+    [SerializeField] private ItemDrop DropPrefab;
 
     public void Init(MapSO map)
     {
+        StageID.text = map.MapID;
         StageName.text = map.MapName;
         PrepareBtn.onClick.AddListener(() =>
         {
             
             UIManager.Instance.OpenUI<PreBattleLineUpUI>(map);
         });
+        ClearChild();
+        for(int i=0; i < map.DropItem.Count; i++)
+        {
+            ItemDrop drop = Instantiate(DropPrefab, DropPreviewContainer);
+            drop.Init(map.DropItem[i]);
+            
+        }
     }
     protected override void OnEnable()
     {
@@ -34,6 +45,13 @@ public class StageInfomationUI : PointerDetect
         {
             Debug.Log("close Info Ui");
             gameObject.SetActive(false);
+        }
+    }
+    private void ClearChild()
+    {
+        for(int i=0; i< DropPreviewContainer.childCount;i++)
+        {
+            Destroy(DropPreviewContainer.GetChild(i).gameObject);
         }
     }
 }

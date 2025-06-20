@@ -15,7 +15,7 @@ public class StageSingleUI : MonoBehaviour
 
     public void Initialize(MapSO map,int rating)
     {
-        stageName.text = map.MapName;
+        stageName.text = map.MapID;
         btn.onClick.AddListener(() =>
         {
             OnStageSelect?.Invoke(this, map);

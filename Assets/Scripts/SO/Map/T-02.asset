@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d34d8dbbb732b47a68629a5ce22f58, type: 3}
   m_Name: T-02
   m_EditorClassIdentifier: 
-  StageIndex: 1
   ChapterIndex: 0
-  MapName: T-02
+  StageIndex: 1
+  MapID: T-02
+  MapName: 
   StagePath: Assets/Scenes/StageScene/T-02.unity
   Waves:
   - SpawnTime: 5

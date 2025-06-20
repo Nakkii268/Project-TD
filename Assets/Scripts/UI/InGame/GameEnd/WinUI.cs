@@ -40,7 +40,7 @@ public class WinUI : UICanvas
 
     private void Initialized(MapData mapData)
     {
-        stageName.text  = mapData.Map.MapName;
+        stageName.text  = mapData.Map.MapID;
         for (int i = 0; i < mapData.Map.DropItem.Count; i++)
         {
             ItemDrop drop = Instantiate(prefab, container);

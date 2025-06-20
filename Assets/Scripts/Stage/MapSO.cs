@@ -8,6 +8,7 @@ public class MapSO : ScriptableObject
 {
     public int ChapterIndex;
     public int StageIndex;
+    public string MapID;
     public string MapName;
     public string StagePath;
     public Wave[] Waves;
