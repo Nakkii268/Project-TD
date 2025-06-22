@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public LimitBreakIcon limitBreakIcon;
     [SerializeField] public ResourceManager _resourceManager;
     [SerializeField] public PlayerDataManager _playerDataManager;
+    [SerializeField] public QuestManager _questManager;
     public Item item;
 
     public PointerClickHandle PointerClickHandler;
@@ -42,7 +43,10 @@ public class GameManager : MonoBehaviour
     {
         _playerDataManager.PlayerDataSO.AddItem(item, 10000);
         _playerDataManager.SaveItem();
-        
+        for(int i = 0; i < _questManager.CurrentactiveQuests.Count; i++)
+        {
+            Debug.Log(_questManager.CurrentactiveQuests[i].GetProgress());
+        }
     }
 
 }

@@ -20,7 +20,7 @@ public class LevelEndState : LevelState
             GameManager.Instance._playerDataManager.PlayerDataSO.UpdateProgress(LevelStateMachineManager._levelManager.Map, (int)LevelStateMachineManager.endState);
             GameManager.Instance._playerDataManager.SaveProgress();
             ItemDrop(LevelStateMachineManager._levelManager.Map);
-            
+            QuestEventHandler.StageClear(LevelStateMachineManager._levelManager.Map);
 
         }
         else if(LevelStateMachineManager.endState == EndState.NotComplete)
@@ -30,6 +30,8 @@ public class LevelEndState : LevelState
             GameManager.Instance._playerDataManager.SaveProgress();
             
             ItemDrop(LevelStateMachineManager._levelManager.Map);
+            QuestEventHandler.StageClear(LevelStateMachineManager._levelManager.Map);
+
         }
     }
     public override void Exit()

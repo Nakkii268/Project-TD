@@ -8,6 +8,7 @@ public interface IQuestEvaluate
     void Initialized();
     bool IsCompleted();
     string GetProgress();
+    float GetProgressPercent();
     void LoadProgress(string saved);
 
 }
@@ -20,6 +21,12 @@ public class QuestConfig
     public string QuestType;
     public QuestState CurrentState;
     public GoalConfig GoalConfig; 
+    public List<SaveItemData> Rewards;
+}
+[Serializable]
+public class QuestListWrapper
+{
+    public  List<QuestConfig> list; 
 }
 public enum QuestState
 {
@@ -31,6 +38,6 @@ public enum QuestState
 public class GoalConfig
 {
     public string GoalType;
-    public Dictionary<string, string> Goals;
+    public string Goals;
     public string Description;
 }

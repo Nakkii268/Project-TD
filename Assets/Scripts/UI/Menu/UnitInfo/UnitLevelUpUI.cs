@@ -120,6 +120,7 @@ public class UnitLevelUpUI : UICanvas
             CalRequireMaterial();
             UpdateRequireTxt(Gold, Exp);
             UIManager.Instance.OpenUI<BannerPopup>(SuccessTxt);
+            QuestEventHandler.LevelUp(GetCurrentLevel());
         }
         else
         {

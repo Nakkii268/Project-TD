@@ -9,12 +9,15 @@ public static class GoalFactory
         switch (config.GoalType)
         {
             case "ClearStage":
-                string stageid = config.Goals["TargetStage"];
+                string stageid = config.Goals;
                 return new ClearStageEvaluate(stageid);
             case "KillEnemy":
-                int amount = int.Parse(config.Goals["TargetAmount"]);
+                Debug.Log(config.Goals);
+                int amount = int.Parse(config.Goals);
                 return new KillEnemyEvaluate(amount);
-
+            case "LevelUp":
+                int level = int.Parse(config.Goals);
+                return new LevelUpEvaluate(level);
             default: return null;
         }
     }

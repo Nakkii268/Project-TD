@@ -15,6 +15,14 @@ public class ClearStageEvaluate : IQuestEvaluate
     {
         return isCompleted.ToString();
     }
+    public float GetProgressPercent()
+    {
+        if (isCompleted)
+        {
+            return 1;
+        }
+        return 0;
+    }
 
     public void Initialized( )
     {
