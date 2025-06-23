@@ -18,8 +18,20 @@ public class ActiveQuest
     
     public void Initialized()
     {
-        Evaluator.Initialized();
+        if(CurrentState == QuestState.OnGoing)
+        {
+            Evaluator.Initialized();
+            Evaluator.OnProgressChange += Evaluator_OnProgressChange;
+
+        }
     }
+
+    private void Evaluator_OnProgressChange()
+    {
+        GameManager.Instance._playerDataManager.PlayerDataSO.UpdateQuestProgress(QuestID, GetProgress());
+
+    }
+
     public void LoadProgress(string saved)
     {
         Evaluator?.LoadProgress(saved);
@@ -28,14 +40,21 @@ public class ActiveQuest
     {
         return Evaluator?.GetProgress();
     }
+    public float GetProgressPercent()
+    {
+        return Evaluator.GetProgressPercent();
+    }
     public void QuestCompleted()
     {
         CurrentState = QuestState.Completed;
+        Evaluator?.UnsubEvent();
         List<ItemsData> items = GetRewards();
         for (int i = 0; i < Rewards.Count; i++)
         {
             GameManager.Instance._playerDataManager.PlayerDataSO.AddItem(items[i].Item, items[i].Quantity);
         }
+        GameManager.Instance._playerDataManager.PlayerDataSO.RemoveQuest(QuestID);
+
     }
     public List<ItemsData> GetRewards()
     {
@@ -47,5 +66,12 @@ public class ActiveQuest
           
         }
         return data;
+    }
+    public void QuestAcquire()
+    {
+        CurrentState = QuestState.OnGoing;
+        GameManager.Instance._playerDataManager.PlayerDataSO.AddQuest(QuestID,GetProgress());
+
+        Initialized();
     }
 }

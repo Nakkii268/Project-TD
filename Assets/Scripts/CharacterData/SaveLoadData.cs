@@ -34,6 +34,14 @@ public static class SaveLoadData
             new CharacterModifyData("001", 1, 0)
 
         };
+        defaultData.PlayerQuestData = new List<QuestData>()
+        {
+            new QuestData("Q01","0"),
+            new QuestData("Q02","0"),
+            new QuestData("Q03","0"),
+            new QuestData("Q04","0"),
+
+        };
         defaultData.PlayerProgress = new List<Progress>() { new Progress()};
         return defaultData;
     }
@@ -70,6 +78,10 @@ public static class SaveLoadData
             newData.OwnedCharacter.Add(un);
         }
         newData.PlayerProgress = data.PlayerProgress;
+        foreach(var quest in data.PlayerQuestData)
+        {
+            newData.QuestData.Add(quest);
+        }
         
         //line up
         for (int i = 0; i < data.LineUp.Count; i++)

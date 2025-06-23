@@ -9,6 +9,7 @@ public class QuestManager : MonoBehaviour
     public Dictionary<string, ActiveQuest> QuestList = new Dictionary<string, ActiveQuest>();
     public List<ActiveQuest> activeQuests = new List<ActiveQuest>();
     public List<ActiveQuest> CurrentactiveQuests = new List<ActiveQuest>();
+    [SerializeField] private PlayerDataManager playerDataManager;
     private void Start()
     {
         string path =Path.Combine( Application.persistentDataPath , "Quest.json");
@@ -16,10 +17,18 @@ public class QuestManager : MonoBehaviour
         List<QuestConfig> configs = JsonUtility.FromJson<QuestListWrapper>(json).list;
         LoadConfig(configs);
         CurrentactiveQuests = GetActiveQuest();
+        playerDataManager = GameManager.Instance._playerDataManager;
+        playerDataManager.OnPlayerDataLoaded += PlayerDataManager_OnPlayerDataLoaded;
     }
+
+    private void PlayerDataManager_OnPlayerDataLoaded()
+    {
+        LoadQuestProgress();
+    }
+
     public void LoadConfig(List<QuestConfig> configs)
     {
-        Debug.Log(configs.Count + "quest");
+       
         foreach (var config in configs)
         {
             var evaluator = GoalFactory.Create(config.GoalConfig);
@@ -33,10 +42,14 @@ public class QuestManager : MonoBehaviour
                 Evaluator = evaluator,
                 Rewards = config.Rewards
             };
+
             quest.Initialized();
+            
             QuestList[quest.QuestID] = quest;
             activeQuests.Add(quest);
         }
+       
+
     }
     public List<ActiveQuest> GetActiveQuest()
     {
@@ -49,6 +62,16 @@ public class QuestManager : MonoBehaviour
             }
         }
         return quests;
+    }
+    public void LoadQuestProgress()
+    {
+        for (int i = 0; i < playerDataManager.PlayerDataSO.QuestData.Count; i++)
+        {
+            if (QuestList.ContainsKey(playerDataManager.PlayerDataSO.QuestData[i].QuestID))
+            {
+                QuestList[playerDataManager.PlayerDataSO.QuestData[i].QuestID].LoadProgress(playerDataManager.PlayerDataSO.QuestData[i].QuestProgress);
+            }
+        }
     }
 
 }

@@ -10,9 +10,8 @@ public class CharacterAcquisition : ConsumableItem
     {
         if (GameManager.Instance._playerDataManager.PlayerDataSO.AddUnit(UnitAcquire))
         {
-            GameManager.Instance._playerDataManager.PlayerDataSO.RemoveItem(this, 1);
-            GameManager.Instance._playerDataManager.SaveItem();
-            GameManager.Instance._playerDataManager.SaveUnit();
+            GameManager.Instance._playerDataManager.PlayerDataSO.RemoveItem(ItemID, 1);
+           
         }
     }
 }

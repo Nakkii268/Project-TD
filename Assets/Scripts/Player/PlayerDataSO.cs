@@ -1,7 +1,5 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Rendering;
 using UnityEngine;
 [CreateAssetMenu(menuName = "PlayerData")]
 public class PlayerDataSO : ScriptableObject
@@ -13,7 +11,8 @@ public class PlayerDataSO : ScriptableObject
     public List<LineUpSave> PlayerLineUp;
     public List<Progress> PlayerProgress;
     public List<ShopItemSave> ShopItemsData;
-
+    public List<QuestData> QuestData;
+    public event Action<string> OnDataChange;
     public void ClearData()
     {
         PlayerID = string.Empty;
@@ -21,6 +20,7 @@ public class PlayerDataSO : ScriptableObject
         Items.Clear();
         OwnedCharacter.Clear();
         PlayerLineUp.Clear();
+        QuestData.Clear();
         PlayerProgress = new List<Progress>();
         
     }
@@ -57,14 +57,16 @@ public class PlayerDataSO : ScriptableObject
             Items.Add(new ItemsData(item, quantity));
 
         }
+        OnDataChange?.Invoke("Item");
     }
-    public void RemoveItem(Item item, int quantity)
+ 
+    public void RemoveItem(string ItemID, int quantity)
     {
-        if (IsHaveItem(item.ItemID) != 0 )
+        if (IsHaveItem(ItemID) != 0 )
         {
             for (int i = 0; i < Items.Count; i++)
             {
-                if (Items[i].Item.ItemID == item.ItemID && Items[i].Quantity >= quantity) Items[i].Quantity-=quantity;
+                if (Items[i].Item.ItemID == ItemID && Items[i].Quantity >= quantity) Items[i].Quantity-=quantity;
                 if(Items[i].Quantity == 0)
                 {
                     Items.Remove(Items[i]);
@@ -76,6 +78,8 @@ public class PlayerDataSO : ScriptableObject
             Debug.LogError("Some thing went wrong with item");
 
         }
+        OnDataChange?.Invoke("Item");
+
     }
     //handle with item-end
 
@@ -121,9 +125,10 @@ public class PlayerDataSO : ScriptableObject
         {
             PlayerLineUp.Add(new LineUpSave(indx, unit,skIndx));
         }
-      
+        OnDataChange?.Invoke("LineUp");
+
     }
-    
+
     public bool IsLineUpContain(AllianceUnit unit)
     {
         HashSet<AllianceUnit> lineup = new HashSet<AllianceUnit>(GetLineUpUnit());
@@ -159,6 +164,8 @@ public class PlayerDataSO : ScriptableObject
         Progress newProgress = new Progress(stage.ChapterIndex); 
         newProgress.StageList.Add(new StageData(stage.StageIndex, rating));
         PlayerProgress.Add(newProgress);
+        OnDataChange?.Invoke("Progress");
+
     }
     public bool IsHaveChapter(int chapter)
     {
@@ -176,6 +183,53 @@ public class PlayerDataSO : ScriptableObject
             if (unit.UnitID == OwnedCharacter[i].UnitID) return false;
         }
         OwnedCharacter.Add(unit);
+        OnDataChange?.Invoke("Unit");
+
         return true;    
+    }
+
+    //quest
+    public void AddQuest(string questid, string progress)
+    {
+        QuestData.Add(new QuestData(questid,progress) );
+        OnDataChange?.Invoke("Quest");
+
+    }
+    public void RemoveQuest(string questId)
+    {
+        for (int i = 0; i < QuestData.Count; i++)
+        {
+            if (QuestData[i].QuestID == questId)
+            {
+                QuestData.RemoveAt(i);
+                OnDataChange?.Invoke("Quest");
+
+                return;
+            }
+        }
+    }
+    public void UpdateQuestProgress(string  questid, string progress)
+    {
+        for (int i = 0; i < QuestData.Count; i++)
+        {
+            if (QuestData[i].QuestID == questid)
+            {
+                QuestData[i].QuestProgress = progress;
+                OnDataChange?.Invoke("Quest");
+                return;
+            }
+        }
+    }
+    public string GetQuestProgress(string questid)
+    {
+        for (int i = 0; i < QuestData.Count; i++)
+        {
+            if (QuestData[i].QuestID == questid)
+            {
+
+                return QuestData[i].QuestProgress;
+            }
+        }
+        return null;
     }
 }

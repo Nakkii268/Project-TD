@@ -5,11 +5,13 @@ using UnityEngine;
 
 public interface IQuestEvaluate 
 {
+    event Action OnProgressChange;
     void Initialized();
     bool IsCompleted();
     string GetProgress();
     float GetProgressPercent();
     void LoadProgress(string saved);
+    void UnsubEvent();
 
 }
 [Serializable]

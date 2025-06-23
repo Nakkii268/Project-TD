@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,13 +7,16 @@ public class LevelUpEvaluate : IQuestEvaluate
 {
     private int TargetLevel;
     private int CurrentLevel;
+
+    public event Action OnProgressChange;
+
     public LevelUpEvaluate(int tg) { 
         TargetLevel = tg;
         CurrentLevel = 0;
     }
     public string GetProgress()
     {
-        return CurrentLevel.ToString() + "/" + TargetLevel.ToString();
+        return CurrentLevel.ToString();
     }
     public float GetProgressPercent()
     {
@@ -26,6 +30,8 @@ public class LevelUpEvaluate : IQuestEvaluate
     private void QuestEventHandler_OnUnitLevelup(int obj)
     {
         CurrentLevel = obj;
+        OnProgressChange?.Invoke();
+
     }
 
     public bool IsCompleted()
@@ -38,5 +44,9 @@ public class LevelUpEvaluate : IQuestEvaluate
         CurrentLevel = int.Parse(saved);
     }
 
-   
+    public void UnsubEvent()
+    {
+        QuestEventHandler.OnUnitLevelup -= QuestEventHandler_OnUnitLevelup;
+
+    }
 }

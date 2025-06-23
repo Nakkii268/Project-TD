@@ -82,8 +82,7 @@ public class UnitLimitBreakUI : UICanvas
         unit.LimitBreak = CurrentLimtBreak + 1;
         SetTargetLimtBreak(CurrentLimtBreak + 1);
 
-        GameManager.Instance._playerDataManager.SaveUnit();
-        GameManager.Instance._playerDataManager.SaveItem();
+        
 
         
 
@@ -125,7 +124,7 @@ public class UnitLimitBreakUI : UICanvas
         for (int i = 0; i < items.Count; i++)
         {
 
-            GameManager.Instance._playerDataManager.PlayerDataSO.GetItemById(items[i].Item.ItemID).Quantity -= items[i].Quantity;
+            GameManager.Instance._playerDataManager.PlayerDataSO.RemoveItem(items[i].Item.ItemID, items[i].Quantity);
             
         }
     }

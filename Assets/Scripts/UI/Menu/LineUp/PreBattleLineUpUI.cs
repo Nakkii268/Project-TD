@@ -73,13 +73,13 @@ public class PreBattleLineUpUI : UICanvas
             {
                 _tempSquad.Remove(e.Index);
                 GameManager.Instance._playerDataManager.PlayerDataSO.UpdateLineUp(e.Unit, e.Index, e.SkillIndex);
-                GameManager.Instance._playerDataManager.SaveLineUp();
+               
 
                 return;
             }
             //case unit update
             GameManager.Instance._playerDataManager.PlayerDataSO.UpdateLineUp(e.Unit, e.Index, e.SkillIndex);
-            GameManager.Instance._playerDataManager.SaveLineUp();
+         
 
             _tempSquad[e.Index] = e;
 
@@ -87,7 +87,7 @@ public class PreBattleLineUpUI : UICanvas
         }
         //case add new unit
         GameManager.Instance._playerDataManager.PlayerDataSO.UpdateLineUp(e.Unit, e.Index, e.SkillIndex);
-        GameManager.Instance._playerDataManager.SaveLineUp();
+     
 
         _tempSquad.Add(e.Index, e);
 

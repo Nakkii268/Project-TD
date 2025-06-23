@@ -9,18 +9,35 @@ public class PlayerDataManager : MonoBehaviour
     [SerializeField]private PlayerDataSO _playerDataSO;
     public PlayerDataSO PlayerDataSO { get { return _playerDataSO; } }
     [SerializeField]public PlayerData _playerData;
-
+    public event Action OnPlayerDataLoaded;
     public event EventHandler OnDataChange;
 
     private void Awake()
     {
         GameManager.Instance._resourceManager.OnLoadComplete += _resourceManager_OnLoadComplete;
     }
+  
+
+    private void _playerDataSO_OnDataChange(string obj)
+    {
+        switch (obj)
+        {
+            case "Item": SaveItem(); break;
+            case "Unit": SaveUnit(); break;
+            case "LineUp": SaveLineUp(); break;
+            case "Progress": SaveProgress(); break;
+            case "Quest": SaveQuest(); break;
+            default: break;
+        }
+    }
 
     private void _resourceManager_OnLoadComplete(object sender, System.EventArgs e)
     {
         _playerData=SaveLoadData.LoadCharacterData();
         SaveLoadData.ConvertToSO(_playerDataSO, _playerData);
+        OnPlayerDataLoaded?.Invoke();
+
+        _playerDataSO.OnDataChange += _playerDataSO_OnDataChange;
 
     }
     public void SaveUnit()//call when lb, lu, acquire new char
@@ -74,6 +91,20 @@ public class PlayerDataManager : MonoBehaviour
         Debug.Log("lineup SAVED");
 
     }
-   
+   public void SaveQuest()
+    {
+      
+        _playerData.PlayerQuestData.Clear();
+
+        for (int i = 0; i < _playerDataSO.QuestData.Count; i++)
+        {
+            _playerData.PlayerQuestData.Add(_playerDataSO.QuestData[i]);
+            
+        }
+        OnDataChange?.Invoke(this, EventArgs.Empty);
+
+        SaveLoadData.SaveCharacterData(_playerData);
+        
+    }
     
 }

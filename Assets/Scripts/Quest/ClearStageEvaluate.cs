@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ClearStageEvaluate : IQuestEvaluate
 {
+    
     private string targetStage;
     private bool isCompleted= false;
+
+    public event Action OnProgressChange;
 
     public ClearStageEvaluate(string tg)
     {
@@ -13,7 +17,11 @@ public class ClearStageEvaluate : IQuestEvaluate
     }
     public string GetProgress()
     {
-        return isCompleted.ToString();
+        if (isCompleted)
+        {
+            return "Completed";
+        }
+        return "Incomplete";
     }
     public float GetProgressPercent()
     {
@@ -33,7 +41,8 @@ public class ClearStageEvaluate : IQuestEvaluate
     {
         if (e.MapID == targetStage)
         {
-            isCompleted = true; 
+            isCompleted = true;
+            OnProgressChange?.Invoke();
         }
     }
 
@@ -44,6 +53,20 @@ public class ClearStageEvaluate : IQuestEvaluate
 
     public void LoadProgress(string saved)
     {
-        isCompleted= bool.Parse(saved);
+        if(saved == "Completed")
+        {
+            isCompleted = true;
+
+        }
+        else
+        {
+            isCompleted = false;
+        }
+    }
+
+    public void UnsubEvent()
+    {
+        QuestEventHandler.OnStageClear -= Context_OnStageClear;
+
     }
 }

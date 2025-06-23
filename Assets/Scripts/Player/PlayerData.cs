@@ -14,6 +14,7 @@ public class PlayerData
     public List<LineUpData> LineUp;
     public List<Progress> PlayerProgress;
     public List<ShopItemSave> ShopItemsData;
+    public List<QuestData> PlayerQuestData;
     public PlayerData() { }
 }
 
@@ -56,3 +57,14 @@ public class LineUpData
         SkillIndex = skillIndex;
     }
 }
+[Serializable]
+public class QuestData
+{
+    public string QuestID;
+    public string QuestProgress;
+    public QuestData(string id, string p)
+    {
+        QuestID = id;
+        QuestProgress = p;
+    }
+}  

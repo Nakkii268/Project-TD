@@ -12,7 +12,7 @@ public static class GoalFactory
                 string stageid = config.Goals;
                 return new ClearStageEvaluate(stageid);
             case "KillEnemy":
-                Debug.Log(config.Goals);
+              
                 int amount = int.Parse(config.Goals);
                 return new KillEnemyEvaluate(amount);
             case "LevelUp":

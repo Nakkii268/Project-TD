@@ -66,13 +66,13 @@ public class LineUpUI : UICanvas
             {
                 _tempSquad.Remove(e.Index);
                 GameManager.Instance._playerDataManager.PlayerDataSO.UpdateLineUp(e.Unit, e.Index, e.SkillIndex);
-                GameManager.Instance._playerDataManager.SaveLineUp();
+             
                 Debug.Log("case1");
                 return;
             }
             //case unit update
             GameManager.Instance._playerDataManager.PlayerDataSO.UpdateLineUp(e.Unit, e.Index, e.SkillIndex);
-            GameManager.Instance._playerDataManager.SaveLineUp();
+        
             Debug.Log("case2");
                 Debug.Log(e.SkillIndex +"before");
 
@@ -83,7 +83,7 @@ public class LineUpUI : UICanvas
         }
         //case add new unit
         GameManager.Instance._playerDataManager.PlayerDataSO.UpdateLineUp(e.Unit, e.Index, e.SkillIndex);
-        GameManager.Instance._playerDataManager.SaveLineUp();
+      
                 Debug.Log("case3");
 
         _tempSquad.Add(e.Index, e);

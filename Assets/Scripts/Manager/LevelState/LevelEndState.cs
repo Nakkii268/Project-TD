@@ -18,7 +18,7 @@ public class LevelEndState : LevelState
         {
             UIManager.Instance.OpenUI<WinUI>(new MapData(LevelStateMachineManager._levelManager.Map,(int)EndState.Successed));
             GameManager.Instance._playerDataManager.PlayerDataSO.UpdateProgress(LevelStateMachineManager._levelManager.Map, (int)LevelStateMachineManager.endState);
-            GameManager.Instance._playerDataManager.SaveProgress();
+       
             ItemDrop(LevelStateMachineManager._levelManager.Map);
             QuestEventHandler.StageClear(LevelStateMachineManager._levelManager.Map);
 
@@ -27,7 +27,7 @@ public class LevelEndState : LevelState
         {
             UIManager.Instance.OpenUI<WinUI>(new MapData(LevelStateMachineManager._levelManager.Map, (int)EndState.NotComplete));
             GameManager.Instance._playerDataManager.PlayerDataSO.UpdateProgress(LevelStateMachineManager._levelManager.Map, (int)LevelStateMachineManager.endState);
-            GameManager.Instance._playerDataManager.SaveProgress();
+           
             
             ItemDrop(LevelStateMachineManager._levelManager.Map);
             QuestEventHandler.StageClear(LevelStateMachineManager._levelManager.Map);
@@ -48,7 +48,7 @@ public class LevelEndState : LevelState
         {
             GameManager.Instance._playerDataManager.PlayerDataSO.AddItem(map.DropItem[i].Item, map.DropItem[i].Quantity);
         }
-        GameManager.Instance._playerDataManager.SaveItem();
+       
         
     }
     

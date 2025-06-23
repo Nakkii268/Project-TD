@@ -39,12 +39,12 @@ public class ShopSlot : MonoBehaviour
             if (GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(slotData.Currency.ItemID) >= slotData.Price)
             {
                 GameManager.Instance._playerDataManager.PlayerDataSO.AddItem(slotData.Item, slotData.Quantity);
-                GameManager.Instance._playerDataManager.PlayerDataSO.RemoveItem(slotData.Currency, slotData.Price);
+                GameManager.Instance._playerDataManager.PlayerDataSO.RemoveItem(slotData.Currency.ItemID, slotData.Price);
                 slotData.AvailableQtt--;
                 UpdateAvailabelTxt();
                 UIManager.Instance.OpenUI<BannerPopup>(BuySuccessTxt);
                 BuyBtnHandle();
-                GameManager.Instance._playerDataManager.SaveItem();
+                
             }
             else
             {

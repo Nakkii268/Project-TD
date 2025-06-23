@@ -149,8 +149,7 @@ public class UnitLevelUpUI : UICanvas
        
         PreviewStat(CurrentLimtBreak);
 
-        GameManager.Instance._playerDataManager.SaveUnit();
-        GameManager.Instance._playerDataManager.SaveItem();
+        
 
     }
     private void SetTargetLevel(int level)
@@ -265,12 +264,13 @@ public class UnitLevelUpUI : UICanvas
     }
     private void ConsumeMaterial()
     {
-        GameManager.Instance._playerDataManager.PlayerDataSO.GetItemById(GoldID).Quantity -= Gold;
-        GameManager.Instance._playerDataManager.PlayerDataSO.GetItemById(ExpID).Quantity -= Exp;
+        GameManager.Instance._playerDataManager.PlayerDataSO.RemoveItem(GoldID, Gold);
+        GameManager.Instance._playerDataManager.PlayerDataSO.RemoveItem(ExpID, Exp);
 
     }
     private bool RequireCheck()
     {
-        return GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(GoldID) >= Gold && GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(ExpID) >= Exp;
+        return GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(GoldID) >= Gold 
+            && GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(ExpID) >= Exp;
     }
 }

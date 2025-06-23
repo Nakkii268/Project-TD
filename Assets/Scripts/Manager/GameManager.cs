@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     public void TestBtn()
     {
         _playerDataManager.PlayerDataSO.AddItem(item, 10000);
-        _playerDataManager.SaveItem();
+      
         for(int i = 0; i < _questManager.CurrentactiveQuests.Count; i++)
         {
             Debug.Log(_questManager.CurrentactiveQuests[i].GetProgress());

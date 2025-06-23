@@ -60,6 +60,10 @@ public class MenuUI : UICanvas
         {
             UIManager.Instance.OpenUI<ShopUI>();
         });
+        Quest.onClick.AddListener(() =>
+        {
+            UIManager.Instance.OpenUI<QuestUI>();
+        });
     }
     private void OnDisable()
     {
