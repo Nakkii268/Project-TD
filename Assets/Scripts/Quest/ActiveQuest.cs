@@ -12,9 +12,11 @@ public class ActiveQuest
     public string QuestType;
     public QuestState CurrentState;
     public IQuestEvaluate Evaluator;
+    public string FollowupQuest; //next quest that unlock by completed this quest
     public List<SaveItemData> Rewards;
+    public GoalConfig GoalConfig; //for savedataback
     public bool IsCompleted => Evaluator != null && Evaluator.IsCompleted();
-   
+   public event Action<string> OnCompleted;
     
     public void Initialized()
     {
@@ -48,6 +50,7 @@ public class ActiveQuest
     {
         CurrentState = QuestState.Completed;
         Evaluator?.UnsubEvent();
+        OnCompleted?.Invoke(FollowupQuest);
         List<ItemsData> items = GetRewards();
         for (int i = 0; i < Rewards.Count; i++)
         {

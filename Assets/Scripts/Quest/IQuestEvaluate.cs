@@ -22,6 +22,7 @@ public class QuestConfig
     public string QuestDescription;
     public string QuestType;
     public QuestState CurrentState;
+    public string FollowupQuest;
     public GoalConfig GoalConfig; 
     public List<SaveItemData> Rewards;
 }
@@ -29,6 +30,9 @@ public class QuestConfig
 public class QuestListWrapper
 {
     public  List<QuestConfig> list; 
+    public QuestListWrapper() { 
+        list = new List<QuestConfig>();
+    }
 }
 public enum QuestState
 {

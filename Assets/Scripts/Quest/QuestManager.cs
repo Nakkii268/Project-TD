@@ -20,7 +20,29 @@ public class QuestManager : MonoBehaviour
         playerDataManager = GameManager.Instance._playerDataManager;
         playerDataManager.OnPlayerDataLoaded += PlayerDataManager_OnPlayerDataLoaded;
     }
+    private void SaveQuestState()
+    {
+        string path = Path.Combine(Application.persistentDataPath, "Quest.json");
 
+        QuestListWrapper newWrapper = new();
+        foreach (var quest in QuestList)
+        {
+            QuestConfig config = new QuestConfig()
+            {
+                QuestID = quest.Value.QuestID,
+                QuestTitle = quest.Value.QuestTitle,
+                QuestDescription = quest.Value.QuestDescription,
+                QuestType = quest.Value.QuestType,
+                CurrentState = quest.Value.CurrentState,
+                FollowupQuest = quest.Value.FollowupQuest,
+                Rewards = quest.Value.Rewards,
+                GoalConfig = quest.Value.GoalConfig
+            };
+            newWrapper.list.Add(config);
+        }
+        string json = JsonUtility.ToJson(newWrapper);
+        File.WriteAllText(path, json);
+    }
     private void PlayerDataManager_OnPlayerDataLoaded()
     {
         LoadQuestProgress();
@@ -40,17 +62,30 @@ public class QuestManager : MonoBehaviour
                 CurrentState = config.CurrentState,
                 QuestType = config.QuestType,
                 Evaluator = evaluator,
-                Rewards = config.Rewards
+                FollowupQuest = config.FollowupQuest,
+                Rewards = config.Rewards,
+                GoalConfig= config.GoalConfig
             };
 
             quest.Initialized();
-            
+            if(quest.CurrentState == QuestState.OnGoing)
+            {
+                quest.OnCompleted += Quest_OnCompleted; ;
+            }
             QuestList[quest.QuestID] = quest;
             activeQuests.Add(quest);
         }
        
 
     }
+
+    private void Quest_OnCompleted(string obj)
+    {
+        if(obj =="") return;
+        QuestList[obj].QuestAcquire();
+        SaveQuestState();
+    }
+
     public List<ActiveQuest> GetActiveQuest()
     {
         List<ActiveQuest> quests = new List<ActiveQuest>();

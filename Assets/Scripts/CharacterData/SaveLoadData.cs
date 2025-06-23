@@ -39,7 +39,7 @@ public static class SaveLoadData
             new QuestData("Q01","0"),
             new QuestData("Q02","0"),
             new QuestData("Q03","0"),
-            new QuestData("Q04","0"),
+           
 
         };
         defaultData.PlayerProgress = new List<Progress>() { new Progress()};
