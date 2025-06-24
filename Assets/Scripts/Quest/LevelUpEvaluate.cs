@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class LevelUpEvaluate : IQuestEvaluate
 {
+    private string TargetID;
     private int TargetLevel;
     private int CurrentLevel;
 
     public event Action OnProgressChange;
 
-    public LevelUpEvaluate(int tg) { 
+    public LevelUpEvaluate(int tg,string id=null) { 
+        TargetID = id;
         TargetLevel = tg;
         CurrentLevel = 0;
     }
@@ -27,11 +29,13 @@ public class LevelUpEvaluate : IQuestEvaluate
         QuestEventHandler.OnUnitLevelup += QuestEventHandler_OnUnitLevelup;
     }
 
-    private void QuestEventHandler_OnUnitLevelup(int obj)
+    private void QuestEventHandler_OnUnitLevelup(AllianceUnit obj)
     {
-        CurrentLevel = obj;
-        OnProgressChange?.Invoke();
-
+        if (TargetID == null || obj.UnitID == TargetID)
+        {
+            CurrentLevel = obj.Level;
+            OnProgressChange?.Invoke();
+        }
     }
 
     public bool IsCompleted()

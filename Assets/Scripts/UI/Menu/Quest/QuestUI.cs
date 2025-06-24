@@ -28,10 +28,32 @@ public class QuestUI : UICanvas
     public override void SetUp()
     {
         questManger = GameManager.Instance._questManager;
-        for(int i=0; i< questManger.activeQuests.Count;i++)
+        SetUpUI();
+    }
+
+    private void SetUpUI()
+    {
+        ClearChild();
+        List<ActiveQuest> list = questManger.GetActiveQuest();
+        for (int i = 0; i < list.Count; i++)
         {
             QuestSingle single = Instantiate(prefab, Container);
-            single.Inititalized(questManger.activeQuests[i]);
+            single.Inititalized(list[i]);
+            single.OnClaim += Single_OnClaim;
         }
     }
+
+    private void Single_OnClaim()
+    {
+        SetUpUI();
+    }
+    private void ClearChild()
+    {
+        for(int i = 0; i < Container.childCount; i++)
+        {
+            Destroy(Container.GetChild(i).gameObject);
+        }
+    }
+
+    
 }

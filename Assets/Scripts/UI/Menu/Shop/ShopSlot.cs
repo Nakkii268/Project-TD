@@ -8,6 +8,7 @@ public class ShopSlot : MonoBehaviour
 {
     [SerializeField] private ShopSlotData slotData;
     [SerializeField] private Button _btn;
+    [SerializeField] private Button viewBtn;
     [SerializeField] private Image ItemSprite;
     [SerializeField] private Image CurrencySprite;
     [SerializeField] private TextMeshProUGUI ItemPrice;
@@ -51,6 +52,10 @@ public class ShopSlot : MonoBehaviour
                 UIManager.Instance.OpenUI<BannerPopup>(BuyFailedTxt);
 
             }
+        });
+        viewBtn.onClick.AddListener(() =>
+        {
+            UIManager.Instance.OpenUI<ItemPopupUI>(new ItemPopupData(slotData.Item, false));
         });
     }
     private void BuyBtnHandle()

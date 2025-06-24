@@ -187,6 +187,22 @@ public class PlayerDataSO : ScriptableObject
 
         return true;    
     }
+    public bool UpdateUnit(AllianceUnit unit)
+    {
+        for (int i = 0; i < OwnedCharacter.Count; i++)
+        {
+            if (unit.UnitID == OwnedCharacter[i].UnitID)
+            {
+                OwnedCharacter[i] = unit;
+                OnDataChange?.Invoke("Unit");
+
+                return true;
+            }
+        }
+        
+
+        return false;
+    }
 
     //quest
     public void AddQuest(string questid, string progress)

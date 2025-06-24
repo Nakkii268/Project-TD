@@ -81,10 +81,11 @@ public class UnitLimitBreakUI : UICanvas
         unit.Level = 1;
         unit.LimitBreak = CurrentLimtBreak + 1;
         SetTargetLimtBreak(CurrentLimtBreak + 1);
+        GameManager.Instance._playerDataManager.PlayerDataSO.UpdateUnit(unit);
 
-        
 
-        
+
+
 
 
     }

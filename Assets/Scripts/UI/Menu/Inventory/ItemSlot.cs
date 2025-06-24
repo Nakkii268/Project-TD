@@ -10,12 +10,12 @@ public class ItemSlot : MonoBehaviour
     [SerializeField] private Item SlotItem;
     [SerializeField] private Image ItemSprite;
     [SerializeField] private TextMeshProUGUI QuantityTxt;
+    [SerializeField] private int qtt;
     private void Start()
     {
         _btn.onClick.AddListener(() =>
         {
-            ConsumableItem cItem = (ConsumableItem)SlotItem;
-            cItem.OnUse();
+            UIManager.Instance.OpenUI < ItemPopupUI>(new ItemPopupData(SlotItem,true,qtt));
         });
     }
     public void Init(ItemsData item)
@@ -23,6 +23,7 @@ public class ItemSlot : MonoBehaviour
         SlotItem = item.Item;
         ItemSprite.sprite = item.Item.ItemSprite;
         QuantityTxt.text = ShortenQuantity(item.Quantity);
+        qtt = item.Quantity;
     }
     private string ShortenQuantity(int qtt)
     {

@@ -20,12 +20,11 @@ public class ActiveQuest
     
     public void Initialized()
     {
-        if(CurrentState == QuestState.OnGoing)
-        {
+        
             Evaluator.Initialized();
             Evaluator.OnProgressChange += Evaluator_OnProgressChange;
 
-        }
+        
     }
 
     private void Evaluator_OnProgressChange()

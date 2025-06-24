@@ -8,7 +8,7 @@ public class QuestManager : MonoBehaviour
 {
     public Dictionary<string, ActiveQuest> QuestList = new Dictionary<string, ActiveQuest>();
     public List<ActiveQuest> activeQuests = new List<ActiveQuest>();
-    public List<ActiveQuest> CurrentactiveQuests = new List<ActiveQuest>();
+
     [SerializeField] private PlayerDataManager playerDataManager;
     private void Start()
     {
@@ -16,10 +16,12 @@ public class QuestManager : MonoBehaviour
         string json  = File.ReadAllText(path);
         List<QuestConfig> configs = JsonUtility.FromJson<QuestListWrapper>(json).list;
         LoadConfig(configs);
-        CurrentactiveQuests = GetActiveQuest();
+      
         playerDataManager = GameManager.Instance._playerDataManager;
         playerDataManager.OnPlayerDataLoaded += PlayerDataManager_OnPlayerDataLoaded;
     }
+
+    //save
     private void SaveQuestState()
     {
         string path = Path.Combine(Application.persistentDataPath, "Quest.json");
@@ -47,7 +49,7 @@ public class QuestManager : MonoBehaviour
     {
         LoadQuestProgress();
     }
-
+    //load
     public void LoadConfig(List<QuestConfig> configs)
     {
        
@@ -91,12 +93,10 @@ public class QuestManager : MonoBehaviour
         List<ActiveQuest> quests = new List<ActiveQuest>();
         for(int i = 0; i < activeQuests.Count; i++)
         {
-            if (activeQuests[i].CurrentState == QuestState.OnGoing)
-            {
                 quests.Add(activeQuests[i]);
-            }
         }
-        return quests;
+        
+        return SortingQuest(quests);
     }
     public void LoadQuestProgress()
     {
@@ -109,4 +109,33 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    private List<ActiveQuest> SortingQuest(List<ActiveQuest> quests)
+    {
+        List<ActiveQuest> newquests = new List<ActiveQuest>();
+        //on-going first
+        for(int i = 0;i < quests.Count; i++)
+        {
+            if (quests[i].CurrentState == QuestState.OnGoing)
+            {
+                newquests.Add((ActiveQuest)quests[i]);
+            }
+        }
+        //locked quest
+        for (int i = 0; i < quests.Count; i++)
+        {
+            if (quests[i].CurrentState == QuestState.Locked)
+            {
+                newquests.Add((ActiveQuest)quests[i]);
+            }
+        }
+        //completed
+        for (int i = 0; i < quests.Count; i++)
+        {
+            if (quests[i].CurrentState == QuestState.Completed)
+            {
+                newquests.Add((ActiveQuest)quests[i]);
+            }
+        }
+        return newquests;
+    }
 }

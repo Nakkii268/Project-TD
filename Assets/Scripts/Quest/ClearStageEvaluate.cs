@@ -7,29 +7,26 @@ public class ClearStageEvaluate : IQuestEvaluate
 {
     
     private string targetStage;
-    private bool isCompleted= false;
+    private int targetAmount;
+    private int CurrentAmount;
+   
 
     public event Action OnProgressChange;
 
-    public ClearStageEvaluate(string tg)
+    public ClearStageEvaluate( int ta, string tg=null)
     {
         targetStage = tg;
+        targetAmount = ta;
+        CurrentAmount= 0;
     }
     public string GetProgress()
     {
-        if (isCompleted)
-        {
-            return "Completed";
-        }
-        return "Incomplete";
+        return CurrentAmount.ToString();
     }
     public float GetProgressPercent()
     {
-        if (isCompleted)
-        {
-            return 1;
-        }
-        return 0;
+       
+        return (float)CurrentAmount/targetAmount;
     }
 
     public void Initialized( )
@@ -37,31 +34,26 @@ public class ClearStageEvaluate : IQuestEvaluate
         QuestEventHandler.OnStageClear += Context_OnStageClear;
     }
 
-    private void Context_OnStageClear( MapSO e)
+    private void Context_OnStageClear(MapSO e)
     {
-        if (e.MapID == targetStage)
+        if (targetStage == null||e.MapID == targetStage )
         {
-            isCompleted = true;
+            CurrentAmount += 1;
             OnProgressChange?.Invoke();
         }
     }
 
     public bool IsCompleted()
     {
-        return isCompleted;
+        return CurrentAmount>=targetAmount;
     }
 
     public void LoadProgress(string saved)
     {
-        if(saved == "Completed")
-        {
-            isCompleted = true;
+        
+            CurrentAmount = int.Parse(saved);
 
-        }
-        else
-        {
-            isCompleted = false;
-        }
+      
     }
 
     public void UnsubEvent()

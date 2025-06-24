@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public PlayerDataManager _playerDataManager;
     [SerializeField] public QuestManager _questManager;
     public Item item;
+    public Item item1;
 
     public PointerClickHandle PointerClickHandler;
 
@@ -42,11 +43,8 @@ public class GameManager : MonoBehaviour
     public void TestBtn()
     {
         _playerDataManager.PlayerDataSO.AddItem(item, 10000);
+        _playerDataManager.PlayerDataSO.AddItem(item1, 10000);
       
-        for(int i = 0; i < _questManager.CurrentactiveQuests.Count; i++)
-        {
-            Debug.Log(_questManager.CurrentactiveQuests[i].GetProgress());
-        }
     }
 
 }

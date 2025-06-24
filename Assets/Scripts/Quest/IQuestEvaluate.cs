@@ -44,6 +44,6 @@ public enum QuestState
 public class GoalConfig
 {
     public string GoalType;
-    public string Goals;
+    public List<string> Goals; // first element is target amount, second is target map, unit if had
     public string Description;
 }

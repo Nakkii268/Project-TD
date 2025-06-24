@@ -120,7 +120,7 @@ public class UnitLevelUpUI : UICanvas
             CalRequireMaterial();
             UpdateRequireTxt(Gold, Exp);
             UIManager.Instance.OpenUI<BannerPopup>(SuccessTxt);
-            QuestEventHandler.LevelUp(GetCurrentLevel());
+            QuestEventHandler.LevelUp(unit);
         }
         else
         {
@@ -143,7 +143,7 @@ public class UnitLevelUpUI : UICanvas
             unit.Attack = _atk;
             unit.Heath = _hp;
             unit.Defense = _def;
-            
+            GameManager.Instance._playerDataManager.PlayerDataSO.UpdateUnit(unit);
         
        
        

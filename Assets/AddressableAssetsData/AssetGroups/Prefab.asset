@@ -53,6 +53,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - UIPrefab
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7f13375983461484ba396f46f0b024f1
+    m_Address: Assets/PrefabResource/UI/Quest.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UIPrefab
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7fac9e3747942e64c90af468d10958ba
     m_Address: Assets/PrefabResource/UI/InGameUI.prefab
     m_ReadOnly: 0
