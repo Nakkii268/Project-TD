@@ -31,6 +31,13 @@ public static class GoalFactory
 
                 }
                 return new LevelUpEvaluate(level);
+
+            case "DailyActive":
+                int Dpoint = int.Parse (config.Goals[0]);
+                return new DailyQuestEvaluate(Dpoint);
+            case "WeeklyActive":
+                int Wpoint = int.Parse (config.Goals[0]);
+                return new WeeklyQuestEvaluate(Wpoint);
             default: return null;
         }
     }

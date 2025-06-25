@@ -89,6 +89,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - UIPrefab
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c21eba3ce936f094fb49a846465d4a77
+    m_Address: Assets/PrefabResource/UI/ItemInfoPopUp.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UIPrefab
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c8ac00038533bdf448807fd6bd539b71
     m_Address: Assets/PrefabResource/UI/CharacterList.prefab
     m_ReadOnly: 0

@@ -38,7 +38,8 @@ public class QuestManager : MonoBehaviour
                 CurrentState = quest.Value.CurrentState,
                 FollowupQuest = quest.Value.FollowupQuest,
                 Rewards = quest.Value.Rewards,
-                GoalConfig = quest.Value.GoalConfig
+                GoalConfig = quest.Value.GoalConfig,
+                Point = quest.Value.Points
             };
             newWrapper.list.Add(config);
         }
@@ -66,7 +67,8 @@ public class QuestManager : MonoBehaviour
                 Evaluator = evaluator,
                 FollowupQuest = config.FollowupQuest,
                 Rewards = config.Rewards,
-                GoalConfig= config.GoalConfig
+                GoalConfig= config.GoalConfig,
+                Points = config.Point
             };
 
             quest.Initialized();

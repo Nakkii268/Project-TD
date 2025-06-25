@@ -10,6 +10,7 @@ public class ActiveQuest
     public string QuestTitle;
     public string QuestDescription;
     public string QuestType;
+    public int Points;
     public QuestState CurrentState;
     public IQuestEvaluate Evaluator;
     public string FollowupQuest; //next quest that unlock by completed this quest
@@ -56,7 +57,14 @@ public class ActiveQuest
             GameManager.Instance._playerDataManager.PlayerDataSO.AddItem(items[i].Item, items[i].Quantity);
         }
         GameManager.Instance._playerDataManager.PlayerDataSO.RemoveQuest(QuestID);
-
+        if(QuestType == "DailyQuest")
+        {
+            QuestEventHandler.DailyQuestCompleted(Points);
+        }
+        if(QuestType == "WeeklyQuest")
+        {
+            QuestEventHandler.WeeklyQuestCompleted(Points);
+        }
     }
     public List<ItemsData> GetRewards()
     {
@@ -73,6 +81,13 @@ public class ActiveQuest
     {
         CurrentState = QuestState.OnGoing;
         GameManager.Instance._playerDataManager.PlayerDataSO.AddQuest(QuestID,GetProgress());
+
+        Initialized();
+    }
+    public void QuestReset()
+    {
+        CurrentState= QuestState.OnGoing;
+        GameManager.Instance._playerDataManager.PlayerDataSO.AddQuest(QuestID, GetProgress());
 
         Initialized();
     }

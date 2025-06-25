@@ -25,6 +25,8 @@ public class QuestConfig
     public string FollowupQuest;
     public GoalConfig GoalConfig; 
     public List<SaveItemData> Rewards;
+  
+    public int Point; //active point with daily and weekly quest, or point for other milestone quest
 }
 [Serializable]
 public class QuestListWrapper
