@@ -53,4 +53,9 @@ public class LevelUpEvaluate : IQuestEvaluate
         QuestEventHandler.OnUnitLevelup -= QuestEventHandler_OnUnitLevelup;
 
     }
+
+    public void GoalReset()
+    {
+        CurrentLevel = 0;
+    }
 }

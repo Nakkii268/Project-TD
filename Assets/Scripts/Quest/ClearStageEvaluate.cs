@@ -61,4 +61,9 @@ public class ClearStageEvaluate : IQuestEvaluate
         QuestEventHandler.OnStageClear -= Context_OnStageClear;
 
     }
+
+    public void GoalReset()
+    {
+       CurrentAmount=0;
+    }
 }

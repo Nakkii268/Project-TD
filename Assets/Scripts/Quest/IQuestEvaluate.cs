@@ -12,7 +12,7 @@ public interface IQuestEvaluate
     float GetProgressPercent();
     void LoadProgress(string saved);
     void UnsubEvent();
-
+    void GoalReset();
 }
 [Serializable]
 public class QuestConfig 

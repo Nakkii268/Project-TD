@@ -50,5 +50,8 @@ public class DailyQuestEvaluate : IQuestEvaluate
 
     }
 
-
+    public void GoalReset()
+    {
+        CurrentPoint= 0;
+    }
 }

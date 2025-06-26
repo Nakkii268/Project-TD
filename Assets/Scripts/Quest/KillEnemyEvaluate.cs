@@ -53,4 +53,9 @@ public class KillEnemyEvaluate : IQuestEvaluate
         QuestEventHandler.OnStageClear -= QuestEventHandler_OnStageClear;
 
     }
+
+    public void GoalReset()
+    {
+        CurrentAmount = 0;
+    }
 }

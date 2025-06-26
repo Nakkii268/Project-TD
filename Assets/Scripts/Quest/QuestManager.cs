@@ -90,16 +90,7 @@ public class QuestManager : MonoBehaviour
         SaveQuestState();
     }
 
-    public List<ActiveQuest> GetActiveQuest()
-    {
-        List<ActiveQuest> quests = new List<ActiveQuest>();
-        for(int i = 0; i < activeQuests.Count; i++)
-        {
-                quests.Add(activeQuests[i]);
-        }
-        
-        return SortingQuest(quests);
-    }
+  
     public void LoadQuestProgress()
     {
         for (int i = 0; i < playerDataManager.PlayerDataSO.QuestData.Count; i++)
@@ -111,6 +102,27 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+
+    public List<ActiveQuest> GetQuests(int index) // get quest by category
+    {
+        string questType = "";
+        List<ActiveQuest> quests = new();
+        switch (index)
+        {
+            case 0: questType = "DailyQuest"; break;
+            case 1: questType = "WeeklyQuest"; break;
+            case 2: questType = "Achievement"; break;
+            default: return null;
+        }
+        for (int i = 0; i < activeQuests.Count; i++)
+        {
+            if (activeQuests[i].QuestType == questType)
+            {
+                quests.Add(activeQuests[i]);
+            }
+        }
+        return SortingQuest(quests);
+    }
     private List<ActiveQuest> SortingQuest(List<ActiveQuest> quests)
     {
         List<ActiveQuest> newquests = new List<ActiveQuest>();

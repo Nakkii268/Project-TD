@@ -49,4 +49,9 @@ public class WeeklyQuestEvaluate : IQuestEvaluate
         QuestEventHandler.WeeklyPointAcquire -= QuestEventHandler_DailyPointAcquire;
 
     }
+
+    public void GoalReset()
+    {
+        CurrentPoint = 0;
+    }
 }

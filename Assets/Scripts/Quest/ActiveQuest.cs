@@ -88,7 +88,7 @@ public class ActiveQuest
     {
         CurrentState= QuestState.OnGoing;
         GameManager.Instance._playerDataManager.PlayerDataSO.AddQuest(QuestID, GetProgress());
-
+        Evaluator?.GoalReset();
         Initialized();
     }
 }
