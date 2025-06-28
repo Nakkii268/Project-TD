@@ -2208,7 +2208,7 @@ MonoBehaviour:
   HomeBtn: {fileID: 1832834289141687291}
   DailyBtn: {fileID: 2590939253684091270}
   WeeklyBtn: {fileID: 4671320995452511859}
-  ArchiveBtn: {fileID: 1200054795282681649}
+  AchieveBtn: {fileID: 1200054795282681649}
   CategoryActives:
   - {fileID: 4014558279411318591}
   - {fileID: 2229120445680264005}

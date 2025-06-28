@@ -15,5 +15,5 @@ MonoBehaviour:
   ItemID: M004
   ItemName: Dark armor
   ItemSprite: {fileID: -928529258, guid: 14e56e4d3c4054941a78d56fc276c1fb, type: 3}
-  Description: 
+  Description: Piece of an old armour. Used to limit break defender
   Category: 2

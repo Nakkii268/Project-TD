@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb41e6c6384780a4285ce35b5d502967, type: 3}
-  m_Name: New Effect Type Skills
+  m_Name: AttackUp
   m_EditorClassIdentifier: 
-  Name: Heal
+  Name: Attack Up!
   Icon: {fileID: 21300000, guid: f1be1c0c152104f48a057cfdddf167b9, type: 3}
   Description: 
   skillType: 0
@@ -25,10 +25,12 @@ MonoBehaviour:
     Rotatable: 0
     BaseRotation: {x: 0, y: 0, z: 0}
   ChargeType: 2
-  SkillDuration: 5
-  SkillPoint: 1
+  SkillDuration: 99
+  SkillPoint: 5
   CanAttack: 1
   ActiveType: 0
   effects:
-  - effect: {fileID: 11400000, guid: 76a31686cc8acd8418a8ff39b599d308, type: 2}
+  - effect: {fileID: 11400000, guid: f0787e38af17e05488ef854602385f5b, type: 2}
+    delayTime: 0
+  - effect: {fileID: 11400000, guid: 870ea67b3ffd1224ebf3d77869e9184f, type: 2}
     delayTime: 0

@@ -11,7 +11,16 @@ public class AllianceSkillDuarationState : AllianceState, IState
     public override void Enter()
     {
         base.Enter();
-        AllianceSMManager.Alliance.AllianceVisual.PlaySkill1Anim();
+        if (AllianceSMManager.Alliance.AllianceSkill.skillindex == 0)
+        {
+
+            AllianceSMManager.Alliance.AllianceVisual.PlaySkill1Anim();
+        }
+        else
+        {
+            AllianceSMManager.Alliance.AllianceVisual.PlaySkill2Anim();
+
+        }
     }
     public override void Exit()
     {
@@ -19,10 +28,19 @@ public class AllianceSkillDuarationState : AllianceState, IState
     }
     public override void Update()
     {
-        if (!AllianceSMManager.Alliance.AllianceSkill.CanAttackInDuration && AllianceSMManager.Alliance.AllianceSkill.OnUseSkill.skillType==SkillType.Active) return;
+        if (!AllianceSMManager.Alliance.AllianceSkill.CanAttackInDuration ) return;
         if (AllianceSMManager.Alliance.AllianceAttack.CanPerformAttack())
         {
-            AllianceSMManager.ChangeState(AllianceSMManager.AllianceSkillAttackState);
+            if((AllianceSMManager.Alliance.AllianceSkill.OnUseSkill.skillEffect == SkillEffect.OnHitEffects))
+            {
+
+                AllianceSMManager.ChangeState(AllianceSMManager.AllianceSkillAttackState);
+            }
+            else
+            {
+                AllianceSMManager.ChangeState(AllianceSMManager.AllianceAttackState);
+
+            }
         }
     }
 

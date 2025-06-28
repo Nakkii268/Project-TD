@@ -152,4 +152,5 @@ public class QuestManager : MonoBehaviour
         }
         return newquests;
     }
+
 }

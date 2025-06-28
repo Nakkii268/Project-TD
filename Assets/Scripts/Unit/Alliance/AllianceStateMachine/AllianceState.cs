@@ -12,6 +12,7 @@ public class AllianceState : IState
     }
     public virtual void Enter()
     {
+        Debug.Log(this);
         AddCallBack();
        
     }

@@ -15,5 +15,5 @@ MonoBehaviour:
   ItemID: M006
   ItemName: Broken mirror
   ItemSprite: {fileID: 1720279481, guid: 14e56e4d3c4054941a78d56fc276c1fb, type: 3}
-  Description: 
+  Description: Piece of black metal. What it can do?
   Category: 2

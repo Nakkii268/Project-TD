@@ -1859,7 +1859,7 @@ MonoBehaviour:
   SkillActiveBtn: {fileID: 7944637011915187758}
   _isSkillDuration: 0
   CanAttackInDuration: 0
-  skillinde: 0
+  skillindex: 0
 --- !u!1 &7575087738944473143
 GameObject:
   m_ObjectHideFlags: 0

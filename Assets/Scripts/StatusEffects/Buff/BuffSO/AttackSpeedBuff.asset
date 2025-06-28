@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3b6dfa418bfc9e489a1fdc83d8094a5, type: 3}
-  m_Name: DragonHorn
+  m_Script: {fileID: 11500000, guid: 1131a8ba9b3eda7489dc3c14548a810e, type: 3}
+  m_Name: AttackSpeedBuff
   m_EditorClassIdentifier: 
-  ItemID: M002
-  ItemName: Dragon horn
-  ItemSprite: {fileID: 1230888266, guid: 14e56e4d3c4054941a78d56fc276c1fb, type: 3}
-  Description: Horn of fire dragon
-  Category: 2
+  duration: 99
+  Stackable: 0
+  SType: 0
+  modifier:
+    Value: -0.5
+    ModType: 1
+    Order: 0

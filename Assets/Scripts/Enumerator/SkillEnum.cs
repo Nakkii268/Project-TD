@@ -25,8 +25,9 @@ public enum ChargeType
 public enum SkillEffect
 {
     DamagedDeal,
-    StatusEffect,
-    Mix
+    StatEffects,
+    Mix,
+    OnHitEffects
 }
 public enum SkillTarget
 {
