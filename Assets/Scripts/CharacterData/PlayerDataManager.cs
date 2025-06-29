@@ -25,6 +25,7 @@ public class PlayerDataManager : MonoBehaviour
             case "Item": SaveItem(); break;
             case "Unit": SaveUnit(); break;
             case "LineUp": SaveLineUp(); break;
+            case "Shop":  SaveShop(); break;
             case "Progress": SaveProgress(); break;
             case "Quest": SaveQuest(); break;
             default: break;
@@ -35,8 +36,10 @@ public class PlayerDataManager : MonoBehaviour
     {
         _playerData=SaveLoadData.LoadCharacterData();
         SaveLoadData.ConvertToSO(_playerDataSO, _playerData);
+        _playerDataSO.LoadShopItem(GameManager.Instance._resourceManager.GetShopSO());//omly call for the first time when data dont have anything
+        _playerDataSO.SaveShopItem(GameManager.Instance._resourceManager.GetShopSO());
         OnPlayerDataLoaded?.Invoke();
-
+        
         _playerDataSO.OnDataChange += _playerDataSO_OnDataChange;
 
     }
@@ -86,9 +89,9 @@ public class PlayerDataManager : MonoBehaviour
             _playerData.LineUp.Add(lu);
         }
         OnDataChange?.Invoke(this, EventArgs.Empty);
-
+        Debug.Log("SaveLine");
         SaveLoadData.SaveCharacterData(_playerData);
-        Debug.Log("lineup SAVED");
+      
 
     }
    public void SaveQuest()
@@ -107,4 +110,16 @@ public class PlayerDataManager : MonoBehaviour
         
     }
     
+    public void SaveShop()
+    {
+        Debug.Log("save shop");
+        _playerData.ShopItemsData.Clear();
+        for(int i =0;i < _playerDataSO.ShopItemsData.Count; i++)
+        {
+            _playerData.ShopItemsData.Add(new ShopItemSave(_playerDataSO.ShopItemsData[i].ItemID, _playerDataSO.ShopItemsData[i].Available));
+           
+        }
+        SaveLoadData.SaveCharacterData(_playerData);
+
+    }
 }

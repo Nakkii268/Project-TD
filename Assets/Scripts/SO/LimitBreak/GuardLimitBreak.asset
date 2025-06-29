@@ -12,12 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bad8e2fd637ec249bd62373b2f9fa41, type: 3}
   m_Name: GuardLimitBreak
   m_EditorClassIdentifier: 
-  MaterialsRequired:
-  - Item: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
-    Quantity: 10000
-  - Item: {fileID: 11400000, guid: b326332c006df1d4c841f9c180f2a44e, type: 2}
-    Quantity: 5
-  - Item: {fileID: 11400000, guid: 3f4174acf5d319648877279990524795, type: 2}
-    Quantity: 5
-  BuffGain:
-  - {fileID: 11400000, guid: f0787e38af17e05488ef854602385f5b, type: 2}
+  LBData:
+  - MaterialsRequired:
+    - Item: {fileID: 11400000, guid: f14610097743d494db246c43dc4d915b, type: 2}
+      Quantity: 1
+    - Item: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
+      Quantity: 100
+    BuffGain: []
+  - MaterialsRequired:
+    - Item: {fileID: 11400000, guid: f4a4449a8255dc94c84e71fea5adcc53, type: 2}
+      Quantity: 4
+    - Item: {fileID: 11400000, guid: 3f4174acf5d319648877279990524795, type: 2}
+      Quantity: 2
+    - Item: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
+      Quantity: 10000
+    BuffGain: []

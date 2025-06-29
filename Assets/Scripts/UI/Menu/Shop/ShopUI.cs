@@ -70,6 +70,7 @@ public class ShopUI : UICanvas
     }
     private void Initialized(int shopCate)
     {
+        _shopSO = GameManager.Instance._resourceManager.GetShopSO();
         UpdateCurrency();
         ClearItem();
         if (shopCate == 0)

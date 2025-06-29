@@ -88,7 +88,11 @@ public static class SaveLoadData
         {
             newData.PlayerLineUp.Add(new LineUpSave(data.LineUp[i].Index, GameManager.Instance._resourceManager.GetUnitById<AllianceUnit>(data.LineUp[i].UnitId), data.LineUp[i].SkillIndex));
         }
-        
+        //shop
+        for (int i = 0; i < data.ShopItemsData.Count; i++)
+        {
+            newData.ShopItemsData.Add(new ShopItemSave(data.ShopItemsData[i].ItemID, data.ShopItemsData[i].Available));
+        }
     }
   
 

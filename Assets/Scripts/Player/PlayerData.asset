@@ -15,31 +15,65 @@ MonoBehaviour:
   PlayerID: 001
   PlayerName: Player001
   Items:
-  - Item: {fileID: 11400000, guid: 0ef788f9af53d6d4488a25689a5390ef, type: 2}
-    Quantity: 240
   - Item: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
-    Quantity: 31000
+    Quantity: 8400
   - Item: {fileID: 11400000, guid: ebe72feb9446389428430436d888d572, type: 2}
-    Quantity: 5000
+    Quantity: 179310
+  - Item: {fileID: 11400000, guid: 0ef788f9af53d6d4488a25689a5390ef, type: 2}
+    Quantity: 20
+  - Item: {fileID: 11400000, guid: 3f4174acf5d319648877279990524795, type: 2}
+    Quantity: 1
   - Item: {fileID: 11400000, guid: b326332c006df1d4c841f9c180f2a44e, type: 2}
-    Quantity: 10
+    Quantity: 16
+  - Item: {fileID: 11400000, guid: f4a4449a8255dc94c84e71fea5adcc53, type: 2}
+    Quantity: 2
+  - Item: {fileID: 11400000, guid: f14610097743d494db246c43dc4d915b, type: 2}
+    Quantity: 1
+  - Item: {fileID: 11400000, guid: 526e8a10b9f96be4e8f279c40df7c265, type: 2}
+    Quantity: 1
+  - Item: {fileID: 11400000, guid: 7c157a22f4886d64b9a94f585bb0c3d8, type: 2}
+    Quantity: 1
+  - Item: {fileID: 11400000, guid: 4281fc6facd77794984237ceb93608ac, type: 2}
+    Quantity: 8
   OwnedCharacter:
   - {fileID: 11400000, guid: b18f85b780946e8409d3a4e0589a984a, type: 2}
+  - {fileID: 11400000, guid: 6635e91f07512ed42bae3f7be1ac49b9, type: 2}
   PlayerLineUp:
   - Index: 0
     Unit: {fileID: 11400000, guid: b18f85b780946e8409d3a4e0589a984a, type: 2}
-    SkillIndex: 0
+    SkillIndex: 1
   PlayerProgress:
   - ChapterIndex: 0
     StageList:
     - Stage: 0
       Rating: 2
-    - Stage: 1
-      Rating: 2
-    - Stage: 2
-      Rating: 2
-    - Stage: 3
-      Rating: 2
-    - Stage: 4
-      Rating: 2
-  ShopItemsData: []
+  ShopItemsData:
+  - ItemID: CA01
+    Available: 0
+  - ItemID: CA03
+    Available: 1
+  - ItemID: CA02
+    Available: 0
+  - ItemID: M001
+    Available: 0
+  - ItemID: M003
+    Available: 88
+  - ItemID: M008
+    Available: 85
+  - ItemID: M007
+    Available: 98
+  - ItemID: M002
+    Available: 79
+  - ItemID: M006
+    Available: 98
+  - ItemID: M004
+    Available: 97
+  - ItemID: CA04
+    Available: 0
+  QuestData:
+  - QuestID: Q01
+    QuestProgress: 0
+  - QuestID: Q02
+    QuestProgress: 0
+  - QuestID: Q008
+    QuestProgress: 0

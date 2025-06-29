@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bad8e2fd637ec249bd62373b2f9fa41, type: 3}
+  m_Name: SniperLimitBreak
+  m_EditorClassIdentifier: 
+  MaterialsRequired:
+  - Item: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
+    Quantity: 10000
+  - Item: {fileID: 11400000, guid: b326332c006df1d4c841f9c180f2a44e, type: 2}
+    Quantity: 5
+  - Item: {fileID: 11400000, guid: 3f4174acf5d319648877279990524795, type: 2}
+    Quantity: 5
+  BuffGain:
+  - {fileID: 11400000, guid: f0787e38af17e05488ef854602385f5b, type: 2}

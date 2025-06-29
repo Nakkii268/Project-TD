@@ -252,4 +252,46 @@ public class PlayerDataSO : ScriptableObject
         }
         return null;
     }
+
+    //handle shop
+    public void LoadShopItem(ShopSO shop) //so to data
+    {
+        Debug.Log("load to data");
+        if (ShopItemsData.Count != 0) return;
+     
+        for (int i = 0; i < shop.Slots.Count; i++)
+        {
+            ShopItemsData.Add(new ShopItemSave(shop.Slots[i].Item.ItemID, shop.Slots[i].AvailableQtt));
+        }
+        OnDataChange?.Invoke("Shop");
+    }
+    public void SaveShopItem(ShopSO shop) //data to so
+    {
+        for (int i = 0; i < ShopItemsData.Count; i++)
+        {
+            for (int j = 0; j < shop.Slots.Count; j++)
+            {
+                if (ShopItemsData[i].ItemID == shop.Slots[j].Item.ItemID)
+                {
+                    ShopItemsData[i].Available = shop.Slots[j].AvailableQtt;
+                }
+            }
+        }
+        
+
+    }
+    public void UpdateShopItem(string itemID, int available)
+    {
+        Debug.Log("Update shop");
+        for (int i = 0; i < ShopItemsData.Count; i++)
+        {
+            if (ShopItemsData[i].ItemID == itemID)
+            {
+                Debug.Log("yes");
+                ShopItemsData[i].Available = available;
+                OnDataChange?.Invoke("Shop");
+            }
+        }
+
+    }
 }

@@ -37,14 +37,14 @@ MonoBehaviour:
   - Category: 1
     Item: {fileID: 11400000, guid: b326332c006df1d4c841f9c180f2a44e, type: 2}
     MaxQtt: 99
-    AvailableQtt: 96
+    AvailableQtt: 0
     Currency: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
     Price: 2000
     Quantity: 2
   - Category: 1
     Item: {fileID: 11400000, guid: 4281fc6facd77794984237ceb93608ac, type: 2}
     MaxQtt: 99
-    AvailableQtt: 96
+    AvailableQtt: 88
     Currency: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
     Price: 3000
     Quantity: 1
@@ -72,15 +72,22 @@ MonoBehaviour:
   - Category: 1
     Item: {fileID: 11400000, guid: f14610097743d494db246c43dc4d915b, type: 2}
     MaxQtt: 99
-    AvailableQtt: 99
+    AvailableQtt: 98
     Currency: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
     Price: 20000
     Quantity: 1
   - Category: 1
     Item: {fileID: 11400000, guid: f4a4449a8255dc94c84e71fea5adcc53, type: 2}
     MaxQtt: 99
-    AvailableQtt: 99
+    AvailableQtt: 97
     Currency: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
     Price: 20000
+    Quantity: 1
+  - Category: 0
+    Item: {fileID: 11400000, guid: f1c5fad28948d504f9db13d75e60a10b, type: 2}
+    MaxQtt: 1
+    AvailableQtt: 0
+    Currency: {fileID: 11400000, guid: 0ef788f9af53d6d4488a25689a5390ef, type: 2}
+    Price: 100
     Quantity: 1
   Renewable: 0

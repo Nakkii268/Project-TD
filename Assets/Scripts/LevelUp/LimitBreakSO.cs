@@ -7,10 +7,14 @@ using UnityEngine;
 public class LimitBreakSO : ScriptableObject
 {
    
+    public List<LimitBreakData> LBData;
+}
+[Serializable]
+public class LimitBreakData
+{
     public List<ItemsData> MaterialsRequired;
     public List<StatusEffect> BuffGain;
 }
-
 [Serializable]
 public class ItemsData
 {

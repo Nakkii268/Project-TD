@@ -31,12 +31,12 @@ public class UnitLimitBreakUI : UICanvas
         //
 
         //item req
-        for (int i = 0; i < unit.UnitClass.ClassLimitBreakpData.MaterialsRequired.Count; i++)
+        for (int i = 0; i < unit.UnitClass.ClassLimitBreakpData.LBData[unit.LimitBreak].MaterialsRequired.Count; i++)
         {
             GameObject single = Instantiate(ItemRequiredPrefab, container);
             single.GetComponent<MaterialRequiredSingle>().
-                Init(unit.UnitClass.ClassLimitBreakpData.MaterialsRequired[i],
-                GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(unit.UnitClass.ClassLimitBreakpData.MaterialsRequired[i].Item.ItemID));
+                Init(unit.UnitClass.ClassLimitBreakpData.LBData[unit.LimitBreak].MaterialsRequired[i],
+                GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(unit.UnitClass.ClassLimitBreakpData.LBData[unit.LimitBreak].MaterialsRequired[i].Item.ItemID));
         }
 
         
@@ -92,7 +92,7 @@ public class UnitLimitBreakUI : UICanvas
     private bool RequiredCheck()
     {
         if(unit.Level > unit.Rarity.LevelCap[unit.LimitBreak]) return false;
-        List<ItemsData> items = unit.UnitClass.ClassLimitBreakpData.MaterialsRequired;
+        List<ItemsData> items = unit.UnitClass.ClassLimitBreakpData.LBData[unit.LimitBreak].MaterialsRequired;
         for (int i = 0;i< items.Count; i++)
         {
             if (GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(items[i].Item.ItemID)==0) return false;
@@ -121,7 +121,7 @@ public class UnitLimitBreakUI : UICanvas
 
     private void ConsumeMaterial()
     {
-        List<ItemsData> items = unit.UnitClass.ClassLimitBreakpData.MaterialsRequired;
+        List<ItemsData> items = unit.UnitClass.ClassLimitBreakpData.LBData[unit.LimitBreak].MaterialsRequired;
         for (int i = 0; i < items.Count; i++)
         {
 

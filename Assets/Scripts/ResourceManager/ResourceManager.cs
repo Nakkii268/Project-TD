@@ -13,6 +13,7 @@ public class ResourceManager : MonoBehaviour
     private Dictionary<string,AllianceUnit> UnitSOData = new Dictionary<string,AllianceUnit>();
     private Dictionary<int,ChapterSO> ChapterSOData = new Dictionary<int,ChapterSO>();
     private List<UICanvas> UIPrefab = new List<UICanvas>();
+    private ShopSO shop;
    
     [SerializeField] private bool isItemDone;
     [SerializeField] private bool isUnitDone;
@@ -25,6 +26,7 @@ public class ResourceManager : MonoBehaviour
         LoadAllUnit<AllianceUnit>("Unit");
         LoadAllItem<Item>("Item");
         LoadAllUICanvas<UICanvas>("UIPrefab");
+        LoadShop<ShopSO>("Shop");
     }
     public  void LoadAllUICanvas<T>(string label) where T : UICanvas
     {
@@ -67,6 +69,16 @@ public class ResourceManager : MonoBehaviour
             else
             {
                 Debug.Log("Loading item failed");
+            }
+        };
+    }
+    private void LoadShop<T>(string label)  where T: ShopSO
+    {
+        Addressables.LoadAssetAsync<T>(label).Completed += handle =>
+        {
+            if (handle.Status == AsyncOperationStatus.Succeeded)
+            {
+                shop = handle.Result as ShopSO;
             }
         };
     }
@@ -149,6 +161,10 @@ public class ResourceManager : MonoBehaviour
     public List<UICanvas> GetUIPrefab()
     {
         return UIPrefab;
+    }
+    public ShopSO GetShopSO()
+    {
+        return shop;
     }
     private void AllSOLoaded()
     {
