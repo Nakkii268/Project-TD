@@ -28,7 +28,7 @@ MonoBehaviour:
   SkillDuration: 0.5
   SkillPoint: 1
   CanAttack: 0
-  ActiveType: 1
+  ActiveType: 0
   SkillDmgScale: 9999
   DamageType: 0
   delayTime: 0.2

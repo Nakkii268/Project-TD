@@ -110,12 +110,16 @@ public class PlayerDataSO : ScriptableObject
                 if (unit == null)
                 {
                     PlayerLineUp.RemoveAt(i);
+                    OnDataChange?.Invoke("LineUp");
+
                     return;
                 }
                 else
                 {
                     PlayerLineUp[i].Unit = unit;
                     PlayerLineUp[i].SkillIndex = skIndx;
+                    OnDataChange?.Invoke("LineUp");
+
                     return;
                 }
             }
