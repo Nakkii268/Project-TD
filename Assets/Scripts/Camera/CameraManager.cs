@@ -1,17 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 
 public class CameraManager : MonoBehaviour
 {
     public static CameraManager instance;
     [SerializeField] private Camera _camera;
     [SerializeField] private Quaternion _cameraRotation;
+    [SerializeField] private Vector3 _basePosition;
+    [SerializeField] private Transform _camHolder;
+
 
     private void Awake()
     {
         instance = this;
         _cameraRotation=_camera.transform.rotation ;
+        _basePosition = _camHolder.transform.position ;
     }
     public Camera GetCamera()
     {
@@ -19,16 +22,20 @@ public class CameraManager : MonoBehaviour
     }
     public void CamLookat(Transform target)
     {
-        
 
-        _camera.transform.LookAt(target);
+        float distanceFromCamera = Vector3.Dot(
+            target.position - Camera.main.transform.position,
+            Camera.main.transform.forward
+        );
+
+        Vector3 screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, distanceFromCamera);
+        Vector3 objectWorldPosFromScreen = Camera.main.ScreenToWorldPoint(screenCenter); //offset for y axis
+        _camHolder.position = new Vector3(target.position.x,target.position.y-objectWorldPosFromScreen.y,_basePosition.z);
     }
-    public void SetCameraRotation(Quaternion camRotate)
-    {
-        _camera.transform.rotation = camRotate;
-    }
+
     public void SetCameraOriginRotation()
-    {
-        _camera.transform.rotation = _cameraRotation;
+    {     
+
+        _camHolder.position = _basePosition;
     }
 }
