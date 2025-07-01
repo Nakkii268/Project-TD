@@ -28,6 +28,8 @@ public class PlayerDataManager : MonoBehaviour
             case "Shop":  SaveShop(); break;
             case "Progress": SaveProgress(); break;
             case "Quest": SaveQuest(); break;
+            case "Login": SaveTime(); break;
+            case "Stamina": SaveStamina(); break;
             default: break;
         }
     }
@@ -112,15 +114,28 @@ public class PlayerDataManager : MonoBehaviour
     
     public void SaveShop()
     {
-        Debug.Log(_playerData.ShopItemsData.Count +"before");
+      
         _playerData.ShopItemsData.Clear();
-        Debug.Log(_playerData.ShopItemsData.Count +"after");
+      
 
         for (int i =0;i < _playerDataSO.ShopItemsData.Count; i++)
         {
             _playerData.ShopItemsData.Add(new ShopItemSave(_playerDataSO.ShopItemsData[i].ItemID, _playerDataSO.ShopItemsData[i].Available));
            
         }
+        SaveLoadData.SaveCharacterData(_playerData);
+
+    }
+
+    public void SaveTime()
+    {
+        _playerData.LastLogin = _playerDataSO.LastLogin;
+        SaveLoadData.SaveCharacterData(_playerData);
+
+    }
+    public void SaveStamina()
+    {
+        _playerData.Stamina = _playerDataSO.Stamina;
         SaveLoadData.SaveCharacterData(_playerData);
 
     }

@@ -43,6 +43,7 @@ public static class SaveLoadData
 
         };
         defaultData.PlayerProgress = new List<Progress>() { new Progress()};
+        defaultData.Stamina = 100;
         return defaultData;
     }
     public static void SaveCharacterData(PlayerData data)
@@ -93,6 +94,8 @@ public static class SaveLoadData
         {
             newData.ShopItemsData.Add(new ShopItemSave(data.ShopItemsData[i].ItemID, data.ShopItemsData[i].Available));
         }
+        newData.LastLogin = data.LastLogin;
+        newData.Stamina = data.Stamina;
     }
   
 

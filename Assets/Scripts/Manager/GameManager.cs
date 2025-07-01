@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public ResourceManager _resourceManager;
     [SerializeField] public PlayerDataManager _playerDataManager;
     [SerializeField] public QuestManager _questManager;
+    [SerializeField] public StaminaManager _staminaManager;
     public Item item;
     public Item item1;
 
@@ -44,7 +45,7 @@ public class GameManager : MonoBehaviour
     {
         _playerDataManager.PlayerDataSO.AddItem(item, 10000);
         _playerDataManager.PlayerDataSO.AddItem(item1, 10000);
-      
+      _staminaManager.TestSaveFunction();
     }
 
 }

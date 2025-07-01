@@ -12,6 +12,8 @@ public class PlayerDataSO : ScriptableObject
     public List<Progress> PlayerProgress;
     public List<ShopItemSave> ShopItemsData;
     public List<QuestData> QuestData;
+    public long LastLogin;
+    public int Stamina;
     public event Action<string> OnDataChange;
     public void ClearData()
     {
@@ -23,6 +25,7 @@ public class PlayerDataSO : ScriptableObject
         QuestData.Clear();
         PlayerProgress = new List<Progress>();
         ShopItemsData.Clear();
+       
         
     }
 
@@ -298,5 +301,16 @@ public class PlayerDataSO : ScriptableObject
             }
         }
 
+    }
+    //stamina
+    public void SaveLoginTime(long time)
+    {
+        LastLogin = time;
+        OnDataChange?.Invoke("Login");
+    }
+    public void SaveStamina(int sta)
+    {
+        Stamina = sta;
+        OnDataChange?.Invoke("Stamina");
     }
 }
