@@ -15,5 +15,5 @@ MonoBehaviour:
   ItemID: M007
   ItemName: Honor medal
   ItemSprite: {fileID: 1133816605, guid: 14e56e4d3c4054941a78d56fc276c1fb, type: 3}
-  Description: 
+  Description: Only the worthy one can own.
   Category: 2

@@ -192,13 +192,13 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         if(type == DamageType.MagicDamage)
         {
             
-            allianceStat.currentHp -= (damage - damage * (GetReductionValue(allianceStat.Resistance.Value)));
+            allianceStat.currentHp -= (damage - damage * (GetReductionValue(allianceStat.Resistance.Value,type)));
 
             OnGetHit?.Invoke(this, EventArgs.Empty);
 
         }else if(type == DamageType.PhysicDamage)
         {
-            allianceStat.currentHp -= (damage - damage * (GetReductionValue(allianceStat.Defense.Value)));
+            allianceStat.currentHp -= (damage - damage * (GetReductionValue(allianceStat.Defense.Value, type)));
 
             OnGetHit?.Invoke(this, EventArgs.Empty);
         }
@@ -234,11 +234,19 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         }
     }
 
-    public float GetReductionValue(float def)
+    public float GetReductionValue(float def,DamageType dmg)
     {
-        if (def / 100 >= 1) return (99 / 100); // make sure dmg reduce wont exceed 99%
-        return def / 100;
-
+        if (dmg == DamageType.MagicDamage)
+        {
+            if (def / 100 >= 1) return (99 / 100); // make sure dmg reduce wont exceed 99%
+            return def / 100;
+        }
+        if (dmg == DamageType.PhysicDamage)
+        {
+            if (def / 1000 >= 1) return (99 / 100); // make sure dmg reduce wont exceed 99%
+            return def / 1000;
+        }
+        return 0;
     }
 
 

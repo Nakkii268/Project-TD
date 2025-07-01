@@ -13,7 +13,17 @@ MonoBehaviour:
   m_Name: CasterLimitBreak
   m_EditorClassIdentifier: 
   LBData:
-  - MaterialsRequired: []
+  - MaterialsRequired:
+    - Item: {fileID: 11400000, guid: 4281fc6facd77794984237ceb93608ac, type: 2}
+      Quantity: 4
+    - Item: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
+      Quantity: 20000
     BuffGain: []
-  - MaterialsRequired: []
+  - MaterialsRequired:
+    - Item: {fileID: 11400000, guid: 4281fc6facd77794984237ceb93608ac, type: 2}
+      Quantity: 4
+    - Item: {fileID: 11400000, guid: acc61dc73ff63ac47ba57111236c840e, type: 2}
+      Quantity: 4
+    - Item: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
+      Quantity: 5000
     BuffGain: []

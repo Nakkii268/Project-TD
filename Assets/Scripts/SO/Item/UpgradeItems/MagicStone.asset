@@ -15,5 +15,5 @@ MonoBehaviour:
   ItemID: M003
   ItemName: Magic Stone
   ItemSprite: {fileID: 1068717885, guid: 14e56e4d3c4054941a78d56fc276c1fb, type: 3}
-  Description: 
+  Description: A magic stone. Can used to make something.
   Category: 2
