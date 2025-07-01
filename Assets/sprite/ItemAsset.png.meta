@@ -277,6 +277,90 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: ItemAsset_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 976
+        width: 950
+        height: 950
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba40798b96b9f4a488b80fd08497c026
+      internalID: -560734458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ItemAsset_9
+      rect:
+        serializedVersion: 2
+        x: 1035
+        y: 1004
+        width: 950
+        height: 950
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbde586a00d5a9d4c8ea916bccbe35c5
+      internalID: -420166663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ItemAsset_10
+      rect:
+        serializedVersion: 2
+        x: 2077
+        y: 1019
+        width: 950
+        height: 950
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7e9b64f347edb0448fcd4bc9da93c5a
+      internalID: -1045214403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ItemAsset_11
+      rect:
+        serializedVersion: 2
+        x: 3080
+        y: 1033
+        width: 950
+        height: 950
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 556b58b401ced9f46a5a83f03279c9da
+      internalID: -681075124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -290,12 +374,16 @@ TextureImporter:
     nameFileIdTable:
       ItemAsset_0: 164451600
       ItemAsset_1: 1230888266
+      ItemAsset_10: -1045214403
+      ItemAsset_11: -681075124
       ItemAsset_2: -1796580830
       ItemAsset_3: -1078718724
       ItemAsset_4: 1133816605
       ItemAsset_5: 1068717885
       ItemAsset_6: 1720279481
       ItemAsset_7: -928529258
+      ItemAsset_8: -560734458
+      ItemAsset_9: -420166663
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
