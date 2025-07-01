@@ -22,6 +22,7 @@ public class PlayerDataSO : ScriptableObject
         PlayerLineUp.Clear();
         QuestData.Clear();
         PlayerProgress = new List<Progress>();
+        ShopItemsData.Clear();
         
     }
 
@@ -256,14 +257,17 @@ public class PlayerDataSO : ScriptableObject
     //handle shop
     public void LoadShopItem(ShopSO shop) //so to data
     {
-        Debug.Log("load to data");
-        if (ShopItemsData.Count != 0) return;
-     
-        for (int i = 0; i < shop.Slots.Count; i++)
+
+        if (ShopItemsData.Count == 0)
         {
-            ShopItemsData.Add(new ShopItemSave(shop.Slots[i].Item.ItemID, shop.Slots[i].AvailableQtt));
+
+            for (int i = 0; i < shop.Slots.Count; i++)
+            {
+                ShopItemsData.Add(new ShopItemSave(shop.Slots[i].Item.ItemID, shop.Slots[i].AvailableQtt));
+                Debug.Log("addddd");
+            }
+            OnDataChange?.Invoke("Shop");
         }
-        OnDataChange?.Invoke("Shop");
     }
     public void SaveShopItem(ShopSO shop) //data to so
     {
@@ -273,7 +277,8 @@ public class PlayerDataSO : ScriptableObject
             {
                 if (ShopItemsData[i].ItemID == shop.Slots[j].Item.ItemID)
                 {
-                    ShopItemsData[i].Available = shop.Slots[j].AvailableQtt;
+                      shop.Slots[j].AvailableQtt=ShopItemsData[i].Available;
+                    
                 }
             }
         }
@@ -282,12 +287,12 @@ public class PlayerDataSO : ScriptableObject
     }
     public void UpdateShopItem(string itemID, int available)
     {
-        Debug.Log("Update shop");
+        
         for (int i = 0; i < ShopItemsData.Count; i++)
         {
             if (ShopItemsData[i].ItemID == itemID)
             {
-                Debug.Log("yes");
+               
                 ShopItemsData[i].Available = available;
                 OnDataChange?.Invoke("Shop");
             }

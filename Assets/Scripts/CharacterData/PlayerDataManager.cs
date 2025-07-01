@@ -112,9 +112,11 @@ public class PlayerDataManager : MonoBehaviour
     
     public void SaveShop()
     {
-        Debug.Log("save shop");
+        Debug.Log(_playerData.ShopItemsData.Count +"before");
         _playerData.ShopItemsData.Clear();
-        for(int i =0;i < _playerDataSO.ShopItemsData.Count; i++)
+        Debug.Log(_playerData.ShopItemsData.Count +"after");
+
+        for (int i =0;i < _playerDataSO.ShopItemsData.Count; i++)
         {
             _playerData.ShopItemsData.Add(new ShopItemSave(_playerDataSO.ShopItemsData[i].ItemID, _playerDataSO.ShopItemsData[i].Available));
            
