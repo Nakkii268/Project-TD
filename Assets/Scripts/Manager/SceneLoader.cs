@@ -1,5 +1,6 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -7,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-
+    public event Action OnMenuLoaded;
     public void LoadMenu()
     {
        // SceneManager.LoadScene("LoadingScene");
@@ -17,6 +18,9 @@ public class SceneLoader : MonoBehaviour
         {
             UIManager.Instance.OpenUI<MenuUI>();
         }
+        OnMenuLoaded?.Invoke();
+      
+
     }
     public void LoadStage(string stagePath)
     {

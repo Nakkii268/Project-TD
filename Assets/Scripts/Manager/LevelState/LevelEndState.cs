@@ -10,27 +10,29 @@ public class LevelEndState : LevelState
     public override void Enter()
     {
         base.Enter();
-        
-        if(LevelStateMachineManager.endState == EndState.Failed)
+        MapSO map = LevelStateMachineManager._levelManager.Map;
+        if (LevelStateMachineManager.endState == EndState.Failed)
         {
             UIManager.Instance.OpenUI<LoseUI>();
         }else if(LevelStateMachineManager.endState == EndState.Successed)
         {
-            UIManager.Instance.OpenUI<WinUI>(new MapData(LevelStateMachineManager._levelManager.Map,(int)EndState.Successed));
-            GameManager.Instance._playerDataManager.PlayerDataSO.UpdateProgress(LevelStateMachineManager._levelManager.Map, (int)LevelStateMachineManager.endState);
+            UIManager.Instance.OpenUI<WinUI>(new MapData(map, (int)EndState.Successed));
+            GameManager.Instance._playerDataManager.PlayerDataSO.UpdateProgress(map, (int)LevelStateMachineManager.endState);
        
-            ItemDrop(LevelStateMachineManager._levelManager.Map);
-            QuestEventHandler.StageClear(LevelStateMachineManager._levelManager.Map);
+            ItemDrop(map);
+            QuestEventHandler.StageClear(map);
+            GameManager.Instance._staminaManager.StaminaConsumed(map.StaminaCost);
 
         }
         else if(LevelStateMachineManager.endState == EndState.NotComplete)
         {
-            UIManager.Instance.OpenUI<WinUI>(new MapData(LevelStateMachineManager._levelManager.Map, (int)EndState.NotComplete));
-            GameManager.Instance._playerDataManager.PlayerDataSO.UpdateProgress(LevelStateMachineManager._levelManager.Map, (int)LevelStateMachineManager.endState);
+            UIManager.Instance.OpenUI<WinUI>(new MapData(map, (int)EndState.NotComplete));
+            GameManager.Instance._playerDataManager.PlayerDataSO.UpdateProgress(map, (int)LevelStateMachineManager.endState);
            
             
-            ItemDrop(LevelStateMachineManager._levelManager.Map);
-            QuestEventHandler.StageClear(LevelStateMachineManager._levelManager.Map);
+            ItemDrop(map);
+            QuestEventHandler.StageClear(map);
+            GameManager.Instance._staminaManager.StaminaConsumed(map.StaminaCost);
 
         }
     }
@@ -49,7 +51,6 @@ public class LevelEndState : LevelState
             GameManager.Instance._playerDataManager.PlayerDataSO.AddItem(map.DropItem[i].Item, map.DropItem[i].Quantity);
         }
        
-        
     }
     
 }

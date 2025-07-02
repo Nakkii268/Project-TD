@@ -136,6 +136,8 @@ public class PlayerDataManager : MonoBehaviour
     public void SaveStamina()
     {
         _playerData.Stamina = _playerDataSO.Stamina;
+        OnDataChange?.Invoke(this, EventArgs.Empty);
+
         SaveLoadData.SaveCharacterData(_playerData);
 
     }

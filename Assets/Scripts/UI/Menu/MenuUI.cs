@@ -27,6 +27,7 @@ public class MenuUI : UICanvas
     [SerializeField] private TextMeshProUGUI PlayerName;
     [SerializeField] private TextMeshProUGUI PlayerLevel;
     [SerializeField] private Image PlayerLevelProgress;
+    [SerializeField] private TextMeshProUGUI Stamina;
 
 
 
@@ -78,9 +79,11 @@ public class MenuUI : UICanvas
 
     private void Initialized() {
        //player name, level, progress
-       Gold.text =GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem("G01").ToString();
-       Diamond.text =GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem("D01").ToString();
-        PlayerName.text = GameManager.Instance._playerDataManager.PlayerDataSO.PlayerName;
+       PlayerDataSO playerData = GameManager.Instance._playerDataManager.PlayerDataSO;
+       Gold.text = playerData.IsHaveItem("G01").ToString();
+       Diamond.text = playerData.IsHaveItem("D01").ToString();
+        PlayerName.text = playerData.PlayerName;
+        Stamina.text = GameManager.Instance._staminaManager.GetStaminaTxt();
     }
     public override void SetUp()
     {

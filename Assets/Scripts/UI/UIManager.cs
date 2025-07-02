@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class UIManager : MonoBehaviour
     Dictionary<System.Type, UICanvas> CanvasActives = new Dictionary<System.Type, UICanvas>();
     Dictionary<System.Type, UICanvas> CanvasPrefabs = new Dictionary<System.Type, UICanvas>();
     [SerializeField] private Transform ParentCanvas;
+    [SerializeField] private Canvas MainCanvas;
 
     private void Awake()
     {
@@ -32,7 +34,25 @@ public class UIManager : MonoBehaviour
             
         }
         OpenUI<MenuUI>();
+        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+       
     }
+
+    private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        if(arg0 == SceneManager.GetSceneByBuildIndex(0)) //only add cam when it menu scene
+        {
+            Camera camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+            MainCanvas.worldCamera = camera;
+        }
+    }
+
+   
+    
+    
+       
+
+
     public T OpenUI<T>() where T : UICanvas
     {
         T canvas = GetUI<T>();

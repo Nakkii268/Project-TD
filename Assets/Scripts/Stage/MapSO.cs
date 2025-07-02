@@ -17,7 +17,7 @@ public class MapSO : ScriptableObject
     public float StartDeployPoint;
     public float DpRecoveryRate;
     public int DeployLimit;
-    //stamina cost
+    public int StaminaCost;
     //droped material
     public List<ItemsData> DropItem;
 }

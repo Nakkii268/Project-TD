@@ -823,6 +823,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: StaminaIcon
+      rect:
+        serializedVersion: 2
+        x: 2132
+        y: 1929
+        width: 280
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1f83174fa0c9414b90f1300b63da1be
+      internalID: -3468111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -865,6 +886,7 @@ TextureImporter:
       RareIcon: 1533897244
       ResIcon: 1085904502
       ShopIcon: 1425884550
+      StaminaIcon: -3468111
       TimeIcon: -348997575
       UnitIcon: 1196848489
       WishIcon: -1626025602

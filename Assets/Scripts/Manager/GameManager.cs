@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     {
         _playerDataManager.PlayerDataSO.AddItem(item, 10000);
         _playerDataManager.PlayerDataSO.AddItem(item1, 10000);
-      _staminaManager.TestSaveFunction();
+      
     }
 
 }
