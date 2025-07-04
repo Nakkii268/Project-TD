@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -28,6 +29,7 @@ public class MenuUI : UICanvas
     [SerializeField] private TextMeshProUGUI PlayerLevel;
     [SerializeField] private Image PlayerLevelProgress;
     [SerializeField] private TextMeshProUGUI Stamina;
+    [SerializeField] private TextMeshProUGUI testSaveTime;
 
 
 
@@ -84,6 +86,7 @@ public class MenuUI : UICanvas
        Diamond.text = playerData.IsHaveItem("D01").ToString();
         PlayerName.text = playerData.PlayerName;
         Stamina.text = GameManager.Instance._staminaManager.GetStaminaTxt();
+        testSaveTime.text = new DateTime(GameManager.Instance._playerDataManager.PlayerDataSO.LastLogin).ToString();
     }
     public override void SetUp()
     {

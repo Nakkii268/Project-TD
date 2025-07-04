@@ -40,7 +40,7 @@ public class UIManager : MonoBehaviour
 
     private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
-        if(arg0 == SceneManager.GetSceneByBuildIndex(0)) //only add cam when it menu scene
+        if(arg0 == SceneManager.GetSceneByBuildIndex(2)) //only add cam when it menu scene
         {
             Camera camera = GameObject.Find("Main Camera").GetComponent<Camera>();
             MainCanvas.worldCamera = camera;

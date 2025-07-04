@@ -1131,7 +1131,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 596827587, guid: 29e3f1aff15705047b933a4157c7e22a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.3764706}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1787,6 +1787,7 @@ MonoBehaviour:
   SkillActiveBtn: {fileID: 7944637011915187758}
   _isSkillDuration: 0
   CanAttackInDuration: 0
+  skillindex: 0
 --- !u!1 &7575087738944473143
 GameObject:
   m_ObjectHideFlags: 0
@@ -2231,7 +2232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 5056e37710b0a7548800a41ebad57a91, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.037
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 5056e37710b0a7548800a41ebad57a91, type: 3}
       propertyPath: m_LocalPosition.y

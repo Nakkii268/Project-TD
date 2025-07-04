@@ -141,4 +141,5 @@ public class PlayerDataManager : MonoBehaviour
         SaveLoadData.SaveCharacterData(_playerData);
 
     }
+ 
 }
