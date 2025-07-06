@@ -59,10 +59,10 @@ public class ContentFitter : MonoBehaviour
                     if (v.y < minY) minY=v.y;   
                     if(v.y > maxY) maxY=v.y;
                 }
-                Debug.DrawLine(corner[0], corner[1], Color.red, 2f); // bottom edge
+                /*Debug.DrawLine(corner[0], corner[1], Color.red, 2f); // bottom edge
                 Debug.DrawLine(corner[1], corner[2], Color.green, 2f); // right edge
                 Debug.DrawLine(corner[2], corner[3], Color.blue, 2f); // top edge
-                Debug.DrawLine(corner[3], corner[0], Color.yellow, 2f); // left edge
+                Debug.DrawLine(corner[3], corner[0], Color.yellow, 2f); // left edge*/
             }
         }
        

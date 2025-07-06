@@ -30,7 +30,7 @@ public class AllianceSkill : MonoBehaviour
         {
             ActiveSkills skill = (ActiveSkills)OnUseSkill;
             curSkillPoint = startSkillPoint;
-            if (skill.ActiveType == SkillActiveType.ManualUse)
+            if (skill.ActiveType == SkillActiveType.Manual)
             {
                 SkillActiveBtn.onClick.AddListener(() =>
                 {
@@ -123,7 +123,7 @@ public class AllianceSkill : MonoBehaviour
         OnSpChange?.Invoke(this,curSkillPoint/skill.SkillPoint);
         
         if (IsFullSkillPoint()){
-            if (skill.ActiveType == SkillActiveType.AutoUse)
+            if (skill.ActiveType == SkillActiveType.Auto)
             {
                 SkillUsing();
             }

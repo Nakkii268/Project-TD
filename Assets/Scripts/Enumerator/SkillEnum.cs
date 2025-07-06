@@ -13,8 +13,8 @@ public enum SkillType
 }
 public enum SkillActiveType
 {
-    ManualUse,
-    AutoUse
+    Manual,
+    Auto
 }
 public enum ChargeType
 {

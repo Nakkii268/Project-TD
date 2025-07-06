@@ -48,6 +48,9 @@ public class CharacterInfoUI : UICanvas
     [SerializeField] private Button Skill2Detail;
     [SerializeField] private TextMeshProUGUI SkillName;
     [SerializeField] private TextMeshProUGUI SkillDesc;
+    [SerializeField] private TextMeshProUGUI SkillTypeTxt;
+    [SerializeField] private TextMeshProUGUI SkillSP;
+    [SerializeField] private TextMeshProUGUI ActiveType;
     [SerializeField] private Transform SkillInfo; //container
     [SerializeField] private Button SkillInfoBtn; //container
     [SerializeField] private ContentFitter Fitter;
@@ -182,13 +185,13 @@ public class CharacterInfoUI : UICanvas
         Skill1Detail.onClick.AddListener(() =>
         {
             UpdateSkillDetail(0);
-            SkillInfo.gameObject.SetActive(true);
+           
         });
         Skill2Detail.onClick.AddListener(() =>
         {
             UpdateSkillDetail(1);
 
-            SkillInfo.gameObject.SetActive(true);
+            
         });
 
     }
@@ -199,13 +202,37 @@ public class CharacterInfoUI : UICanvas
         {
             SkillName.text = unit.UnitSkills[0].Name;
             SkillDesc.text = unit.UnitSkills[0].Description;
+            SkillTypeTxt.text = unit.UnitSkills[0].skillType.ToString();
+            if (unit.UnitSkills[0].skillType == SkillType.Passive)
+            {
+                ActiveType.text = "Auto";
+                SkillSP.text = "0";
+            }
+            else
+            {
+                ActiveSkills skill = (ActiveSkills)unit.UnitSkills[0];
+                ActiveType.text = skill.ActiveType.ToString();
+                SkillSP.text = skill.SkillPoint.ToString();
+            }
         }
         else
         {
             SkillName.text = unit.UnitSkills[1].Name;
             SkillDesc.text = unit.UnitSkills[1].Description;
+            SkillTypeTxt.text = unit.UnitSkills[1].skillType.ToString();
+            if (unit.UnitSkills[1].skillType == SkillType.Passive)
+            {
+                ActiveType.text = "Auto";
+                SkillSP.text = "0";
+            }
+            else
+            {
+                ActiveSkills skill = (ActiveSkills)unit.UnitSkills[1];
+                ActiveType.text = skill.ActiveType.ToString();
+                SkillSP.text = skill.SkillPoint.ToString();
+            }
         }
-       
+
     }
 
  
