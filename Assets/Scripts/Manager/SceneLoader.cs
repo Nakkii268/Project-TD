@@ -13,7 +13,7 @@ public class SceneLoader : MonoBehaviour
     {
        // SceneManager.LoadScene("LoadingScene");
         StartCoroutine(DelayLoadMenu());    
-        SceneManager.LoadScene("TestMenu");
+        SceneManager.LoadScene("Menu");
         if (UIManager.Instance != null)
         {
             UIManager.Instance.OpenUI<MenuUI>();

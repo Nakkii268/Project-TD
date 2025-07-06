@@ -13,10 +13,11 @@ public class CharacterInfoUI : UICanvas
 
     [SerializeField] private Button BackBtn;
     [SerializeField] private Button HomeBtn;
-    
-    
-   
+
+
+
     //init
+    [Header("Stat and Info")]
     [SerializeField] private Button LevelUpBtn;
     [SerializeField] private Button LimitBreakBtn;
     [SerializeField] private TextMeshProUGUI UnitName;
@@ -39,7 +40,19 @@ public class CharacterInfoUI : UICanvas
     //
     [SerializeField] private PlayerData PlayerData;
 
-
+    //skill detail
+    [Header("Skills")]
+    [SerializeField] private Image Skill1Sprite;
+    [SerializeField] private Image Skill2Sprite;
+    [SerializeField] private Button Skill1Detail;
+    [SerializeField] private Button Skill2Detail;
+    [SerializeField] private TextMeshProUGUI SkillName;
+    [SerializeField] private TextMeshProUGUI SkillDesc;
+    [SerializeField] private Transform SkillInfo; //container
+    [SerializeField] private Button SkillInfoBtn; //container
+    [SerializeField] private ContentFitter Fitter;
+    [SerializeField] private RectTransform LayoutGroup;
+ 
     public void Initialized(AllianceUnit allanceUnit)
     {
         unit = allanceUnit;
@@ -77,6 +90,14 @@ public class CharacterInfoUI : UICanvas
         {
             UIManager.Instance.ToHomeMenu();
         });
+        SkillInfoBtn.onClick.AddListener(() =>
+        {
+            UpdateSkillDetail(0);
+            SkillInfo.gameObject.SetActive(!SkillInfo.gameObject.activeSelf);
+            Fitter.UpdateSize();
+            LayoutRebuilder.ForceRebuildLayoutImmediate(LayoutGroup);
+           
+        } );
     }
 
     private void _playerDataManager_OnDataChange(object sender, EventArgs e)
@@ -99,20 +120,7 @@ public class CharacterInfoUI : UICanvas
        LevelText.text = v.ToString();
     }
 
-  
-    public void StatShow(int lb)
-    {
-        
-
-       
-        UnitAttack.text = unit.Attack.ToString();
-           
-        UnitHp.text = unit.Heath.ToString();
-
-
-        UnitDef.text = unit.Defense.ToString();
-           
-    }
+ 
 
 
  
@@ -169,8 +177,37 @@ public class CharacterInfoUI : UICanvas
             LimitBreakBtn.interactable = true;
 
         }
+        Skill1Sprite.sprite  = allanceUnit.UnitSkills[0].Icon;
+        Skill2Sprite.sprite  = allanceUnit.UnitSkills[1].Icon;
+        Skill1Detail.onClick.AddListener(() =>
+        {
+            UpdateSkillDetail(0);
+            SkillInfo.gameObject.SetActive(true);
+        });
+        Skill2Detail.onClick.AddListener(() =>
+        {
+            UpdateSkillDetail(1);
+
+            SkillInfo.gameObject.SetActive(true);
+        });
+
     }
  
+    private void UpdateSkillDetail(int index)
+    {
+        if(index == 0)
+        {
+            SkillName.text = unit.UnitSkills[0].Name;
+            SkillDesc.text = unit.UnitSkills[0].Description;
+        }
+        else
+        {
+            SkillName.text = unit.UnitSkills[1].Name;
+            SkillDesc.text = unit.UnitSkills[1].Description;
+        }
+       
+    }
 
+ 
 
 }
