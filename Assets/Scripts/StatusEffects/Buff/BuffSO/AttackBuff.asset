@@ -15,6 +15,7 @@ MonoBehaviour:
   duration: 99
   Stackable: 1
   SType: 0
+  Description: Attack enchance by 10%%
   modifier:
     Value: 2000
     ModType: 0

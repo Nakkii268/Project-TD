@@ -4,8 +4,8 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "CharacterClass/Healer", fileName = "Healer_")]
 
-public class CharacterHealer : CharacterClass
+public class CharacterHealer : CharacterBranch
 {
     public HealerBranch SubClassName;
-    public StatusEffect BranchPassive;
+   
 }

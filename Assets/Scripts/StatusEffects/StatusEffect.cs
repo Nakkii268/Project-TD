@@ -8,6 +8,7 @@ public class StatusEffect : ScriptableObject
     public float duration;
     public bool Stackable;
     public StatusType SType;
+    public string Description;
     public virtual void OnApply(GameObject target) { }
     public virtual void OnApply(GameObject holder, GameObject target) { }
     public virtual void OnRemove(GameObject target) { }

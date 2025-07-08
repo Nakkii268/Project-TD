@@ -15,3 +15,4 @@ MonoBehaviour:
   duration: 10
   Stackable: 1
   SType: 0
+  Description: attack heal hp by 10%

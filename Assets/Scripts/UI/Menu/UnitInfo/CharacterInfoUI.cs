@@ -53,9 +53,16 @@ public class CharacterInfoUI : UICanvas
     [SerializeField] private TextMeshProUGUI ActiveType;
     [SerializeField] private Transform SkillInfo; //container
     [SerializeField] private Button SkillInfoBtn; //container
-    [SerializeField] private ContentFitter Fitter;
+    [SerializeField] private ContentFitter SkillFitter;
     [SerializeField] private RectTransform LayoutGroup;
- 
+
+    //trait detail
+    [Header("trait")]
+    [SerializeField] private TextMeshProUGUI ClassTrait;
+    [SerializeField] private TextMeshProUGUI BranchTrait;
+    [SerializeField] private Transform TraitHolder;
+    [SerializeField] private Button TraitExtendBtn;
+    [SerializeField] private ContentFitter TraitFitter;
     public void Initialized(AllianceUnit allanceUnit)
     {
         unit = allanceUnit;
@@ -97,10 +104,17 @@ public class CharacterInfoUI : UICanvas
         {
             UpdateSkillDetail(0);
             SkillInfo.gameObject.SetActive(!SkillInfo.gameObject.activeSelf);
-            Fitter.UpdateSize();
-            LayoutRebuilder.ForceRebuildLayoutImmediate(LayoutGroup);
+            SkillFitter.UpdateSize();
+            LayoutRebuilder.ForceRebuildLayoutImmediate(LayoutGroup);//refress layout
            
         } );
+        TraitExtendBtn.onClick.AddListener(() =>
+        {
+            TraitHolder.gameObject.SetActive(!TraitHolder.gameObject.activeSelf);
+            TraitFitter.UpdateSize();
+            LayoutRebuilder.ForceRebuildLayoutImmediate(LayoutGroup);
+
+        });
     }
 
     private void _playerDataManager_OnDataChange(object sender, EventArgs e)
@@ -193,6 +207,7 @@ public class CharacterInfoUI : UICanvas
 
             
         });
+        UpdateTrait();
 
     }
  
@@ -235,6 +250,11 @@ public class CharacterInfoUI : UICanvas
 
     }
 
- 
+    private void UpdateTrait()
+    {
+        ClassTrait.text = unit.UnitClass.ClassPassive.Description;
+        CharacterBranch branch = (CharacterBranch)unit.UnitClass;
+        BranchTrait.text = branch.BranchPassive.Description;
+    }
 
 }

@@ -9,13 +9,16 @@ public class StageInfomationUI : PointerDetect
 {
     
     [SerializeField] private Button PrepareBtn;
+    [SerializeField] private Button SweepBtn;
     [SerializeField] private TextMeshProUGUI StageName;
     [SerializeField] private TextMeshProUGUI StageID;
     [SerializeField] private Transform DropPreviewContainer;
     [SerializeField] private ItemDrop DropPrefab;
     [SerializeField] private TextMeshProUGUI PlayerStamina;
     [SerializeField] private TextMeshProUGUI StaminaCost;
-    public void Init(MapSO map)
+    [SerializeField] private TextMeshProUGUI SweepAttempTxt;
+    [SerializeField] private int SweepAttemp;
+    public void Init(MapSO map,int rating)
     {
         StageID.text = map.MapID;
         StageName.text = map.MapName;
@@ -27,6 +30,20 @@ public class StageInfomationUI : PointerDetect
 
             }
         });
+        if (rating == 2)
+        {
+            SweepBtn.interactable = true;
+            SweepBtn.onClick.AddListener(() =>
+            {
+                UIManager.Instance.OpenUI<BannerPopup>(map.DropItem);
+
+            });
+        }
+        else
+        {
+            SweepBtn.interactable = false;
+        }
+       
         ClearChild();
         for(int i=0; i < map.DropItem.Count; i++)
         {

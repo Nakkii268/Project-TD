@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="CharacterClass/Sniper", fileName = "Sniper_")]
 
 
-public class CharacterSniper : CharacterClass
+public class CharacterSniper : CharacterBranch
 {
     public SniperBranch SubClassName;
-    public StatusEffect BranchPassive;
+    
 }

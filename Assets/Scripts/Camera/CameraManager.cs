@@ -29,8 +29,11 @@ public class CameraManager : MonoBehaviour
         );
 
         Vector3 screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, distanceFromCamera);
+        Debug.Log(screenCenter + "Screen center");
         Vector3 objectWorldPosFromScreen = Camera.main.ScreenToWorldPoint(screenCenter); //offset for y axis
-        _camHolder.position = new Vector3(target.position.x,target.position.y-objectWorldPosFromScreen.y,_basePosition.z);
+        Debug.Log(objectWorldPosFromScreen + "Screen center in world pos");
+
+        _camHolder.position = new Vector3(target.position.x,target.position.y-objectWorldPosFromScreen.y + _basePosition.y,_basePosition.z);
     }
 
     public void SetCameraOriginRotation()

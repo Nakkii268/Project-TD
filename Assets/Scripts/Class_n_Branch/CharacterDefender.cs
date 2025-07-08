@@ -4,8 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "CharacterClass/Defender", fileName = "Defender_")]
 
-public class CharacterDefender : CharacterClass
+public class CharacterDefender : CharacterBranch
 {
     public DefenderBranch SubClassName;
-    public StatusEffect BranchPassive;
 }

@@ -48,7 +48,7 @@ Material:
     - _Speed: 0.5
     - _TwistStreng: 10.81
     m_Colors:
-    - _Color: {r: 0.28975183, g: 0.3427042, b: 1.2092007, a: 0}
+    - _Color: {r: 0, g: 0.032014847, b: 1, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &6340386131130952547
 MonoBehaviour:

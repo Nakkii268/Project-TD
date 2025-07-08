@@ -97,10 +97,10 @@ public class StageSelectUI : UICanvas
         
     }
 
-    private void StageSelectUI_OnStageSelect(object sender, MapSO e)
+    private void StageSelectUI_OnStageSelect(object sender, MapData e)
     {
         _stageInfo.gameObject.SetActive(true);
-        _stageInfo.Init(e);
+        _stageInfo.Init(e.Map,e.Rating);
 
     }
 
