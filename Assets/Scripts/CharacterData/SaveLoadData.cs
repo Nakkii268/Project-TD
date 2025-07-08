@@ -96,6 +96,8 @@ public static class SaveLoadData
         }
         newData.LastLogin = data.LastLogin;
         newData.Stamina = data.Stamina;
+        newData.LastDailyReset = data.LastDailyReset;
+        newData.LastWeeklyReset = data.LastWeeklyReset;
     }
   
 

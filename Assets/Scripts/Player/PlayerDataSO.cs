@@ -13,6 +13,8 @@ public class PlayerDataSO : ScriptableObject
     public List<ShopItemSave> ShopItemsData;
     public List<QuestData> QuestData;
     public long LastLogin;
+    public long LastDailyReset;
+    public long LastWeeklyReset;
     public int Stamina;
     public event Action<string> OnDataChange;
     public void ClearData()
@@ -312,5 +314,17 @@ public class PlayerDataSO : ScriptableObject
     {
         Stamina = sta;
         OnDataChange?.Invoke("Stamina");
+    }
+
+    //daily and weekly quest reset time
+    public void SaveDailyResetTime(long time)
+    {
+        LastDailyReset = time;
+        OnDataChange?.Invoke("Daily");
+    }
+    public void SaveWeeklyResetTime(long time)
+    {
+        LastWeeklyReset = time;
+        OnDataChange?.Invoke("Weekly");
     }
 }

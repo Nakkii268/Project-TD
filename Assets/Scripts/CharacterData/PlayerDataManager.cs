@@ -30,6 +30,8 @@ public class PlayerDataManager : MonoBehaviour
             case "Quest": SaveQuest(); break;
             case "Login": SaveTime(); break;
             case "Stamina": SaveStamina(); break;
+            case "Daily": SaveDailyReset(); break;
+            case "Weekly": SaveWeeklyReset(); break;
             default: break;
         }
     }
@@ -141,5 +143,18 @@ public class PlayerDataManager : MonoBehaviour
         SaveLoadData.SaveCharacterData(_playerData);
 
     }
- 
+
+    public void SaveDailyReset()
+    {
+        _playerData.LastDailyReset = _playerDataSO.LastDailyReset;
+        SaveLoadData.SaveCharacterData(_playerData);
+
+    }
+    public void SaveWeeklyReset()
+    {
+        _playerData.LastWeeklyReset = _playerDataSO.LastWeeklyReset;
+        SaveLoadData.SaveCharacterData(_playerData);
+
+    }
+
 }

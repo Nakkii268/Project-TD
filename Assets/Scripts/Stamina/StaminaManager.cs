@@ -24,7 +24,7 @@ public class StaminaManager : MonoBehaviour
     }
     private void StaminaCal()
     {
-        DateTime current = DateTime.Now;
+        DateTime current = DateTime.UtcNow;
         TimeSpan timeDiff = current - new DateTime(LastLogin);
         
         AddStamina( (int)timeDiff.TotalSeconds / RecoveryTime);
@@ -49,7 +49,7 @@ public class StaminaManager : MonoBehaviour
                 CurrentStamina = MaxStamina;
             }
             GameManager.Instance._playerDataManager.PlayerDataSO.SaveStamina(CurrentStamina);
-            DateTime current = DateTime.Now;
+            DateTime current = DateTime.UtcNow;
             GameManager.Instance._playerDataManager.PlayerDataSO.SaveLoginTime(current.Ticks); // save time whenever stamina recovery (temp solution/ in case on app quit not working)
 
     }
@@ -67,7 +67,7 @@ public class StaminaManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         GameManager.Instance._playerDataManager.PlayerDataSO.SaveStamina(CurrentStamina);
-        DateTime current = DateTime.Now;
+        DateTime current = DateTime.UtcNow;
         GameManager.Instance._playerDataManager.PlayerDataSO.SaveLoginTime( current.Ticks);
         
 

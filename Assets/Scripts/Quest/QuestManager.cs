@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -8,6 +9,7 @@ public class QuestManager : MonoBehaviour
 {
     public Dictionary<string, ActiveQuest> QuestList = new Dictionary<string, ActiveQuest>();
     public List<ActiveQuest> activeQuests = new List<ActiveQuest>();
+    [SerializeField] private int DailyResetMile=4;
 
     [SerializeField] private PlayerDataManager playerDataManager;
     private void Start()
@@ -19,6 +21,8 @@ public class QuestManager : MonoBehaviour
       
         playerDataManager = GameManager.Instance._playerDataManager;
         playerDataManager.OnPlayerDataLoaded += PlayerDataManager_OnPlayerDataLoaded;
+        ResetDailyQuest();
+        ResetWeeklyQuest();
     }
 
     //save
@@ -152,5 +156,46 @@ public class QuestManager : MonoBehaviour
         }
         return newquests;
     }
+    private void ResetDailyQuest() //0 :daily /1: weekly
+    {
+        DateTime lastReset = new DateTime(playerDataManager.PlayerDataSO.LastDailyReset);
+        DateTime nextReset = lastReset.Date.AddDays(1).AddHours(DailyResetMile);
+        if (DateTime.UtcNow < nextReset) return;
+        List<ActiveQuest> dailyquest = GetQuests(0);
+        for (int i = 0; i < dailyquest.Count; i++)
+        {
+            dailyquest[i].QuestReset();
+        }
+        playerDataManager.PlayerDataSO.SaveDailyResetTime(DateTime.UtcNow.Ticks);
+        SaveQuestState(); //save
+    }
+    private void ResetWeeklyQuest() //0 :daily /1: weekly
+    {
+        DateTime lastReset = new DateTime(playerDataManager.PlayerDataSO.LastDailyReset);
+        DateTime nextReset = lastReset.Date.AddDays(-(int)lastReset.DayOfWeek + 1);
+          nextReset=nextReset.AddDays(7).AddHours(DailyResetMile);
+        if (DateTime.UtcNow < nextReset) return;
+        List<ActiveQuest> dailyquest = GetQuests(1);
+        for (int i = 0; i < dailyquest.Count; i++)
+        {
+            dailyquest[i].QuestReset();
+        }
+        playerDataManager.PlayerDataSO.SaveDailyResetTime(DateTime.UtcNow.Ticks);
+        SaveQuestState(); //save
+    }
 
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            DateTime lastReset = DateTime.UtcNow;
+            DateTime nextReset = lastReset.Date.AddDays(-(int)lastReset.DayOfWeek + 1);
+            nextReset= nextReset.AddDays(-7).AddHours(DailyResetMile);
+            Debug.Log(nextReset.ToString());
+            Debug.Log(lastReset.Date.ToString());
+            Debug.Log(lastReset.DayOfWeek.ToString());
+            Debug.Log(lastReset < nextReset);
+        }
+    }
 }

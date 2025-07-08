@@ -16,6 +16,8 @@ public class PlayerData
     public List<ShopItemSave> ShopItemsData;
     public List<QuestData> PlayerQuestData;
     public long LastLogin;
+    public long LastDailyReset;
+    public long LastWeeklyReset;
     public int Stamina;
     public PlayerData() { }
 }
