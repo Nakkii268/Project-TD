@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements.Experimental;
 [CreateAssetMenu(menuName = "PlayerData")]
 public class PlayerDataSO : ScriptableObject
 {
@@ -176,6 +177,38 @@ public class PlayerDataSO : ScriptableObject
         PlayerProgress.Add(newProgress);
         OnDataChange?.Invoke("Progress");
 
+    }
+    public bool IsFirstTimePassed(MapSO stage,int rating)
+    {
+        if (rating < 2)return false;
+         // not fully completed then early return
+        for (int i = 0; i < PlayerProgress.Count; i++) //loop through progress
+        {
+            if (stage.ChapterIndex == PlayerProgress[i].ChapterIndex) //if already have chapter - loop the stage list
+            {
+                for (int j = 0; j < PlayerProgress[i].StageList.Count; j++)
+                {
+                    if (stage.StageIndex == PlayerProgress[i].StageList[j].Stage) // if already passed the stage- check rating
+                    {
+                        if (PlayerProgress[i].StageList[j].Rating < rating )//better rating -> update rating
+                        {
+
+                            return true;
+                        }
+
+                    
+
+                        return false;
+                    }
+                }
+                
+                
+            }
+
+        }
+  
+
+        return true;
     }
     public bool IsHaveChapter(int chapter)
     {

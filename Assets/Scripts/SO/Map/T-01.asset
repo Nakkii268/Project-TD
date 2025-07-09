@@ -67,11 +67,12 @@ MonoBehaviour:
   DeployLimit: 4
   StaminaCost: 10
   DropItem:
-  - Item: {fileID: 11400000, guid: 0ef788f9af53d6d4488a25689a5390ef, type: 2}
-    Quantity: 30
   - Item: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
     Quantity: 5000
   - Item: {fileID: 11400000, guid: ebe72feb9446389428430436d888d572, type: 2}
     Quantity: 5000
   - Item: {fileID: 11400000, guid: b326332c006df1d4c841f9c180f2a44e, type: 2}
     Quantity: 1
+  FirstTimeClear:
+    Item: {fileID: 11400000, guid: 0ef788f9af53d6d4488a25689a5390ef, type: 2}
+    Quantity: 30

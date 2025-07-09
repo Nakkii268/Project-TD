@@ -634,7 +634,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1226103263803382578
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1201,13 +1201,7 @@ MonoBehaviour:
   BackBtn: {fileID: 3330662554655247900}
   HomeBtn: {fileID: 563076912699422272}
   StageList: {fileID: 0}
-  _playerProgress:
-  - ChapterIndex: 0
-    StageList: []
-  - ChapterIndex: 0
-    StageList: []
-  - ChapterIndex: 0
-    StageList: []
+  _playerProgress: []
   _stageInfo: {fileID: 3382593885959356301}
   CurrentSelectChap: 0
   PrevChapBtn: {fileID: 6736177698495588700}
@@ -2642,7 +2636,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -0.0028076, y: 24.999985}
-  m_SizeDelta: {x: 536.16, y: 110}
+  m_SizeDelta: {x: 536.16, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &5949878582381550018
 MonoBehaviour:

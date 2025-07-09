@@ -259,10 +259,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784127faca731eb4a9aec045f085a661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChapterIndex: 0
   mapList:
   - {fileID: 11400000, guid: 5c2b608457497d549a692b834376be1b, type: 2}
   - {fileID: 11400000, guid: e8378b0f200089148a2130d11ace467a, type: 2}
-  - {fileID: 11400000, guid: c0680c974e324c94781fa101be7997db, type: 2}
+  - {fileID: 11400000, guid: 7e171dcb7399a204fa42a4a810e10cf9, type: 2}
   - {fileID: 11400000, guid: 0757a1ecf7f6cd843a2ffd2d99ae604f, type: 2}
   - {fileID: 11400000, guid: eef6a1c8fb156ba48937055e072922e2, type: 2}
   stageBtnList:
@@ -274,6 +275,7 @@ MonoBehaviour:
   StageContainer: {fileID: 1577845662776303871}
   StageContainerRect: {fileID: 7062094354905542347}
   bg: {fileID: 5955912756761512986}
+  playerProgress: []
 --- !u!1 &5012015455651018252
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,6 +20,7 @@ public class ItemsData
 {
     public Item Item;
     public int Quantity;
+    //will add prob later
 
     public ItemsData(Item material,int qtt)
     {

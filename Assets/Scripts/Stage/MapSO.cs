@@ -20,6 +20,7 @@ public class MapSO : ScriptableObject
     public int StaminaCost;
     //droped material
     public List<ItemsData> DropItem;
+    public ItemsData FirstTimeClear;
 }
 [Serializable]
 public class Wave

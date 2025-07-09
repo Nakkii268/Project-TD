@@ -41,6 +41,12 @@ public class WinUI : UICanvas
     private void Initialized(MapData mapData)
     {
         stageName.text  = mapData.Map.MapID;
+        if (mapData.FirstTime)
+        {
+
+            ItemDrop ft = Instantiate(prefab, container);
+            ft.Init(mapData.Map.FirstTimeClear,"First time");
+        }
         for (int i = 0; i < mapData.Map.DropItem.Count; i++)
         {
             ItemDrop drop = Instantiate(prefab, container);
@@ -53,9 +59,12 @@ public class MapData
 {
     public MapSO Map;
     public int Rating;
-    public MapData(MapSO map, int rating)
+    public bool FirstTime;
+    public MapData(MapSO map, int rating,bool ft=false)
     {
         Map = map;
         Rating = rating;
+        FirstTime = ft;
     }
+   
 }

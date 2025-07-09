@@ -13,59 +13,70 @@ MonoBehaviour:
   m_Name: T-03
   m_EditorClassIdentifier: 
   ChapterIndex: 0
-  StageIndex: 2
+  StageIndex: 1
   MapID: T-03
-  MapName: 
+  MapName: Trouble Maker
   StagePath: Assets/Scenes/StageScene/T-03.unity
   Waves:
   - SpawnTime: 5
     Path:
-    - {x: 0, y: 0}
-    - {x: 1, y: 0}
-    - {x: 1, y: 1}
-    - {x: 2, y: 1}
-    - {x: 3, y: 1}
-    - {x: 4, y: 1}
-    - {x: 5, y: 1}
-    - {x: 6, y: 1}
-    - {x: 6, y: 2}
-    - {x: 7, y: 2}
-    - {x: 7, y: 3}
-    - {x: 7, y: 5}
+    - {x: 10, y: 5}
+    - {x: 9, y: 5}
     - {x: 8, y: 5}
+    - {x: 7, y: 5}
+    - {x: 6, y: 5}
+    - {x: 6, y: 4}
+    - {x: 6, y: 3}
+    - {x: 6, y: 2}
+    - {x: 6, y: 1}
+    - {x: 5, y: 1}
+    - {x: 4, y: 1}
+    - {x: 4, y: 2}
+    - {x: 4, y: 3}
+    - {x: 3, y: 3}
+    - {x: 2, y: 3}
+    - {x: 1, y: 3}
     - {x: -99, y: 99}
     EnemyUnit: {fileID: 11400000, guid: cd67ce6d899f05a4c9e6c25c43ab52ee, type: 2}
     EnemyQuantity: 5
-    SpawnDelay: 2
-    SpawnPos: {x: 0, y: 0, z: 0}
+    SpawnDelay: 1
+    SpawnPos: {x: 10, y: 5, z: 0}
   - SpawnTime: 20
     Path:
-    - {x: 0, y: 0}
-    - {x: 1, y: 0}
-    - {x: 1, y: 2}
-    - {x: 1, y: 3}
-    - {x: 1, y: 4}
-    - {x: 2, y: 4}
-    - {x: 3, y: 4}
-    - {x: 4, y: 4}
-    - {x: 5, y: 4}
+    - {x: 10, y: 1}
+    - {x: 9, y: 1}
+    - {x: 8, y: 1}
+    - {x: 7, y: 1}
+    - {x: 6, y: 1}
+    - {x: 6, y: 2}
+    - {x: 6, y: 3}
     - {x: 6, y: 4}
-    - {x: 7, y: 4}
-    - {x: 8, y: 4}
-    - {x: 8, y: 5}
+    - {x: 6, y: 5}
+    - {x: 5, y: 5}
+    - {x: 4, y: 5}
+    - {x: 4, y: 4}
+    - {x: 4, y: 3}
+    - {x: 3, y: 3}
+    - {x: 2, y: 3}
+    - {x: 1, y: 3}
     - {x: -99, y: 99}
     EnemyUnit: {fileID: 11400000, guid: 54fe095d7aace1a449bcc57f58f5af35, type: 2}
     EnemyQuantity: 5
-    SpawnDelay: 2
-    SpawnPos: {x: 0, y: 0, z: 0}
+    SpawnDelay: 1
+    SpawnPos: {x: 10, y: 1, z: 0}
   TotalEnemy: 10
   LifePoint: 5
   StartDeployPoint: 20
   DpRecoveryRate: 1
   DeployLimit: 3
-  StaminaCost: 10
+  StaminaCost: 15
   DropItem:
-  - Item: {fileID: 11400000, guid: 0ef788f9af53d6d4488a25689a5390ef, type: 2}
-    Quantity: 30
   - Item: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
     Quantity: 5000
+  - Item: {fileID: 11400000, guid: ebe72feb9446389428430436d888d572, type: 2}
+    Quantity: 500
+  - Item: {fileID: 11400000, guid: f30aa375e46f9494b88c84989d953e4c, type: 2}
+    Quantity: 1
+  FirstTimeClear:
+    Item: {fileID: 11400000, guid: 0ef788f9af53d6d4488a25689a5390ef, type: 2}
+    Quantity: 30

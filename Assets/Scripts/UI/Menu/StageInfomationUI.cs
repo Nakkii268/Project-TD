@@ -45,7 +45,9 @@ public class StageInfomationUI : PointerDetect
         }
        
         ClearChild();
-        for(int i=0; i < map.DropItem.Count; i++)
+        ItemDrop ft = Instantiate(DropPrefab, DropPreviewContainer);
+        ft.Init(map.FirstTimeClear,"First time");
+        for (int i=0; i < map.DropItem.Count; i++)
         {
             ItemDrop drop = Instantiate(DropPrefab, DropPreviewContainer);
             drop.Init(map.DropItem[i]);

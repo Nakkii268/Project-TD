@@ -62,7 +62,7 @@ public class StageUI : MonoBehaviour
             for(int i = 1; i < stageBtnList.Count; i++)
             {
                 stageBtnList[i].gameObject.SetActive(false);
-                Debug.Log(i);
+               
 
             }
             return;
@@ -70,7 +70,7 @@ public class StageUI : MonoBehaviour
         //unlock the rest
         for (int i = playerProgress[currentChapter].StageList.Count+1; i < stageBtnList.Count; i++)
         {
-            Debug.Log(i);
+          
             stageBtnList[i].gameObject.SetActive(false);
            
 
