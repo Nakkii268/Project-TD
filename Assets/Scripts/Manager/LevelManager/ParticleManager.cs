@@ -8,25 +8,20 @@ public class ParticleManager : MonoBehaviour
     [SerializeField] private ParticleSystem hitParticle;
     [SerializeField] private ParticleSystem slashParticle;
     
-    public void SpawnParticle( GameObject target,float duration)
+    public void SpawnEffectParticle( GameObject target,float duration) //status effect particle
     {
         ParticleSystem particle = Instantiate(_particleSystem,target.transform.position,Quaternion.identity,target.transform);
         particle.Play();
         StartCoroutine(StopParticle(particle,duration));    
         
     }
-    public void HitParticle(GameObject target,ParticleSystem p)
+    public void HitParticle(GameObject target,ParticleSystem p) // get hit particle
     {
         
         ParticleSystem particle = Instantiate(p, target.transform.position, Quaternion.identity, target.transform);
         particle.Play();
     }
-    public void AttackParticle(GameObject target, ParticleSystem p,Transform pos)
-    {
-        
-        ParticleSystem particle = Instantiate(p, pos.position, Quaternion.identity, target.transform);
-        particle.Play();
-    }
+  
     public void SkillParticle(GameObject target, VFXData p,Transform pos,Quaternion rotate)
     {
 

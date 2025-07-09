@@ -22,7 +22,7 @@ public class AllianceSPBar : MonoBehaviour
     private void AllianceSkill_OnSkillActive(object sender, float e)
     {
         SwichtBar(false);
-        if (e > 99) return; //if skill duration is unlimited then no need to countdown
+        if (e >= 99) return; //if skill duration is unlimited then no need to countdown
         StartCoroutine(SkillDurationBar(e));
     }
 

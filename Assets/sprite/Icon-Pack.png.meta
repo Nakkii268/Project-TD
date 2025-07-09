@@ -832,7 +832,7 @@ TextureImporter:
         width: 280
         height: 280
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -840,6 +840,69 @@ TextureImporter:
       bones: []
       spriteID: a1f83174fa0c9414b90f1300b63da1be
       internalID: -3468111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause
+      rect:
+        serializedVersion: 2
+        x: 2565
+        y: 748
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da1a6f11198297c4e917187f91184f7d
+      internalID: 1414967607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Resumed
+      rect:
+        serializedVersion: 2
+        x: 2866
+        y: 748
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d025b307c4380cf46a9eb1940074b10f
+      internalID: -1736052261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quit
+      rect:
+        serializedVersion: 2
+        x: 3113
+        y: 754
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dbd6dedaf5c6dc41a643d7131c1db62
+      internalID: 1837024449
       vertices: []
       indices: 
       edges: []
@@ -882,9 +945,12 @@ TextureImporter:
       LB_2: -785259909
       LegendIcon: 558873427
       LineUpIcon: 1788100219
+      Pause: 1414967607
       QuestIcon: 1775269791
+      Quit: 1837024449
       RareIcon: 1533897244
       ResIcon: 1085904502
+      Resumed: -1736052261
       ShopIcon: 1425884550
       StaminaIcon: -3468111
       TimeIcon: -348997575

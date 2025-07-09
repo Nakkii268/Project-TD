@@ -18,10 +18,12 @@ public static class GoalFactory
 
                 }
                 return new ClearStageEvaluate(targetAmount);
+
             case "KillEnemy":
               
                 int amount = int.Parse(config.Goals[0]);
                 return new KillEnemyEvaluate(amount);
+
             case "LevelUp":
                 int level = int.Parse(config.Goals[0]);
                 if (config.Goals.Count >= 2)
@@ -32,9 +34,22 @@ public static class GoalFactory
                 }
                 return new LevelUpEvaluate(level);
 
+            case "ConsumeStamina":
+                int sta = int.Parse(config.Goals[0]);
+                return new ConsumeStaminaEvaluate(sta);
+            
+            case "ConsumeGold":
+                int gold = int.Parse(config.Goals[0]);
+                return new ConsumeGoldEvaluate(gold);
+            
+            case "ConsumeDiamond":
+                int diamond = int.Parse(config.Goals[0]);
+                return new ConsumeDiamondEvaluate(diamond);
+
             case "DailyActive":
                 int Dpoint = int.Parse (config.Goals[0]);
                 return new DailyQuestEvaluate(Dpoint);
+
             case "WeeklyActive":
                 int Wpoint = int.Parse (config.Goals[0]);
                 return new WeeklyQuestEvaluate(Wpoint);

@@ -92,7 +92,19 @@ public class AllianceSkill : MonoBehaviour
     }
 
     
-
+    public float GetSkillSP()
+    {
+        if(OnUseSkill is ActiveSkills)
+        {
+            ActiveSkills skill = OnUseSkill as ActiveSkills;
+            return skill.SkillPoint;
+        }
+        return -1;
+    }
+    public float GetCurSKillSp()
+    {
+        return curSkillPoint;
+    }
     public void SkillUsing()
     {
         if (!IsFullSkillPoint()) return;
@@ -166,9 +178,11 @@ public class AllianceSkill : MonoBehaviour
     }
     private IEnumerator SkillActiveDurtation()
     {
+
         _isSkillDuration = true;
         ActiveSkills skill = (ActiveSkills)OnUseSkill;
         DisableSkillBtn();
+        if (skill.SkillDuration == 99) yield return null;
         yield return new WaitForSeconds(skill.SkillDuration);
         OnSkillEnd?.Invoke(this, EventArgs.Empty);
         _isSkillDuration = false;

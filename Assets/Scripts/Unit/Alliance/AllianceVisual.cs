@@ -18,13 +18,17 @@ public class AllianceVisual : MonoBehaviour
     public void RotateToTarget(GameObject target)
     {
         Vector2 dir = target.transform.position - transform.position;
-        if (Vector2.Angle(dir, new Vector2(-1, 0)) < Vector2.Angle(dir, new Vector2(1, 0)) ){ 
-            transform.rotation = Quaternion.Euler(30, 180, 0);
+        if (Vector2.Angle(dir, new Vector2(-1, 0)) < Vector2.Angle(dir, new Vector2(1, 0)) ){
+            // transform.rotation = Quaternion.Euler(30, 180, 0);
+            transform.localScale = new Vector3(-1, 1, 1);
+
 
         }
         else
         {
-            transform.rotation = Quaternion.Euler(-30, 0, 0);
+            // transform.rotation = Quaternion.Euler(-30, 0, 0);
+            transform.localScale = new Vector3(1, 1, 1);
+
 
         }
     }
@@ -32,10 +36,13 @@ public class AllianceVisual : MonoBehaviour
     {
         if(direction == new Vector2(-1, 0))
         {
-            transform.rotation = Quaternion.Euler(30, 180, 0);
+            //transform.rotation = Quaternion.Euler(30, 180, 0);
+            transform.localScale = new Vector3(-1,1,1);
         }else if(direction == new Vector2(1, 0))
         {
-            transform.rotation = Quaternion.Euler(-30, 0, 0);
+            // transform.rotation = Quaternion.Euler(-30, 0, 0);
+            transform.localScale = new Vector3(1, 1, 1);
+
 
         }
     }
@@ -80,6 +87,7 @@ public class AllianceVisual : MonoBehaviour
     }
     //
 
+    
     public void AnimationEnterEvent()
     {
         alliance.StateMachine.OnAnimationEnterEvent();

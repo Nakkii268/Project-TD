@@ -21,7 +21,7 @@ MonoBehaviour:
   TargetRequire: 0
   SkillRange: []
   SkillVFX:
-    Particle: {fileID: 7008703141135775361, guid: f2e4ab672f0a411408593e7fde0c3c6e, type: 3}
+    Particle: {fileID: 8281976299469518386, guid: b0cf4939cb2f871439abd5815194152a, type: 3}
     Rotatable: 0
     BaseRotation: {x: 0, y: 0, z: 0}
   ChargeType: 2

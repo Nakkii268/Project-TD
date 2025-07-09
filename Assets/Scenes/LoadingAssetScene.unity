@@ -1003,6 +1003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeQuests: []
+  DailyResetMile: 4
   playerDataManager: {fileID: 0}
 --- !u!1 &1687123010
 GameObject:
@@ -1200,6 +1201,8 @@ MonoBehaviour:
     ShopItemsData: []
     PlayerQuestData: []
     LastLogin: 0
+    LastDailyReset: 0
+    LastWeeklyReset: 0
     Stamina: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

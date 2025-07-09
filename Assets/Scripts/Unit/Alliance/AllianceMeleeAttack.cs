@@ -40,12 +40,12 @@ public class AllianceMeleeAttack : AllianceAttack
             }
 
         }
-        LevelManager.instance.ParticleManager.AttackParticle(this.gameObject, alliance.GetAllianceUnit().AttackVfx,vfxPos);
+        //LevelManager.instance.ParticleManager.AttackParticle(this.gameObject, alliance.GetAllianceUnit().AttackVfx,vfxPos);
 
     }
     public override void EnhanceAttack(float scaleUp,ParticleSystem vfx,ParticleSystem hitVfx)
     {
-        Debug.Log("caleed");
+        
         alliance.AllianceVisual.RotateToTarget(GetTarget()[0]);
         if (Alliance.GetAllianceUnit().UnitTarget == UnitTarget.Enemy)
         {
@@ -69,6 +69,6 @@ public class AllianceMeleeAttack : AllianceAttack
             }
 
         }
-        LevelManager.instance.ParticleManager.AttackParticle(this.gameObject, vfx, vfxPos);
+        //LevelManager.instance.ParticleManager.AttackParticle(this.gameObject, vfx, vfxPos);
     }
 }

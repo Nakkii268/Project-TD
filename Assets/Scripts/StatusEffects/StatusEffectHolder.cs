@@ -144,7 +144,7 @@ public class StatusEffectHolder : MonoBehaviour
     public IEnumerator StatusEffectHandler(GameObject target,StatusEffect effect)
     {
         effect.OnApply(target);
-        LevelManager.instance.ParticleManager.SpawnParticle(target, effect.duration);
+        LevelManager.instance.ParticleManager.SpawnEffectParticle(target, effect.duration);
         yield return new WaitForSeconds(effect.duration);
         StopEffectCoroutine(target, effect);
         RemoveStatusEffect( effect);

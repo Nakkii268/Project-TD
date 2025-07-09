@@ -20,7 +20,7 @@ public class Unit : ScriptableObject
 
     //
     [Header("VFX")]
-    public ParticleSystem AttackVfx;
+    
     public ParticleSystem HitVfx;
 }
 [Serializable]// maybe save it for skill part
