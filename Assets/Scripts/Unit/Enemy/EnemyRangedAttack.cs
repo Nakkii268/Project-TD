@@ -15,6 +15,7 @@ public class EnemyRangedAttack : EnemyAttack
 
     public override void Attack()
     {
+        base.Attack();
         EnemyProjectile projectile = LevelManager.instance.projectilePool.EnemyPool.GetPooledObject();
 
         projectile.transform.position = firePoint.position;

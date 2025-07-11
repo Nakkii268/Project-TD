@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: T-03
   m_EditorClassIdentifier: 
   ChapterIndex: 0
-  StageIndex: 1
+  StageIndex: 2
   MapID: T-03
   MapName: Trouble Maker
   StagePath: Assets/Scenes/StageScene/T-03.unity

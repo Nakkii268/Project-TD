@@ -9,6 +9,29 @@ public class EnemyVisual : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private SortingGroup sortingGroup;
 
+
+    public void RotateToTarget(Vector3 target)
+    {
+        Vector2 dir  = CalDirection(target);
+       if(dir == new Vector2(1, 0))
+       {
+            transform.localScale = new Vector3(1,1,1);
+       }
+       else if (dir == new Vector2(-1, 0))
+       {
+            transform.localScale = new Vector3(-1, 1, 1);
+       }
+    }
+    private Vector2 CalDirection(Vector3 target)
+    {
+        float angle = Vector2.Angle(target-transform.position,new Vector2(1,0));
+      
+
+        if (angle <= 90)
+        {
+            return new Vector2(1, 0);
+        }else return new Vector2(-1,0);
+    }
     public void SetSortingOrder(float value)
     {
         sortingGroup.sortingOrder = Mathf.RoundToInt(20-value);

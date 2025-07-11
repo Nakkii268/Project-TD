@@ -52,10 +52,13 @@ public class EnemyAttack : MonoBehaviour, IAttackPerform
     public virtual void PerformAttack()
     {
         OnAttackPerform?.Invoke(this,targetsInRange );
+
         attackReady = false;
         StartCoroutine(AttackCoolDown(m_Enemy.Stat.AttackInterval.Value));
     }
-    public virtual void Attack() { }
+    public virtual void Attack() {
+        m_Enemy.EnemyVisual.RotateToTarget(target.transform.position);
+    }
 
 
     private IEnumerator AttackCoolDown(float AttackSpeed)

@@ -85,6 +85,7 @@ public class EnemyState :  IState
             if (EnemySMManager._enemy.Path.Length == 0) return;
             target = new Vector3(EnemySMManager._enemy.Path[EnemySMManager._enemy.pathIndex].x, EnemySMManager._enemy.Path[EnemySMManager._enemy.pathIndex].y, EnemySMManager._enemy.transform.position.z);
             EnemySMManager._enemy.transform.position = Vector3.MoveTowards(EnemySMManager._enemy.transform.position, target, EnemySMManager._enemy.Stat.Speed.Value * Time.deltaTime);
+            EnemySMManager._enemy.EnemyVisual.RotateToTarget(target);
             CheckNextIndex();
             //move
             if (Vector3.Distance(new Vector3(EnemySMManager._enemy.transform.position.x, EnemySMManager._enemy.transform.position.y, 0), new Vector3(target.x, target.y, 0)) < .1f)
@@ -95,7 +96,7 @@ public class EnemyState :  IState
 
             }
         EnemySMManager._enemy.EnemyVisual.SetSortingOrder(EnemySMManager._enemy.transform.position.y);
-        //  Vector2 dir = (Vector2)target - new Vector2(EnemySMManager._enemy.transform.position.x, EnemySMManager._enemy.transform.position.y);
+        
 
     }
     private void CheckNextIndex()

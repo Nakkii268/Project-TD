@@ -15,6 +15,7 @@ public class EnemyMeleeAttack : EnemyAttack
 
     public override void Attack()
     {
+        base.Attack();
         if (target != null)
         {
             target.GetComponentInParent<IDamageable>().ReceiveDamaged(m_Enemy.Stat.Attack.Value, damageType);
