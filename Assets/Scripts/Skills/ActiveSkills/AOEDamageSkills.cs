@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 
 [CreateAssetMenu(menuName = "Skill/amageTypeSkill/AOE")]
@@ -13,13 +14,13 @@ public class AOEDamageSkills : DamageTypeSkills
     public bool IsAroundUser;
     public override void SkillActivate(AllianceSkill User, List<GameObject> target = null)
     {
-        User.StartCoroutine(DelayDamage(User, delayTime));
+        User.StartCoroutine(DelayDamage(User, DelayTime,TotalHits,DelayBetweenHits));
 
     }
    
     private void Damage(AllianceSkill User)
     {
-        LevelManager.instance.ParticleManager.SkillParticle(User.gameObject, SkillVFX, User.transform, User.alliance.GetVFXQuaternion());
+        
 
         float centerx =0;
         float centery = 0;
@@ -39,15 +40,23 @@ public class AOEDamageSkills : DamageTypeSkills
         for (int i = 0; i < hits.Length; i++)
         {
             hits[i].GetComponentInParent<IDamageable>().ReceiveDamaged(SkillDmgScale * User.alliance.Stat.Attack.Value, DamageType);
+            Debug.Log("AOE hits");
         }
 
     }
 
    
-    private IEnumerator DelayDamage(AllianceSkill User, float time)
+    private IEnumerator DelayDamage(AllianceSkill User, float time,int hits, float delay)
     {
         yield return new WaitForSeconds(time);
-        Damage(User);
+        LevelManager.instance.ParticleManager.SkillParticle(User.gameObject, SkillVFX, User.transform, User.alliance.GetVFXQuaternion());
+
+        for (int i = 0; i < hits; i++)
+        {
+            Damage(User);
+            yield return new WaitForSeconds(delay);
+        }
+        
     }
     private Vector2 RangeSwap(Vector2 dir)
     {

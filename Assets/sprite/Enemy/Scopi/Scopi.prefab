@@ -408,11 +408,12 @@ MonoBehaviour:
   enemyAttack: {fileID: 5539227107052002521}
   enemyAttackCollider: {fileID: 5729650303440177918}
   statusEffectHolder: {fileID: 2321668008336166529}
+  HurtBox: {fileID: 158298926301726645}
   Blocker: {fileID: 0}
   blockModifier:
-    Value: 0
+    Value: -1
     ModType: 1
-    Order: 1
+    Order: 0
 --- !u!114 &2321668008336166529
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -79,14 +79,11 @@ public class Stat
 
                 if (i+1 >= Modifiers.Count || Modifiers[i+1].ModType != StatModType.PercentAdd)
                 {
-                    finalValue *= sumPercentAdd;
+                    finalValue += finalValue * sumPercentAdd;
                 }
             } 
-            else if (Modifiers[i].ModType == StatModType.PercentMult)
-            {
-                finalValue *=1+ Modifiers[i].Value;
-            }
+           
         }
-        return (float)Math.Round(finalValue, 1);
+        return (float)Math.Round(finalValue, 2);
     }
 }

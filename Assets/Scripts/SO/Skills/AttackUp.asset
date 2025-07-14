@@ -26,7 +26,7 @@ MonoBehaviour:
     BaseRotation: {x: 0, y: 0, z: 0}
   ChargeType: 2
   SkillDuration: 99
-  SkillPoint: 5
+  SkillPoint: 1
   CanAttack: 1
   ActiveType: 0
   effects:
@@ -34,3 +34,4 @@ MonoBehaviour:
     delayTime: 0
   - effect: {fileID: 11400000, guid: 870ea67b3ffd1224ebf3d77869e9184f, type: 2}
     delayTime: 0
+  Delay: 5

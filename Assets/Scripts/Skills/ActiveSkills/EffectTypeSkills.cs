@@ -9,13 +9,15 @@ using UnityEngine;
 public class EffectTypeSkills : ActiveSkills
 {
     public List<EffectDelay> effects;
-   
+    public float Delay; //delay time between each time apply buff/debuff  ( for continuous effect)
 
     public override void SkillActivate(AllianceSkill User, List<GameObject> target = null)
     {
+        Debug.Log("acitive");
         for (int i = 0; i < effects.Count; i++)
         {
-            User.StartCoroutine(DelayEffect(User, target, effects[i].effect, effects[i].delayTime));
+            Debug.Log("add effect");
+            User.StartCoroutine(DelayEffect(User, target, effects[i].effect, effects[i].delayTime,Delay,SkillDuration));
         }
     }
     private void EffectComponent(AllianceSkill User, List<GameObject> target, StatusEffect effect)
@@ -26,8 +28,8 @@ public class EffectTypeSkills : ActiveSkills
         {
             foreach (GameObject tg in target)
             {
-                tg.TryGetComponent<StatusEffectHolder>(out StatusEffectHolder effectHolder);
-                effectHolder.AddStatusEffect(tg,effect);
+                StatusEffectHolder holder =  tg.GetComponentInParent<StatusEffectHolder>();
+                holder.AddStatusEffect(tg,effect);
                 
             }
         }
@@ -38,10 +40,20 @@ public class EffectTypeSkills : ActiveSkills
             
         }
     }
-    private IEnumerator DelayEffect(AllianceSkill User, List<GameObject> target,StatusEffect effect,float time)
+    private IEnumerator DelayEffect(AllianceSkill User, List<GameObject> target, StatusEffect effect, float time,float delay,float duration)
     {
+        duration = SkillDuration;
         yield return new WaitForSeconds(time);
-        EffectComponent(User, target, effect);
+        while (duration > 0) {
+            EffectComponent(User, target, effect);
+            if (SkillDuration < 99)
+            {
+                SkillDuration -= Delay;
+
+            }
+            yield return new WaitForSeconds(delay);
+            
+        } 
     }
 }
 [Serializable]

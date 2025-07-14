@@ -32,6 +32,7 @@ public class EnemyAttackState : EnemyState
         if (EnemySMManager._enemy.IsBlocked)
         {
             EnemySMManager.ChangeState(EnemySMManager.EnemyIdleState);
+            return;
 
         }
 

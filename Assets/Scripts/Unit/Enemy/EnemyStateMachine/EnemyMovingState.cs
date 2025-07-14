@@ -28,6 +28,11 @@ public class EnemyMovingState : EnemyState
         {
             EnemySMManager.ChangeState(EnemySMManager.EnemyAttackState);
         }
+        if (EnemySMManager._enemy.IsBlocked)
+        {
+            EnemySMManager.ChangeState(EnemySMManager.EnemyIdleState);
+
+        }
     }
    
     

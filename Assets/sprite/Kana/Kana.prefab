@@ -5891,7 +5891,7 @@ Transform:
   m_GameObject: {fileID: 1987719775125794644}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.059, y: -0.177, z: 0}
+  m_LocalPosition: {x: -0.097, y: -0.177, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5936,6 +5936,7 @@ MonoBehaviour:
   alliance: {fileID: 4489595423137854530}
   animator: {fileID: 3727889947979456205}
   sortingGroup: {fileID: 5034920006067725007}
+  attackVFX: {fileID: 7427943607464083425}
 --- !u!95 &3727889947979456205
 Animator:
   serializedVersion: 5
@@ -6571,6 +6572,7 @@ MonoBehaviour:
   vfxPos: {fileID: 1700981332374570945}
   targetCount: 0
   damageType: 0
+  attackReady: 0
 --- !u!1 &2956980803203035853
 GameObject:
   m_ObjectHideFlags: 0
@@ -8725,8 +8727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnUseSkill: {fileID: 11400000, guid: a5ddbc2b178714f46b40ef5e9642bdf4, type: 2}
   alliance: {fileID: 4489595423137854530}
-  target:
-  - {fileID: 0}
+  target: []
   startSkillPoint: 0
   curSkillPoint: 50
   SkillActiveBtn: {fileID: 7944637011915187758}

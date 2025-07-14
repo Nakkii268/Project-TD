@@ -1918,8 +1918,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnUseSkill: {fileID: 11400000, guid: 768fedc3b7c4dd242b11e5d117e32b55, type: 2}
   alliance: {fileID: 4489595423137854530}
-  target:
-  - {fileID: 0}
+  target: []
   startSkillPoint: 0
   curSkillPoint: 50
   SkillActiveBtn: {fileID: 7944637011915187758}
@@ -2354,11 +2353,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 557b8c854a9e1be43810f394cd913b9c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.059
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 557b8c854a9e1be43810f394cd913b9c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.118
+      value: -0.153
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 557b8c854a9e1be43810f394cd913b9c, type: 3}
       propertyPath: m_LocalPosition.z

@@ -12,6 +12,7 @@ public class StatusEffectHolder : MonoBehaviour
     public List<OnHitStatusEffect> OnhitEffects;
     public event EventHandler OnGetDisable;
     public event EventHandler OnEndDisable;
+    public event EventHandler OnEfectGain;
 
     private void Start()
     {
@@ -50,6 +51,7 @@ public class StatusEffectHolder : MonoBehaviour
                 StartEffectCoroutine(target, Neffect);
                 return;
             }
+           
             //make sure status effect not stack
 
             if (!NorEffect.Contains(Neffect))
@@ -62,7 +64,7 @@ public class StatusEffectHolder : MonoBehaviour
                 }
                 StartEffectCoroutine(target, Neffect);
             }
-            else
+            else //remove and re-add effect ( renew duration)
             {
                 StopEffectCoroutine(target, Neffect);
                 Neffect.OnRemove(target);
@@ -144,7 +146,8 @@ public class StatusEffectHolder : MonoBehaviour
     public IEnumerator StatusEffectHandler(GameObject target,StatusEffect effect)
     {
         effect.OnApply(target);
-        LevelManager.instance.ParticleManager.SpawnEffectParticle(target, effect.duration);
+        OnEfectGain?.Invoke(this, EventArgs.Empty);
+        //LevelManager.instance.ParticleManager.SpawnEffectParticle(target, effect.duration);
         yield return new WaitForSeconds(effect.duration);
         StopEffectCoroutine(target, effect);
         RemoveStatusEffect( effect);

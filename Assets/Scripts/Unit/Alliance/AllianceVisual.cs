@@ -8,13 +8,26 @@ public class AllianceVisual : MonoBehaviour
     [SerializeField] private Alliance alliance;
     [SerializeField] private Animator animator;
     [SerializeField] private SortingGroup sortingGroup;
+    [SerializeField] private ParticleSystem attackVFX;
+    [SerializeField] private float SpeedScale=1; //speed multiply for attack animation
 
 
-  
+    private void Start()
+    {
+        alliance.StatusEffectHolder.OnEfectGain += StatusEffectHolder_OnEfectGain;
+        CalSpeedScale(alliance.Stat.AttackInterval.Value);
+    }
+
+    private void StatusEffectHolder_OnEfectGain(object sender, System.EventArgs e)
+    {
+        SpeedScale = CalSpeedScale(alliance.Stat.AttackInterval.Value);
+    }
+
     public void SetSortingOrder(float value)
     {
         sortingGroup.sortingOrder = Mathf.RoundToInt(20 - value);
     }
+    
     public void RotateToTarget(GameObject target)
     {
         Vector2 dir = target.transform.position - transform.position;
@@ -58,7 +71,10 @@ public class AllianceVisual : MonoBehaviour
   
     public void PlayAttackAnim()
     {
+        //var mainVFX = attackVFX.main;
+        //mainVFX.simulationSpeed = 10;
 
+        animator.SetFloat("speed", SpeedScale);
         animator.Play("attack");
 
     }
@@ -87,7 +103,11 @@ public class AllianceVisual : MonoBehaviour
     }
     //
 
-    
+    private float CalSpeedScale(float atks)
+    {
+        if (atks >= .5f) return 1;
+        return  Mathf.CeilToInt(0.5f / atks);
+    }
     public void AnimationEnterEvent()
     {
         alliance.StateMachine.OnAnimationEnterEvent();

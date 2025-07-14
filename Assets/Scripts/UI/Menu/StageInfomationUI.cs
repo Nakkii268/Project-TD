@@ -24,7 +24,7 @@ public class StageInfomationUI : PointerDetect
         StageName.text = map.MapName;
         PrepareBtn.onClick.AddListener(() =>
         {
-            if (GameManager.Instance._staminaManager.StaminaConsumed(map.StaminaCost))
+            if (GameManager.Instance._staminaManager.CurrentStamina>=map.StaminaCost)
             {
                 UIManager.Instance.OpenUI<PreBattleLineUpUI>(map);
 

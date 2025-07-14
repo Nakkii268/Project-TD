@@ -30,10 +30,11 @@ MonoBehaviour:
   CanAttack: 0
   ActiveType: 0
   effects:
-  - {fileID: 11400000, guid: f0787e38af17e05488ef854602385f5b, type: 2}
+  - {fileID: 11400000, guid: aa611667c72596147915d1e132a01116, type: 2}
+  - {fileID: 11400000, guid: 76a31686cc8acd8418a8ff39b599d308, type: 2}
   SkillDmg: 9999999
   DamageType: 0
-  subTarget: 0
+  subTarget: 2
   DamageDelayTime: 4.9
   EffectDelayTime: 0
   Range: {x: 3, y: 3}

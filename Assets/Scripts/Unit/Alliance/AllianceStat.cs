@@ -33,4 +33,5 @@ public class AllianceStat : UnitStat
         currentHp = MaxHp.Value;
 
     }
+   
 }

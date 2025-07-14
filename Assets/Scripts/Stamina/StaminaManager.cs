@@ -6,7 +6,8 @@ using UnityEngine;
 public class StaminaManager : MonoBehaviour
 {
     [SerializeField] private int RecoveryTime; //time in second
-    [SerializeField] private int CurrentStamina;
+    [SerializeField] private int _currentStamina;
+    public int CurrentStamina { get { return _currentStamina; } }
     [SerializeField] private int MaxStamina;
     [SerializeField] private long LastLogin;
     [SerializeField] private int TimeSpan; //time left after cal, will add to recover
@@ -20,7 +21,7 @@ public class StaminaManager : MonoBehaviour
     private void GetData()
     {
         LastLogin = GameManager.Instance._playerDataManager.PlayerDataSO.LastLogin;
-        CurrentStamina = GameManager.Instance._playerDataManager.PlayerDataSO.Stamina;
+        _currentStamina = GameManager.Instance._playerDataManager.PlayerDataSO.Stamina;
     }
     private void StaminaCal()
     {
@@ -33,7 +34,7 @@ public class StaminaManager : MonoBehaviour
     
     IEnumerator StaminaRecover(float RecoveryTime)
     {
-        while (CurrentStamina < MaxStamina)
+        while (_currentStamina < MaxStamina)
         {
             yield return new WaitForSeconds(RecoveryTime - TimeSpan);
             AddStamina(1);
@@ -43,22 +44,22 @@ public class StaminaManager : MonoBehaviour
     private void AddStamina(int stamina)
     {
         
-            CurrentStamina += stamina;
-            if (CurrentStamina >= MaxStamina)
+            _currentStamina += stamina;
+            if (_currentStamina >= MaxStamina)
             {
-                CurrentStamina = MaxStamina;
+                _currentStamina = MaxStamina;
             }
-            GameManager.Instance._playerDataManager.PlayerDataSO.SaveStamina(CurrentStamina);
+            GameManager.Instance._playerDataManager.PlayerDataSO.SaveStamina(_currentStamina);
             DateTime current = DateTime.UtcNow;
             GameManager.Instance._playerDataManager.PlayerDataSO.SaveLoginTime(current.Ticks); // save time whenever stamina recovery (temp solution/ in case on app quit not working)
 
     }
     public bool StaminaConsumed(int amount)
     {
-        if (CurrentStamina >= amount)
+        if (_currentStamina >= amount)
         {
-            CurrentStamina -= amount;
-            GameManager.Instance._playerDataManager.PlayerDataSO.SaveStamina(CurrentStamina);
+            _currentStamina -= amount;
+            GameManager.Instance._playerDataManager.PlayerDataSO.SaveStamina(_currentStamina);
             return true;
         }
         return false;
@@ -66,7 +67,7 @@ public class StaminaManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        GameManager.Instance._playerDataManager.PlayerDataSO.SaveStamina(CurrentStamina);
+        GameManager.Instance._playerDataManager.PlayerDataSO.SaveStamina(_currentStamina);
         DateTime current = DateTime.UtcNow;
         GameManager.Instance._playerDataManager.PlayerDataSO.SaveLoginTime( current.Ticks);
         
@@ -74,7 +75,7 @@ public class StaminaManager : MonoBehaviour
     }
     public string GetStaminaTxt()
     {
-        return CurrentStamina.ToString()+"/"+MaxStamina.ToString();
+        return _currentStamina.ToString()+"/"+MaxStamina.ToString();
     }
     
 }

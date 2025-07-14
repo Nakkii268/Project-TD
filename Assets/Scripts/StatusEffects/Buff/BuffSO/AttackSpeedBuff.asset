@@ -15,7 +15,8 @@ MonoBehaviour:
   duration: 99
   Stackable: 0
   SType: 0
+  Description: 
   modifier:
-    Value: -0.5
+    Value: -0.8
     ModType: 1
     Order: 0

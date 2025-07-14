@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 765d3e863566c49418a949ebedfa2164, type: 3}
   m_Name: AttackHeal
   m_EditorClassIdentifier: 
-  duration: 10
+  duration: 99
   Stackable: 1
   SType: 0
-  Description: attack heal hp by 10%
+  Description: Heal alliance instead of attack

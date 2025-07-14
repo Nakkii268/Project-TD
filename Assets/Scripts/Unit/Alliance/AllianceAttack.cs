@@ -17,7 +17,7 @@ public class AllianceAttack : MonoBehaviour, IAttackPerform
 
     [SerializeField] protected TargetCount targetCount;
     [SerializeField] protected DamageType damageType;
-    [SerializeField] protected bool attackReady {  get; private set; }
+    [SerializeField] protected bool attackReady;
     public List<GameObject> targetsInRange { get { return targets; } }
 
     public event EventHandler<List<GameObject>> OnAttackPerform;

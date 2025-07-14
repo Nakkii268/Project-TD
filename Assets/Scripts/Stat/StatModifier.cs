@@ -25,6 +25,5 @@ public class StatModifier
 public enum StatModType
 {
     Flat,
-    PercentAdd,
-    PercentMult
+    PercentAdd
 }

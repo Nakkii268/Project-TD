@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName ="StatusEffect/DpRecover")]
-public class DpRecovery : StatusEffect
+public class DpRecovery : NormalStatusEffect
 {
     public int RecoverAmount;
     

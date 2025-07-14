@@ -25,12 +25,16 @@ public class EnemyIdleState : EnemyState
     }
     public override void Update()
     {
-        if(timeCounter > GetWaitTime())
+        if (!EnemySMManager._enemy.IsBlocked)
         {
-            EnemySMManager._enemy.pathIndex ++;
-            EnemySMManager.ChangeState(EnemySMManager.EnemyMovingState); 
+            if (timeCounter > GetWaitTime())
+            {
+                EnemySMManager._enemy.pathIndex++;
+                EnemySMManager.ChangeState(EnemySMManager.EnemyMovingState);
+            }
+            timeCounter += Time.deltaTime;
         }
-        timeCounter += Time.deltaTime;
+
         if (EnemySMManager._enemy.EnemyAttack.CanPerformAttack())
         {
             EnemySMManager.ChangeState(EnemySMManager.EnemyAttackState);
