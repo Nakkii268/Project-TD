@@ -9,18 +9,21 @@ public class AllianceVisual : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private SortingGroup sortingGroup;
     [SerializeField] private ParticleSystem attackVFX;
-    [SerializeField] private float SpeedScale=1; //speed multiply for attack animation
+  
 
-
-    private void Start()
+   
+    public void Init()
     {
         alliance.StatusEffectHolder.OnEfectGain += StatusEffectHolder_OnEfectGain;
-        CalSpeedScale(alliance.Stat.AttackInterval.Value);
-    }
+        
+        animator.SetFloat("speed", CalSpeedScale(alliance.Stat.AttackInterval.Value));
+        Debug.Log(gameObject.name + CalSpeedScale(alliance.Stat.AttackInterval.Value));
 
+    }
     private void StatusEffectHolder_OnEfectGain(object sender, System.EventArgs e)
     {
-        SpeedScale = CalSpeedScale(alliance.Stat.AttackInterval.Value);
+        animator.SetFloat("speed", CalSpeedScale(alliance.Stat.AttackInterval.Value));
+
     }
 
     public void SetSortingOrder(float value)
@@ -74,7 +77,8 @@ public class AllianceVisual : MonoBehaviour
         //var mainVFX = attackVFX.main;
         //mainVFX.simulationSpeed = 10;
 
-        animator.SetFloat("speed", SpeedScale);
+       // animator.SetFloat("speed", 5.5f);
+
         animator.Play("attack");
 
     }
@@ -106,7 +110,7 @@ public class AllianceVisual : MonoBehaviour
     private float CalSpeedScale(float atks)
     {
         if (atks >= .5f) return 1;
-        return  Mathf.CeilToInt(0.5f / atks);
+        return  Mathf.CeilToInt(0.5f / atks)+.5f;
     }
     public void AnimationEnterEvent()
     {

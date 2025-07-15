@@ -14,10 +14,13 @@ public class UnitStat : MonoBehaviour
     public Stat Defense;// reduce value = def/100
     public Stat Resistance;//reduce value= res/100
     public Stat Block;
-    
 
-   
-    protected virtual  void Initialized()
+
+    private void Start()
+    {
+        Initialized();
+    }
+    public virtual  void Initialized()
     {
         
         MaxHp = new Stat(unit.Heath);

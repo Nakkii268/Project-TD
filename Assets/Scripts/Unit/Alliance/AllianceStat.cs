@@ -11,12 +11,8 @@ public class AllianceStat : UnitStat
     public AllianceType type;
 
 
-    private  void Start()
-    {
-        Initialized();
-        
-    }
-    protected override void Initialized()
+  
+    public override void Initialized()
     {
         
         unit = alliance.GetAllianceUnit();

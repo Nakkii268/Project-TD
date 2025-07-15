@@ -16,7 +16,7 @@ public class EnemyStat : UnitStat
         Initialized();
     }
 
-    protected override void Initialized()
+    public override void Initialized()
     {
         
        

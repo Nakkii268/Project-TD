@@ -299,6 +299,8 @@ public class Alliance : Character, IDamageable, IHealable, IHasHpBar
         allianceBlock.gameObject.SetActive(true);
         directionCircle.gameObject.SetActive(true);
         statusEffectHolder.enabled = true;
+   
+        allianceVisual.Init();
 
     }
 }
