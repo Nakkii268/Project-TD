@@ -9,10 +9,8 @@ using static UnityEngine.GraphicsBuffer;
 [CreateAssetMenu(menuName = "Skill/amageTypeSkill/AOE")]
 public class AOEDamageSkills : DamageTypeSkills
 {
-    public Vector2 Range;//width-height
-    public LayerMask TargetLayer;
-    public bool IsAroundUser;
-    public override void SkillActivate(AllianceSkill User, List<GameObject> target = null)
+    
+    public override void SkillActivate(AllianceSkill User)
     {
         User.StartCoroutine(DelayDamage(User, DelayTime,TotalHits,DelayBetweenHits));
 
@@ -58,15 +56,5 @@ public class AOEDamageSkills : DamageTypeSkills
         }
         
     }
-    private Vector2 RangeSwap(Vector2 dir)
-    {
-        if (dir.x != 0)
-        {
-            return Range;
-        }
-        else
-        {
-            return new Vector2(Range.y,Range.x);
-        }
-    }
+   
 }

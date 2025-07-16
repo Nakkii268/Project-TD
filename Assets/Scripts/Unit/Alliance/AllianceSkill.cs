@@ -10,7 +10,7 @@ public class AllianceSkill : MonoBehaviour
     
     public Skills OnUseSkill;
     public Alliance alliance;
-    public List<GameObject> target;
+    public GameObject target;
     [SerializeField] private float startSkillPoint;
     [SerializeField]private float curSkillPoint;
     [SerializeField] private Button SkillActiveBtn;
@@ -59,7 +59,7 @@ public class AllianceSkill : MonoBehaviour
         }
         else if(OnUseSkill.skillType == SkillType.Passive)
         {
-            OnUseSkill.SkillActivate(this, target);
+            OnUseSkill.SkillActivate(this);
            
             DisableSkillBtn();
 
@@ -110,7 +110,7 @@ public class AllianceSkill : MonoBehaviour
         if (!IsFullSkillPoint()) return;
         if(OnUseSkill.TargetRequire && target==null) return;
 
-        OnUseSkill.SkillActivate(this, alliance.AllianceAttack.GetTarget());
+        OnUseSkill.SkillActivate(this);
         
 
         curSkillPoint = 0;

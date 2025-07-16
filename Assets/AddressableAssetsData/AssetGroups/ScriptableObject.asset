@@ -23,6 +23,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Item
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1f0057e3d9a4fe542ba3e22cfbdf598a
+    m_Address: Assets/Scripts/SO/Item/Consumable/KitaAcquisition.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Item
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 346b852718fbb9c4a9f04282aff9d8ec
     m_Address: Assets/Scripts/SO/Item/UpgradeItems/SlimeCore.asset
     m_ReadOnly: 0
@@ -58,6 +64,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Item
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 63f9a32c30ec447438ba9a4acee00628
+    m_Address: Assets/Scripts/Unit/AllianceSO/Kita.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Unit
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6635e91f07512ed42bae3f7be1ac49b9
     m_Address: Assets/Scripts/Unit/AllianceSO/Rize.asset

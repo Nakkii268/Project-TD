@@ -23,7 +23,7 @@ MonoBehaviour:
   - Category: 0
     Item: {fileID: 11400000, guid: 92000b6505ceef141a3142c7b205df50, type: 2}
     MaxQtt: 1
-    AvailableQtt: 1
+    AvailableQtt: 0
     Currency: {fileID: 11400000, guid: 0ef788f9af53d6d4488a25689a5390ef, type: 2}
     Price: 500
     Quantity: 1
@@ -82,6 +82,13 @@ MonoBehaviour:
     AvailableQtt: 97
     Currency: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
     Price: 20000
+    Quantity: 1
+  - Category: 0
+    Item: {fileID: 11400000, guid: 1f0057e3d9a4fe542ba3e22cfbdf598a, type: 2}
+    MaxQtt: 1
+    AvailableQtt: 0
+    Currency: {fileID: 11400000, guid: 0ef788f9af53d6d4488a25689a5390ef, type: 2}
+    Price: 100
     Quantity: 1
   - Category: 0
     Item: {fileID: 11400000, guid: f1c5fad28948d504f9db13d75e60a10b, type: 2}

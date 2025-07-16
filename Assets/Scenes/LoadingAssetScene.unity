@@ -729,7 +729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RecoveryTime: 60
-  CurrentStamina: 0
+  _currentStamina: 0
   MaxStamina: 170
   LastLogin: 0
   TimeSpan: 0

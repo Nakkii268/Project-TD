@@ -11,22 +11,25 @@ public class DamageTypeSkills : ActiveSkills
     public float DelayTime;
     public int TotalHits; //number of hit will strke
     public float DelayBetweenHits;// delay btw each hit
-    public override void SkillActivate(AllianceSkill User, List<GameObject> target=null)
+    public override void SkillActivate(AllianceSkill User)
     {
-        User.StartCoroutine(DelayDamage(User,target,DelayTime,TotalHits,DelayBetweenHits));    
+        User.StartCoroutine(DelayDamage(User,DelayTime,TotalHits,DelayBetweenHits));    
     }
     
-    private void Damage(AllianceSkill User, List<GameObject> target)
+    private void Damage(AllianceSkill User)
     {
         LevelManager.instance.ParticleManager.SkillParticle(User.gameObject, SkillVFX, User.transform, User.alliance.GetVFXQuaternion());
 
         if (skillTarget == SkillTarget.Enemy)
         {
-            foreach (GameObject tg in target)
+            if (GetTarget(User) != null)
             {
-                tg.GetComponentInParent<IDamageable>().ReceiveDamaged(SkillDmgScale* User.alliance.Stat.Attack.Value, DamageType);
-                Debug.Log("hits");
+                GameObject target = GetTarget(User)[0].gameObject;
+                target.GetComponentInParent<IDamageable>().ReceiveDamaged(SkillDmgScale * User.alliance.Stat.Attack.Value, DamageType);
+
             }
+          
+            
         }
         else if (skillTarget == SkillTarget.Self)
         {
@@ -35,12 +38,12 @@ public class DamageTypeSkills : ActiveSkills
         }
     }
 
-    private IEnumerator DelayDamage(AllianceSkill User, List<GameObject> target,float time,int hits,float delay)
+    private IEnumerator DelayDamage(AllianceSkill User,float time,int hits,float delay)
     {
         yield return new WaitForSeconds(time);
         for (int i = 0; i < hits; i++)
         {
-            Damage(User, target);
+            Damage(User);
             yield return new WaitForSeconds(delay);
         }
     }

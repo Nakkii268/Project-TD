@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da27460bf10291f46ba92eeb8d69dd54, type: 3}
+  m_Name: SwordThrust
+  m_EditorClassIdentifier: 
+  Name: Sword thrust
+  Icon: {fileID: -353794294, guid: 586643aa6f13aa44299e0ffb6aed7c92, type: 3}
+  Description: 
+  skillType: 0
+  skillEffect: 0
+  skillTarget: 2
+  TargetRequire: 0
+  SkillRange: []
+  SkillVFX:
+    Particle: {fileID: 3695468097135810879, guid: ff5013e3b8a1f294a975c9d983e225d2, type: 3}
+    Rotatable: 1
+    BaseRotation: {x: -90, y: 90, z: -90}
+  ChargeType: 2
+  SkillDuration: 0.5
+  SkillPoint: 2
+  CanAttack: 0
+  ActiveType: 0
+  Range: {x: 2, y: 1}
+  TargetLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  IsAroundUser: 0
+  effects:
+  - {fileID: 11400000, guid: d9783a2f14d29894db535f754fc25d7a, type: 2}
+  SkillDmg: 99999
+  DamageType: 0
+  subTarget: 2
+  DamageDelayTime: 0.2
+  EffectDelayTime: 0

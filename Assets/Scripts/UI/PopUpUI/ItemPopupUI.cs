@@ -36,15 +36,25 @@ public class ItemPopupUI : UICanvas
             ItemQtt.text = "Quantity: " + data.Qtt.ToString();
 
         }
+        if(data.Item.Category == ItemCategory.Consumable)
+        {
+             ConfirmBtntxt.text = USE_TXT;
+        }
+        else
+        {
+            ConfirmBtntxt.text = CONFIRM_TXT;
+
+        }
+        ConfirmBtn.onClick.RemoveAllListeners();
         ConfirmBtn.onClick.AddListener(() =>
         {
             if (data.Source)
             {
                 if (data.Item.Category == ItemCategory.Consumable)
                 {
-                    
-                    ConsumableItem cItem = (ConsumableItem)data.Item;
-                    cItem.OnUse();
+                  
+                  
+                    (data.Item as ConsumableItem).OnUse();
                 }
             }
             UIManager.Instance.Close<ItemPopupUI>(0);

@@ -14,7 +14,7 @@ public class Skills : ScriptableObject
     public bool TargetRequire;
     public Vector2[] SkillRange;
     public VFXData SkillVFX;
-    public virtual void SkillActivate(AllianceSkill User,List<GameObject> target=null)
+    public virtual void SkillActivate(AllianceSkill User)
     {
 
     }

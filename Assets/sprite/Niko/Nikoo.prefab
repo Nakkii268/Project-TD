@@ -858,6 +858,7 @@ MonoBehaviour:
   vfxPos: {fileID: 1700981332374570945}
   targetCount: 0
   damageType: 0
+  attackReady: 0
 --- !u!1 &2956980803203035853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1914,7 +1915,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnUseSkill: {fileID: 11400000, guid: a5ddbc2b178714f46b40ef5e9642bdf4, type: 2}
   alliance: {fileID: 4489595423137854530}
-  target: []
+  target: {fileID: 0}
   startSkillPoint: 0
   curSkillPoint: 50
   SkillActiveBtn: {fileID: 7944637011915187758}
@@ -2689,6 +2690,7 @@ MonoBehaviour:
   alliance: {fileID: 4489595423137854530}
   animator: {fileID: 8100296741922752027}
   sortingGroup: {fileID: 8338423269317649809}
+  attackVFX: {fileID: 2398638973478373995}
 --- !u!95 &8100296741922752027
 Animator:
   serializedVersion: 5
@@ -2736,6 +2738,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 4531325154428869777}
     m_Modifications:
     - target: {fileID: 1442184012376203772, guid: 4074f7f82a9796341a093bac64e97ba5, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442184012376203772, guid: 4074f7f82a9796341a093bac64e97ba5, type: 3}
       propertyPath: scalingMode
       value: 0
       objectReference: {fileID: 0}
@@ -2749,7 +2755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4208218678384367971, guid: 4074f7f82a9796341a093bac64e97ba5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.635
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4208218678384367971, guid: 4074f7f82a9796341a093bac64e97ba5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2779,6 +2785,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 24.268
       objectReference: {fileID: 0}
+    - target: {fileID: 5783458129300749164, guid: 4074f7f82a9796341a093bac64e97ba5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a6bd263de08d22b4a83bd4584d63aee7, type: 2}
     - target: {fileID: 9087588867775809189, guid: 4074f7f82a9796341a093bac64e97ba5, type: 3}
       propertyPath: m_Name
       value: SwordSlash
@@ -2795,5 +2805,10 @@ PrefabInstance:
 --- !u!4 &1093423976811328244 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4208218678384367971, guid: 4074f7f82a9796341a093bac64e97ba5, type: 3}
+  m_PrefabInstance: {fileID: 3839890186938379159}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2398638973478373995 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1442184012376203772, guid: 4074f7f82a9796341a093bac64e97ba5, type: 3}
   m_PrefabInstance: {fileID: 3839890186938379159}
   m_PrefabAsset: {fileID: 0}

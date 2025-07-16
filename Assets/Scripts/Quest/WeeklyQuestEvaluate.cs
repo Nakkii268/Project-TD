@@ -32,6 +32,8 @@ public class WeeklyQuestEvaluate : IQuestEvaluate
     private void QuestEventHandler_DailyPointAcquire(int obj)
     {
         CurrentPoint += obj;
+        OnProgressChange?.Invoke();
+
     }
 
     public bool IsCompleted()

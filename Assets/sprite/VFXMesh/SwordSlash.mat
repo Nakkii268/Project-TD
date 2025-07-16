@@ -90,7 +90,7 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
-    - _CORE_height: 0.51
+    - _CORE_height: 0.23
     - _CORE_scel: 0.35
     - _CastShadows: 0
     - _ClearCoatMask: 0
@@ -100,7 +100,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _Distort: 0.336
+    - _Distort: 0.093
     - _Distortion_scale: 25
     - _DstBlend: 10
     - _DstBlendAlpha: 0
@@ -108,8 +108,8 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Height: 0.17
-    - _MaskSize: 0.388
+    - _Height: 0.34
+    - _MaskSize: 0.523
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -117,7 +117,7 @@ Material:
     - _QueueOffset: -26
     - _ReceiveShadows: 1
     - _Roundness: 1
-    - _Scroll: -0.11
+    - _Scroll: -0.27
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -126,23 +126,23 @@ Material:
     - _Surface: 1
     - _UV_color_lerp_z: 1
     - _UV_scroll_W: 1
-    - _Width: 0.5
+    - _Width: 2.4
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 1
     - _ZWriteControl: 1
     - _outline_H: 1.04
     - _outline_w: 1
-    - _start_color_lerp: 0.151
+    - _start_color_lerp: 0.363
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Distortion_speed: {r: -1, g: 0, b: 0, a: 0}
+    - _Distortion_speed: {r: 1.81, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Outlier: {r: 0.2860909, g: 0.08582724, b: 0.14332864, a: 0}
+    - _Outlier: {r: 1, g: 1, b: 1, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _core: {r: 0.05870314, g: 0.0056487913, b: 0.04974572, a: 1}
-    - _distortion_titling: {r: 0.69, g: 5.05, b: 0, a: 0}
+    - _core: {r: 0, g: 3.732132, b: 2.0930128, a: 0.69803923}
+    - _distortion_titling: {r: 1.56, g: 3.69, b: 0, a: 0}
     - _start_Color: {r: 766.996, g: 565.8404, b: 565.8404, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2917791843477061116

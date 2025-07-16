@@ -17,7 +17,7 @@ MonoBehaviour:
   Name: kama
   Heath: 40998
   Attack: 17422
-  AttackInterval: 0.1
+  AttackInterval: 0.7
   Defense: 5626
   Resistance: 10
   Block: 1

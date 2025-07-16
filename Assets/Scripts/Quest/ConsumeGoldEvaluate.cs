@@ -39,10 +39,11 @@ public class ConsumeGoldEvaluate : IQuestEvaluate
     private void QuestEventHandler_OnConsumeGold(int obj)
     {
         CurrentAmount += obj;
+        OnProgressChange?.Invoke();
 
     }
 
-  
+
 
     public bool IsCompleted()
     {

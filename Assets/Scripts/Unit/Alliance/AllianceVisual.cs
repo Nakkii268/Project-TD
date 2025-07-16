@@ -15,14 +15,19 @@ public class AllianceVisual : MonoBehaviour
     public void Init()
     {
         alliance.StatusEffectHolder.OnEfectGain += StatusEffectHolder_OnEfectGain;
-        
-        animator.SetFloat("speed", CalSpeedScale(alliance.Stat.AttackInterval.Value));
-        Debug.Log(gameObject.name + CalSpeedScale(alliance.Stat.AttackInterval.Value));
+        float speed = CalSpeedScale(alliance.Stat.AttackInterval.Value);
+        var mainVFX = attackVFX.main;
+        mainVFX.simulationSpeed = speed;
+        animator.SetFloat("speed", speed);
+
 
     }
     private void StatusEffectHolder_OnEfectGain(object sender, System.EventArgs e)
     {
-        animator.SetFloat("speed", CalSpeedScale(alliance.Stat.AttackInterval.Value));
+        float speed = CalSpeedScale(alliance.Stat.AttackInterval.Value);
+        var mainVFX = attackVFX.main;
+        mainVFX.simulationSpeed = speed;
+        animator.SetFloat("speed",speed );
 
     }
 
@@ -74,10 +79,8 @@ public class AllianceVisual : MonoBehaviour
   
     public void PlayAttackAnim()
     {
-        //var mainVFX = attackVFX.main;
-        //mainVFX.simulationSpeed = 10;
+        
 
-       // animator.SetFloat("speed", 5.5f);
 
         animator.Play("attack");
 

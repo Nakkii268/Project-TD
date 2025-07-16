@@ -11,6 +11,7 @@ public class UnitLimitBreakUI : UICanvas
     [SerializeField] private AllianceUnit unit;
   
     [SerializeField] private int CurrentLimtBreak;
+    [SerializeField] private Image CurrentLBIcon;
     [SerializeField] private TextMeshProUGUI LimitBreakText;
     [SerializeField] private Button BackBtn;
     [SerializeField] private Button HomeBtn;
@@ -18,6 +19,7 @@ public class UnitLimitBreakUI : UICanvas
     [SerializeField] private Button CancelBtn;
     [SerializeField] private Transform container;
     [SerializeField] private GameObject ItemRequiredPrefab;
+    [SerializeField] private Animator Animator;
    
     public void Initialized(AllianceUnit allanceUnit)
     {
@@ -41,6 +43,7 @@ public class UnitLimitBreakUI : UICanvas
 
         
         CurrentLimtBreak = unit.LimitBreak;
+        CurrentLBIcon.sprite = GameManager.Instance.limitBreakIcon.GetIcon(CurrentLimtBreak);
     }
 
     private void Start()
@@ -82,7 +85,9 @@ public class UnitLimitBreakUI : UICanvas
         unit.LimitBreak = CurrentLimtBreak + 1;
         SetTargetLimtBreak(CurrentLimtBreak + 1);
         GameManager.Instance._playerDataManager.PlayerDataSO.UpdateUnit(unit);
-
+        Animator.Play("LimitBreak");
+        StartCoroutine(Delay(.4f));
+        CurrentLBIcon.sprite = GameManager.Instance.limitBreakIcon.GetIcon(CurrentLimtBreak);
 
 
 
@@ -128,5 +133,10 @@ public class UnitLimitBreakUI : UICanvas
             GameManager.Instance._playerDataManager.PlayerDataSO.RemoveItem(items[i].Item.ItemID, items[i].Quantity);
             
         }
+    }
+
+    private IEnumerator Delay(float time)
+    {
+        yield return new WaitForSeconds(time);
     }
 }

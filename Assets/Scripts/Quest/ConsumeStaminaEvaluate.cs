@@ -36,7 +36,9 @@ public class ConsumeStaminaEvaluate : IQuestEvaluate
 
     private void QuestEventHandler_OnConsumeStamina(int obj)
     {
-        CurrentAmount += obj;   
+        CurrentAmount += obj;
+        OnProgressChange?.Invoke();
+
     }
 
     public bool IsCompleted()

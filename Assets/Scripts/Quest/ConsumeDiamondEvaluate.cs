@@ -39,6 +39,7 @@ public class ConsumeDiamondEvaluate : IQuestEvaluate
     private void QuestEventHandler_OnConsumeDiamond(int obj)
     {
         CurrentAmount += obj;
+        OnProgressChange?.Invoke();
     }
 
     public bool IsCompleted()
