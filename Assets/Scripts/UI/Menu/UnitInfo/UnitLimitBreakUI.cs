@@ -12,7 +12,6 @@ public class UnitLimitBreakUI : UICanvas
   
     [SerializeField] private int CurrentLimtBreak;
     [SerializeField] private Image CurrentLBIcon;
-    [SerializeField] private TextMeshProUGUI LimitBreakText;
     [SerializeField] private Button BackBtn;
     [SerializeField] private Button HomeBtn;
     [SerializeField] private Button LimitBreakBtn;
@@ -20,6 +19,7 @@ public class UnitLimitBreakUI : UICanvas
     [SerializeField] private Transform container;
     [SerializeField] private GameObject ItemRequiredPrefab;
     [SerializeField] private Animator Animator;
+    
    
     public void Initialized(AllianceUnit allanceUnit)
     {
@@ -44,6 +44,17 @@ public class UnitLimitBreakUI : UICanvas
         
         CurrentLimtBreak = unit.LimitBreak;
         CurrentLBIcon.sprite = GameManager.Instance.limitBreakIcon.GetIcon(CurrentLimtBreak);
+       
+        if (!RequiredCheck())
+        {
+            LimitBreakBtn.interactable = false;
+        }
+        else
+        {
+            LimitBreakBtn.interactable = true;
+
+        }
+        
     }
 
     private void Start()
@@ -61,8 +72,8 @@ public class UnitLimitBreakUI : UICanvas
            
             if (RequiredCheck())
             {
-                LimitBreak();
                 ConsumeMaterial();
+                LimitBreak();
             }
             return;
         });
@@ -83,7 +94,7 @@ public class UnitLimitBreakUI : UICanvas
         
         unit.Level = 1;
         unit.LimitBreak = CurrentLimtBreak + 1;
-        SetTargetLimtBreak(CurrentLimtBreak + 1);
+      
         GameManager.Instance._playerDataManager.PlayerDataSO.UpdateUnit(unit);
         Animator.Play("LimitBreak");
         StartCoroutine(Delay(.4f));
@@ -91,38 +102,30 @@ public class UnitLimitBreakUI : UICanvas
 
 
 
-
-
     }
     private bool RequiredCheck()
     {
-        if(unit.Level > unit.Rarity.LevelCap[unit.LimitBreak]) return false;
+        if (unit.Level < unit.Rarity.LevelCap[unit.LimitBreak])
+        {
+        
+            return false;
+        }
         List<ItemsData> items = unit.UnitClass.ClassLimitBreakpData.LBData[unit.LimitBreak].MaterialsRequired;
         for (int i = 0;i< items.Count; i++)
         {
-            if (GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(items[i].Item.ItemID)==0) return false;
-            if (GameManager.Instance._playerDataManager.PlayerDataSO.GetItemById(items[i].Item.ItemID).Quantity >= items[i].Quantity) return true;
+            if (GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(items[i].Item.ItemID) < items[i].Quantity) {
+                Debug.Log(GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(items[i].Item.ItemID) + "qtt");
+                Debug.Log(items[i].Quantity + "rq");
+                return false; 
+            }
             
             
         }
-        return false;
+        return true;
         
     }
    
-    private void SetTargetLimtBreak(int lb)
-    {
-        CurrentLimtBreak = lb;
-        LimitBreakText.text = lb.ToString();
-    }
 
-  
-
-    public int GetCurrentLimitBreak()
-    {
-        if (!PlayerPrefs.HasKey(unit.UnitID + "lb")) return 0;
-        return PlayerPrefs.GetInt(unit.UnitID + "lb");
-    }
- 
 
     private void ConsumeMaterial()
     {

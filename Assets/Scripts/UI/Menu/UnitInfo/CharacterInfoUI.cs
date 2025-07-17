@@ -184,12 +184,12 @@ public class CharacterInfoUI : UICanvas
         }
         if (IsMaxLimitBreak())
         {
-            Debug.Log(unit.Name + "max");
+            
             LimitBreakBtn.interactable = false;
         }
         else
         {
-            Debug.Log(unit.Name + "NOT MAX  ");
+           
 
             LimitBreakBtn.interactable = true;
 
