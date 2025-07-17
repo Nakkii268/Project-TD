@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClassName: 3
   ClassIcon: {fileID: -255873570, guid: 9ddc3bcb707eead499484dc8ffabcb92, type: 3}
-  ClassPassive: {fileID: 0}
-  ClassLevelUpData: {fileID: 0}
+  ClassPassive: {fileID: 11400000, guid: 870ea67b3ffd1224ebf3d77869e9184f, type: 2}
+  ClassLevelUpData: {fileID: 11400000, guid: 894dfdf2b4e16394688e2a54c729fb10, type: 2}
+  ClassLimitBreakpData: {fileID: 11400000, guid: 102084d94cb7f9f47aa223cbeca26423, type: 2}
+  BranchPassive: {fileID: 11400000, guid: a2378c8ed37ad834ea04b4d900fddf0b, type: 2}
   SubClassName: 0
-  BranchPassive: {fileID: 0}

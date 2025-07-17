@@ -183,7 +183,7 @@ Transform:
   m_GameObject: {fileID: 4623571318617768961}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.067, y: -0.345, z: -1.1}
+  m_LocalPosition: {x: -0.067, y: -0.022, z: -1.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -241,7 +241,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.77
 --- !u!1 &6258046552785313668
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,7 +307,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.077420294, y: -0.22497177}
+  m_Offset: {x: -0.0520989, y: -0.11629963}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -318,7 +318,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7372911, y: 0.5562259}
+  m_Size: {x: 0.5977908, y: 0.31558597}
   m_EdgeRadius: 0
 --- !u!50 &2153578280216753694
 Rigidbody2D:
@@ -410,10 +410,6 @@ MonoBehaviour:
   statusEffectHolder: {fileID: 2321668008336166529}
   HurtBox: {fileID: 158298926301726645}
   Blocker: {fileID: 0}
-  blockModifier:
-    Value: -1
-    ModType: 1
-    Order: 0
 --- !u!114 &2321668008336166529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,7 +467,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 549c37161afac30459f4ac582ddc1c8d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.074
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 549c37161afac30459f4ac582ddc1c8d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -752,6 +748,14 @@ PrefabInstance:
     - target: {fileID: 4157741701538757237, guid: 549c37161afac30459f4ac582ddc1c8d, type: 3}
       propertyPath: m_Layer
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808532571273057128, guid: 549c37161afac30459f4ac582ddc1c8d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.09505352
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808532571273057128, guid: 549c37161afac30459f4ac582ddc1c8d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.030906282
       objectReference: {fileID: 0}
     - target: {fileID: 4808532571273057128, guid: 549c37161afac30459f4ac582ddc1c8d, type: 3}
       propertyPath: m_LocalRotation.w

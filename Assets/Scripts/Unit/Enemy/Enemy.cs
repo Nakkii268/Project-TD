@@ -35,7 +35,7 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
     [SerializeField] private EnemySMManager eStateMachine;
     public EnemySMManager EnemySMManager { get { return eStateMachine; } }
 
-    private bool isDead=false;
+
     public event EventHandler<EnemyDeadArg> OnEnemyDead;
     public event EventHandler<float> OnHpChange;
     public event EventHandler OnGetHit;
@@ -103,13 +103,10 @@ public class Enemy : Character, IDamageable, IHealable, IHasHpBar
         }
         if (stat.currentHp < 0)
         {
+            HurtBox.gameObject.SetActive(false);
             stat.currentHp = 0;
-            if (!isDead) //multiple hit skill may cause event invoke multiple time
-            {
-                isDead = true;
-                HurtBox.gameObject.SetActive(false);
-                OnEnemyDead?.Invoke(this, new EnemyDeadArg(this.gameObject, isWaveEnemy));
-           }
+             OnEnemyDead?.Invoke(this, new EnemyDeadArg(this.gameObject, isWaveEnemy));
+           
 
         }
 

@@ -15,10 +15,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private int enemyCount;
     private bool isEnable;
     public event EventHandler<WaveEvtarg> OnEnemyChange;
-    private void Start()
-    {
-        
-    }
+
     public void Init()
     {
         currentWaveIndex = 0;
@@ -28,13 +25,18 @@ public class WaveManager : MonoBehaviour
         enemyCount = 0;
         OnEnemyChange?.Invoke(this, new WaveEvtarg(enemyCount, m_MapSO.TotalEnemy));
         isEnable = true;
+        for(int i = 0;i < m_MapSO.Waves.Length; i++)
+        {
+            StartCoroutine(DelaySpawn(m_MapSO.Waves[i]));
+        }
     }
     private void Update()
     {
         if (!isEnable) return;   
         if (nextWaveIndex >= m_MapSO.Waves.Length) return;
 
-        if (Time.time - entryTime >= m_MapSO.Waves[nextWaveIndex].SpawnTime- 1f)
+        //visualize enemy path
+        if (Time.time - entryTime >= m_MapSO.Waves[nextWaveIndex].SpawnTime- 3f)
         {
             if (!wavePath.isPathVisualize)
             {
@@ -45,13 +47,18 @@ public class WaveManager : MonoBehaviour
 
 
         }
-        if (Time.time - entryTime >= m_MapSO.Waves[nextWaveIndex].SpawnTime)
-        {
+        //spawn
+       // for (int i = 0; i < m_MapSO.Waves.Length; i++)
+       // {
+            
+       //     if (Time.time - entryTime >= m_MapSO.Waves[i].SpawnTime)
+        //    {
 
-            StartCoroutine(DelaySpawn(m_MapSO.Waves[currentWaveIndex]));
-            nextWaveIndex++;
+         //       StartCoroutine(DelaySpawn(m_MapSO.Waves[i]));
+         //       nextWaveIndex++;
 
-       }
+         //   }
+        //}
     }
     
     private void SpawnWave(Wave wave)
@@ -83,6 +90,7 @@ public class WaveManager : MonoBehaviour
 
     private IEnumerator DelaySpawn( Wave wave)
     {
+        yield return new WaitForSeconds(wave.SpawnTime);
         for (int i = 0; i < wave.EnemyQuantity; i++)
         {
             SpawnWave(wave);
@@ -92,7 +100,10 @@ public class WaveManager : MonoBehaviour
         
         currentWaveIndex++;
     }
+    private IEnumerator VisualizePath(int index)
+    {
 
+    }
 }
 public class WaveEvtarg
 {
