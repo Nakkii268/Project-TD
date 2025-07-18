@@ -8,17 +8,17 @@ public class ParticleManager : MonoBehaviour
     [SerializeField] private ParticleSystem hitParticle;
     [SerializeField] private ParticleSystem slashParticle;
     
-    public void SpawnEffectParticle( GameObject target,float duration) //status effect particle
-    {
-        ParticleSystem particle = Instantiate(_particleSystem,target.transform.position,Quaternion.identity,target.transform);
-        particle.Play();
-        StartCoroutine(StopParticle(particle,duration));    
-        
-    }
+    
     public void HitParticle(GameObject target,ParticleSystem p) // get hit particle
     {
         
         ParticleSystem particle = Instantiate(p, target.transform.position, Quaternion.identity, target.transform);
+        particle.Play();
+    }
+    public void SkillHitParticle(GameObject target,ParticleSystem p) // get hit particle
+    {
+        
+        ParticleSystem particle = Instantiate(p, target.transform.position, Quaternion.identity);
         particle.Play();
     }
   
@@ -39,7 +39,7 @@ public class ParticleManager : MonoBehaviour
     }
 
  
-    public IEnumerator StopParticle(ParticleSystem p,float duration)
+    public IEnumerator StopParticle(ParticleSystem p,float duration) // for effect type
     {
         if(duration == 99)
         {

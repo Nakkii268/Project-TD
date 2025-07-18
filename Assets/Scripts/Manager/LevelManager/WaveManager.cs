@@ -100,10 +100,10 @@ public class WaveManager : MonoBehaviour
         
         currentWaveIndex++;
     }
-    private IEnumerator VisualizePath(int index)
+  /*  private IEnumerator VisualizePath(int index)
     {
 
-    }
+    }*/
 }
 public class WaveEvtarg
 {

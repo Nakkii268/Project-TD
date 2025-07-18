@@ -39,7 +39,7 @@ MonoBehaviour:
     EnemyQuantity: 10
     SpawnDelay: 1
     SpawnPos: {x: 1, y: 0, z: 0}
-  - SpawnTime: 20
+  - SpawnTime: 30
     Path:
     - {x: 1, y: 0}
     - {x: 1, y: 1}
@@ -60,8 +60,50 @@ MonoBehaviour:
     EnemyQuantity: 5
     SpawnDelay: 1
     SpawnPos: {x: 1, y: 0, z: 0}
-  TotalEnemy: 15
-  LifePoint: 5
+  - SpawnTime: 60
+    Path:
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    - {x: 1, y: 2}
+    - {x: 1, y: 3}
+    - {x: 1, y: 4}
+    - {x: 2, y: 4}
+    - {x: 3, y: 4}
+    - {x: 4, y: 4}
+    - {x: 5, y: 4}
+    - {x: 6, y: 4}
+    - {x: 7, y: 4}
+    - {x: 8, y: 4}
+    - {x: 8, y: 5}
+    - {x: 8, y: 6}
+    - {x: -99, y: 99}
+    EnemyUnit: {fileID: 11400000, guid: cd67ce6d899f05a4c9e6c25c43ab52ee, type: 2}
+    EnemyQuantity: 20
+    SpawnDelay: 1
+    SpawnPos: {x: 1, y: 0, z: 0}
+  - SpawnTime: 100
+    Path:
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    - {x: 1, y: 2}
+    - {x: 1, y: 3}
+    - {x: 1, y: 4}
+    - {x: 2, y: 4}
+    - {x: 3, y: 4}
+    - {x: 4, y: 4}
+    - {x: 5, y: 4}
+    - {x: 6, y: 4}
+    - {x: 7, y: 4}
+    - {x: 8, y: 4}
+    - {x: 8, y: 5}
+    - {x: 8, y: 6}
+    - {x: -99, y: 99}
+    EnemyUnit: {fileID: 11400000, guid: cd67ce6d899f05a4c9e6c25c43ab52ee, type: 2}
+    EnemyQuantity: 10
+    SpawnDelay: 1
+    SpawnPos: {x: 1, y: 0, z: 0}
+  TotalEnemy: 45
+  LifePoint: 20
   StartDeployPoint: 15
   DpRecoveryRate: 1
   DeployLimit: 4

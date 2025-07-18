@@ -6375,7 +6375,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1376952353
   m_SortingOrder: 6
   m_TargetDisplay: 0
 --- !u!114 &6374987397538641399
@@ -8727,7 +8727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnUseSkill: {fileID: 11400000, guid: a5ddbc2b178714f46b40ef5e9642bdf4, type: 2}
   alliance: {fileID: 4489595423137854530}
-  target: []
+  target: {fileID: 0}
   startSkillPoint: 0
   curSkillPoint: 50
   SkillActiveBtn: {fileID: 7944637011915187758}

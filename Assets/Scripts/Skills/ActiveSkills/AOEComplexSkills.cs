@@ -18,6 +18,8 @@ public class AOEComplexSkills : ComplexSkills
         if (skillTarget == SkillTarget.Self)
         {
             //dmg self
+            LevelManager.instance.ParticleManager.SkillHitParticle(User.gameObject, SkillHitVFX);
+
             User.GetComponentInParent<IDamageable>().ReceiveDamaged(SkillDmg, DamageType);
 
 
@@ -29,6 +31,9 @@ public class AOEComplexSkills : ComplexSkills
             //dmg target
             foreach (Collider2D tg in GetTarget(User))
             {
+
+                LevelManager.instance.ParticleManager.SkillHitParticle(tg.gameObject, SkillHitVFX);
+
                 tg.GetComponentInParent<IDamageable>().ReceiveDamaged(SkillDmg, DamageType);
 
             }

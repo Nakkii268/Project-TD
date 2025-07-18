@@ -46,10 +46,12 @@ public class ComplexSkills : ActiveSkills
             if (GetTarget(User) != null)
             {
                 GameObject target = GetTarget(User)[0].gameObject;
+                LevelManager.instance.ParticleManager.SkillHitParticle(target, SkillHitVFX);
                  target.GetComponentInParent<IDamageable>().ReceiveDamaged(SkillDmg, DamageType);
+
             }
-           
-               
+
+
         }
     }
     public virtual void EffectComponent(AllianceSkill User) 

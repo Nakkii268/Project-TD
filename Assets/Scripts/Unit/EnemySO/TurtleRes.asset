@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0574366185e35eb498abd38a4dfd855c, type: 3}
   m_Name: TurtleRes
   m_EditorClassIdentifier: 
-  UnitID: E01
-  UnitPrefab: {fileID: 7337458643970106659, guid: 5813ce2ba261bb841a074e50c19f5b72, type: 3}
-  Name: Cabbage Slime
+  UnitID: E04
+  UnitPrefab: {fileID: 7337458643970106659, guid: b837c93506338e04183261cb2bd4959d, type: 3}
+  Name: Magic Turtle
   Heath: 123540
   Attack: 200
   AttackInterval: 1
-  Defense: 1
-  Resistance: 1
+  Defense: 500
+  Resistance: 99
   Block: 0
   HitVfx: {fileID: 27400811220467730, guid: a026953b84f4b384b90d2ad2f6f68bfc, type: 3}
   Speed: 0.5

@@ -37,6 +37,8 @@ public class AOEDamageSkills : DamageTypeSkills
 
         for (int i = 0; i < hits.Length; i++)
         {
+            LevelManager.instance.ParticleManager.SkillHitParticle(hits[i].gameObject, SkillHitVFX);
+
             hits[i].GetComponentInParent<IDamageable>().ReceiveDamaged(SkillDmgScale * User.alliance.Stat.Attack.Value, DamageType);
             Debug.Log("AOE hits");
         }

@@ -34,7 +34,7 @@ public class EnemyVisual : MonoBehaviour
     }
     public void SetSortingOrder(float value)
     {
-        sortingGroup.sortingOrder = Mathf.RoundToInt(20-value);
+        sortingGroup.sortingOrder =20- Mathf.CeilToInt(value);
     }
     public void PlayIdleAnim()
     {

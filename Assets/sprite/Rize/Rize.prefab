@@ -766,7 +766,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1376952353
   m_SortingOrder: 6
   m_TargetDisplay: 0
 --- !u!114 &6374987397538641399
@@ -859,6 +859,7 @@ MonoBehaviour:
   vfxPos: {fileID: 8670232256405674928}
   targetCount: 0
   damageType: 0
+  attackReady: 0
   ProjectileVisual: {fileID: 654593747, guid: f06cfe564242e7d4783211fd947edf04, type: 3}
   isEnhance: 0
   firePoint: {fileID: 8670232256405674928}
@@ -1918,7 +1919,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnUseSkill: {fileID: 11400000, guid: 768fedc3b7c4dd242b11e5d117e32b55, type: 2}
   alliance: {fileID: 4489595423137854530}
-  target: []
+  target: {fileID: 0}
   startSkillPoint: 0
   curSkillPoint: 50
   SkillActiveBtn: {fileID: 7944637011915187758}
@@ -2759,6 +2760,7 @@ MonoBehaviour:
   alliance: {fileID: 4489595423137854530}
   animator: {fileID: 1334842455941863260}
   sortingGroup: {fileID: 2605914830225419984}
+  attackVFX: {fileID: 8281976299469518386, guid: b0cf4939cb2f871439abd5815194152a, type: 3}
 --- !u!210 &2605914830225419984
 SortingGroup:
   m_ObjectHideFlags: 0

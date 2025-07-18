@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 [CreateAssetMenu(menuName ="Skill/DamageTypeSkill")]
 public class DamageTypeSkills : ActiveSkills
@@ -25,16 +26,19 @@ public class DamageTypeSkills : ActiveSkills
             if (GetTarget(User) != null)
             {
                 GameObject target = GetTarget(User)[0].gameObject;
+                LevelManager.instance.ParticleManager.SkillHitParticle(target,SkillHitVFX);
                 target.GetComponentInParent<IDamageable>().ReceiveDamaged(SkillDmgScale * User.alliance.Stat.Attack.Value, DamageType);
 
             }
-          
-            
+
+
         }
         else if (skillTarget == SkillTarget.Self)
         {
 
+            LevelManager.instance.ParticleManager.SkillHitParticle(User.gameObject, SkillHitVFX);
             User.GetComponentInParent<IDamageable>().ReceiveDamaged(SkillDmgScale * User.alliance.Stat.Attack.Value, DamageType);
+
         }
     }
 

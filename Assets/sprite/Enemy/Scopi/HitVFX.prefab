@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4791130588185509083}
   - component: {fileID: 8137755862202914372}
   - component: {fileID: 7294123149221539523}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: HitVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,8 +117,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.1
-      minScalar: 0.05
+      scalar: 0.2
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -288,8 +288,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.2
-      minScalar: 0.1
+      scalar: 0.3
+      minScalar: 0.2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4900,7 +4900,7 @@ GameObject:
   - component: {fileID: 8647348768526438294}
   - component: {fileID: 4456293476349523036}
   - component: {fileID: 2066802845199428736}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -13,7 +13,9 @@ public class Skills : ScriptableObject
     public SkillTarget skillTarget;
     public bool TargetRequire;
     public Vector2[] SkillRange;
+    [Header("SKill VFX")]
     public VFXData SkillVFX;
+    public ParticleSystem SkillHitVFX = null;
     public virtual void SkillActivate(AllianceSkill User)
     {
 
