@@ -21,6 +21,13 @@ public class ParticleManager : MonoBehaviour
         ParticleSystem particle = Instantiate(p, target.transform.position, Quaternion.identity);
         particle.Play();
     }
+    public void SkillEffectParticle(GameObject target,ParticleSystem p,float duration) // get hit particle
+    {
+        
+        ParticleSystem particle = Instantiate(p, target.transform.position, Quaternion.identity,target.transform);
+        particle.Play();
+        StartCoroutine(StopParticle(p,duration));
+    }
   
     public void SkillParticle(GameObject target, VFXData p,Transform pos,Quaternion rotate)
     {

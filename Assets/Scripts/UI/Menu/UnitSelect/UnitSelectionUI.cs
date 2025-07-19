@@ -98,20 +98,23 @@ public class UnitSelectionUI : UICanvas
         //handle select item part
         for (int i = 0; i < _units.Count; i++)
         {
+            
 
-            UnitSelectionSingle single = Instantiate(prefab, container);
-            single.OnUnitSelected += Single_OnUnitSelected;
-            _singles.Add(single);
-            single.Initialized(_units[i],i,idx,unit);
-            single.gameObject.SetActive(true);
-            _child.Add(i, single);
-           
-            HandleSkillUI(skillIndex);
-            if (unit == _units[i])
-            {
-                _currentSelectIndex = i;
 
-            }
+                UnitSelectionSingle single = Instantiate(prefab, container);
+                single.OnUnitSelected += Single_OnUnitSelected;
+                _singles.Add(single);
+                single.Initialized(_units[i], i, idx, unit);
+                single.gameObject.SetActive(true);
+                _child.Add(i, single);
+
+                HandleSkillUI(skillIndex);
+                if (unit == _units[i])
+                {
+                    _currentSelectIndex = i;
+
+                }
+            
         }
     }
     private void OnDisable()

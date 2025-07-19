@@ -24,7 +24,7 @@ MonoBehaviour:
     Particle: {fileID: 3695468097135810879, guid: ff5013e3b8a1f294a975c9d983e225d2, type: 3}
     Rotatable: 1
     BaseRotation: {x: -90, y: 90, z: -90}
-  SkillHitVFX: {fileID: 3435729269548842206, guid: b534cd1fc0ff4984b86eca49595c4df6, type: 3}
+  SkillHitVFX: {fileID: 6906965973550640854, guid: 062ab438b42446b429e6ccf0f33e8c9e, type: 3}
   ChargeType: 2
   SkillDuration: 0.5
   SkillPoint: 2

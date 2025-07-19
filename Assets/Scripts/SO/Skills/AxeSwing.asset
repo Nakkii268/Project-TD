@@ -24,18 +24,19 @@ MonoBehaviour:
     Particle: {fileID: 2932496039972601042, guid: 9c18fa6d6a41fac4e8ae9e04bc76c278, type: 3}
     Rotatable: 1
     BaseRotation: {x: -90, y: 90, z: -90}
+  SkillHitVFX: {fileID: 6103113369537609921, guid: c5b1a15662665634380c9c60a0737adf, type: 3}
   ChargeType: 2
   SkillDuration: 0.5
   SkillPoint: 1
   CanAttack: 0
   ActiveType: 1
-  SkillDmgScale: 9999
-  DamageType: 0
-  DelayTime: 0
-  TotalHits: 2
-  DelayBetweenHits: 0.2
   Range: {x: 3, y: 3}
   TargetLayer:
     serializedVersion: 2
     m_Bits: 2048
   IsAroundUser: 1
+  SkillDmgScale: 9999
+  DamageType: 0
+  DelayTime: 0
+  TotalHits: 2
+  DelayBetweenHits: 0.2

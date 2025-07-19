@@ -10,7 +10,7 @@ public class DamageTypeSkills : ActiveSkills
     public float SkillDmgScale;
     public DamageType DamageType;
     public float DelayTime;
-    public int TotalHits; //number of hit will strke
+    [Range(1,99)]public int TotalHits; //number of hit will strke
     public float DelayBetweenHits;// delay btw each hit
     public override void SkillActivate(AllianceSkill User)
     {

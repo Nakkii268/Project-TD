@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.5372549}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -672,7 +672,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7916239247981826258}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -739,17 +739,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPointerIn: 0
   levelManager: {fileID: 0}
-  unit: {fileID: 11400000, guid: b18f85b780946e8409d3a4e0589a984a, type: 2}
-  Prefab: {fileID: 0}
-  toPrefab: {fileID: 6865232695306935221, guid: b29fed58893aaa54c9e718b032cd4afd, type: 3}
-  indx: 0
+  SlotUnit: {fileID: 11400000, guid: f137a38c32ffca04da14660715ab3b01, type: 2}
+  DragPrefab: {fileID: 0}
+  SpawnPrefab: {fileID: 0}
+  SlotIndex: 0
   Canvas: {fileID: 0}
   Potrait: {fileID: 339020226426653745}
+  BlurLayer: {fileID: 5389207578835808250}
   rectTransform: {fileID: 4661069294386137073}
   countDownUI: {fileID: 64599054392109224}
   UnitCostTxt: {fileID: 6300419223857255428}
   ClassIcon: {fileID: 2644427083425062350}
   isForcused: 0
+  SkillIndex: 0
 --- !u!1 &9055459332972336065
 GameObject:
   m_ObjectHideFlags: 0

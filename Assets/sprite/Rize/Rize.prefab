@@ -860,7 +860,7 @@ MonoBehaviour:
   targetCount: 0
   damageType: 0
   attackReady: 0
-  ProjectileVisual: {fileID: 654593747, guid: f06cfe564242e7d4783211fd947edf04, type: 3}
+  ProjectileVisual: {fileID: 1687324891, guid: 7fb06415a5c40dc428d19af7ee0dd4bc, type: 3}
   isEnhance: 0
   firePoint: {fileID: 8670232256405674928}
 --- !u!1 &2956980803203035853

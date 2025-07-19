@@ -21,14 +21,20 @@ MonoBehaviour:
   TargetRequire: 0
   SkillRange: []
   SkillVFX:
-    Particle: {fileID: 8281976299469518386, guid: b0cf4939cb2f871439abd5815194152a, type: 3}
+    Particle: {fileID: 7505074700287860684, guid: db165090d6d2c1c438f9c973e6d33dfc, type: 3}
     Rotatable: 0
     BaseRotation: {x: 0, y: 0, z: 0}
+  SkillHitVFX: {fileID: 0}
   ChargeType: 2
   SkillDuration: 99
   SkillPoint: 1
   CanAttack: 1
   ActiveType: 0
+  Range: {x: 0, y: 0}
+  TargetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  IsAroundUser: 0
   effects:
   - effect: {fileID: 11400000, guid: f0787e38af17e05488ef854602385f5b, type: 2}
     delayTime: 0

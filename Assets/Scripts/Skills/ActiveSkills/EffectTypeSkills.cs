@@ -13,16 +13,15 @@ public class EffectTypeSkills : ActiveSkills
 
     public override void SkillActivate(AllianceSkill User)
     {
-        Debug.Log("acitive");
+        
         for (int i = 0; i < effects.Count; i++)
         {
-            Debug.Log("add effect");
+          
             User.StartCoroutine(DelayEffect(User, effects[i].effect, effects[i].delayTime,Delay,SkillDuration));
         }
     }
     private void EffectComponent(AllianceSkill User, StatusEffect effect)
     {
-        LevelManager.instance.ParticleManager.SkillParticle(User.gameObject, SkillVFX, User.transform, User.alliance.GetVFXQuaternion());
 
         if (skillTarget == SkillTarget.Enemy)
         {
@@ -30,6 +29,8 @@ public class EffectTypeSkills : ActiveSkills
             {
                 GameObject target = GetTarget(User)[0].gameObject;
                 StatusEffectHolder holder = target.GetComponentInParent<StatusEffectHolder>();
+                LevelManager.instance.ParticleManager.SkillEffectParticle(target, SkillVFX.Particle, SkillDuration);
+
                 holder.AddStatusEffect(target, effect);
             }
 
@@ -40,6 +41,8 @@ public class EffectTypeSkills : ActiveSkills
         else if (skillTarget == SkillTarget.Self)
         {
             StatusEffectHolder effectHolder = User.GetComponentInParent<StatusEffectHolder>();
+            LevelManager.instance.ParticleManager.SkillEffectParticle(User.gameObject, SkillVFX.Particle, SkillDuration );
+
             effectHolder.AddStatusEffect(User.gameObject, effect);
             
         }
@@ -48,6 +51,11 @@ public class EffectTypeSkills : ActiveSkills
     {
         duration = SkillDuration;
         yield return new WaitForSeconds(time);
+        if(skillTarget== SkillTarget.Self) // called one time only if it sefl buff
+        {
+            EffectComponent(User, effect);
+            yield break;
+        }
         while (duration > 0) {
             EffectComponent(User, effect);
             if (SkillDuration < 99)

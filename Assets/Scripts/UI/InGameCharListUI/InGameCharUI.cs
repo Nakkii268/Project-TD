@@ -16,12 +16,14 @@ public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEnd
     [SerializeField] private int SlotIndex;
     [SerializeField]private Canvas Canvas;
     [SerializeField] private Image Potrait;
+    [SerializeField] private Image BlurLayer;
     [SerializeField] private RectTransform rectTransform;
     [SerializeField] private  CountDownUI countDownUI;
     [SerializeField] private TextMeshProUGUI UnitCostTxt;
     [SerializeField] private Image ClassIcon;
     [SerializeField] private bool isForcused;
     [SerializeField] private int SkillIndex;
+    [SerializeField] private bool CanDrag;
     protected  void Start()
     {
         
@@ -31,7 +33,25 @@ public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEnd
         ClassIcon.sprite = SlotUnit.UnitClass.ClassIcon;
         Potrait.sprite = SlotUnit.unitPotrait;
         Canvas= UIManager.Instance.GetComponent<Canvas>();
+        levelManager.GetLevelDPManager().OnDpChange += InGameCharUI_OnDpChange;
     }
+
+    private void InGameCharUI_OnDpChange(object sender, float e)
+    {
+        if (SlotUnit.UnitDp > e)
+        {
+            CanDrag= false;
+            BlurLayer.gameObject.SetActive(true);
+        }
+        else
+        {
+            CanDrag = true;
+
+            BlurLayer.gameObject.SetActive(false);
+
+        }
+    }
+
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -50,6 +70,7 @@ public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEnd
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if(!CanDrag) return;
         if ((levelManager.GetLevelDPManager().GetCurrentDp() < SlotUnit.UnitDp) 
             || !countDownUI.canDeloy 
             || !levelManager.GetLevelDPManager().ReachDeployLimit()) return;
@@ -63,6 +84,8 @@ public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (!CanDrag) return;
+
         if ((levelManager.GetLevelDPManager().GetCurrentDp() < SlotUnit.UnitDp) 
             || !countDownUI.canDeloy 
             ||  !levelManager.GetLevelDPManager().ReachDeployLimit()) return;
@@ -79,6 +102,8 @@ public class InGameCharUI : PointerDetect, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (!CanDrag) return;
+
         DragPrefab.gameObject.SetActive(false);
         rectTransform.localScale = Vector3.one;
         OnCharDrop?.Invoke(this, new CharacterData(SpawnPrefab,SlotUnit,SlotIndex,SkillIndex));

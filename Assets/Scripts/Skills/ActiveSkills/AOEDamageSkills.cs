@@ -1,9 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
+
 
 
 [CreateAssetMenu(menuName = "Skill/amageTypeSkill/AOE")]
@@ -40,7 +38,7 @@ public class AOEDamageSkills : DamageTypeSkills
             LevelManager.instance.ParticleManager.SkillHitParticle(hits[i].gameObject, SkillHitVFX);
 
             hits[i].GetComponentInParent<IDamageable>().ReceiveDamaged(SkillDmgScale * User.alliance.Stat.Attack.Value, DamageType);
-            Debug.Log("AOE hits");
+            
         }
 
     }

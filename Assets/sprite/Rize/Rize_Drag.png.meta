@@ -130,6 +130,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Ryze_Projectile
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 6021
+        width: 619
+        height: 456
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fa3cd7c1ef570c4bb93f35785d30a76
+      internalID: 1687324891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -142,6 +163,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Rize_Drag_0: 1742239285
+      Ryze_Projectile: 1687324891
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

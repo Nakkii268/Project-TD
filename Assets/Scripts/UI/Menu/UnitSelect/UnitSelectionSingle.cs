@@ -48,7 +48,7 @@ public class UnitSelectionSingle : MonoBehaviour
         {
             if (GameManager.Instance._playerDataManager.PlayerDataSO.IsLineUpContain(unit))
             {
-                _btn.interactable = false;
+                Destroy(this.gameObject);
             }
 
         }
@@ -77,7 +77,7 @@ public class UnitSelectionSingle : MonoBehaviour
                 
 
             }
-            Debug.Log(_unit.Name);
+            
         });
        
         
