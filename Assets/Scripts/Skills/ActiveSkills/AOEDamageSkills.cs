@@ -14,7 +14,7 @@ public class AOEDamageSkills : DamageTypeSkills
 
     }
    
-    private void Damage(AllianceSkill User)
+    protected override void Damage(AllianceSkill User)
     {
         
 
@@ -44,7 +44,7 @@ public class AOEDamageSkills : DamageTypeSkills
     }
 
    
-    private IEnumerator DelayDamage(AllianceSkill User, float time,int hits, float delay)
+   /* private IEnumerator DelayDamage(AllianceSkill User, float time,int hits, float delay)
     {
         yield return new WaitForSeconds(time);
         LevelManager.instance.ParticleManager.SkillParticle(User.gameObject, SkillVFX, User.transform, User.alliance.GetVFXQuaternion());
@@ -55,6 +55,6 @@ public class AOEDamageSkills : DamageTypeSkills
             yield return new WaitForSeconds(delay);
         }
         
-    }
+    }*/
    
 }

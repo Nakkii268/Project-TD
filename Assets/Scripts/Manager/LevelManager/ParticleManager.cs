@@ -9,19 +9,19 @@ public class ParticleManager : MonoBehaviour
     [SerializeField] private ParticleSystem slashParticle;
     
     
-    public void HitParticle(GameObject target,ParticleSystem p) // get hit particle
+    public void HitParticle(GameObject target,ParticleSystem p) 
     {
         
         ParticleSystem particle = Instantiate(p, target.transform.position, Quaternion.identity, target.transform);
         particle.Play();
     }
-    public void SkillHitParticle(GameObject target,ParticleSystem p) // get hit particle
+    public void SkillHitParticle(GameObject target,ParticleSystem p) 
     {
         
         ParticleSystem particle = Instantiate(p, target.transform.position, Quaternion.identity);
         particle.Play();
     }
-    public void SkillEffectParticle(GameObject target,ParticleSystem p,float duration) // get hit particle
+    public void SkillEffectParticle(GameObject target,ParticleSystem p,float duration) 
     {
         
         ParticleSystem particle = Instantiate(p, target.transform.position, Quaternion.identity,target.transform);

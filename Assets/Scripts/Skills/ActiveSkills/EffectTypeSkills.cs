@@ -20,7 +20,7 @@ public class EffectTypeSkills : ActiveSkills
             User.StartCoroutine(DelayEffect(User, effects[i].effect, effects[i].delayTime,Delay,SkillDuration));
         }
     }
-    private void EffectComponent(AllianceSkill User, StatusEffect effect)
+    protected virtual void EffectComponent(AllianceSkill User, StatusEffect effect)
     {
 
         if (skillTarget == SkillTarget.Enemy)
@@ -47,20 +47,20 @@ public class EffectTypeSkills : ActiveSkills
             
         }
     }
-    private IEnumerator DelayEffect(AllianceSkill User, StatusEffect effect, float time,float delay,float duration)
+    protected IEnumerator DelayEffect(AllianceSkill User, StatusEffect effect, float time,float delay,float duration)
     {
-        duration = SkillDuration;
+        float skillDuration = duration;
         yield return new WaitForSeconds(time);
         if(skillTarget== SkillTarget.Self) // called one time only if it sefl buff
         {
             EffectComponent(User, effect);
             yield break;
         }
-        while (duration > 0) {
+        while (skillDuration > 0) {
             EffectComponent(User, effect);
             if (SkillDuration < 99)
             {
-                SkillDuration -= Delay;
+                skillDuration -= Delay;
 
             }
             yield return new WaitForSeconds(delay);

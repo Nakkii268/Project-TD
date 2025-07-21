@@ -17,7 +17,7 @@ public class DamageTypeSkills : ActiveSkills
         User.StartCoroutine(DelayDamage(User,DelayTime,TotalHits,DelayBetweenHits));    
     }
     
-    private void Damage(AllianceSkill User)
+    protected virtual void Damage(AllianceSkill User)
     {
         LevelManager.instance.ParticleManager.SkillParticle(User.gameObject, SkillVFX, User.transform, User.alliance.GetVFXQuaternion());
 
@@ -42,7 +42,7 @@ public class DamageTypeSkills : ActiveSkills
         }
     }
 
-    private IEnumerator DelayDamage(AllianceSkill User,float time,int hits,float delay)
+    protected IEnumerator DelayDamage(AllianceSkill User,float time,int hits,float delay)
     {
         yield return new WaitForSeconds(time);
         for (int i = 0; i < hits; i++)
