@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Recover
   Icon: {fileID: 0}
-  Description: 
+  Description: Gain 15 deploy points over 8 seconds, slowly recovery heath
   skillType: 0
   skillEffect: 1
   skillTarget: 1
@@ -24,13 +24,20 @@ MonoBehaviour:
     Particle: {fileID: 27400811220467730, guid: a026953b84f4b384b90d2ad2f6f68bfc, type: 3}
     Rotatable: 0
     BaseRotation: {x: 0, y: 0, z: 0}
+  SkillHitVFX: {fileID: 0}
   ChargeType: 2
   SkillDuration: 10
   SkillPoint: 15
   CanAttack: 0
   ActiveType: 0
+  Range: {x: 0, y: 0}
+  TargetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  IsAroundUser: 0
   effects:
   - effect: {fileID: 11400000, guid: a2378c8ed37ad834ea04b4d900fddf0b, type: 2}
     delayTime: 0
   - effect: {fileID: 11400000, guid: 13bab05f8df9d1940bca1da734735d9c, type: 2}
     delayTime: 0
+  Delay: 0

@@ -15,5 +15,5 @@ MonoBehaviour:
   ItemID: M009
   ItemName: Heal potion
   ItemSprite: {fileID: -560734458, guid: 14e56e4d3c4054941a78d56fc276c1fb, type: 3}
-  Description: 
+  Description: A heal potion. How effective can it be?
   Category: 2

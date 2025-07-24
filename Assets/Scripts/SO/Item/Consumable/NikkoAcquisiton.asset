@@ -15,6 +15,6 @@ MonoBehaviour:
   ItemID: CA03
   ItemName: Nikko acquisition
   ItemSprite: {fileID: 1222539166, guid: 8b127051ec22801428a87e39b4d2eb38, type: 3}
-  Description: 
+  Description: I shall not fall!! Use to aquire Nikko
   Category: 1
   UnitAcquire: {fileID: 11400000, guid: fe3de76f2a360b24197367daf81acd53, type: 2}

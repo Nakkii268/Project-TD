@@ -15,5 +15,5 @@ MonoBehaviour:
   ItemID: M001
   ItemName: Old Medal
   ItemSprite: {fileID: 164451600, guid: 14e56e4d3c4054941a78d56fc276c1fb, type: 3}
-  Description: 
+  Description: Can be found anywhere in dungeon
   Category: 2

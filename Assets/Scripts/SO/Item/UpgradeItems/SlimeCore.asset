@@ -15,5 +15,5 @@ MonoBehaviour:
   ItemID: M005
   ItemName: Slime core
   ItemSprite: {fileID: -1796580830, guid: 14e56e4d3c4054941a78d56fc276c1fb, type: 3}
-  Description: 
+  Description: Something dropped by the slime
   Category: 2

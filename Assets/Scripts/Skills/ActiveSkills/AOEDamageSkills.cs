@@ -31,7 +31,8 @@ public class AOEDamageSkills : DamageTypeSkills
             centery = ((RangeSwap(User.alliance.direction).y / 2 + .5f) * User.alliance.direction).y + (User.alliance.UnitPos.y);
         }
         Collider2D[] hits = Physics2D.OverlapBoxAll(new Vector2(centerx,centery), RangeSwap(User.alliance.direction), 0,TargetLayer,-5,5);
-        
+
+        LevelManager.instance.ParticleManager.SkillParticle(User.gameObject, SkillVFX, User.transform, User.alliance.GetVFXQuaternion());
 
         for (int i = 0; i < hits.Length; i++)
         {

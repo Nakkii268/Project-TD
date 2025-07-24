@@ -15,5 +15,5 @@ MonoBehaviour:
   ItemID: M011
   ItemName: Hunt Dagger
   ItemSprite: {fileID: -1045214403, guid: 14e56e4d3c4054941a78d56fc276c1fb, type: 3}
-  Description: 
+  Description: A hunt dagger, the inseparable object of the hunter
   Category: 2

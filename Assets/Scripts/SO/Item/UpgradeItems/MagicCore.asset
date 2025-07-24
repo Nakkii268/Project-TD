@@ -15,5 +15,5 @@ MonoBehaviour:
   ItemID: M008
   ItemName: Magic core
   ItemSprite: {fileID: -1078718724, guid: 14e56e4d3c4054941a78d56fc276c1fb, type: 3}
-  Description: 
+  Description: People said that it could blow an entire city away
   Category: 2

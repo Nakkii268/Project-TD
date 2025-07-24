@@ -15,4 +15,5 @@ MonoBehaviour:
   ItemID: D01
   ItemName: Diamond
   ItemSprite: {fileID: -894900220, guid: 8b127051ec22801428a87e39b4d2eb38, type: 3}
-  Tier: 5
+  Description: Used to trade for rare items
+  Category: 0

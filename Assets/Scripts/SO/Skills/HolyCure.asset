@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Holy Cure
   Icon: {fileID: 21300000, guid: 6b73b63bae6be1d41b0b8c2c5d29e890, type: 3}
-  Description: 
+  Description: Faith within us. Heal all allies in 5x5 range, moderate increase attack
+    damage
   skillType: 0
   skillEffect: 0
   skillTarget: 0

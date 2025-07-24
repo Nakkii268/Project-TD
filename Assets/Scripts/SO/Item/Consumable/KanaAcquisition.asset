@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5b2b77016c4f4945932f940530ce0bd, type: 3}
-  m_Name: RizeAcquisition
+  m_Name: KanaAcquisition
   m_EditorClassIdentifier: 
-  ItemID: CA04
-  ItemName: Rize acquisition
-  ItemSprite: {fileID: 1222539166, guid: 8b127051ec22801428a87e39b4d2eb38, type: 3}
-  Description: Faith within us. Use to acquire Rize
+  ItemID: CA06
+  ItemName: Kana acquisition
+  ItemSprite: {fileID: 1554523391, guid: d05c5b15d5bcc44459cabd0bd87b47e5, type: 3}
+  Description: "Behold\u2014fall beneath my axe. Used to acquire Kana"
   Category: 1
-  UnitAcquire: {fileID: 11400000, guid: 6635e91f07512ed42bae3f7be1ac49b9, type: 2}
+  UnitAcquire: {fileID: 11400000, guid: b18f85b780946e8409d3a4e0589a984a, type: 2}

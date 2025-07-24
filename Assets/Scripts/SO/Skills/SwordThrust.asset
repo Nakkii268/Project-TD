@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Sword thrust
   Icon: {fileID: 21300000, guid: 552abb93b55a6dd43977d8c69db08489, type: 3}
-  Description: 
+  Description: Thrust the sword forward, deal damage to 1 enemy and gain 10 deploy
+    points
   skillType: 0
   skillEffect: 0
   skillTarget: 2

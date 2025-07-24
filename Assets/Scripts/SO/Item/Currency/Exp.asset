@@ -15,4 +15,5 @@ MonoBehaviour:
   ItemID: E01
   ItemName: Small Exp
   ItemSprite: {fileID: 573388067, guid: 8b127051ec22801428a87e39b4d2eb38, type: 3}
-  Tier: 1
+  Description: Used to level up your character
+  Category: 0

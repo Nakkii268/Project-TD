@@ -15,4 +15,5 @@ MonoBehaviour:
   ItemID: G01
   ItemName: Gold
   ItemSprite: {fileID: -1498202539, guid: 8b127051ec22801428a87e39b4d2eb38, type: 3}
-  Tier: 1
+  Description: Gold Coin. Used to buy, trade
+  Category: 0

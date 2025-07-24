@@ -10,34 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb41e6c6384780a4285ce35b5d502967, type: 3}
-  m_Name: AttackUp
+  m_Name: FirstAid
   m_EditorClassIdentifier: 
-  Name: Attack Up!
-  Icon: {fileID: 21300000, guid: f1be1c0c152104f48a057cfdddf167b9, type: 3}
-  Description: Increase attack damage, significanly reduce attack interval
+  Name: FirstAid
+  Icon: {fileID: 21300000, guid: 072a86b184c0857499b144dda91383bc, type: 3}
+  Description: I got cha! Increase heal amount and reduce attack interval
   skillType: 0
-  skillEffect: 1
-  skillTarget: 1
+  skillEffect: 0
+  skillTarget: 0
   TargetRequire: 0
   SkillRange: []
   SkillVFX:
-    Particle: {fileID: 7505074700287860684, guid: db165090d6d2c1c438f9c973e6d33dfc, type: 3}
+    Particle: {fileID: 0}
     Rotatable: 0
     BaseRotation: {x: 0, y: 0, z: 0}
   SkillHitVFX: {fileID: 0}
-  ChargeType: 2
-  SkillDuration: 99
-  SkillPoint: 1
-  CanAttack: 1
+  ChargeType: 0
+  SkillDuration: 0
+  SkillPoint: 0
+  CanAttack: 0
   ActiveType: 0
   Range: {x: 0, y: 0}
   TargetLayer:
     serializedVersion: 2
     m_Bits: 0
   IsAroundUser: 0
-  effects:
-  - effect: {fileID: 11400000, guid: f0787e38af17e05488ef854602385f5b, type: 2}
-    delayTime: 0
-  - effect: {fileID: 11400000, guid: 870ea67b3ffd1224ebf3d77869e9184f, type: 2}
-    delayTime: 0
-  Delay: 5
+  effects: []
+  Delay: 0

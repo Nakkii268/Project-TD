@@ -86,7 +86,7 @@ public class MenuUI : UICanvas
        Diamond.text = playerData.IsHaveItem("D01").ToString();
         PlayerName.text = playerData.PlayerName;
         Stamina.text = GameManager.Instance._staminaManager.GetStaminaTxt();
-        testSaveTime.text = new DateTime(GameManager.Instance._playerDataManager.PlayerDataSO.LastLogin).ToString();
+      
     }
     public override void SetUp()
     {

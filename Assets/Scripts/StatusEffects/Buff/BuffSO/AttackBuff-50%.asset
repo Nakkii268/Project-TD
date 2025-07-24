@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: AttackBuff-50%
   m_EditorClassIdentifier: 
   duration: 10
-  Stackable: 0
+  Stackable: 1
   SType: 0
-  Description: Attack enchance by 10%%
+  Description: Attack enchance by 50%
   modifier:
-    Value: 0.1
+    Value: 0.5
     ModType: 1
     Order: 0

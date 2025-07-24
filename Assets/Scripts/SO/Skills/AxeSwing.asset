@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Axe Swing
   Icon: {fileID: 21300000, guid: 6ecfcf5f756608d43b3cef70f5437cd7, type: 3}
-  Description: Swing axe around, deal damage to enemy in range 2 time
+  Description: Swing axe around, deal damage to enemies in  3x3 range 2 time
   skillType: 0
   skillEffect: 0
   skillTarget: 2

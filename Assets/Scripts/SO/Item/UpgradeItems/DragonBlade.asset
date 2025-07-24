@@ -15,5 +15,5 @@ MonoBehaviour:
   ItemID: M010
   ItemName: Dragon blade
   ItemSprite: {fileID: -420166663, guid: 14e56e4d3c4054941a78d56fc276c1fb, type: 3}
-  Description: 
+  Description: Legendary blade. Made of dragon horn
   Category: 2

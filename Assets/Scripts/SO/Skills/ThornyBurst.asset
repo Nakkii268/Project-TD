@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: thorny burst
   Icon: {fileID: 21300000, guid: f978bfd350c040a45bbba2be52b15236, type: 3}
-  Description: 
+  Description: Enter charging state, increase defense and heal overtime. After 5
+    seconds, bursting and damage all enemies in 3x3 range
   skillType: 0
   skillEffect: 2
   skillTarget: 2

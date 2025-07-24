@@ -15,5 +15,5 @@ MonoBehaviour:
   ItemID: M012
   ItemName: Penetrate arrow
   ItemSprite: {fileID: -681075124, guid: 14e56e4d3c4054941a78d56fc276c1fb, type: 3}
-  Description: 
+  Description: Sharp and solid, capable of penetrating armor
   Category: 2

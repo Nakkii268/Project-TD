@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: LanceRain
   Icon: {fileID: 21300000, guid: bba1d3a68c2917544b52fd40b2fc3804, type: 3}
-  Description: 
+  Description: Launch a wave of lance rain forward, deal damage to all enemies in
+    range
   skillType: 0
   skillEffect: 0
   skillTarget: 2
