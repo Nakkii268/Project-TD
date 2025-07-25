@@ -16,9 +16,9 @@ MonoBehaviour:
   - LimitBreakLevel: 0
     StatBonus:
     - StatName: 0
-      StatModify: 2
+      StatModify: 1
     - StatName: 1
-      StatModify: 10
+      StatModify: 6
     - StatName: 2
       StatModify: 1
     CurrencyRequired:
@@ -31,7 +31,7 @@ MonoBehaviour:
     - StatName: 0
       StatModify: 2
     - StatName: 1
-      StatModify: 15
+      StatModify: 8
     - StatName: 2
       StatModify: 1
     CurrencyRequired:
@@ -42,9 +42,9 @@ MonoBehaviour:
   - LimitBreakLevel: 2
     StatBonus:
     - StatName: 0
-      StatModify: 3
+      StatModify: 2
     - StatName: 1
-      StatModify: 15
+      StatModify: 10
     - StatName: 2
       StatModify: 2
     CurrencyRequired:

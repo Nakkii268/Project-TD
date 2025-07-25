@@ -15,8 +15,8 @@ MonoBehaviour:
   UnitID: E03
   UnitPrefab: {fileID: 7337458643970106659, guid: 141b0fe660443814589dcc19a3dc8309, type: 3}
   Name: Physic Turtle
-  Heath: 123540
-  Attack: 200
+  Heath: 5000
+  Attack: 150
   AttackInterval: 1
   Defense: 999
   Resistance: 20

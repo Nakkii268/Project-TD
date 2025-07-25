@@ -12,11 +12,15 @@ public class EnemyHeathBar : MonoBehaviour
     {
         Enemy.OnHpChange += Enemy_OnHpChange;
         HpBar.fillAmount = 1;
+       gameObject.SetActive(false);
     }
 
     private void Enemy_OnHpChange(object sender, float e)
     {
-       
+        if (!gameObject.activeSelf)
+        {
+            gameObject.SetActive(true);
+        }
         HpBar.fillAmount = e;
     }
 }

@@ -15,13 +15,12 @@ MonoBehaviour:
   UnitID: E02
   UnitPrefab: {fileID: 7337458643970106659, guid: a16fe75bfedd2634ead736b7fbc8119a, type: 3}
   Name: Scopi
-  Heath: 10000
-  Attack: 1000
+  Heath: 3000
+  Attack: 300
   AttackInterval: 1
-  Defense: 1
-  Resistance: 1
+  Defense: 200
+  Resistance: 20
   Block: 0
-  AttackVfx: {fileID: 1442184012376203772, guid: 50a4e5f6312b13b4f97bd5d15fc13162, type: 3}
   HitVfx: {fileID: 8137755862202914372, guid: 9f1c84d76e6d70e4c8eb5143d2c437f6, type: 3}
   Speed: 0.5
   CanBlock: 1

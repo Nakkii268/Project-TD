@@ -15,14 +15,14 @@ MonoBehaviour:
   UnitID: 006
   UnitPrefab: {fileID: 6865232695306935221, guid: 8831f6cd11a7c7646bdbca4f7ce4a747, type: 3}
   Name: Kita
-  Heath: 181196
-  Attack: 71523
+  Heath: 2000
+  Attack: 400
   AttackInterval: 1
-  Defense: 21203
-  Resistance: 45
-  Block: 2
+  Defense: 200
+  Resistance: 30
+  Block: 1
   HitVfx: {fileID: 27400811220467730, guid: 973a920eb54a54049865d0de2cc67c39, type: 3}
-  Rarity: {fileID: 11400000, guid: 0db3e1a0694614948ab0f03f88761004, type: 2}
+  Rarity: {fileID: 11400000, guid: 1a94967ead12edc4badf802a5cbec34b, type: 2}
   unitDragSprite: {fileID: -2010924971, guid: e4cedc10242340a4bac47ed7dddb29b2, type: 3}
   unitPotrait: {fileID: 21300000, guid: 8da902204aeda2a4fbcb36eab7977629, type: 3}
   unitUIPotrait: {fileID: 21300000, guid: dde00edbb4933dd4d83f8750a1e8b38b, type: 3}
@@ -41,7 +41,7 @@ MonoBehaviour:
   TargetCount: 0
   DamageType: 0
   UnitClass: {fileID: 11400000, guid: d3350558ecf0fda44a75048f107cd80e, type: 2}
-  LimitBreak: 2
+  LimitBreak: 0
   Level: 1
   UnitSkills:
   - {fileID: 11400000, guid: 78804c085d69020489f356b4891316a7, type: 2}

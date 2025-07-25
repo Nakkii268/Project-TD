@@ -15,12 +15,12 @@ MonoBehaviour:
   UnitID: 004
   UnitPrefab: {fileID: 6865232695306935221, guid: 48cec2d1e51de0a469d08fd400b8263b, type: 3}
   Name: Nikoo
-  Heath: 61429
-  Attack: 8656
-  AttackInterval: 2
-  Defense: 1386
+  Heath: 2750
+  Attack: 475
+  AttackInterval: 1.25
+  Defense: 450
   Resistance: 50
-  Block: 2
+  Block: 3
   HitVfx: {fileID: 27400811220467730, guid: 0aebacb83d898cd47bb1a2a0b652dab1, type: 3}
   Rarity: {fileID: 11400000, guid: 0db3e1a0694614948ab0f03f88761004, type: 2}
   unitDragSprite: {fileID: 1610962070, guid: 2eeab698d43f8da4c8106cc69902a7c3, type: 3}

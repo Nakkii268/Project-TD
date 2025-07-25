@@ -20,7 +20,7 @@ MonoBehaviour:
     - StatName: 1
       StatModify: 6
     - StatName: 2
-      StatModify: 1
+      StatModify: 0
     CurrencyRequired:
     - Item: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
       Quantity: 1000
@@ -46,7 +46,7 @@ MonoBehaviour:
     - StatName: 1
       StatModify: 8
     - StatName: 2
-      StatModify: 2
+      StatModify: 1
     CurrencyRequired:
     - Item: {fileID: 11400000, guid: c7081751eaabdef4f8b572425b2ea70d, type: 2}
       Quantity: 1500

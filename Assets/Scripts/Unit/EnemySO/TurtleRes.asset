@@ -15,10 +15,10 @@ MonoBehaviour:
   UnitID: E04
   UnitPrefab: {fileID: 7337458643970106659, guid: b837c93506338e04183261cb2bd4959d, type: 3}
   Name: Magic Turtle
-  Heath: 123540
-  Attack: 200
+  Heath: 5000
+  Attack: 150
   AttackInterval: 1
-  Defense: 500
+  Defense: 200
   Resistance: 99
   Block: 0
   HitVfx: {fileID: 27400811220467730, guid: a026953b84f4b384b90d2ad2f6f68bfc, type: 3}
