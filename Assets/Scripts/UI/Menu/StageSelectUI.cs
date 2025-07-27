@@ -36,6 +36,7 @@ public class StageSelectUI : UICanvas
         });
         PrevChapBtn.onClick.AddListener(() =>
         {
+            if (CurrentSelectChap == 1) return;
             CurrentSelectChap--;
             UpdateChapterTxt();
             LoadStageList(CurrentSelectChap);

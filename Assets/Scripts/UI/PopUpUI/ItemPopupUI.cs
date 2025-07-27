@@ -12,6 +12,7 @@ public class ItemPopupUI : UICanvas
     [SerializeField] private TextMeshProUGUI ItemName;
     [SerializeField] private TextMeshProUGUI ItemDesc;
     [SerializeField] private Button ConfirmBtn;
+    [SerializeField] private Button PannelCloseBtn;
     //Item patch use, item from inventory only
     [SerializeField] private TextMeshProUGUI ConfirmBtntxt;
     [SerializeField] private string USE_TXT = "USE";
@@ -45,6 +46,11 @@ public class ItemPopupUI : UICanvas
             ConfirmBtntxt.text = CONFIRM_TXT;
 
         }
+        PannelCloseBtn.onClick.AddListener(() =>
+        {
+            UIManager.Instance.Close<ItemPopupUI>(0);
+
+        });
         ConfirmBtn.onClick.RemoveAllListeners();
         ConfirmBtn.onClick.AddListener(() =>
         {

@@ -16,4 +16,4 @@ MonoBehaviour:
   Stackable: 0
   SType: 0
   Description: Heal over time
-  HealAmount: 10000
+  HealAmount: 2000

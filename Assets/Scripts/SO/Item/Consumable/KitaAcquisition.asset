@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemID: CA05
   ItemName: Rize acquisition
-  ItemSprite: {fileID: 1554523391, guid: d05c5b15d5bcc44459cabd0bd87b47e5, type: 3}
-  Description: 
+  ItemSprite: {fileID: -1321821292, guid: a95aa8adb76dde14f9015c7be52b9e9c, type: 3}
+  Description: I'll go first. Use to acquire Kita
   Category: 1
   UnitAcquire: {fileID: 11400000, guid: 63f9a32c30ec447438ba9a4acee00628, type: 2}

@@ -33,7 +33,7 @@ public class AllianceVisual : MonoBehaviour
 
     public void SetSortingOrder(float value)
     {
-        sortingGroup.sortingOrder = Mathf.RoundToInt(20 - value);
+        sortingGroup.sortingOrder =50 - (Mathf.CeilToInt(value)*2);
     }
     
     public void RotateToTarget(GameObject target)

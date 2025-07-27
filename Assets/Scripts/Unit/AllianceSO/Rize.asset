@@ -54,5 +54,5 @@ MonoBehaviour:
   LimitBreak: 0
   Level: 1
   UnitSkills:
-  - {fileID: 11400000, guid: 7acfcc20f5a7e4547bce5adaba9fa208, type: 2}
+  - {fileID: 11400000, guid: 33bf710f2e4687343b285e3a6000eb5c, type: 2}
   - {fileID: 11400000, guid: df0ebe9a0d94f8a408ffb7ef9547c58e, type: 2}

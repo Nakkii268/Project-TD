@@ -24,27 +24,11 @@ public class UnitLimitBreakUI : UICanvas
     public void Initialized(AllianceUnit allanceUnit)
     {
         unit = allanceUnit;
+        MaterialUpdate();
 
-        //level req
-        GameObject levelReq = Instantiate(ItemRequiredPrefab, container);
-        levelReq.GetComponent<MaterialRequiredSingle>().
-            InitLevelReq(unit.Rarity.LevelCap[unit.LimitBreak], unit.Level);
-
-        //
-
-        //item req
-        for (int i = 0; i < unit.UnitClass.ClassLimitBreakpData.LBData[unit.LimitBreak].MaterialsRequired.Count; i++)
-        {
-            GameObject single = Instantiate(ItemRequiredPrefab, container);
-            single.GetComponent<MaterialRequiredSingle>().
-                Init(unit.UnitClass.ClassLimitBreakpData.LBData[unit.LimitBreak].MaterialsRequired[i],
-                GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(unit.UnitClass.ClassLimitBreakpData.LBData[unit.LimitBreak].MaterialsRequired[i].Item.ItemID));
-        }
-
-        
         CurrentLimtBreak = unit.LimitBreak;
         CurrentLBIcon.sprite = GameManager.Instance.limitBreakIcon.GetIcon(CurrentLimtBreak);
-       
+
         if (!RequiredCheck())
         {
             LimitBreakBtn.interactable = false;
@@ -54,7 +38,29 @@ public class UnitLimitBreakUI : UICanvas
             LimitBreakBtn.interactable = true;
 
         }
+
+    }
+
+    private void MaterialUpdate()
+    {
+        ClearChild(container);
+        if (CurrentLimtBreak >= unit.Rarity.MaxLimitBreak) return;
         
+        //level req
+        GameObject levelReq = Instantiate(ItemRequiredPrefab, container);
+        levelReq.GetComponent<MaterialRequiredSingle>().
+        InitLevelReq(unit.Rarity.LevelCap[unit.LimitBreak], unit.Level);
+
+        //
+
+        //item req
+        for (int i = 0; i < unit.UnitClass.ClassLimitBreakpData.LBData[unit.LimitBreak].MaterialsRequired.Count; i++)
+        {
+            GameObject single = Instantiate(ItemRequiredPrefab, container);
+            single.GetComponent<MaterialRequiredSingle>().
+            Init(unit.UnitClass.ClassLimitBreakpData.LBData[unit.LimitBreak].MaterialsRequired[i],
+            GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(unit.UnitClass.ClassLimitBreakpData.LBData[unit.LimitBreak].MaterialsRequired[i].Item.ItemID));
+        }
     }
 
     private void Start()
@@ -94,12 +100,11 @@ public class UnitLimitBreakUI : UICanvas
         
         unit.Level = 1;
         unit.LimitBreak = CurrentLimtBreak + 1;
-      
+        CurrentLimtBreak++;
         GameManager.Instance._playerDataManager.PlayerDataSO.UpdateUnit(unit);
         Animator.Play("LimitBreak");
         StartCoroutine(Delay(.4f));
-        CurrentLBIcon.sprite = GameManager.Instance.limitBreakIcon.GetIcon(CurrentLimtBreak);
-
+        MaterialUpdate();
 
 
     }
@@ -138,8 +143,17 @@ public class UnitLimitBreakUI : UICanvas
         }
     }
 
+    private void ClearChild(Transform parent)
+    {
+        for(int i = 0;i < parent.childCount; i++)
+        {
+            Destroy(parent.GetChild(i).gameObject);
+        }
+    }
     private IEnumerator Delay(float time)
     {
         yield return new WaitForSeconds(time);
+        CurrentLBIcon.sprite = GameManager.Instance.limitBreakIcon.GetIcon(CurrentLimtBreak);
+
     }
 }

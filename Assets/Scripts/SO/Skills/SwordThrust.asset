@@ -38,7 +38,7 @@ MonoBehaviour:
   IsAroundUser: 0
   effects:
   - {fileID: 11400000, guid: d9783a2f14d29894db535f754fc25d7a, type: 2}
-  SkillDmg: 99999
+  SkillDmg: 1.5
   DamageType: 0
   subTarget: 2
   DamageDelayTime: 0.2

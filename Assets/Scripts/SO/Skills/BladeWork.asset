@@ -28,7 +28,7 @@ MonoBehaviour:
   SkillHitVFX: {fileID: 188511928541376772, guid: 9bdbf0a10b016964c9b198e986959207, type: 3}
   ChargeType: 2
   SkillDuration: 0.5
-  SkillPoint: 1
+  SkillPoint: 20
   CanAttack: 0
   ActiveType: 0
   Range: {x: 3, y: 1}
@@ -36,7 +36,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   IsAroundUser: 0
-  SkillDmgScale: 9999
+  SkillDmgScale: 3
   DamageType: 0
   DelayTime: 0
   TotalHits: 4

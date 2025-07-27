@@ -39,7 +39,7 @@ MonoBehaviour:
   effects:
   - {fileID: 11400000, guid: aa611667c72596147915d1e132a01116, type: 2}
   - {fileID: 11400000, guid: 76a31686cc8acd8418a8ff39b599d308, type: 2}
-  SkillDmg: 9999999
+  SkillDmg: 2
   DamageType: 0
   subTarget: 2
   DamageDelayTime: 4.9

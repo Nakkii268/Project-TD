@@ -8,7 +8,7 @@ public class EnemyVisual : MonoBehaviour
     [SerializeField] private Enemy enemy;
     [SerializeField] private Animator animator;
     [SerializeField] private SortingGroup sortingGroup;
-
+    private float sortingMilestone = .6f; // the value that sorting order should change when exceed
 
     public void RotateToTarget(Vector3 target)
     {
@@ -34,7 +34,9 @@ public class EnemyVisual : MonoBehaviour
     }
     public void SetSortingOrder(float value)
     {
-        sortingGroup.sortingOrder =20- Mathf.CeilToInt(value);
+        int orderValue = Mathf.CeilToInt(value - sortingMilestone);
+        
+        sortingGroup.sortingOrder =50- (orderValue*2 +1);
     }
     public void PlayIdleAnim()
     {
