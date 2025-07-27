@@ -44,6 +44,8 @@ public static class SaveLoadData
         };
         defaultData.PlayerProgress = new List<Progress>() { new Progress()};
         defaultData.Stamina = 100;
+        defaultData.LastDailyReset = DateTime.UtcNow.Ticks;
+        defaultData.LastWeeklyReset = DateTime.UtcNow.Ticks;
         return defaultData;
     }
     public static void SaveCharacterData(PlayerData data)
