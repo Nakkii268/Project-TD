@@ -44,7 +44,7 @@ public class StatusEffectHolder : MonoBehaviour
             if (Neffect.Stackable)
             {
                 NorEffect.Add(Neffect);
-                if (Neffect.duration > 99)// for effect have unlimited duration, set duration >99=> only apply and wont remove auto
+                if (Neffect.duration >= 99)// for effect have unlimited duration, set duration >99=> only apply and wont remove auto
                 {
                     Neffect.OnApply(target);
                 }
@@ -71,6 +71,7 @@ public class StatusEffectHolder : MonoBehaviour
                 StartEffectCoroutine(target, Neffect);
 
             }
+
         }else if(effect.SType == StatusType.OnHit)
         {
             OnHitStatusEffect OHeffect = (OnHitStatusEffect)effect;
@@ -78,7 +79,7 @@ public class StatusEffectHolder : MonoBehaviour
             if (OHeffect.Stackable)
             {
                 OnhitEffects.Add(OHeffect);
-                if (OHeffect.duration > 99) return;
+                if (OHeffect.duration >= 99) return;
                 StartEffectCoroutine(target, OHeffect);
                 return;
             }

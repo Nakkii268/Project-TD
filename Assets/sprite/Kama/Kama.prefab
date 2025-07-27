@@ -2009,7 +2009,7 @@ GameObject:
   - component: {fileID: 16494464212875821}
   - component: {fileID: 7795449935590479146}
   - component: {fileID: 1958700478803244872}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: UnitCollider
   m_TagString: Alliance
   m_Icon: {fileID: 0}
@@ -2378,7 +2378,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 557b8c854a9e1be43810f394cd913b9c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.059
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 557b8c854a9e1be43810f394cd913b9c, type: 3}
       propertyPath: m_LocalPosition.y

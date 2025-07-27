@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UnitLevelUpUI : UICanvas
@@ -75,6 +77,7 @@ public class UnitLevelUpUI : UICanvas
             UpdateRequireTxt(Gold, Exp);
 
         });
+        
         DecreaseBtn.onClick.AddListener(() =>
         {
             if ((CurrentViewLevel <= GetCurrentLevel())) return;
@@ -273,4 +276,6 @@ public class UnitLevelUpUI : UICanvas
         return GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(GoldID) >= Gold 
             && GameManager.Instance._playerDataManager.PlayerDataSO.IsHaveItem(ExpID) >= Exp;
     }
+
+  
 }

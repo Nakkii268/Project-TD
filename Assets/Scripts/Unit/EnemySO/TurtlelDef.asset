@@ -26,7 +26,7 @@ MonoBehaviour:
   CanBlock: 1
   type: 0
   damageType: 0
-  AttackRange: 1
+  AttackRange: 0.7
   target: 1
   targetlayer:
     serializedVersion: 2

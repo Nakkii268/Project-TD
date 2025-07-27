@@ -49,8 +49,8 @@ MonoBehaviour:
     m_Bits: 6144
   UnitTarget: 0
   TargetCount: 0
-  DamageType: 0
-  UnitClass: {fileID: 11400000, guid: 2d8ecc50b1fec574f91cfb3a3519f2cd, type: 2}
+  DamageType: 1
+  UnitClass: {fileID: 11400000, guid: 8c37f970a927d4340a15459b2e2dc319, type: 2}
   LimitBreak: 0
   Level: 1
   UnitSkills:
